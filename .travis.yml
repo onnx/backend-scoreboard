@@ -7,7 +7,5 @@ before_install:
   - docker pull onnx/onnx-docker
 
 script:
-  - docker run onnx/onnx-docker /bin/sh -c "apt remove -y python-pip"
-  - docker run onnx/onnx-docker /bin/sh -c "pip install pytest tabulate"
-  - docker run onnx/onnx-docker /bin/sh -c "pytest pytorch/caffe2/python/onnx/tests/onnx_backend_test.py"
+  - docker run onnx/onnx-docker /bin/sh -c "apt remove -y python-pip;pip install pytest tabulate;pytest pytorch/caffe2/python/onnx/tests/onnx_backend_test.py;"
   # TODO: Run bash script commit newly generated HTML page
