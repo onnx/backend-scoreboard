@@ -8,5 +8,5 @@ before_install:
 
 script:
   # TODO: Switch onnx/onnx-docker to Ac2zoom container which installs scoreboard branch
-  - docker run -v ~/data:/data onnx/onnx-docker /bin/sh -c "apt remove -y python-pip;pip install pytest tabulate;pytest conftest.py;pytest --csvdir=/data pytorch/caffe2/python/onnx/tests/onnx_backend_test.py;"
+  - docker run -v ~/data:/data onnx/onnx-docker /bin/sh -c "apt remove -y python-pip;pip install pytest tabulate;export CSVDIR='/data';pytest pytorch/caffe2/python/onnx/tests/onnx_backend_test.py;"
   # TODO: Run bash script commit newly generated HTML page
