@@ -6,7 +6,8 @@ services:
 before_install:
   - docker pull akshaychalana/dockerfiles
 
+after_success:
+  - ./upload-csv.sh
+
 script:
-  # TODO: Switch onnx/onnx-docker to Ac2zoom container which installs scoreboard branch
-  - docker run -v ~/data:/data onnx/onnx-docker /bin/sh -c "apt remove -y python-pip;pip install pytest tabulate;export CSVDIR='/data';pytest pytorch/caffe2/python/onnx/tests/onnx_backend_test.py;"
-  # TODO: Run bash script commit newly generated HTML page
+  - docker run -v ~/data:/data akshaychalana/dockerfiles /bin/sh -c "apt remove -y python-pip;pip install pytest tabulate unicodecsv;export CSVDIR='/data';pytest pytorch/caffe2/python/onnx/tests/onnx_backend_test.py;"
