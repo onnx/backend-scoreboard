@@ -10,4 +10,4 @@ after_success:
   - ./upload-csv.sh
 
 script:
-  - docker run -v ~/data:/data akshaychalana/dockerfiles /bin/sh -c "apt remove -y python-pip;pip install pytest tabulate unicodecsv;export CSVDIR='/data';pytest pytorch/caffe2/python/onnx/tests/onnx_backend_test.py;"
+  - docker run -v ~/data:/data akshaychalana/dockerfiles /bin/sh -c "apt remove -y python-pip;python3 -m pip install pytest tabulate;export CSVDIR='/data';python3 -m pytest pytorch/caffe2/python/onnx/tests/onnx_backend_test.py;"
