@@ -44,11 +44,19 @@
                 var parsedNodes = d3.csv.parseRows(data);
 
                 var container = d3.select(".nodes")
-                    .append("table")
-                    
-                    .attr("align", "center")
+                    .append("table");
+                    .attr("align", "center");
 
-                    .selectAll("tr")
+                container.append("thead").append("tr")
+                    .selectAll("th")
+                    .data(["Op", "Caffe2"])
+                    .enter().append("th")
+                    .text(function(d) {
+                      return d;
+                    });
+                    
+                container.append("tbody")
+                        .selectAll("tr")
                         .data(parsedNodes).enter()
                         .append("tr")
 
@@ -63,10 +71,18 @@
 
                 var container = d3.select(".models")
                     .append("table")
-
-                    .attr("align", "center")
+                    .attr("align", "center");
                     
-                    .selectAll("tr")
+                container.append("thead").append("tr")
+                    .selectAll("th")
+                    .data(["Model", "Caffe2"])
+                    .enter().append("th")
+                    .text(function(d) {
+                      return d;
+                    });
+
+                container.append("tbody")
+                        .selectAll("tr")
                         .data(parsedCSV).enter()
                         .append("tr")
 
