@@ -67,7 +67,7 @@
                         .attr("bgcolor", function(d) {
                             if (d.includes("Failed")) {
                                 return "red";
-                            } else {
+                            } else if (d.includes("!")) {
                                 return "green";
                             }
                         });
@@ -100,7 +100,7 @@
                         .attr("bgcolor", function(d) {
                             if (d.includes("Failed")) {
                                 return "red";
-                            } else {
+                            } else if (d.includes("!")) {
                                 return "green";
                             }
                         });
