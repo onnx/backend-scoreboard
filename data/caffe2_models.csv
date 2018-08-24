@@ -1,12 +1,16 @@
-bvlc_alexnet,8/8 nodes covered
-densenet121,10/10 nodes covered
-inception_v1,10/10 nodes covered
-inception_v2,12/12 nodes covered
-resnet50,9/9 nodes covered
-shufflenet,11/11 nodes covered
-squeezenet_old,7/7 nodes covered
-vgg19,7/7 nodes covered
-zfnet512,7/7 nodes covered
-Expand,1/1 nodes covered
-SingleRelu,1/1 nodes covered
-torch-jit-export,48/48 nodes covered
+inception_v1,10/10 nodes covered: Failed!
+resnet50,9/9 nodes covered: Failed!
+bvlc_alexnet,8/8 nodes covered: Failed!
+inception_v2,12/12 nodes covered: Failed!
+squeezenet_old,7/7 nodes covered: Failed!
+vgg19,7/7 nodes covered: Failed!
+shufflenet,11/11 nodes covered: Failed!
+densenet121,10/10 nodes covered: Failed!
+resnet50,9/9 nodes covered: Passed!
+bvlc_alexnet,8/8 nodes covered: Passed!
+inception_v2,12/12 nodes covered: Passed!
+squeezenet_old,7/7 nodes covered: Passed!
+inception_v1,10/10 nodes covered: Passed!
+vgg19,7/7 nodes covered: Passed!
+shufflenet,11/11 nodes covered: Passed!
+densenet121,10/10 nodes covered: Passed!
