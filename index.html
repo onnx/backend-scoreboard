@@ -96,7 +96,14 @@
                     .selectAll("td")
                         .data(function(d) { return d; }).enter()
                         .append("td")
-                        .text(function(d) { return d; });
+                        .text(function(d) { return d; })
+                        .attr("bgcolor", function(d) {
+                            if (d.includes("Failed")) {
+                                return "red";
+                            } else {
+                                return "green";
+                            }
+                        });
             });
         </script>
     </body>
