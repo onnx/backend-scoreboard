@@ -63,7 +63,13 @@
                     .selectAll("td")
                         .data(function(d) { return d; }).enter()
                         .append("td")
-                        .text(function(d) { return d; })
+                        .text(function(d) { 
+                            if (d.includes("Summary") || d.includes("nodes")) {
+                              return "<strong>" + d + "</strong>";
+                            } else {
+                              return d;
+                            }
+                        })
                         .attr("bgcolor", function(d) {
                             if (d.includes("Failed")) {
                                 return "red";
@@ -96,7 +102,13 @@
                     .selectAll("td")
                         .data(function(d) { return d; }).enter()
                         .append("td")
-                        .text(function(d) { return d; })
+                        .text(function(d) { 
+                            if (d.includes("Summary") || d.includes("nodes")) {
+                              return "<strong>" + d + "</strong>";
+                            } else {
+                              return d;
+                            }
+                        })
                         .attr("bgcolor", function(d) {
                             if (d.includes("Failed")) {
                                 return "red";
