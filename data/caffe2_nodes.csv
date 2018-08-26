@@ -132,3 +132,4 @@ Unsqueeze,Passed!
 Upsample,Passed!
 Xor,Passed!
 ZipMap,Failed!
+Summary,81/134 node tests passed

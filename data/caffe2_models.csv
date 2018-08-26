@@ -14,3 +14,4 @@ inception_v1,10/10 nodes covered: Passed!
 vgg19,7/7 nodes covered: Passed!
 shufflenet,11/11 nodes covered: Passed!
 densenet121,10/10 nodes covered: Passed!
+Summary,8/16 model tests passed
