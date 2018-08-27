@@ -124,7 +124,7 @@
             d3.text("data/metadata.csv", function(data) {
                 var parsedCSV = d3.csv.parseRows(data);
 
-                var container = d3.select(".models")
+                var container = d3.select(".metadata")
                     .append("table")
                     .attr("align", "center");
                     
