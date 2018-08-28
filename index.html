@@ -67,7 +67,7 @@
                         .data(function(d) { return d; }).enter()
                         .append("td")
                         .html(function(d) { 
-                            if (d.includes("Summary") || d.includes("nodes")) {
+                            if (d.includes("Summary") || d.includes("tests")) {
                               return "<strong>" + d + "</strong>";
                             } else {
                               return d;

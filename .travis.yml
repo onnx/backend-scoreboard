@@ -10,5 +10,5 @@ after_success:
   - ./upload-csv.sh
 
 script:
-  - docker run -v ~/data:/data akshaychalana/dockerfiles /bin/sh -c "python check_date.py `docker inspect -f '{{ .Created }}' akshaychalana/dockerfiles`; apt remove -y python-pip; pip install pytest tabulate;export CSVDIR='/data'; export BACKEND='caffe2'; pytest pytorch/caffe2/python/onnx/tests/onnx_backend_test.py;"
+  - docker run -v ~/data:/data akshaychalana/dockerfiles /bin/sh -c "python check_date.py `docker inspect -f '{{ .Created }}' akshaychalana/dockerfiles`; apt remove -y python-pip; pip install pytest tabulate;export CSVDIR='/data'; export BACKEND='caffe2'; rm /data/metadata.csv; pytest pytorch/caffe2/python/onnx/tests/onnx_backend_test.py;"
   - python write_metadata.py
