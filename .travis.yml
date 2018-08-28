@@ -10,7 +10,7 @@ after_success:
   - ./upload-csv.sh
 
 script:
-  - docker run -v data:/data akshaychalana/dockerfiles /bin/sh -c "python check_date.py `docker inspect -f '{{ .Created }}' akshaychalana/dockerfiles`; apt remove -y python-pip; pip install pytest tabulate future;export CSVDIR='/data'; export BACKEND='caffe2'; pytest pytorch/caffe2/python/onnx/tests/onnx_backend_test.py; python /data/write_metadata.py"
+  - docker run -v $(pwd)/data:/data akshaychalana/dockerfiles /bin/sh -c "python check_date.py `docker inspect -f '{{ .Created }}' akshaychalana/dockerfiles`; apt remove -y python-pip; pip install pytest tabulate future;export CSVDIR='/data'; export BACKEND='caffe2'; pytest pytorch/caffe2/python/onnx/tests/onnx_backend_test.py; python /data/write_metadata.py"
   - sudo pip install csvtomd
   - echo "# ONNX Backend Scoreboard\nScoreboard for ONNX Backend Compatibility with Individual Ops\n[View HTML Scoreboard Here](https://ac2zoom.github.io/onnx-backend-scoreboard/)\n" > README.md
   - csvtomd -n data/caffe2_nodes.csv data/caffe2_models.csv >> README.md
