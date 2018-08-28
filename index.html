@@ -52,7 +52,7 @@
 
                 container.append("thead").append("tr")
                     .selectAll("th")
-                    .data(["Op", "Caffe2"])
+                    .data(parsedNodes[0])
                     .enter().append("th")
                     .text(function(d) {
                       return d;
@@ -60,7 +60,7 @@
                     
                 container.append("tbody")
                         .selectAll("tr")
-                        .data(parsedNodes).enter()
+                        .data(parsedNodes.slice(1)).enter()
                         .append("tr")
 
                     .selectAll("td")
@@ -91,7 +91,7 @@
                     
                 container.append("thead").append("tr")
                     .selectAll("th")
-                    .data(["Model", "Caffe2"])
+                    .data(parsedCSV[0])
                     .enter().append("th")
                     .text(function(d) {
                       return d;
@@ -99,7 +99,7 @@
 
                 container.append("tbody")
                         .selectAll("tr")
-                        .data(parsedCSV).enter()
+                        .data(parsedCSV.slice(1)).enter()
                         .append("tr")
 
                     .selectAll("td")
