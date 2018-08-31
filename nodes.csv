@@ -1,0 +1,118 @@
+Op,tensorflow
+ATen (Experimental),Failed!
+Abs,Passed!
+Acos,Passed!
+Add,Passed!
+Affine (Experimental),Failed!
+And,Passed!
+ArgMax,Passed!
+ArgMin,Passed!
+Asin,Passed!
+Atan,Passed!
+AveragePool,Passed!
+BatchNormalization,Passed!
+Cast,Passed!
+Ceil,Passed!
+Clip,Passed!
+Concat,Passed!
+Constant,Passed!
+ConstantFill (Experimental),Passed!
+Conv,Passed!
+ConvTranspose,Passed!
+Cos,Passed!
+Crop (Experimental),Failed!
+DepthToSpace,Passed!
+Div,Passed!
+Dropout,Passed!
+Elu,Passed!
+Equal,Passed!
+Exp,Passed!
+Expand,Passed!
+Flatten,Passed!
+Floor,Passed!
+GRU,Passed!
+GRUUnit (Experimental),Failed!
+Gather,Passed!
+Gemm,Passed!
+GivenTensorFill (Experimental),Failed!
+GlobalAveragePool,Passed!
+GlobalLpPool,Failed!
+GlobalMaxPool,Passed!
+Greater,Passed!
+HardSigmoid,Passed!
+Hardmax,Passed!
+Identity,Passed!
+If,Failed!
+ImageScaler (Experimental),Failed!
+InstanceNormalization,Passed!
+LRN,Passed!
+LSTM,Passed!
+LeakyRelu,Passed!
+Less,Passed!
+Log,Passed!
+LogSoftmax,Passed!
+Loop,Failed!
+LpNormalization,Failed!
+LpPool,Failed!
+MatMul,Passed!
+Max,Passed!
+MaxPool,Passed!
+MaxRoiPool,Failed!
+Mean,Passed!
+MeanVarianceNormalization (Experimental),Failed!
+Min,Passed!
+Mul,Passed!
+Multinomial,Failed!
+Neg,Passed!
+Not,Passed!
+Or,Passed!
+PRelu,Passed!
+Pad,Passed!
+ParametricSoftplus (Experimental),Failed!
+Pow,Passed!
+RNN,Passed!
+RandomNormal,Failed!
+RandomNormalLike,Failed!
+RandomUniform,Failed!
+RandomUniformLike,Failed!
+Reciprocal,Passed!
+ReduceL1,Passed!
+ReduceL2,Passed!
+ReduceLogSum,Passed!
+ReduceLogSumExp,Passed!
+ReduceMax,Passed!
+ReduceMean,Passed!
+ReduceMin,Passed!
+ReduceProd,Passed!
+ReduceSum,Passed!
+ReduceSumSquare,Passed!
+Relu,Passed!
+Reshape,Passed!
+Scale (Experimental),Failed!
+ScaledTanh (Experimental),Failed!
+Scan,Failed!
+Selu,Passed!
+Shape,Passed!
+Sigmoid,Passed!
+Sin,Passed!
+Size,Passed!
+Slice,Passed!
+Softmax,Passed!
+Softplus,Passed!
+Softsign,Passed!
+SpaceToDepth,Failed!
+Split,Passed!
+Sqrt,Passed!
+Squeeze,Passed!
+Sub,Passed!
+Sum,Passed!
+Tan,Passed!
+Tanh,Passed!
+ThresholdedRelu (Experimental),Passed!
+Tile,Passed!
+TopK,Passed!
+Transpose,Passed!
+Unsqueeze,Passed!
+Upsample,Passed!
+Xor,Passed!
+Summary,93/116 node tests passed
