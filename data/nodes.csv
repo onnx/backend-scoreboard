@@ -1,4 +1,4 @@
-Op,caffe2
+Op,tensorflow
 ATen (Experimental),Failed!
 Abs,Passed!
 Acos,Passed!
@@ -11,7 +11,7 @@ Asin,Passed!
 Atan,Passed!
 AveragePool,Passed!
 BatchNormalization,Passed!
-Cast,Failed!
+Cast,Passed!
 Ceil,Passed!
 Clip,Passed!
 Concat,Passed!
@@ -21,7 +21,7 @@ Conv,Passed!
 ConvTranspose,Passed!
 Cos,Passed!
 Crop (Experimental),Failed!
-DepthToSpace,Failed!
+DepthToSpace,Passed!
 Div,Passed!
 Dropout,Passed!
 Elu,Passed!
@@ -30,7 +30,7 @@ Exp,Passed!
 Expand,Passed!
 Flatten,Passed!
 Floor,Passed!
-GRU,Failed!
+GRU,Passed!
 GRUUnit (Experimental),Failed!
 Gather,Passed!
 Gemm,Passed!
@@ -39,8 +39,8 @@ GlobalAveragePool,Passed!
 GlobalLpPool,Failed!
 GlobalMaxPool,Passed!
 Greater,Passed!
-HardSigmoid,Failed!
-Hardmax,Failed!
+HardSigmoid,Passed!
+Hardmax,Passed!
 Identity,Passed!
 If,Failed!
 ImageScaler (Experimental),Failed!
@@ -76,16 +76,16 @@ RandomNormalLike,Failed!
 RandomUniform,Failed!
 RandomUniformLike,Failed!
 Reciprocal,Passed!
-ReduceL1,Failed!
-ReduceL2,Failed!
-ReduceLogSum,Failed!
-ReduceLogSumExp,Failed!
+ReduceL1,Passed!
+ReduceL2,Passed!
+ReduceLogSum,Passed!
+ReduceLogSumExp,Passed!
 ReduceMax,Passed!
 ReduceMean,Passed!
 ReduceMin,Passed!
-ReduceProd,Failed!
+ReduceProd,Passed!
 ReduceSum,Passed!
-ReduceSumSquare,Failed!
+ReduceSumSquare,Passed!
 Relu,Passed!
 Reshape,Passed!
 Scale (Experimental),Failed!
@@ -109,10 +109,10 @@ Sum,Passed!
 Tan,Passed!
 Tanh,Passed!
 ThresholdedRelu (Experimental),Passed!
-Tile,Failed!
+Tile,Passed!
 TopK,Passed!
 Transpose,Passed!
 Unsqueeze,Passed!
 Upsample,Passed!
 Xor,Passed!
-Summary,81/116 node tests passed
+Summary,93/116 node tests passed

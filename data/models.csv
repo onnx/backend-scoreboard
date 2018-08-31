@@ -1,4 +1,4 @@
-Model,caffe2
+Model,tensorflow
 resnet50,9/9 nodes covered: Passed!
 bvlc_alexnet,8/8 nodes covered: Passed!
 inception_v2,12/12 nodes covered: Passed!
