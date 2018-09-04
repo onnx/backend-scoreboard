@@ -1,5 +1,10 @@
 sudo: required
 
+addons:
+  apt:
+    packages:
+      - "python3-pip"
+
 services:
   - docker
 
@@ -10,8 +15,8 @@ after_success:
   - source upload-csv.sh
 
 script:
-        - docker run -v $(pwd)/data:/data onnx/onnx-docker:cpu /bin/sh -c "python check_date.py `docker inspect -f '{{ .Created }}' onnx/onnx-docker:cpu`; pip install pytest tabulate future;export CSVDIR='/data'; export BACKEND='caffe2'; pytest pytorch/caffe2/python/onnx/tests/onnx_backend_test.py; export BACKEND='tensorflow'; pytest onnx-tensorflow/test/backend/test_onnx_backend.py; python /data/write_metadata.py"
-  - sudo python3 -m pip install csvtomd
+  - docker run -v $(pwd)/data:/data onnx/onnx-docker:cpu /bin/sh -c "python check_date.py `docker inspect -f '{{ .Created }}' onnx/onnx-docker:cpu`; pip install pytest tabulate future;export CSVDIR='/data'; export BACKEND='caffe2'; pytest pytorch/caffe2/python/onnx/tests/onnx_backend_test.py; export BACKEND='tensorflow'; pytest onnx-tensorflow/test/backend/test_onnx_backend.py; python /data/write_metadata.py"
+  - sudo pip3 install csvtomd
   - echo "# ONNX Backend Scoreboard<br/>Scoreboard for ONNX Backend Compatibility with Individual Ops<br/>[View HTML Scoreboard Here](https://ac2zoom.github.io/onnx-backend-scoreboard/)<br/>" > README.md
   - csvtomd -n data/nodes.csv data/models.csv >> README.md
   - echo "    " >> README.md
