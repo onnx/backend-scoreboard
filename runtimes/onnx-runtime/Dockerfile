@@ -13,8 +13,8 @@ ENV https_proxy ${https_proxy}
 RUN apt-get update && apt-get install -y \
     python3 \
     python3-dev \
-    python3-pip 
-    
+    python3-pip
+
 RUN pip3 install --upgrade pip setuptools wheel
 
 # Download onnx-runtime
@@ -27,9 +27,3 @@ RUN pip3 install --no-cache-dir onnx && \
 WORKDIR /root/src
 COPY ./src/test_backend_onnx.py /root/src
 CMD pytest test_backend_onnx.py
-
-# Run resnet50 using onnx-runtime backend
-# ADD ./models/resnet50.tar.gz /root/models
-# WORKDIR /root/src
-# COPY ./src/test_resnet50_onnx.py /root/src
-# CMD python3 test_resnet50_onnx.py

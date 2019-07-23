@@ -23,14 +23,14 @@ RUN apt-get update && apt-get install -y \
     zlib1g \
     zlib1g-dev \
     libtool \
-    libtinfo-dev 
+    libtinfo-dev
 
 # Python dependencies
 RUN apt-get update && apt-get install -y \
     python3 \
     python3-dev \
-    python3-pip 
-    
+    python3-pip
+
 RUN pip3 install --upgrade pip setuptools wheel
 
 # ONNX dependencies
@@ -50,7 +50,7 @@ RUN make install
 # Build Python package (Binary wheel) for nGraph
 WORKDIR /root/ngraph/python
 RUN git clone https://github.com/pybind/pybind11.git
-ENV NGRAPH_ONNX_IMPORT_ENABLE=TRUE 
+ENV NGRAPH_ONNX_IMPORT_ENABLE=TRUE
 ENV PYBIND_HEADERS_PATH=/root/ngraph/python/pybind11
 ENV NGRAPH_CPP_BUILD_PATH=/root/ngraph_dist
 ENV LD_LIBRARY_PATH=/root/ngraph_dist/lib
@@ -72,9 +72,3 @@ RUN pip install --no-cache-dir pytest && \
 WORKDIR /root/src
 COPY ./src/test_backend_ngraph.py /root/src
 CMD pytest test_backend_ngraph.py
-
-# Run resnet50 using ngraph backend
-# ADD ./models/resnet50.tar.gz /root/models
-# WORKDIR /root/src
-# COPY ./src/test_resnet50_ngraph.py /root/src
-# CMD python3 test_resnet50_ngraph.py

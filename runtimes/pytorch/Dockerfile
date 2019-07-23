@@ -24,13 +24,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libprotobuf-dev \
     openmpi-bin \
     openmpi-doc \
-    protobuf-compiler 
+    protobuf-compiler
 
 # Python dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
     python \
     python-dev \
-    python-pip 
+    python-pip
 
 RUN pip install --no-cache-dir --upgrade pip setuptools wheel
 RUN pip install --no-cache-dir \
@@ -45,7 +45,7 @@ RUN pip install --no-cache-dir \
       tabulate
 
 # Install ONNX
-RUN pip install --no-cache-dir onnx 
+RUN pip install --no-cache-dir onnx
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libgflags-dev \
@@ -61,9 +61,3 @@ RUN python setup.py install
 WORKDIR /root/src
 COPY ./src/test_backend_pytorch.py /root/src
 CMD pytest test_backend_pytorch.py
-
-# # Run resnet50 using pytorch backend
-# ADD ./models/resnet50.tar.gz /root/models
-# WORKDIR /root/src
-# COPY ./src/test_resnet50_pytorch.py /root/src
-# CMD python test_resnet50_pytorch.py
