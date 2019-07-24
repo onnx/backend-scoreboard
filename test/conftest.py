@@ -6,7 +6,7 @@ def pytest_addoption(parser):
     parser.addoption('--onnx_backend',
                      choices=['ngraph_onnx.onnx_importer.backend',
                               'onnxruntime.backend.backend',
-                              'onnxruntime.backend.backend',
+                              'onnx_tf.backend',
                               'caffe2.python.onnx.backend'],
                      help='Select from available backends')
 
