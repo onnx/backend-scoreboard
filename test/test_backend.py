@@ -14,7 +14,7 @@ def import_backend(onnx_backend_module):
         return importlib.import_module('ngraph_onnx.onnx_importer.backend').NgraphBackend
 
     backend = importlib.import_module(onnx_backend_module)
-    if not hasattr(backend, 'run_model'):
+    if not hasattr(backend, 'run_model') and not hasattr(backend, 'run'):
         raise ValueError('%s is not a valid ONNX backend', onnx_backend_module)
     return backend
 
