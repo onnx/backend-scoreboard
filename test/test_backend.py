@@ -37,5 +37,4 @@ globals().update(backend_test.test_cases)
 
 
 if __name__ == '__main__':
-    print(test.ONNX_BACKEND_MODULE)
     unittest.main()
