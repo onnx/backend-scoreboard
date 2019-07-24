@@ -59,5 +59,6 @@ RUN python setup.py install
 
 # Run pytest
 WORKDIR /root/test
-COPY ./test/test_backend_pytorch.py /root/test
-CMD pytest test_backend_pytorch.py
+COPY ./test/conftest.py /root/test
+COPY ./test/test_backend.py /root/test
+CMD pytest test_backend.py --onnx_backend="caffe2.python.onnx.backend"
