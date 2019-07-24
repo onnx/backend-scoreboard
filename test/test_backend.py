@@ -33,7 +33,6 @@ pytest_plugins = 'onnx.backend.test.report'
 backend_test = onnx.backend.test.BackendTest(backend, __name__)
 
 globals().update(backend_test.enable_report().test_cases)
-globals().update(backend_test.test_cases)
 
 
 if __name__ == '__main__':
