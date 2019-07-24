@@ -69,6 +69,6 @@ RUN pip install --no-cache-dir pytest && \
     pip install --no-cache-dir tabulate
 
 # Run pytest
-WORKDIR /root/src
-COPY ./src/test_backend_ngraph.py /root/src
+WORKDIR /root/test
+COPY ./test/test_backend_ngraph.py /root/test
 CMD pytest test_backend_ngraph.py

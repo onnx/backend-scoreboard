@@ -58,6 +58,6 @@ RUN git submodule update --init --recursive
 RUN python setup.py install
 
 # Run pytest
-WORKDIR /root/src
-COPY ./src/test_backend_pytorch.py /root/src
+WORKDIR /root/test
+COPY ./test/test_backend_pytorch.py /root/test
 CMD pytest test_backend_pytorch.py

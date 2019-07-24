@@ -24,6 +24,6 @@ RUN pip3 install --no-cache-dir onnx && \
     pip3 install --no-cache-dir tabulate
 
 # Run pytest
-WORKDIR /root/src
-COPY ./src/test_backend_onnx.py /root/src
+WORKDIR /root/test
+COPY ./test/test_backend_onnx.py /root/test
 CMD pytest test_backend_onnx.py
