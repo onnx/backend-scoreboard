@@ -31,7 +31,6 @@ pytest_plugins = 'onnx.backend.test.report'
 
 # Import all test cases at global scope to make them visible to python.unittest
 backend_test = onnx.backend.test.BackendTest(backend, __name__)
-
 globals().update(backend_test.enable_report().test_cases)
 
 
