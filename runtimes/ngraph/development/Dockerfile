@@ -68,8 +68,8 @@ RUN pip install -e .
 RUN pip install --no-cache-dir pytest && \
     pip install --no-cache-dir tabulate
 
-# Run pytest	
-WORKDIR /root/test	
-COPY ./test/conftest.py /root/test	
-COPY ./test/test_backend.py /root/test	
+# Run pytest
+WORKDIR /root/test
+COPY ./test/conftest.py /root/test
+COPY ./test/test_backend.py /root/test
 CMD pytest test_backend.py --onnx_backend="ngraph_onnx.onnx_importer.backend"

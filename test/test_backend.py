@@ -8,11 +8,6 @@ import onnx.backend.test
 
 # Custom backend importer
 def import_backend(onnx_backend_module):
-    # Required explicit import NgraphBackend class from backend module
-    # TODO: Change ngraph-onnx backend to enable import like other frameworks
-    if onnx_backend_module == 'ngraph_onnx.onnx_importer.backend':
-        return importlib.import_module('ngraph_onnx.onnx_importer.backend').NgraphBackend
-
     backend = importlib.import_module(onnx_backend_module)
     if not hasattr(backend, 'run_model') and not hasattr(backend, 'run'):
         raise ValueError('%s is not a valid ONNX backend', onnx_backend_module)
