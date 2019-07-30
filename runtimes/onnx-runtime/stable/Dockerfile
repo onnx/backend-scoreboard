@@ -23,6 +23,10 @@ RUN pip3 install --no-cache-dir onnx && \
     pip3 install --no-cache-dir pytest && \
     pip3 install --no-cache-dir tabulate
 
+# ONNX-backend test results dir
+RUN mkdir -p /root/results
+ENV CSVDIR=/root/results
+
 # Run pytest
 WORKDIR /root/test
 COPY ./test/conftest.py /root/test
