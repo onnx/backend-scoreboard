@@ -28,12 +28,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # Python dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    python \
-    python-dev \
-    python-pip
+    python3 \
+    python3-dev \
+    python3-pip
 
-RUN pip install --no-cache-dir --upgrade pip setuptools wheel
-RUN pip install --no-cache-dir \
+RUN pip3 install --no-cache-dir --upgrade pip setuptools wheel
+RUN pip3 install --no-cache-dir \
       future \
       numpy \
       protobuf \
@@ -45,7 +45,7 @@ RUN pip install --no-cache-dir \
       tabulate
 
 # Install ONNX
-RUN pip install --no-cache-dir onnx
+RUN pip3 install --no-cache-dir onnx
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libgflags-dev \
@@ -55,7 +55,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN git clone https://github.com/pytorch/pytorch.git
 WORKDIR /pytorch
 RUN git submodule update --init --recursive
-RUN python setup.py install
+RUN python3 setup.py install
 
 # ONNX-backend test results dir
 RUN mkdir -p /root/results

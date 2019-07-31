@@ -10,21 +10,21 @@ ENV http_proxy ${http_proxy}
 ENV https_proxy ${https_proxy}
 
 # Python dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    python \
-    python-dev \
-    python-pip
+RUN apt-get update && apt-get install -y \
+    python3 \
+    python3-dev \
+    python3-pip
 
-RUN pip install --no-cache-dir --upgrade pip setuptools wheel
+RUN pip3 install --no-cache-dir --upgrade pip setuptools wheel
 
 # Install ONNX-tf and dependencies
-RUN pip install --no-cache-dir \
+RUN pip3 install --no-cache-dir \
     onnx \
     tensorflow \
     onnx-tf
 
 # Install test dependencies
-RUN pip install --no-cache-dir \
+RUN pip3 install --no-cache-dir \
     pytest \
     tabulate
 
