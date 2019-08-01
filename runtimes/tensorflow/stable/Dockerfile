@@ -29,8 +29,10 @@ RUN pip3 install --no-cache-dir \
     tabulate
 
 # ONNX-backend test results dir
-RUN mkdir -p /root/results
-ENV CSVDIR=/root/results
+RUN mkdir -p /root/results/csv
+ENV CSVDIR=/root/results/csv
+RUN mkdir -p /root/results/json
+ENV RESULTS_DIR=/root/results/json
 
 # Run pytest
 WORKDIR /root/test

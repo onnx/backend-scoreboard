@@ -58,8 +58,10 @@ RUN git submodule update --init --recursive
 RUN python3 setup.py install
 
 # ONNX-backend test results dir
-RUN mkdir -p /root/results
-ENV CSVDIR=/root/results
+RUN mkdir -p /root/results/csv
+ENV CSVDIR=/root/results/csv
+RUN mkdir -p /root/results/json
+ENV RESULTS_DIR=/root/results/json
 
 # Run pytest
 WORKDIR /root/test
