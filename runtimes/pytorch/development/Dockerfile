@@ -65,4 +65,4 @@ ENV CSVDIR=/root/results
 WORKDIR /root/test
 COPY ./test/conftest.py /root/test
 COPY ./test/test_backend.py /root/test
-CMD pytest test_backend.py --onnx_backend="caffe2.python.onnx.backend"
+CMD pytest test_backend.py --onnx_backend="caffe2.python.onnx.backend" -k 'not _cuda'
