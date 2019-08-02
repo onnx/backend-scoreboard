@@ -22,15 +22,20 @@ def pytest_configure(config):
 
 def pytest_terminal_summary(terminalreporter, exitstatus, config):
     # Collect results report
-    failed_report = terminalreporter.stats.get('failed', [])
-    passed_report = terminalreporter.stats.get('passed', [])
-    skipped_report = terminalreporter.stats.get('skipped', [])
-
     report = dict()
-    report['failed'] = [test.nodeid for test in failed_report]
-    report['passed'] = [test.nodeid for test in passed_report]
-    report['skipped'] = [test.nodeid for test in skipped_report]
     report['date'] = datetime.now().strftime("%m/%d/%Y %H:%M:%S")
+    for key in terminalreporter.stats.keys():
+        stats_group = terminalreporter.stats[key]
+        if isinstance(stats_group, list):
+            report[key] = []
+            for record in stats_group:
+                if hasattr(record, 'nodeid'):
+                    splited_record_name = record.nodeid.split('::')
+                    try:
+                        record_name = '::'.join(splited_record_name)[:2]
+                    except IndexError:
+                        record_name = record.nodeid
+                    report[key].append(record_name)
 
     # Set directory for results
     results_dir = os.environ.get('RESULTS_DIR', os.getcwd())
@@ -39,12 +44,11 @@ def pytest_terminal_summary(terminalreporter, exitstatus, config):
     with open(os.path.join(results_dir, 'report.json'), 'w') as report_file:
         json.dump(report, report_file)
 
-    # Count amount of failed, passed and skipped tests
+    # Make summary of tests
     summary = dict()
-    summary['failed'] = len(report.get('failed'))
-    summary['passed'] = len(report.get('passed'))
-    summary['skipped'] = len(report.get('skipped'))
-    summary['date'] = report.get('date')
+    for key in report.keys():
+        if isinstance(report[key], list):
+            summary[key] = len(report[key])
 
     # Open file with test trends
     # If file is broken, empty or not found create new trend list
@@ -57,10 +61,8 @@ def pytest_terminal_summary(terminalreporter, exitstatus, config):
     # Append result summary if trend has less than two results or
     # the last one result is different than current,
     # otherwise replace last summary
-    if len(trend) < 2 or \
-       trend[-1].get('failed') != summary.get('failed') or \
-       trend[-1].get('passed') != summary.get('passed') or \
-       trend[-1].get('skipped') != summary.get('skipped'):
+    if len(trend) < 2 or len(summary.keys()) != len(trend[-1].keys()) or \
+       any(trend[-1].get(key) != summary.get(key) for key in summary.keys()):
         trend.append(summary)
     else:
         trend[-1] = summary
