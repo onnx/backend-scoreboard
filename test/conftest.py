@@ -32,7 +32,7 @@ def pytest_terminal_summary(terminalreporter, exitstatus, config):
                 if hasattr(record, 'nodeid'):
                     splited_record_name = record.nodeid.split('::')
                     try:
-                        record_name = '::'.join(splited_record_name)[:2]
+                        record_name = '::'.join(splited_record_name[-2::])
                     except IndexError:
                         record_name = record.nodeid
                     report[key].append(record_name)
@@ -62,7 +62,8 @@ def pytest_terminal_summary(terminalreporter, exitstatus, config):
     # the last one result is different than current,
     # otherwise replace last summary
     if len(trend) < 2 or len(summary.keys()) != len(trend[-1].keys()) or \
-       any(trend[-1].get(key) != summary.get(key) for key in summary.keys()):
+       any(trend[-1].get(key) != summary.get(key)
+           for key in summary.keys() if key != 'data'):
         trend.append(summary)
     else:
         trend[-1] = summary
