@@ -30,11 +30,9 @@ def pytest_terminal_summary(terminalreporter, exitstatus, config):
             report[key] = []
             for record in stats_group:
                 if hasattr(record, 'nodeid'):
-                    splited_record_name = record.nodeid.split('::')
-                    try:
-                        record_name = '::'.join(splited_record_name[-2::])
-                    except IndexError:
-                        record_name = record.nodeid
+                    splited_id = record.nodeid.split('::')
+                    clear_id = filter(lambda x: '.py' not in x, splited_id)
+                    record_name = '::'.join(clear_id)
                     report[key].append(record_name)
 
     # Set directory for results
