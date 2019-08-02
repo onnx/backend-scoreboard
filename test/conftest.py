@@ -27,9 +27,9 @@ def pytest_terminal_summary(terminalreporter, exitstatus, config):
     skipped_report = terminalreporter.stats.get('skipped', [])
 
     report = dict()
-    report['failed_list'] = [test.nodeid for test in failed_report]
-    report['passed_list'] = [test.nodeid for test in passed_report]
-    report['skipped_list'] = [test.nodeid for test in skipped_report]
+    report['failed'] = [test.nodeid for test in failed_report]
+    report['passed'] = [test.nodeid for test in passed_report]
+    report['skipped'] = [test.nodeid for test in skipped_report]
     report['date'] = datetime.now().strftime("%m/%d/%Y %H:%M:%S")
 
     # Set directory for results
@@ -41,9 +41,9 @@ def pytest_terminal_summary(terminalreporter, exitstatus, config):
 
     # Count amount of failed, passed and skipped tests
     summary = dict()
-    summary['failed_sum'] = len(report.get('failed_list'))
-    summary['passed_sum'] = len(report.get('passed_list'))
-    summary['skipped_sum'] = len(report.get('skipped_list'))
+    summary['failed'] = len(report.get('failed'))
+    summary['passed'] = len(report.get('passed'))
+    summary['skipped'] = len(report.get('skipped'))
     summary['date'] = report.get('date')
 
     # Open file with test trends
@@ -58,9 +58,9 @@ def pytest_terminal_summary(terminalreporter, exitstatus, config):
     # the last one result is different than current,
     # otherwise replace last summary
     if len(trend) < 2 or \
-       trend[-1].get('failed_sum') != summary.get('failed_sum') or \
-       trend[-1].get('passed_sum') != summary.get('passed_sum') or \
-       trend[-1].get('skipped_sum') != summary.get('skipped_sum'):
+       trend[-1].get('failed') != summary.get('failed') or \
+       trend[-1].get('passed') != summary.get('passed') or \
+       trend[-1].get('skipped') != summary.get('skipped'):
         trend.append(summary)
     else:
         trend[-1] = summary
