@@ -57,12 +57,10 @@ def pytest_terminal_summary(terminalreporter, exitstatus, config):
     # Append result summary if trend has less than two results or
     # the last one result is different than current,
     # otherwise replace last summary
-    if len(trend) < 2 or (trend[-1].get('failed_sum') !=
-                          summary.get('failed_sum') or
-                          trend[-1].get('passed_sum') !=
-                          summary.get('passed_sum') or
-                          trend[-1].get('skipped_sum') !=
-                          summary.get('skipped_sum')):
+    if len(trend) < 2 or \
+       trend[-1].get('failed_sum') != summary.get('failed_sum') or \
+       trend[-1].get('passed_sum') != summary.get('passed_sum') or \
+       trend[-1].get('skipped_sum') != summary.get('skipped_sum'):
         trend.append(summary)
     else:
         trend[-1] = summary
