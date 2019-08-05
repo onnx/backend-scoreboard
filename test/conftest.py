@@ -3,6 +3,7 @@ import os
 import pytest
 import test
 
+from collections import OrderedDict
 from datetime import datetime
 
 
@@ -22,9 +23,9 @@ def pytest_configure(config):
 
 def pytest_terminal_summary(terminalreporter, exitstatus, config):
     # Collect results report
-    report = dict()
+    report = OrderedDict()
     report['date'] = datetime.now().strftime("%m/%d/%Y %H:%M:%S")
-    for key in terminalreporter.stats.keys():
+    for key in sorted(terminalreporter.stats.keys()):
         stats_group = terminalreporter.stats[key]
         if isinstance(stats_group, list):
             report[key] = []
@@ -61,7 +62,7 @@ def pytest_terminal_summary(terminalreporter, exitstatus, config):
     # otherwise replace last summary
     if len(trend) < 2 or len(summary.keys()) != len(trend[-1].keys()) or \
        any(trend[-1].get(key) != summary.get(key)
-           for key in summary.keys() if key != 'data'):
+           for key in summary.keys() if key != 'date'):
         trend.append(summary)
     else:
         trend[-1] = summary
