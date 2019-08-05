@@ -3,7 +3,6 @@ import os
 import pytest
 import test
 
-from collections import OrderedDict
 from datetime import datetime
 
 
@@ -22,32 +21,39 @@ def pytest_configure(config):
 
 
 def pytest_terminal_summary(terminalreporter, exitstatus, config):
+    # Date and time of report
+    date = datetime.now().strftime("%m/%d/%Y %H:%M:%S")
+    # Keys for values to save in report (matched with terminalreporter.stats)
+    report_keys = ['passed', 'failed', 'skipped']
+
     # Collect results report
-    report = OrderedDict()
-    report['date'] = datetime.now().strftime("%m/%d/%Y %H:%M:%S")
-    for key in sorted(terminalreporter.stats.keys()):
-        stats_group = terminalreporter.stats[key]
+    report = dict()
+    report['date'] = date
+    for key in report_keys:
+        stats_group = terminalreporter.stats.get(key, [])
         if isinstance(stats_group, list):
             report[key] = []
             for record in stats_group:
                 if hasattr(record, 'nodeid'):
-                    splited_id = record.nodeid.split('::')
-                    clear_id = filter(lambda x: '.py' not in x, splited_id)
+                    # Remove file name from test id
+                    split_id = record.nodeid.split('::')
+                    clear_id = filter(lambda x: '.py' not in x, split_id)
                     record_name = '::'.join(clear_id)
                     report[key].append(record_name)
+        report[key].sort()
 
     # Set directory for results
     results_dir = os.environ.get('RESULTS_DIR', os.getcwd())
 
     # Update file with test summary
     with open(os.path.join(results_dir, 'report.json'), 'w') as report_file:
-        json.dump(report, report_file)
+        json.dump(report, report_file, sort_keys=True)
 
     # Make summary of tests
     summary = dict()
-    for key in report.keys():
-        if isinstance(report[key], list):
-            summary[key] = len(report[key])
+    summary['date'] = date
+    for key in report_keys:
+        summary[key] = len(report[key])
 
     # Open file with test trends
     # If file is broken, empty or not found create new trend list
@@ -69,4 +75,4 @@ def pytest_terminal_summary(terminalreporter, exitstatus, config):
 
     # Save trend data to the file
     with open(os.path.join(results_dir, 'trend.json'), 'w') as trend_file:
-        json.dump(trend, trend_file)
+        json.dump(trend, trend_file, sort_keys=True)
