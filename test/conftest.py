@@ -5,6 +5,8 @@ import test
 
 from datetime import datetime
 
+# Keys for values to save in report (matched with terminalreporter.stats)
+REPORT_KEYS = ["passed", "failed", "skipped"]
 
 def pytest_addoption(parser):
     parser.addoption(
@@ -25,13 +27,11 @@ def pytest_configure(config):
 
 
 def pytest_terminal_summary(terminalreporter, exitstatus, config):
-    # Keys for values to save in report (matched with terminalreporter.stats)
-    report_keys = ["passed", "failed", "skipped"]
     # Set directory for results
     results_dir = os.environ.get("RESULTS_DIR", os.getcwd())
 
     # Collect and save the results
-    report = prepare_report(terminalreporter.stats, report_keys)
+    report = prepare_report(terminalreporter.stats)
     save_report(report, results_dir)
     summary = prepare_summary(report)
     trend = load_trend(results_dir)
@@ -39,11 +39,11 @@ def pytest_terminal_summary(terminalreporter, exitstatus, config):
     save_trend(current_trend, results_dir)
 
 
-def prepare_report(stats, report_keys):
+def prepare_report(stats):
     # Return results report based on pytest stats values
     # that match keys listed in report_keys
     report = {"date": datetime.now().strftime("%m/%d/%Y %H:%M:%S")}
-    for key in report_keys:
+    for key in REPORT_KEYS:
         stats_group = stats.get(key, [])
         if isinstance(stats_group, list):
             report[key] = []
