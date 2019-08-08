@@ -1,0 +1,9 @@
+[flake8]
+max-line-length=88
+max-complexity=6
+inline-quotes=double
+; ignore:
+; C812 - Missing trailing comma
+; C813 - Missing trailing comma in Python 3
+; D104 - Missing docstring in public package
+ignore=C812,C813,D104,W503
