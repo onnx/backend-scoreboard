@@ -1,4 +1,2 @@
 scripts/
 venv/
-.flake8
-requirements_dev.txt
