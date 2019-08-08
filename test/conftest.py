@@ -40,8 +40,16 @@ def pytest_terminal_summary(terminalreporter, exitstatus, config):
 
 
 def _prepare_report(stats):
-    # Return results report based on pytest stats values
-    # that match keys listed in report_keys
+    """Return tests results report
+
+    Return results report based on pytest stats values
+    that match keys listed in REPORT_KEYS.
+
+    :param stats: [description]
+    :type stats: [type]
+    :return: [description]
+    :rtype: [type]
+    """
     report = {"date": datetime.now().strftime("%m/%d/%Y %H:%M:%S")}
     for key in REPORT_KEYS:
         stats_group = stats.get(key, [])
@@ -59,6 +67,13 @@ def _prepare_report(stats):
 
 
 def _prepare_summary(report):
+    """Return tests summary including number of failed and passed tests.
+
+    :param report: Dictionary with REPORT_KEYS and list of tests names as values.
+    :type report: dict
+    :return: Summary with length of each list in report.
+    :rtype: dict
+    """
     # Return tests summary including number of failed and passed tests
     summary = dict()
     for key in report.keys():
@@ -69,20 +84,48 @@ def _prepare_summary(report):
 
 
 def _save_report(report, results_dir, file_name="report.json"):
+    """Save report data to the file.
+
+    :param report: Dictionary with REPORT_KEYS and list of tests names as values.
+    :type report: dict
+    :param results_dir: Path to direcotry with results.
+    :type results_dir: str
+    :param file_name: Name of report file, defaults to "report.json"
+    :type file_name: str, optional
+    """
     # Save report to the file
     with open(os.path.join(results_dir, file_name), "w") as report_file:
         json.dump(report, report_file, sort_keys=True, indent=4)
 
 
 def _save_trend(trend, results_dir, file_name="trend.json"):
+    """Save trend data to the file.
+
+    :param trend: List of summaries.
+    :type trend: list
+    :param results_dir: Path to direcotry with results.
+    :type results_dir: str
+    :param file_name: Name of trend file, defaults to "trend.json"
+    :type file_name: str, optional
+    """
     # Save trend data to the file
     with open(os.path.join(results_dir, file_name), "w") as trend_file:
         json.dump(trend, trend_file, sort_keys=True, indent=4)
 
 
 def _load_trend(results_dir, file_name="trend.json"):
-    # Return list of summaries loaded from tests trend file
-    # If file is broken, empty or not found create new trend list
+    """Load and return trend list from file.
+
+    Return list of summaries loaded from tests trend file.
+    If file is broken, empty or not found create and return new trend list.
+
+    :param results_dir: Path to direcotry with results.
+    :type results_dir: str
+    :param file_name: Name of trend file, defaults to "trend.json".
+    :type file_name: str, optional
+    :return: List of summaries.
+    :rtype: list
+    """
     try:
         with open(os.path.join(results_dir, file_name), "r") as trend_file:
             trend = json.load(trend_file)
@@ -92,10 +135,19 @@ def _load_trend(results_dir, file_name="trend.json"):
 
 
 def _update_trend(summary, trend):
-    # Return updated trend
-    # Append result summary if trend has less than two results or
-    # the last one result is different than current,
-    # otherwise replace last summary
+    """Return updated trend.
+
+    Append result summary if trend has less than two results or
+    the last one result is different than current,
+    otherwise replace last summary.
+
+    :param summary: Contain length of each list in report.
+    :type summary: dict
+    :param trend: List of summaries.
+    :type trend: list
+    :return: Updated trend.
+    :rtype: list
+    """
     if (
         len(trend) < 2
         or len(summary.keys()) != len(trend[-1].keys())
