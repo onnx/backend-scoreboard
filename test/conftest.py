@@ -121,7 +121,7 @@ def _save_trend(trend, results_dir, file_name="trend.json"):
     """Save trend data to the json file.
 
     Save trend data to the json file.
-    Trend is a list of reports summaries per date.
+    Trend is a list of report summaries per date.
     This enable tracking number of failed and passed tests.
     Trend example:
     [
@@ -155,7 +155,7 @@ def _load_trend(results_dir, file_name="trend.json"):
 
     Return list of summaries loaded from tests trend json file.
     If file is broken, empty or not found create and return new trend list.
-    Trend is a list of reports summaries per date.
+    Trend is a list of report summaries per date.
     This enable tracking number of failed and passed tests.
     Trend example:
     [
@@ -194,7 +194,7 @@ def _update_trend(summary, trend):
     Append result summary to the trend list
     if the last one result is different than current,
     otherwise replace last summary.
-    Trend is a list of reports summaries per date.
+    Trend is a list of report summaries per date.
     This enable tracking number of failed and passed tests.
     Summary example:
     {
@@ -221,7 +221,7 @@ def _update_trend(summary, trend):
 
     :param summary: Contain length of each list in report.
     :type summary: dict
-    :param trend: List of summaries.
+    :param trend: List of report summaries per date.
     :type trend: list
     :return: Updated trend.
     :rtype: list
