@@ -6,4 +6,5 @@ inline-quotes=double
 ; C812 - Missing trailing comma
 ; C813 - Missing trailing comma in Python 3
 ; D104 - Missing docstring in public package
+; W503 - Line break occurred before a binary operator
 ignore=C812,C813,D104,W503
