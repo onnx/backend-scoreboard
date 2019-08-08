@@ -4,11 +4,21 @@ import test
 
 from datetime import datetime
 
+"""Implementation of hook functions for pytest.
+
+Pytest calls hook functions to implement
+initialization, running, test execution and reporting.
+Each hook function name and its argument names need to match a hook specification.
+All hooks have a pytest_ prefix.
+From pytest docs: https://docs.pytest.org/en/2.7.3/plugins.html
+"""
+
 # Keys for values to save in report (matched with terminalreporter.stats)
 REPORT_KEYS = ["passed", "failed", "skipped"]
 
 
 def pytest_addoption(parser):
+    """Pytest hook function"""
     parser.addoption(
         "--onnx_backend",
         choices=[
@@ -22,11 +32,13 @@ def pytest_addoption(parser):
 
 
 def pytest_configure(config):
+    """Pytest hook function"""
     onnx_backend_module = config.getvalue("onnx_backend")
     test.ONNX_BACKEND_MODULE = onnx_backend_module
 
 
 def pytest_terminal_summary(terminalreporter, exitstatus, config):
+    """Pytest hook function"""
     # Set directory for results
     results_dir = os.environ.get("RESULTS_DIR", os.getcwd())
 
@@ -45,10 +57,10 @@ def _prepare_report(stats):
     Return results report based on pytest stats values
     that match keys listed in REPORT_KEYS.
 
-    :param stats: [description]
-    :type stats: [type]
-    :return: [description]
-    :rtype: [type]
+    :param stats: _pytest.terminal.TerminalReporter.stats
+    :type stats: dict
+    :return: Dictionary with REPORT_KEYS and list of tests names as values.
+    :rtype: dict
     """
     report = {"date": datetime.now().strftime("%m/%d/%Y %H:%M:%S")}
     for key in REPORT_KEYS:
@@ -69,6 +81,15 @@ def _prepare_report(stats):
 def _prepare_summary(report):
     """Return tests summary including number of failed and passed tests.
 
+    Return summary with length of each list in report.
+    Summary example:
+    {
+        "date": "08/06/2019 09:37:45",
+        "failed": 61,
+        "passed": 497,
+        "skipped": 0
+    }
+
     :param report: Dictionary with REPORT_KEYS and list of tests names as values.
     :type report: dict
     :return: Summary with length of each list in report.
@@ -83,7 +104,7 @@ def _prepare_summary(report):
 
 
 def _save_report(report, results_dir, file_name="report.json"):
-    """Save report data to the file.
+    """Save report data to the json file.
 
     :param report: Dictionary with REPORT_KEYS and list of tests names as values.
     :type report: dict
@@ -97,7 +118,26 @@ def _save_report(report, results_dir, file_name="report.json"):
 
 
 def _save_trend(trend, results_dir, file_name="trend.json"):
-    """Save trend data to the file.
+    """Save trend data to the json file.
+
+    Save trend data to the json file.
+    Trend is a list of reports summaries per date.
+    This enable tracking number of failed and passed tests.
+    Trend example:
+    [
+        {
+            "date": "08/06/2019 09:37:45",
+            "failed": 61,
+            "passed": 497,
+            "skipped": 0
+        },
+        {
+            "date": "08/08/2019 08:34:18",
+            "failed": 51,
+            "passed": 507,
+            "skipped": 0
+        }
+    ]
 
     :param trend: List of summaries.
     :type trend: list
@@ -111,12 +151,29 @@ def _save_trend(trend, results_dir, file_name="trend.json"):
 
 
 def _load_trend(results_dir, file_name="trend.json"):
-    """Load and return trend list from file.
+    """Load and return trend list from json file.
 
-    Return list of summaries loaded from tests trend file.
+    Return list of summaries loaded from tests trend json file.
     If file is broken, empty or not found create and return new trend list.
+    Trend is a list of reports summaries per date.
+    This enable tracking number of failed and passed tests.
+    Trend example:
+    [
+        {
+            "date": "08/06/2019 09:37:45",
+            "failed": 61,
+            "passed": 497,
+            "skipped": 0
+        },
+        {
+            "date": "08/08/2019 08:34:18",
+            "failed": 51,
+            "passed": 507,
+            "skipped": 0
+        }
+    ]
 
-    :param results_dir: Path to direcotry with results.
+    :param results_dir: Path to directory with results.
     :type results_dir: str
     :param file_name: Name of trend file, defaults to "trend.json".
     :type file_name: str, optional
@@ -134,9 +191,33 @@ def _load_trend(results_dir, file_name="trend.json"):
 def _update_trend(summary, trend):
     """Return updated trend.
 
-    Append result summary if trend has less than two results or
-    the last one result is different than current,
+    Append result summary to the trend list
+    if the last one result is different than current,
     otherwise replace last summary.
+    Trend is a list of reports summaries per date.
+    This enable tracking number of failed and passed tests.
+    Summary example:
+    {
+        "date": "08/06/2019 09:37:45",
+        "failed": 61,
+        "passed": 497,
+        "skipped": 0
+    }
+    Trend example:
+    [
+        {
+            "date": "08/06/2019 09:37:45",
+            "failed": 61,
+            "passed": 497,
+            "skipped": 0
+        },
+        {
+            "date": "08/08/2019 08:34:18",
+            "failed": 51,
+            "passed": 507,
+            "skipped": 0
+        }
+    ]
 
     :param summary: Contain length of each list in report.
     :type summary: dict
@@ -146,6 +227,7 @@ def _update_trend(summary, trend):
     :rtype: list
     """
     if (
+        # Trend should have at least two results
         len(trend) < 2
         or len(summary.keys()) != len(trend[-1].keys())
         or any(
