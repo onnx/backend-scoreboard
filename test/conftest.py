@@ -1,12 +1,12 @@
 import json
 import os
-import pytest
 import test
 
 from datetime import datetime
 
 # Keys for values to save in report (matched with terminalreporter.stats)
 REPORT_KEYS = ["passed", "failed", "skipped"]
+
 
 def pytest_addoption(parser):
     parser.addoption(
