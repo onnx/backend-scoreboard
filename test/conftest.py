@@ -74,7 +74,6 @@ def _prepare_summary(report):
     :return: Summary with length of each list in report.
     :rtype: dict
     """
-    # Return tests summary including number of failed and passed tests
     summary = dict()
     for key in report.keys():
         if isinstance(report.get(key), list):
@@ -93,7 +92,6 @@ def _save_report(report, results_dir, file_name="report.json"):
     :param file_name: Name of report file, defaults to "report.json"
     :type file_name: str, optional
     """
-    # Save report to the file
     with open(os.path.join(results_dir, file_name), "w") as report_file:
         json.dump(report, report_file, sort_keys=True, indent=4)
 
@@ -108,7 +106,6 @@ def _save_trend(trend, results_dir, file_name="trend.json"):
     :param file_name: Name of trend file, defaults to "trend.json"
     :type file_name: str, optional
     """
-    # Save trend data to the file
     with open(os.path.join(results_dir, file_name), "w") as trend_file:
         json.dump(trend, trend_file, sort_keys=True, indent=4)
 
