@@ -194,11 +194,9 @@ def _load_trend(results_dir, file_name="trend.json"):
 def _update_trend(summary, trend):
     """Return updated trend.
 
-    Append result summary to the trend list
-    if the last one result is different than current,
-    otherwise replace last summary.
-    Trend is a list of report summaries per date.
-    This enable tracking number of failed and passed tests.
+    Append result summary to the trend list if the last one result is
+    different than current, otherwise replace last summary. Trend is a list of report
+    summaries per date. This enable tracking number of failed and passed tests.
     Summary example:
     {
         "date": "08/06/2019 09:37:45",
