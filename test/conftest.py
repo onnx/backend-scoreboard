@@ -5,6 +5,9 @@ initialization, running, test execution and reporting.
 Each hook function name and its argument names need to match a hook specification.
 All hooks have a pytest_ prefix.
 From pytest docs: https://docs.pytest.org/en/latest/writing_plugins.html
+
+We're implementing reporting hooks to collect data about
+passing and failing tests for the scoreboard.
 """
 
 import json
