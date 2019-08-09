@@ -1,3 +1,5 @@
+"""ONNX backend test initialization."""
+
 import importlib
 import test
 import unittest
@@ -5,8 +7,15 @@ import unittest
 import onnx.backend.test
 
 
-# Custom backend importer
 def import_backend(onnx_backend_module):
+    """Import ONNX backend module.
+
+    :param onnx_backend_module: ONNX backend module to import.
+    :type onnx_backend_module: str
+    :raises ValueError: Not a valid ONNX backend.
+    :return: The ONNX backend module.
+    :rtype: class 'module'
+    """
     backend = importlib.import_module(onnx_backend_module)
     if not hasattr(backend, "run_model") and not hasattr(backend, "run"):
         raise ValueError("%s is not a valid ONNX backend", onnx_backend_module)
