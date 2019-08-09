@@ -228,16 +228,14 @@ def _update_trend(summary, trend):
     :return: Updated trend.
     :rtype: list
     """
-    if (
-        # Trend should have at least two results
-        len(trend) < 2
-        or len(summary.keys()) != len(trend[-1].keys())
-        or any(
-            trend[-1].get(key) != summary.get(key)
-            for key in summary.keys()
-            if key != "date"
-        )
-    ):
+    # Trend should have at least two results
+    valid_length = len(trend) < 2 or summary.keys() == len(trend[-1].keys())
+    equal_values = all(
+        trend[-1].get(key) == summary.get(key)
+        for key in summary.keys()
+        if key != "date"
+    )
+    if not valid_length or not equal_values:
         trend.append(summary)
     else:
         trend[-1] = summary
