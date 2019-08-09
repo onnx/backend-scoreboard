@@ -69,16 +69,17 @@ def _prepare_report(stats):
     report = {"date": datetime.now().strftime("%m/%d/%Y %H:%M:%S")}
     for key in REPORT_KEYS:
         stats_group = stats.get(key, [])
-        if isinstance(stats_group, list):
-            report[key] = []
-            for record in stats_group:
-                if hasattr(record, "nodeid"):
-                    # Remove file name from test id
-                    split_id = record.nodeid.split("::")
-                    clear_id = filter(lambda x: ".py" not in x, split_id)
-                    record_name = "::".join(clear_id)
-                    report[key].append(record_name)
-            report[key].sort()
+        if not isinstance(stats_group, list):
+            continue
+        report[key] = []
+        for record in stats_group:
+            if hasattr(record, "nodeid"):
+                # Remove file name from test id
+                split_id = record.nodeid.split("::")
+                clear_id = filter(lambda x: ".py" not in x, split_id)
+                record_name = "::".join(clear_id)
+                report[key].append(record_name)
+        report[key].sort()
     return report
 
 
