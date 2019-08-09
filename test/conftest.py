@@ -1,24 +1,25 @@
-import json
-import os
-import test
-
-from datetime import datetime
-
 """Implementation of hook functions for pytest.
 
 Pytest calls hook functions to implement
 initialization, running, test execution and reporting.
 Each hook function name and its argument names need to match a hook specification.
 All hooks have a pytest_ prefix.
-From pytest docs: https://docs.pytest.org/en/2.7.3/plugins.html
+From pytest docs: https://docs.pytest.org/en/latest/writing_plugins.html
 """
+
+import json
+import os
+import test
+
+from datetime import datetime
+
 
 # Keys for values to save in report (matched with terminalreporter.stats)
 REPORT_KEYS = ["passed", "failed", "skipped"]
 
 
 def pytest_addoption(parser):
-    """Pytest hook function"""
+    """Pytest hook function."""
     parser.addoption(
         "--onnx_backend",
         choices=[
@@ -32,13 +33,13 @@ def pytest_addoption(parser):
 
 
 def pytest_configure(config):
-    """Pytest hook function"""
+    """Pytest hook function."""
     onnx_backend_module = config.getvalue("onnx_backend")
     test.ONNX_BACKEND_MODULE = onnx_backend_module
 
 
 def pytest_terminal_summary(terminalreporter, exitstatus, config):
-    """Pytest hook function"""
+    """Pytest hook function."""
     # Set directory for results
     results_dir = os.environ.get("RESULTS_DIR", os.getcwd())
 
@@ -52,7 +53,7 @@ def pytest_terminal_summary(terminalreporter, exitstatus, config):
 
 
 def _prepare_report(stats):
-    """Return tests results report
+    """Return tests results report.
 
     Return results report based on pytest stats values
     that match keys listed in REPORT_KEYS.
@@ -95,11 +96,10 @@ def _prepare_summary(report):
     :return: Summary with length of each list in report.
     :rtype: dict
     """
-    summary = dict()
+    summary = {"date": report.get("date", datetime.now().strftime("%m/%d/%Y %H:%M:%S"))}
     for key in report.keys():
         if isinstance(report.get(key), list):
             summary[key] = len(report.get(key))
-    summary["date"] = report.get("date", datetime.now().strftime("%m/%d/%Y %H:%M:%S"))
     return summary
 
 
