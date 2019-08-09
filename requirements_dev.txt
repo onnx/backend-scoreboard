@@ -6,7 +6,5 @@ flake8-builtins
 flake8-comprehensions
 flake8-debugger
 flake8-docstrings
-flake8-isort
 flake8-quotes
 flake8-string-format
-
