@@ -231,7 +231,7 @@ def _update_trend(summary, trend):
     # Trend should have at least two results
     valid_length = len(trend) < 2 or summary.keys() == len(trend[-1].keys())
     equal_values = all(
-        trend[-1].get(key) == summary.get(key)
+        summary.get(key) == trend[-1].get(key)
         for key in summary.keys()
         if key != "date"
     )
