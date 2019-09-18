@@ -1,0 +1,18 @@
+git:
+  depth: false
+
+sudo: required
+
+language: python
+
+install:
+  - pip install --upgrade pip setuptools
+  - pip install -r requirements_dev.txt
+
+script:
+  - flake8 test
+  - flake8 website-generator
+
+branches:
+  only:
+    - master
