@@ -1,0 +1,34 @@
+{
+    "stable": {
+        "onnxruntime": {
+            "name": "ONNX-Runtime",
+            "results_dir": "./results/onnx-runtime/stable",
+            "core_packages": ["onnxruntime"]
+        },
+        "ngraph": {
+            "name": "nGraph",
+            "results_dir": "./results/ngraph/stable",
+            "core_packages": ["ngraph-onnx", "ngraph-core"]
+        },
+        "tensorflow": {
+            "name": "Tensorflow",
+            "results_dir": "./results/tensorflow/stable",
+            "core_packages": ["tensorflow"]
+        }
+    },
+    "development": {
+        "ngraph": {
+            "name": "nGraph",
+            "results_dir": "./results/ngraph/development"
+        },
+        "pytorch": {
+            "name": "Pytorch",
+            "results_dir": "./results/pytorch/development"
+        }
+    },
+    "deploy_paths": {
+        "index": "./docs",
+        "subpages": "./docs",
+        "resources": "./docs/resources"
+    }
+}

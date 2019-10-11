@@ -20,11 +20,11 @@ COPY ./setup /root/setup
 RUN pip3 install --no-cache-dir -r /root/setup/requirements_report.txt
 
 ############## ONNX Backend dependencies ###########
-ENV ONNX_BACKEND="onnxruntime.backend.backend"
+ENV ONNX_BACKEND="ngraph_onnx.onnx_importer.backend"
 
 # Install dependencies
-RUN pip3 install onnx
-RUN pip3 install onnxruntime
+RUN pip3 install ngraph-core
+RUN pip3 install ngraph-onnx
 ####################################################
 
 CMD . /root/setup/docker-setup.sh && \
