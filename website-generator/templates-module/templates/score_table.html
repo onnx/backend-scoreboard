@@ -1,0 +1,54 @@
+<table class="table">
+    <tr class="score-headers">
+        <th scope="col">&nbsp</th>
+        <th scope="row">Version</th>
+        <th scope="row">Date</th>
+        <th scope="row">Score</th>
+        {% if not in_details %}
+            <th scope="row">Details</th>
+        {% endif %}
+    </tr>
+    {% for framework, data in database.items() %}
+    <tr>
+        <th scope="row">
+            <div class="centered">
+                {{ data.name }}
+            </div>
+        </th>
+        <td>
+            <div class="centered">
+                {% for package in data.trend[-1].versions %}
+                    {{ package.name }}:&nbsp{{ package.version }}<br>
+                {% endfor %}
+            </div>
+        </td>
+        <td>
+            <div class="centered">
+              {{ data.trend[-1].date }}
+            </div>
+        </td>
+        <td>
+            <div class="centered">
+                 <div class='{{data.coverage.mark}}'>
+                    {{ "{:,.2f}%".format(data.coverage.passed) }}
+                </div>
+            </div>
+        </td>
+        {% if not in_details %}
+        <td>
+            <div class="centered">
+            {% if dev %}
+                <a href='{{ framework }}_details_dev.html'>
+                    <svg width="24" height="24" viewBox="0 0 24 24" class="navigation"><path d="M12 8V4l8 8-8 8v-4H4V8z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+                </a>
+            {% else %}
+                <a href='{{ framework }}_details_stable.html'>
+                    <svg width="24" height="24" viewBox="0 0 24 24" class="navigation"><path d="M12 8V4l8 8-8 8v-4H4V8z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+                </a>
+            {% endif %}
+            </div>
+        </td>
+        {% endif %}
+    </tr>
+    {% endfor %}
+</table>

@@ -1,0 +1,22 @@
+<table class="table transposed" id="operatorsTable">
+    {% for framework, data in database.items() %}
+        {% if loop.index == 1 %}
+        <tr class="headers">
+            <th scope="col">&nbsp</th>
+            {% for op_name, _ in data.ops.items() %}
+                <th class="testName" scope="row">{{ op_name }}</th>
+            {% endfor %}
+        </tr>
+        {% endif %}
+    <tr class="frameworkResults">
+        <th scope="row">{{ data.name }}</th>
+        {% for op_name, output in data.ops.items() %}
+            <td class="testResult">
+                <div class='{{ output }}'>
+                    {{ output |capitalize |replace("node tests passed", "")}}
+                </div>
+            </td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>

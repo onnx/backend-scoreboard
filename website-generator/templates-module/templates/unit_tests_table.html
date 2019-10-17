@@ -1,0 +1,22 @@
+<table class="table transposed" id="unitTestsTable">
+    {% for framework, data in database.items() %}
+        {% if loop.index == 1 %}
+            <tr class="headers">
+                <th scope="col">&nbsp</th>
+                {% for test_name, output in data.report.items() %}
+                    <th class="testName" scope="row">{{ test_name |replace("::", " :: ")}}</th>
+                {% endfor %}
+            </tr>
+        {% endif %}
+        <tr class="frameworkResults">
+            <th scope="row">{{ data.name }}</th>
+            {% for test_name, output in data.report.items() %}
+                <td class="testResult" >
+                    <div class='{{ output }}'>
+                        {{ output |capitalize }}
+                    </div>
+                </td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+</table>
