@@ -30,6 +30,11 @@ from datetime import datetime
 from jinja2 import Environment, PackageLoader, select_autoescape
 
 
+class ScoreboardError(Exception):
+    """Base class for exceptions in this module."""
+    pass
+
+
 def load_trend(file_dir, file_name="trend.json"):
     """Load and return trend list from JSON file.
 
@@ -222,7 +227,7 @@ def load_config(file_path="./setup/config.json"):
 
     :param file_path: Path to the config file, defaults to "./setup/config.json"
     :type file_path: str
-    :raises IOError: Raise IOError if config file can't be loaded.
+    :raises ScoreboardError: Raise ScoreboardError if config file can't be loaded.
     :return: Dictionary with the scoreboard configuration.
     :rtype: dict
     """
@@ -231,7 +236,7 @@ def load_config(file_path="./setup/config.json"):
         with open(file_path, "r") as config_file:
             config = json.load(config_file)
     except (IOError, json.decoder.JSONDecodeError) as err:
-        raise IOError("Can't load the scoreboard config file!", err)
+        raise ScoreboardError("Can't load the scoreboard config file!", err)
     return config
 
 
