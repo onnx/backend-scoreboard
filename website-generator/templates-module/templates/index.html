@@ -14,7 +14,7 @@
     </div>
     <div class="row justify-content-center">
         <div class="col-auto">
-            {% if dev %}
+            {% if development_versions_selected %}
                 <h5>Development Builds</h5>
             {% else %}
                 <h5>Stable Builds</h5>
@@ -23,7 +23,7 @@
     </div>
         <div class="row justify-content-center">
         <div class="col-auto">
-            {% if dev %}
+            {% if development_versions_selected %}
                 <a href="index.html">switch to stable builds</a>
             {% else %}
                 <a href="index_dev.html">switch to development builds</a>

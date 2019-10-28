@@ -375,7 +375,7 @@ if __name__ == "__main__":
         deploy_paths.get("subpages", "./"),
         "index_dev.html",
         database=database_dev,
-        dev=True,
+        development_versions_selected=True,
     )
 
     # Create details page for each framework
