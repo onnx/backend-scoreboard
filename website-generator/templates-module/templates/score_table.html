@@ -4,6 +4,7 @@
         <th scope="row">Version</th>
         <th scope="row">Date</th>
         <th scope="row">Score</th>
+        <th scope="row">Coverage</th>
         {% if not in_details %}
             <th scope="row">Details</th>
         {% endif %}
@@ -31,6 +32,13 @@
             <div class="centered">
                  <div class='{{data.coverage.mark}}'>
                     {{ "{:,.2f}%".format(data.coverage.passed) }}
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="centered">
+                <div>
+                    <canvas width="100" height="60" id='circle_{{ data.name }}'></canvas>
                 </div>
             </div>
         </td>

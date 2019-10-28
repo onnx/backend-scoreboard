@@ -10,14 +10,13 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col">
-            <div class="min-section">
-                {%include "charts.html" %}
-            </div>
+        <div class="col min-section">
+            {%include "charts.html" %}
         </div>
     </div>
+    {% if not dev %}
     <div class="row justify-content-center">
-        <div class="col max-section">
+        <div class="col max-section" style="width: 1000px">
             <ul class="nav nav-tabs justify-content-center" id="tables-tabs-nav" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active" data-toggle="tab" href="#unittests" role="tab" aria-controls="unittests"
@@ -60,4 +59,5 @@
             </div>
         </div>
     </div>
+    {% endif %}
 </div>

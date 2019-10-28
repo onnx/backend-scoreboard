@@ -1,16 +1,5 @@
 <div id="charts" database='{{ database|tojson }}'>
-    <div class="container max-section">
-        <div class="row justify-content-center">
-            {% for framework, data in database.items() %}
-            <div class="col {% if database.items()|length > 2 %}col-md-3 {% endif %}">
-                <canvas id='circle_{{ data.name }}'></canvas>
-            </div>
-            {% endfor %}
-        </div>
-        <div class="row justify-content-center">
-            <div class="col justify-self-center min-section">
-                <canvas id='bar_chart'></canvas>
-            </div>
-        </div>
+    <div style="bar-chart">
+        <canvas height="300" width="500" id='bar_chart'></canvas>
     </div>
 <div>
