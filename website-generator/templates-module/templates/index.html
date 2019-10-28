@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container-fluid">
+<div class="container-fluid" id="content" database='{{ database|tojson }}'>
     <div class="row justify-content-center">
         <div class="col-auto">
             <h1>ONNX Backend Scoreboard</h1>
@@ -21,7 +21,7 @@
             {% endif %}
         </div>
     </div>
-        <div class="row justify-content-center">
+    <div class="row justify-content-center">
         <div class="col-auto">
             {% if development_versions_selected %}
                 <a href="index.html">switch to stable builds</a>
@@ -30,8 +30,11 @@
             {% endif %}
         </div>
     </div>
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            {%include "score_table.html" %}
+        </div>
+    </div>
 </div>
-<div id="content">
-    {%include "home.html" %}
-</div>
+
 {% endblock %}

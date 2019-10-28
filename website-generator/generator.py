@@ -378,6 +378,15 @@ if __name__ == "__main__":
         development_versions_selected=True,
     )
 
+    # Create framework_comparison subpage
+    template = env.get_template("frameworks_comparison.html")
+    generate_page(
+        template,
+        deploy_paths.get("subpages", "./"),
+        "frameworks_comparison_stable.html",
+        database=database_stable,
+    )
+
     # Create details page for each framework
     template = env.get_template("details.html")
     generate_pages(template, database_stable, "details_stable.html")
