@@ -116,6 +116,14 @@ hr {
     fill: #00998c;
 }
 
+.svg-stroke {
+    stroke: #00ffea;
+}
+
+.svg-stroke:hover {
+    stroke: #00998c;
+}
+
 .table-chart {
     width: 30pt;
     height: 30pt;
