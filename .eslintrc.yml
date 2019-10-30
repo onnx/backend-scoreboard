@@ -1,0 +1,17 @@
+env:
+  browser: true
+  es6: true
+extends:
+  - standard
+globals:
+  Atomics: readonly
+  SharedArrayBuffer: readonly
+  Chart: writable
+  palette: writable
+parserOptions:
+  ecmaVersion: 2018
+rules: {
+  no-new: warn,
+  no-undef: warn,
+  no-unused-vars: warn
+}
