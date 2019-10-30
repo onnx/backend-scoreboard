@@ -4,8 +4,8 @@
         <th scope="row">Version</th>
         <th scope="row">Date</th>
         <th scope="row">Score</th>
-        <th scope="row">Coverage</th>
         {% if not in_details %}
+            <th scope="row">Coverage</th>
             <th scope="row">Details</th>
         {% endif %}
     </tr>
@@ -35,6 +35,7 @@
                 </div>
             </div>
         </td>
+        {% if not in_details %}
         <td>
             <div class="centered">
                 <div>
@@ -42,7 +43,6 @@
                 </div>
             </div>
         </td>
-        {% if not in_details %}
         <td>
             <div class="centered">
             {% if development_versions_selected %}

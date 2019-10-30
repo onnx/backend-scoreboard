@@ -2,7 +2,7 @@
 {% set in_details=True %}
 
 {% block content %}
-<div id="content">
+<div id="content" database='{{ framework_data|tojson }}'>
     {% with database=framework_data, details=False %}
     <div class="container-fluid">
         <div class="row justify-content-center">
@@ -18,71 +18,20 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-auto">
-                <h2>Passed unit tests trend</h2>
+            <div class="col-auto section">
+                <canvas id='bar_chart' height="400pt" width="400pt"></canvas>
             </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-auto">
+            <div class="col-auto section">
                 {% for key, data in database.items() %}
-                    <canvas id="line_trend" framework_data='{{ data|tojson }}' style="width: 50vw"></canvas>
+                    <canvas id="line_trend" framework_data='{{data| tojson }}' height="400pt" width="800pt"></canvas>
                 {% endfor %}
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-auto">
-                <h2>Backend unit tests coverage</h2>
+            <div class="col section">
+                {%include "table_tabs.html" %}
             </div>
         </div>
-        <div class="row justify-content-center">
-            <div class="col min-section">
-                {%include "charts.html" %}
-            </div>
-        </div>
-        <div class="row justify-content-center">
-        <div class="col max-section">
-            <ul class="nav nav-tabs justify-content-center" id="tables-tabs-nav" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#unittests" role="tab" aria-controls="unittests"
-                    aria-selected="true">Backend unit tests list</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#operators" role="tab" aria-controls="operators"
-                    aria-selected="false">Operators coverage</a>
-                </li>
-            </ul>
-            <div class="tab-content" id="tables-tabs">
-                <div class="tab-pane fade show active"  id="unittests" role="tabpanel" aria-labelledby="unittests-tab">
-                    <div class="row justify-content-center">
-                        <div class="col-auto">
-                            <h2>Backend unit tests list</h2>
-                            <input type="text" id="testNameInput" class="search" onkeyup="onSearch('testNameInput', 'unitTestsTable')" placeholder="Search for test name...">
-                        </div>
-                    </div>
-                    <div class="row justify-content-center">
-                        <div class="col-auto">
-                            {%include "unit_tests_table.html" %}
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="operators" role="tabpanel" aria-labelledby="operators-tab">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-auto">
-                                <h2>Operators coverage</h2>
-                                <input type="text" id="opNameInput" class="search" onkeyup="onSearch('opNameInput', 'operatorsTable')" placeholder="Search for operator name...">
-                            </div>
-                        </div>
-                        <div class="row justify-content-center">
-                            <div class="col-auto">
-                                    {%include "ops_table.html" %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     </div>
     {% endwith %}
 </div>
@@ -90,5 +39,7 @@
 
 {% block body_scripts %}
     <script src="./resources/src/main.js" defer></script>
-    <script src="./resources/src/details.js" defer></script>
+    <script src="./resources/src/bar_chart.js" defer></script>
+    <script src="./resources/src/line_chart.js" defer></script>
+    <script src="./resources/src/table_search.js" defer></script>
 {% endblock %}

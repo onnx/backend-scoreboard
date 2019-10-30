@@ -9,7 +9,32 @@
     </div>
     <div class="row justify-content-center">
         <div class="col-auto">
-            <p>Score is based on ONNX backend unit tests</p>
+            <p>Score is based on ONNX backend unit tests.</p>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            {% if not development_versions_selected %}
+                <a href="frameworks_comparison_stable.html" class="navigation">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+                    Go to frameworks comparison
+                </a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            {% if development_versions_selected %}
+                <a href="index.html" class="navigation">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M17 7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h10c2.76 0 5-2.24 5-5s-2.24-5-5-5zm0 8c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z"/><path fill="none" d="M0 0h24v24H0z"/></svg>
+                    Switch to stable builds
+                </a>
+            {% else %}
+                <a href="index_dev.html" class="navigation">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M17 7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h10c2.76 0 5-2.24 5-5s-2.24-5-5-5zM7 15c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z"/><path fill="none" d="M0 0h24v24H0z"/></svg>
+                    Switch to development builds
+                </a>
+            {% endif %}
         </div>
     </div>
     <div class="row justify-content-center">
@@ -23,18 +48,15 @@
     </div>
     <div class="row justify-content-center">
         <div class="col-auto">
-            {% if development_versions_selected %}
-                <a href="index.html">switch to stable builds</a>
-            {% else %}
-                <a href="index_dev.html">switch to development builds</a>
-            {% endif %}
-        </div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="col-auto">
             {%include "score_table.html" %}
         </div>
     </div>
 </div>
 
+{% endblock %}
+
+{% block body_scripts %}
+    <script src="./resources/src/main.js" defer></script>
+    <script src="./resources/src/circle_chart.js" defer></script>
+    <script src="./resources/src/table_search.js" defer></script>
 {% endblock %}

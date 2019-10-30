@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            <h1>ONNX Backend Scoreboard</h1>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            <p>Frameworks comparison</p>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-auto">
+                <h5>Stable Builds</h5>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col">
+            {%include "table_tabs.html" %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block body_scripts %}
+    <script src="./resources/src/main.js" defer></script>
+    <script src="./resources/src/table_search.js" defer></script>
+{% endblock %}
