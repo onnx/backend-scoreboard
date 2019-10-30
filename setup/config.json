@@ -3,27 +3,33 @@
         "onnxruntime": {
             "name": "ONNX-Runtime",
             "results_dir": "./results/onnx-runtime/stable",
-            "core_packages": ["onnxruntime"]
+            "core_packages": ["onnxruntime"],
+            "dockerfile_link": "https://github.com/postrational/ngraph-ci-test/blob/master/runtimes/onnx-runtime/stable/Dockerfile"
         },
         "ngraph": {
             "name": "nGraph",
             "results_dir": "./results/ngraph/stable",
-            "core_packages": ["ngraph-onnx", "ngraph-core"]
+            "core_packages": ["ngraph-onnx", "ngraph-core"],
+            "dockerfile_link": "https://github.com/postrational/ngraph-ci-test/blob/master/runtimes/ngraph/stable/Dockerfile"
         },
         "tensorflow": {
             "name": "Tensorflow",
             "results_dir": "./results/tensorflow/stable",
-            "core_packages": ["tensorflow"]
+            "core_packages": ["tensorflow"],
+            "dockerfile_link": "https://github.com/postrational/ngraph-ci-test/blob/master/runtimes/tensorflow/stable/Dockerfile"
         }
     },
     "development": {
         "ngraph": {
             "name": "nGraph",
-            "results_dir": "./results/ngraph/development"
+            "results_dir": "./results/ngraph/development",
+            "core_packages": ["ngraph-onnx", "ngraph-core"],
+            "dockerfile_link": "https://github.com/postrational/ngraph-ci-test/blob/master/runtimes/ngraph/development/Dockerfile"
         },
         "pytorch": {
             "name": "Pytorch",
-            "results_dir": "./results/pytorch/development"
+            "results_dir": "./results/pytorch/development",
+            "dockerfile_link": "https://github.com/postrational/ngraph-ci-test/tree/master/runtimes/pytorch/development"
         }
     },
     "deploy_paths": {
