@@ -258,6 +258,7 @@ def prepare_database(config, state="stable"):
 
     for framework_id, framework_config in config.items():
         results_dir = framework_config.get("results_dir")
+        dockerfile_link = framework_config.get("dockerfile_link")
         name = framework_config.get("name", framework_id)
         trend = load_trend(results_dir)
         coverage = get_coverage_percentage(trend)
@@ -270,6 +271,7 @@ def prepare_database(config, state="stable"):
             "coverage": coverage,
             "ops": ops,
             "report": report,
+            "dockerfile_link": dockerfile_link
         }
 
     database = sort_by_score(database)
