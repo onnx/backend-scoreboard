@@ -397,7 +397,7 @@ if __name__ == "__main__":
     generate_pages(template, database_dev, "details_dev.html")
 
     # Copy resources to deploy dir
-    shutil.copytree function raises error if destination path exists
+    # shutil.copytree function raises error if destination path exists
     resources_path = os.path.abspath("./website-generator/resources")
     deploy_resources_path = os.path.abspath(
         deploy_paths.get("resources", "./docs/resources")
