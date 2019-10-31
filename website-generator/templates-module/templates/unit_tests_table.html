@@ -4,9 +4,7 @@
             <tr class="headers">
                 <th scope="col">&nbsp</th>
                 {% for test_name, output in data.report.items() %}
-                    <div>
                         <th class="testName" scope="row">{{ test_name |replace("::", " :: ")}}</th>
-                    </div>
                 {% endfor %}
             </tr>
         {% endif %}
