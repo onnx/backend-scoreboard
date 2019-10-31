@@ -14,7 +14,9 @@
         </div>
         <div class="row justify-content-center">
             <div>
-                {%include "score_table.html" %}
+                {% for key, data in database.items() %}
+                    {%include "score_table_details.html" %}
+                {% endfor %}
             </div>
         </div>
         <div class="row justify-content-center">

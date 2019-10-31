@@ -2,15 +2,10 @@
     <tr class="score-headers">
         <th scope="col">&nbsp</th>
         <th scope="row">Version</th>
-        {% if in_details %}
-            <th scope="row">Dockerfile</th>
-        {% endif %}
         <th scope="row">Date</th>
         <th scope="row">Score</th>
-        {% if not in_details %}
-            <th scope="row">Coverage</th>
-            <th scope="row">Details</th>
-        {% endif %}
+        <th scope="row">Coverage</th>
+        <th scope="row">Details</th>
     </tr>
     {% for framework, data in database.items() %}
     <tr>
@@ -49,28 +44,26 @@
                 </div>
             </div>
         </td>
-        {% if not in_details %}
-            <td>
-                <div class="centered">
-                    <div>
-                        <canvas width="100" height="60" id='circle_{{ data.name }}'></canvas>
-                    </div>
+        <td>
+            <div class="centered">
+                <div>
+                    <canvas width="100" height="60" id='circle_{{ data.name }}'></canvas>
                 </div>
-            </td>
-            <td>
-                <div class="centered">
-                {% if development_versions_selected %}
-                    <a href='{{ framework }}_details_dev.html'>
-                        <svg width="24" height="24" viewBox="0 0 24 24" class="navigation"><path d="M12 8V4l8 8-8 8v-4H4V8z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-                    </a>
-                {% else %}
-                    <a href='{{ framework }}_details_stable.html'>
-                        <svg width="24" height="24" viewBox="0 0 24 24" class="navigation"><path d="M12 8V4l8 8-8 8v-4H4V8z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-                    </a>
-                {% endif %}
-                </div>
-            </td>
-        {% endif %}
+            </div>
+        </td>
+        <td>
+            <div class="centered">
+            {% if development_versions_selected %}
+                <a href='{{ framework }}_details_dev.html'>
+                    <svg width="24" height="24" viewBox="0 0 24 24" class="navigation"><path d="M12 8V4l8 8-8 8v-4H4V8z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+                </a>
+            {% else %}
+                <a href='{{ framework }}_details_stable.html'>
+                    <svg width="24" height="24" viewBox="0 0 24 24" class="navigation"><path d="M12 8V4l8 8-8 8v-4H4V8z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+                </a>
+            {% endif %}
+            </div>
+        </td>
     </tr>
     {% endfor %}
 </table>
