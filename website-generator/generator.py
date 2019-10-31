@@ -253,6 +253,7 @@ def prepare_database(config, state="stable"):
     :return: Dictionary with results data for the listed in the config frameworks.
     :rtype: OrderedDict
     """
+    repo_url = config.get("repo_url", "")
     config = config.get(state, {})
     database = OrderedDict()
 
@@ -271,7 +272,7 @@ def prepare_database(config, state="stable"):
             "coverage": coverage,
             "ops": ops,
             "report": report,
-            "dockerfile_link": dockerfile_link
+            "dockerfile_link": repo_url + dockerfile_link
         }
 
     database = sort_by_score(database)
@@ -396,10 +397,10 @@ if __name__ == "__main__":
 
     # Copy resources to deploy dir
     # shutil.copytree function raises error if destination path exists
-    resources_path = os.path.abspath("./website-generator/resources")
-    deploy_resources_path = os.path.abspath(
-        deploy_paths.get("resources", "./docs/resources")
-    )
-    if os.path.exists(deploy_resources_path):
-        shutil.rmtree(deploy_resources_path)
-    shutil.copytree(resources_path, deploy_resources_path)
+    # resources_path = os.path.abspath("./website-generator/resources")
+    # deploy_resources_path = os.path.abspath(
+    #     deploy_paths.get("resources", "./docs/resources")
+    # )
+    # if os.path.exists(deploy_resources_path):
+    #     shutil.rmtree(deploy_resources_path)
+    # shutil.copytree(resources_path, deploy_resources_path)
