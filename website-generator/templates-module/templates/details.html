@@ -1,32 +1,27 @@
 {% extends "base.html" %}
-{% block title %}| Details{% endblock%}
 
+{% block title %}{{ framework_data.name }}{% endblock %}
 {% block content %}
-<div id="content" database='{{ framework_data|tojson }}'>
-    {% with database=framework_data %}
+<div id="content" database='{{ database|tojson }}' framework_data='{{ framework_data|tojson }}'>
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-auto">
-                {% for key, data in database.items() %}
-                    <h1>{{ data.name }}</h1>
-                {% endfor %}
+                <h1>{{ framework_data.name }}</h1>
             </div>
         </div>
         <div class="row justify-content-center">
             <div>
-                {% for key, data in database.items() %}
+                {% with data=framework_data %}
                     {%include "score_table_details.html" %}
-                {% endfor %}
+                {% endwith %}
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-auto section">
-                <canvas id='bar_chart' height="400pt" width="400pt"></canvas>
+                <canvas id="bar_chart" height="400pt" width="400pt"></canvas>
             </div>
             <div class="col-auto section">
-                {% for key, data in database.items() %}
-                    <canvas id="line_trend" framework_data='{{data| tojson }}' height="400pt" width="800pt"></canvas>
-                {% endfor %}
+                <canvas id="line_trend" height="400pt" width="800pt"></canvas>
             </div>
         </div>
         <div class="row justify-content-center">
@@ -35,7 +30,6 @@
             </div>
         </div>
     </div>
-    {% endwith %}
 </div>
 {% endblock %}
 

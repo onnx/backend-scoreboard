@@ -1,7 +1,8 @@
 // Generate trend line chart
 (function () {
-  const lineTrend = document.getElementById('line_trend');
-  const frameworkData = JSON.parse(lineTrend.getAttribute('framework_data'));
+  const content = document.getElementById('content');
+  const lineTrend = document.getElementById('line_trend')
+  const frameworkData = JSON.parse(content.getAttribute('framework_data'));
   const trendData = frameworkData.trend;
   const displayDataCount = 15
 

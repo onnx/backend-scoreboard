@@ -307,13 +307,14 @@ def generate_pages(template, database, suffix):
     :param suffix: File name suffix for the output, e.g. "details_stable.html".
     :type suffix: str
     """
-    for framework, _ in database.items():
-        framework_data = OrderedDict({framework: database.get(framework)})
+    for framework, framework_data in database.items():
+        single_framework_database = OrderedDict({framework: database.get(framework)})
         output_name = "{name}_{suffix}".format(name=framework, suffix=suffix)
         generate_page(
             template,
             deploy_paths.get("subpages", "./"),
             output_name,
+            database=single_framework_database,
             framework_data=framework_data,
         )
 
