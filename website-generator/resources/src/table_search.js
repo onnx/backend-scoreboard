@@ -1,5 +1,6 @@
 // Table search
-function onSearch (inputId, tableId) {
+(function () {
+  function onSearch (inputId, tableId) {
     const input = document.getElementById(inputId)
     const filter = input.value.toLowerCase()
     const table = document.getElementById(tableId)
@@ -20,3 +21,5 @@ function onSearch (inputId, tableId) {
       }
     }
   }
+  window.onSearch = onSearch;
+})()
