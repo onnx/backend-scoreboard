@@ -221,7 +221,7 @@ def load_report(file_dir, file_name="report.json"):
 def load_config(file_path="./setup/config.json"):
     """Load scoreboard configuration file.
 
-    Configuration file contains a list of frameworks included in the scoreboard.
+    Configuration file contains a list of backends included in the scoreboard.
     This is a place for information about results path or core package names.
     Each new runtime has to be added to this file. (More info in README.md)
 
@@ -239,34 +239,33 @@ def load_config(file_path="./setup/config.json"):
         raise ScoreboardError("Can't load the scoreboard config file!", err)
     return config
 
-
 def prepare_database(config, state="stable"):
-    """Prepare all frameworks data to be stored and passed to the templates.
+    """Prepare all backends data to be stored and passed to the templates.
 
-    Database is a dictionary that contains framework id as a key and
+    Database is a dictionary that contains backend id as a key and
     all results data as a value.
 
     :param config: Dictionary with the scoreboard config (documented in README.md).
     :type config: dict
     :param state: Use "stable" or "dev" to choose runtimes version, defaults to "stable"
     :type state: str, optional
-    :return: Dictionary with results data for the listed in the config frameworks.
+    :return: Dictionary with results data for the listed in the config backends.
     :rtype: OrderedDict
     """
     repo_url = config.get("repo_url", "")
     config = config.get(state, {})
     database = OrderedDict()
 
-    for framework_id, framework_config in config.items():
-        results_dir = framework_config.get("results_dir")
-        dockerfile_link = framework_config.get("dockerfile_link")
-        name = framework_config.get("name", framework_id)
+    for backend_id, backend_config in config.items():
+        results_dir = backend_config.get("results_dir")
+        dockerfile_link = backend_config.get("dockerfile_link")
+        name = backend_config.get("name", backend_id)
         trend = load_trend(results_dir)
         coverage = get_coverage_percentage(trend)
         ops = load_ops_csv(results_dir)
         report = load_report(results_dir)
 
-        database[framework_id] = {
+        database[backend_id] = {
             "name": name,
             "trend": trend,
             "coverage": coverage,
@@ -298,29 +297,29 @@ def generate_page(template, output_dir, name, **template_args):
 
 
 def generate_pages(template, database, suffix):
-    """Generate HTML page for each framework in the specified database.
+    """Generate HTML page for each backend in the specified database.
 
     :param template: Jinja2 HTML template, generated from jinja2.Environment.
     :type template: jinja2.Template
-    :param database: Dictionary with results data for frameworks listed in the config.
+    :param database: Dictionary with results data for backends listed in the config.
     :type database: dict
     :param suffix: File name suffix for the output, e.g. "details_stable.html".
     :type suffix: str
     """
-    for framework, framework_data in database.items():
-        output_name = "{name}_{suffix}".format(name=framework, suffix=suffix)
+    for backend, backend_data in database.items():
+        output_name = "{name}_{suffix}".format(name=backend, suffix=suffix)
         generate_page(
             template,
             deploy_paths.get("subpages", "./"),
             output_name,
-            framework_data=framework_data,
+            backend_data=backend_data,
         )
 
 
 def sort_by_score(database):
-    """Sort database by framework score (percentage of passed tests) in descending order.
+    """Sort database by backend score (percentage of passed tests) in descending order.
 
-    :param database: Dictionary with results data for frameworks listed in the config.
+    :param database: Dictionary with results data for backends listed in the config.
     :type database: dict
     :return: Sorted database.
     :rtype: OrderedDict
@@ -389,7 +388,7 @@ if __name__ == "__main__":
         database=database_stable,
     )
 
-    # Create details page for each framework
+    # Create details page for each backend
     template = env.get_template("details.html")
     generate_pages(template, database_stable, "details_stable.html")
     generate_pages(template, database_dev, "details_dev.html")

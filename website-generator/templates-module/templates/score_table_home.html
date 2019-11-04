@@ -7,7 +7,7 @@
         <th scope="row">Coverage</th>
         <th scope="row">Details</th>
     </tr>
-    {% for framework, data in database.items() %}
+    {% for backend, data in database.items() %}
     <tr>
         <th scope="row">
             <div class="centered">
@@ -43,11 +43,11 @@
         <td>
             <div class="centered">
             {% if development_versions_selected %}
-                <a href='{{ framework }}_details_dev.html'>
+                <a href='{{ backend }}_details_dev.html'>
                     {%include "svg_arrow_right.html" %}
                 </a>
             {% else %}
-                <a href='{{ framework }}_details_stable.html'>
+                <a href='{{ backend }}_details_stable.html'>
                     {%include "svg_arrow_right.html" %}
                 </a>
             {% endif %}

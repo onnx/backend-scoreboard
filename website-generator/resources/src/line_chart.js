@@ -2,8 +2,8 @@
 (function () {
   const content = document.getElementById('content');
   const lineTrend = document.getElementById('line_trend')
-  const frameworkData = JSON.parse(content.getAttribute('framework_data'));
-  const trendData = frameworkData.trend;
+  const backendData = JSON.parse(content.getAttribute('backend_data'));
+  const trendData = backendData.trend;
   const displayDataCount = 15
 
   // Prepare list of label lists with date and package versions

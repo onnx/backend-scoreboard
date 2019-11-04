@@ -1,7 +1,7 @@
 // Generate bar chart
 (function () {
   const content = document.getElementById('content')
-  const framework_data = JSON.parse(content.getAttribute('framework_data'))
+  const backend_data = JSON.parse(content.getAttribute('backend_data'))
 
   const barChart = document.getElementById('bar_chart')
   const barChartLabels = []
@@ -20,9 +20,9 @@
     label: 'Failed'
   }];
 
-  const trend = framework_data.trend;
+  const trend = backend_data.trend;
   const lastIdx = trend.length - 1;
-  barChartLabels.push(framework_data.name);
+  barChartLabels.push(backend_data.name);
   barChartDatasets[0].data.push(trend[lastIdx].passed);
   barChartDatasets[1].data.push(trend[lastIdx].failed);
 

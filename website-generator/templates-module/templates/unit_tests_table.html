@@ -1,5 +1,5 @@
 <table class="table transposed" id="unitTestsTable">
-    {% for framework, data in database.items() %}
+    {% for backend, data in database.items() %}
         {% if loop.index == 1 %}
             <tr class="headers">
                 <th scope="col">&nbsp</th>
@@ -8,7 +8,7 @@
                 {% endfor %}
             </tr>
         {% endif %}
-        <tr class="frameworkResults">
+        <tr class="backendResults">
             <th scope="row">{{ data.name }}</th>
             {% for test_name, output in data.report.items() %}
                 <td class="testResult" >

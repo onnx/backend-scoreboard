@@ -1,5 +1,5 @@
 <table class="table transposed" id="operatorsTable">
-    {% for framework, data in database.items() %}
+    {% for backend, data in database.items() %}
         {% if loop.index == 1 %}
         <tr class="headers">
             <th scope="col">&nbsp</th>
@@ -8,7 +8,7 @@
             {% endfor %}
         </tr>
         {% endif %}
-    <tr class="frameworkResults">
+    <tr class="backendResults">
         <th scope="row">{{ data.name }}</th>
         {% for op_name, output in data.ops.items() %}
             <td class="testResult">

@@ -1,17 +1,17 @@
 {% extends "base.html" %}
 
-{% block title %}{{ framework_data.name }}{% endblock %}
+{% block title %}{{ backend_data.name }}{% endblock %}
 {% block content %}
-<div id="content" framework_data='{{ framework_data|tojson }}'>
+<div id="content" backend_data='{{ backend_data|tojson }}'>
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-auto">
-                <h1>{{ framework_data.name }}</h1>
+                <h1>{{ backend_data.name }}</h1>
             </div>
         </div>
         <div class="row justify-content-center">
             <div>
-                {% with data=framework_data %}
+                {% with data=backend_data %}
                     {%include "score_table_details.html" %}
                 {% endwith %}
             </div>
@@ -26,7 +26,7 @@
         </div>
         <div class="row justify-content-center">
             <div class="col section">
-                {% with database={"framework": framework_data} %}
+                {% with database={"backend": backend_data} %}
                     {%include "table_tabs.html" %}
                 {% endwith %}
             </div>
