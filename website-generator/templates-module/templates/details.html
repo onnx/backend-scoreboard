@@ -2,7 +2,7 @@
 
 {% block title %}{{ framework_data.name }}{% endblock %}
 {% block content %}
-<div id="content" database='{{ database|tojson }}' framework_data='{{ framework_data|tojson }}'>
+<div id="content" framework_data='{{ framework_data|tojson }}'>
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-auto">
@@ -26,7 +26,9 @@
         </div>
         <div class="row justify-content-center">
             <div class="col section">
-                {%include "table_tabs.html" %}
+                {% with database={"framework": framework_data} %}
+                    {%include "table_tabs.html" %}
+                {% endwith %}
             </div>
         </div>
     </div>

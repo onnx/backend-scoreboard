@@ -308,13 +308,11 @@ def generate_pages(template, database, suffix):
     :type suffix: str
     """
     for framework, framework_data in database.items():
-        single_framework_database = OrderedDict({framework: database.get(framework)})
         output_name = "{name}_{suffix}".format(name=framework, suffix=suffix)
         generate_page(
             template,
             deploy_paths.get("subpages", "./"),
             output_name,
-            database=single_framework_database,
             framework_data=framework_data,
         )
 
@@ -382,12 +380,12 @@ if __name__ == "__main__":
         development_versions_selected=True,
     )
 
-    # Create framework_comparison subpage
-    template = env.get_template("frameworks_comparison.html")
+    # Create backends_comparison subpage
+    template = env.get_template("backends_comparison.html")
     generate_page(
         template,
         deploy_paths.get("subpages", "./"),
-        "frameworks_comparison_stable.html",
+        "backends_comparison_stable.html",
         database=database_stable,
     )
 
