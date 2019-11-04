@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
+<!-- Database is a dictionary that contains test results for each backend.
+It is prepared by generator.py script and passed to the charts by database attribute. -->
 <div class="container-fluid" id="content" database='{{ database|tojson }}'>
     <div class="row justify-content-center">
         <div class="col-auto">

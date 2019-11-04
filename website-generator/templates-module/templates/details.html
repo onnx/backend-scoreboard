@@ -2,6 +2,8 @@
 
 {% block title %}{{ backend_data.name }}{% endblock %}
 {% block content %}
+<!-- Backend data is element of database and contains test results for one backend.
+It is prepared by generator.py script and passed to the charts by backend_data attribute. -->
 <div id="content" backend_data='{{ backend_data|tojson }}'>
     <div class="container-fluid">
         <div class="row justify-content-center">
