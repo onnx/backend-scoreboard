@@ -1,12 +1,12 @@
 // Generate circle charts
 (function () {
-  const content = document.getElementById('content');
-  const database = JSON.parse(content.getAttribute('database'));
+  const content = document.getElementById('content')
+  const database = JSON.parse(content.getAttribute('database'))
 
   for (const backend in database) {
-    const circleChart = document.getElementById('circle_' + database[backend].name);
-    const trend = database[backend].trend;
-    const lastIdx = trend.length - 1;
+    const circleChart = document.getElementById('circle_' + database[backend].name)
+    const trend = database[backend].trend
+    const lastIdx = trend.length - 1
     const chartData = {
       labels: ['Passed', 'Failed'],
       datasets: [{

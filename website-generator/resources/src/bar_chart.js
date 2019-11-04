@@ -1,7 +1,7 @@
 // Generate bar chart
 (function () {
   const content = document.getElementById('content')
-  const backend_data = JSON.parse(content.getAttribute('backend_data'))
+  const backendData = JSON.parse(content.getAttribute('backend_data'))
 
   const barChart = document.getElementById('bar_chart')
   const barChartLabels = []
@@ -12,19 +12,19 @@
     barPercentage: 0.5,
     barThickness: 1,
     maxBarThickness: 3,
-    minBarLength: 2,
+    minBarLength: 2
   },
   {
     data: [],
     backgroundColor: palette.failed,
     label: 'Failed'
-  }];
+  }]
 
-  const trend = backend_data.trend;
-  const lastIdx = trend.length - 1;
-  barChartLabels.push(backend_data.name);
-  barChartDatasets[0].data.push(trend[lastIdx].passed);
-  barChartDatasets[1].data.push(trend[lastIdx].failed);
+  const trend = backendData.trend
+  const lastIdx = trend.length - 1
+  barChartLabels.push(backendData.name)
+  barChartDatasets[0].data.push(trend[lastIdx].passed)
+  barChartDatasets[1].data.push(trend[lastIdx].failed)
 
   new Chart(barChart, {
     type: 'bar',

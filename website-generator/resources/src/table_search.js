@@ -21,5 +21,5 @@
       }
     }
   }
-  window.onSearch = onSearch;
+  window.onSearch = onSearch
 })()

@@ -3,4 +3,4 @@ const palette = {
   failed: '#e93d27',
   font: '#c7d4d3'
 }
-Chart.defaults.global.defaultFontColor = palette.font;
+Chart.defaults.global.defaultFontColor = palette.font
