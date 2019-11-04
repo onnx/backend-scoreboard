@@ -13,5 +13,6 @@ parserOptions:
 rules: {
   no-new: warn,
   no-undef: warn,
-  no-unused-vars: warn
+  no-unused-vars: warn,
+  semi: ["warn", "always"]
 }
