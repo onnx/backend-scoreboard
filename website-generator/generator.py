@@ -32,6 +32,7 @@ from jinja2 import Environment, PackageLoader, select_autoescape
 
 class ScoreboardError(Exception):
     """Base class for exceptions in this module."""
+
     pass
 
 
@@ -239,6 +240,7 @@ def load_config(file_path="./setup/config.json"):
         raise ScoreboardError("Can't load the scoreboard config file!", err)
     return config
 
+
 def prepare_database(config, state="stable"):
     """Prepare all backends data to be stored and passed to the templates.
 
@@ -271,7 +273,7 @@ def prepare_database(config, state="stable"):
             "coverage": coverage,
             "ops": ops,
             "report": report,
-            "dockerfile_link": repo_url + dockerfile_link
+            "dockerfile_link": repo_url + dockerfile_link,
         }
 
     database = sort_by_score(database)
