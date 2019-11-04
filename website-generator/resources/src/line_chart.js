@@ -1,10 +1,10 @@
 // Generate trend line chart
 (function () {
-  const content = document.getElementById('content')
-  const lineTrend = document.getElementById('line_trend')
-  const backendData = JSON.parse(content.getAttribute('backend_data'))
-  const trendData = backendData.trend
-  const displayDataCount = 15
+  const content = document.getElementById('content');
+  const lineTrend = document.getElementById('line_trend');
+  const backendData = JSON.parse(content.getAttribute('backend_data'));
+  const trendData = backendData.trend;
+  const displayDataCount = 15;
 
   // Prepare list of label lists with date and package versions
   // Labels can be passed to the chart as a list of strings
@@ -17,20 +17,20 @@
         corePackage => '\n' + corePackage.name + ': ' + corePackage.version.toString()
       )
     ) : summary.date.split(' ')[0] // Otherwise add only date (without time) as a label
-  )
+  );
 
   function percentage (summary) {
-    const total = summary.passed + summary.failed + summary.skipped
+    const total = summary.passed + summary.failed + summary.skipped;
     if (total === 0) {
-      return 0.0
+      return 0.0;
     } else {
-      return summary.passed / total * 100
+      return summary.passed / total * 100;
     }
   }
 
   const data = trendData.map(
     summary => percentage(summary).toFixed(2)
-  )
+  );
 
   const lineChartData = {
     labels: [
@@ -45,7 +45,7 @@
       borderWidth: 2,
       pointBackgroundColor: palette.passed
     }]
-  }
+  };
 
   new Chart(lineTrend, {
     type: 'line',
@@ -82,5 +82,5 @@
         }
       }
     }
-  })
-})()
+  });
+})();
