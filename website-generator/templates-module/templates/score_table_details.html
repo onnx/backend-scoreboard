@@ -2,7 +2,7 @@
     <tr class="score-headers">
         <th scope="col">&nbsp</th>
         <th scope="row">Version</th>
-        {% if data.dockerfile_link %}
+        {% if backend_data.dockerfile_link %}
             <th scope="row">Dockerfile</th>
         {% endif %}
         <th scope="row">Date</th>
@@ -11,21 +11,21 @@
     <tr>
         <th scope="row">
             <div class="centered">
-                {{ data.name }}
+                {{ backend_data.name }}
             </div>
         </th>
         <td>
             <div class="centered">
-                {% for package in data.trend[-1].versions %}
+                {% for package in backend_data.trend[-1].versions %}
                     {{ package.name }}:&nbsp{{ package.version }}<br>
                 {% endfor %}
             </div>
         </td>
-        {% if data.dockerfile_link %}
+        {% if backend_data.dockerfile_link %}
             <td>
                 <div class="centered">
                     <div>
-                        <a href='{{ data.dockerfile_link }}' target="_blank" class="navigation svg-stroke">
+                        <a href='{{ backend_data.dockerfile_link }}' target="_blank" class="navigation svg-stroke">
                             {%include "svg_dockerfile.html" %}
                         </a>
                     </div>
@@ -34,13 +34,13 @@
         {% endif %}
         <td>
             <div class="centered">
-              {{ data.trend[-1].date }}
+              {{ backend_data.trend[-1].date }}
             </div>
         </td>
         <td>
             <div class="centered">
-                 <div class='{{data.coverage.mark}}'>
-                    {{ "{:,.2f}%".format(data.coverage.passed) }}
+                 <div class='{{backend_data.coverage.mark}}'>
+                    {{ "{:,.2f}%".format(backend_data.coverage.passed) }}
                 </div>
             </div>
         </td>

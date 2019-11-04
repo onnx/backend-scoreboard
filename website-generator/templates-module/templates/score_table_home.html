@@ -7,36 +7,36 @@
         <th scope="row">Coverage</th>
         <th scope="row">Details</th>
     </tr>
-    {% for backend, data in database.items() %}
+    {% for backend, backend_data in database.items() %}
     <tr>
         <th scope="row">
             <div class="centered">
-                {{ data.name }}
+                {{ backend_data.name }}
             </div>
         </th>
         <td>
             <div class="centered">
-                {% for package in data.trend[-1].versions %}
+                {% for package in backend_data.trend[-1].versions %}
                     {{ package.name }}:&nbsp{{ package.version }}<br>
                 {% endfor %}
             </div>
         </td>
         <td>
             <div class="centered">
-              {{ data.trend[-1].date }}
+              {{ backend_data.trend[-1].date }}
             </div>
         </td>
         <td>
             <div class="centered">
-                 <div class='{{data.coverage.mark}}'>
-                    {{ "{:,.2f}%".format(data.coverage.passed) }}
+                 <div class='{{backend_data.coverage.mark}}'>
+                    {{ "{:,.2f}%".format(backend_data.coverage.passed) }}
                 </div>
             </div>
         </td>
         <td>
             <div class="centered">
                 <div>
-                    <canvas width="100" height="60" id='circle_{{ data.name }}'></canvas>
+                    <canvas width="100" height="60" id='circle_{{ backend_data.name }}'></canvas>
                 </div>
             </div>
         </td>
