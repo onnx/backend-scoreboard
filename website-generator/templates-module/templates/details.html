@@ -8,7 +8,14 @@ It is prepared by generator.py script and passed to the charts by backend_data a
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-auto">
-                <h1>{{ backend_data.name }}</h1>
+                <a href="index.html">
+                    <h1 class="header-link">ONNX Backend Scoreboard</h1>
+                </a>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <h3>{{ backend_data.name }}</h3>
             </div>
         </div>
         <div class="row justify-content-center">

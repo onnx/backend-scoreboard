@@ -26,11 +26,18 @@ input:focus {
 }
 
 h1 {
+    color: #c7d4d3;
     margin: 2vh;
     padding: 3vh;
+    text-align: center;
 }
 
 h2 {
+    margin: 10pt;
+    padding: 5pt;
+}
+
+h3 {
     margin: 10pt;
     padding: 5pt;
 }
@@ -47,6 +54,10 @@ hr {
     border-top: 1px solid #c7d4d3;
     margin: 1em 0;
     padding: 0;
+}
+
+.header-link:hover {
+    color: #00998c;
 }
 
 .search {
