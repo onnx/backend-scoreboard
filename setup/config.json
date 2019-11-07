@@ -25,6 +25,12 @@
             "results_dir": "./results/ngraph/development",
             "core_packages": ["ngraph-onnx", "ngraph-core"],
             "dockerfile_link": "runtimes/ngraph/development/Dockerfile"
+        },
+        "onnxruntime": {
+            "name": "ONNX-Runtime",
+            "results_dir": "./results/onnx-runtime/development",
+            "core_packages": ["ort-nightly"],
+            "dockerfile_link": "runtimes/onnx-runtime/development/Dockerfile"
         }
     },
     "deploy_paths": {
