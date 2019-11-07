@@ -1,1 +1,0 @@
-The Docker Image used by the ONNX Backend Scoreboard (either akshaychalana/dockerfile or onnx/onnx-docker on DockerHub) has not been updated in at least 2 days, so is out of date.  Please check on the Cron job responsible for maintaining it or manually update.
