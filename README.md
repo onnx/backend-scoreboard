@@ -1,24 +1,8 @@
 # ONNX Backend Scoreboard
 
-## Build docker images
-From the main dir (onnx-backend-scoreboard/) 
+This is a repository of the ONNX Backend Scoreboard which measures the compliance of ONNX backends with the standard.
 
-* nGraph <br/>
-`docker build -t scoreboard-ngraph -f runtimes/ngraph/development/Dockerfile .`
+### :chart_with_upwards_trend: [Check out the scoreboard page](http://onnx.ai/backend-scoreboard/)
 
-* ONNX-runtime <br/>
-`docker build -t scoreboard-onnx -f runtimes/onnx-runtime/stable/Dockerfile .`
-
-* PyTorch <br/>
-`docker build -t scoreboard-pytorch -f runtimes/pytorch/development/Dockerfile .`
-
-* Tensorflow <br/>
-`docker build -t scoreboard-tensorflow -f runtimes/tensorflow/stable/Dockerfile .`
-
-
-<br/>
-
-###### Proxy settings
-Use --build-arg to set http and https proxy
-
-`docker build -t scoreboard-<backend> --build-arg http_proxy=your-http-proxy.com/ --build-arg https_proxy=your-https-proxy.com/ -f <path_to_dockerfile>/Dockerfile .`
+- To add another backend to the scoreboard please follow the [these instructions](ADD-BACKEND.md).
+- More information for developers [here](DEV-INFO.md).
