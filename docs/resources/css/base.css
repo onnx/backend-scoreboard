@@ -1,0 +1,196 @@
+body {
+    color: #c7d4d3;
+    background-color: #042c34;
+}
+
+a {
+    font-size: 9pt;
+    color: #00ffea;
+}
+
+a:hover {
+    color: #00998c;
+    text-decoration: none;
+}
+
+input[type=text] {
+    border: none;
+    border-bottom: 2px solid #00998c;
+    background-color: transparent;
+    color: #00ffea;
+    font-size: 10pt;
+}
+
+input:focus {
+    outline: none;
+}
+
+h1 {
+    color: #c7d4d3;
+    margin: 2vh;
+    padding: 3vh;
+    text-align: center;
+}
+
+h2 {
+    margin: 10pt;
+    padding: 5pt;
+}
+
+h3 {
+    margin: 10pt;
+    padding: 5pt;
+}
+
+h5 {
+    margin: 1vh;
+    padding: 2vh;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #c7d4d3;
+    margin: 1em 0;
+    padding: 0;
+}
+
+.header-link:hover {
+    color: #00998c;
+}
+
+.search {
+    display: block;
+    margin: auto;
+    padding-top: 15px;
+    margin-bottom: 15px;
+    min-width: 15vw;
+}
+
+.score-headers {
+    text-align: center;
+}
+
+.centered {
+    height: 80pt;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+}
+
+.nav-tabs .nav-item .nav-link {
+    border-bottom: 0px;
+    background-color: transparent;
+    color: #00998c;
+    font-size: 10pt;
+}
+
+.nav-tabs .nav-item .nav-link:hover {
+    border-bottom: 0px;
+    background-color: transparent;
+    color: #00ffea;
+    font-size: 10pt;
+}
+
+.nav-tabs .nav-item .nav-link.active {
+    border-bottom: 0px;
+    background-color: transparent;
+    color: #00ffea;
+    font-size: 10pt;
+}
+
+.section {
+    padding: 30pt;
+}
+
+.min-section {
+    padding: 10pt;
+    max-width: 50vw;
+}
+
+.max-section {
+    padding: 50pt;
+    min-width: 90vw;
+}
+
+.navigation {
+    text-align: center;
+    font-size: 9pt;
+    fill: #00ffea;
+}
+
+.navigation:hover {
+    font-size: 9pt;
+    fill: #00998c;
+}
+
+.svg-stroke {
+    stroke: #00ffea;
+}
+
+.svg-stroke:hover {
+    stroke: #00998c;
+}
+
+.table-chart {
+    width: 30pt;
+    height: 30pt;
+}
+
+.table {
+    color: #c7d4d3;
+    border-bottom: 1px solid #c7d4d3;
+}
+
+.transposed {
+    font-size: 10pt;
+}
+
+.transposed tr {
+    display: block;
+    float: left;
+}
+
+.transposed th {
+    display: block;
+}
+
+.transposed td {
+    display: block;
+}
+
+.passed {
+    color: #adff2f;
+}
+
+.failed {
+    color: #f81f1f;
+}
+
+.A {
+    color: #adff2f;
+    font-size: 30pt;
+}
+
+.B {
+    color: #d0ff00;
+    font-size: 30pt;
+}
+
+.C {
+    color: #fbff00;
+    font-size: 30pt;
+}
+
+.D {
+    color: #e9ac27;
+    font-size: 30pt;
+}
+
+.F {
+    color: #f81f1f;
+    font-size: 30pt;
+}
