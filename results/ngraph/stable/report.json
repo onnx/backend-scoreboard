@@ -1,5 +1,5 @@
 {
-    "date": "11/07/2019 12:56:06",
+    "date": "11/07/2019 15:55:11",
     "failed": [
         "OnnxBackendNodeModelTest::test_argmax_negative_axis_keepdims_example_cpu",
         "OnnxBackendNodeModelTest::test_argmax_negative_axis_keepdims_random_cpu",
