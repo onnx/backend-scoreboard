@@ -12,11 +12,11 @@
             "core_packages": ["ngraph-onnx", "ngraph-core"],
             "dockerfile_link": "runtimes/ngraph/stable/Dockerfile"
         },
-        "tensorflow": {
-            "name": "Tensorflow",
-            "results_dir": "./results/tensorflow/stable",
-            "core_packages": ["tensorflow"],
-            "dockerfile_link": "runtimes/tensorflow/stable/Dockerfile"
+        "onnx-tf": {
+            "name": "ONNX-TF",
+            "results_dir": "./results/onnx-tf/stable",
+            "core_packages": ["tensorflow", "onnx-tf"],
+            "dockerfile_link": "runtimes/onnx-tf/stable/Dockerfile"
         }
     },
     "development": {
@@ -25,11 +25,6 @@
             "results_dir": "./results/ngraph/development",
             "core_packages": ["ngraph-onnx", "ngraph-core"],
             "dockerfile_link": "runtimes/ngraph/development/Dockerfile"
-        },
-        "pytorch": {
-            "name": "Pytorch",
-            "results_dir": "./results/pytorch/development",
-            "dockerfile_link": "runtimes/pytorch/development/Dockerfile"
         }
     },
     "deploy_paths": {
@@ -37,5 +32,5 @@
         "subpages": "./docs",
         "resources": "./docs/resources"
     },
-    "repo_url": "https://github.com/postrational/ngraph-ci-test/blob/master/"
+    "repo_url": "https://github.com/onnx/backend-scoreboard/blob/master/"
 }

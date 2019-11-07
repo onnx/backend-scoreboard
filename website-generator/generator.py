@@ -259,8 +259,8 @@ def prepare_database(config, state="stable"):
     database = OrderedDict()
 
     for backend_id, backend_config in config.items():
-        results_dir = backend_config.get("results_dir")
-        dockerfile_link = backend_config.get("dockerfile_link")
+        results_dir = backend_config.get("results_dir", "")
+        dockerfile_link = backend_config.get("dockerfile_link", "")
         name = backend_config.get("name", backend_id)
         trend = load_trend(results_dir)
         coverage = get_coverage_percentage(trend)
