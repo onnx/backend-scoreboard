@@ -1,5 +1,8 @@
 #!/bin/bash
 
+set -e  # Exit on error
+set -x  # Command echo on
+
 git pull origin master
 git add docs
 git commit --allow-empty -m "Upadate website [skip ci]"

@@ -5,7 +5,10 @@ schedules:
     include:
     - master
 
+# Disable CI trigger (don't run on commits)
 trigger: none
+# and don't run on Pull Requests
+pr: none
 
 pool:
   vmImage: 'ubuntu-18.04'
