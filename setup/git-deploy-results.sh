@@ -1,5 +1,8 @@
 #!/bin/bash
 
+set -e  # Exit on error
+set -x  # Command echo on
+
 git pull origin master
 git add results
 git commit -m "Scoreboard results [skip ci]"

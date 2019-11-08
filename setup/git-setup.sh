@@ -1,4 +1,8 @@
 #!/bin/bash
+
+set -e  # Exit on error
+set -x  # Command echo on
+
 ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
 
 git config --global user.email "onnx_scoreboard_bot@azure"
