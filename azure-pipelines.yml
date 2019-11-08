@@ -113,3 +113,29 @@ jobs:
 
     - script: . setup/git-deploy-results.sh
       displayName: 'Deploy results'
+
+
+  - job: ngraph_development
+      timeoutInMinutes: 0
+      steps:
+      - checkout: self
+        persistCredentials: true
+        clean: true
+
+      - task: InstallSSHKey@0
+        inputs:
+          knownHostsEntry: ~/.ssh/known_hosts
+          sshPublicKey: $(public_deploy_key)
+          sshKeySecureFile: deploy_key
+
+      - script: docker build -t scoreboard/ngraph -f runtimes/ngraph/development/Dockerfile .
+        displayName: 'Build docker image'
+
+      - script: . setup/git-setup.sh
+        displayName: 'Git setup'
+
+      - script: docker run --name ngraph --env-file setup/env.list -v `pwd`/results/ngraph/development:/root/results scoreboard/ngraph || true
+        displayName: 'Run docker container'
+
+      - script: . setup/git-deploy-results.sh
+        displayName: 'Deploy results'
