@@ -6,4 +6,4 @@
 set -e  # Exit on error
 set -x  # Command echo on
 
-pip list --format=json > ${RESULTS_DIR}/pip-list.json
+pip list --format=json > "${RESULTS_DIR}"/pip-list.json
