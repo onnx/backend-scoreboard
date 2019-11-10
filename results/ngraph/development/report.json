@@ -1,5 +1,5 @@
 {
-    "date": "11/05/2019 00:54:21",
+    "date": "11/10/2019 00:59:01",
     "failed": [
         "OnnxBackendNodeModelTest::test_averagepool_2d_ceil_cpu",
         "OnnxBackendNodeModelTest::test_bitshift_left_uint16_cpu",
@@ -36,8 +36,6 @@
         "OnnxBackendNodeModelTest::test_cumsum_2d_axis_0_cpu",
         "OnnxBackendNodeModelTest::test_cumsum_2d_axis_1_cpu",
         "OnnxBackendNodeModelTest::test_cumsum_2d_negative_axis_cpu",
-        "OnnxBackendNodeModelTest::test_depthtospace_crd_mode_cpu",
-        "OnnxBackendNodeModelTest::test_depthtospace_crd_mode_example_cpu",
         "OnnxBackendNodeModelTest::test_det_2d_cpu",
         "OnnxBackendNodeModelTest::test_det_nd_cpu",
         "OnnxBackendNodeModelTest::test_dynamicquantizelinear_cpu",
@@ -293,6 +291,8 @@
         "OnnxBackendNodeModelTest::test_cos_example_cpu",
         "OnnxBackendNodeModelTest::test_cosh_cpu",
         "OnnxBackendNodeModelTest::test_cosh_example_cpu",
+        "OnnxBackendNodeModelTest::test_depthtospace_crd_mode_cpu",
+        "OnnxBackendNodeModelTest::test_depthtospace_crd_mode_example_cpu",
         "OnnxBackendNodeModelTest::test_depthtospace_dcr_mode_cpu",
         "OnnxBackendNodeModelTest::test_depthtospace_example_cpu",
         "OnnxBackendNodeModelTest::test_dequantizelinear_cpu",
