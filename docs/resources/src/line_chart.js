@@ -37,7 +37,7 @@
       ['', '']
     ].concat(labels.slice(-displayDataCount)).concat(['']),
     datasets: [{
-      data: [0].concat(data.slice(-displayDataCount)),
+      data: ['None'].concat(data.slice(-displayDataCount)),
       label: 'Passed',
       fill: true,
       backgroundColor: 'transparent',
