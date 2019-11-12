@@ -1,6 +1,26 @@
 [
     {
-        "date": "08/02/2019 23:36:42",
+        "date": "08/02/2019 11:37:59",
+        "failed": 58,
+        "passed": 453,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "ngraph-core",
+                "version": "0.24.0"
+            },
+            {
+                "name": "ngraph-onnx",
+                "version": "0.24.0"
+            },
+            {
+                "name": "onnx",
+                "version": "1.4.1"
+            }
+        ]
+    },
+    {
+        "date": "08/03/2019 23:36:42",
         "failed": 105,
         "passed": 453,
         "skipped": 0,
