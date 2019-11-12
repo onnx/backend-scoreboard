@@ -8,7 +8,7 @@ Use the [dockerfile template](examples/Dockerfile) from examples to create Docke
 
 #### Find and edit code marked `## ONNX Backend dependencies ##`.
 
-* Set `ONNX_BACKEND` variable to the Python dotted path of the ONNX backend module which provides an 
+* Set `ONNX_BACKEND` variable to the Python dotted path of the ONNX backend module which provides an
   implementation of the `onnx.backend.base.Backend` interface class.
 * Write commands required to install all dependencies.
 * If you use a release version of the backend, place your Dockerfile in `runtimes/{new-backend}/stable`.
@@ -58,9 +58,15 @@ For `development` version the `core_packages` list is optional:
 - job: new_backend
     timeoutInMinutes: 90
     steps:
-    - checkout: self 
+    - checkout: self
       persistCredentials: true
       clean: true
+
+    - task: InstallSSHKey@0
+      inputs:
+        knownHostsEntry: ~/.ssh/known_hosts
+        sshPublicKey: $(public_deploy_key)
+        sshKeySecureFile: deploy_key
 
     - script: docker build -t scoreboard/new_backend -f runtimes/new_backend/stable/Dockerfile .
       displayName: 'Build docker image'
@@ -71,7 +77,7 @@ For `development` version the `core_packages` list is optional:
     - script: docker run --name new_backend --env-file setup/env.list -v `pwd`/results/new_backend/stable:/root/results scoreboard/new_backend || true
       displayName: 'Run docker container'
 
-    - script: . setup/git-commit.sh
-      displayName: 'Commit results'
+    - script: . setup/git-deploy-results.sh
+      displayName: 'Deploy results'
 
 ```
