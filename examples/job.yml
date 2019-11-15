@@ -5,6 +5,8 @@
       persistCredentials: true
       clean: true
 
+    # This task enables ssh autenthication.
+    # It keeps git permissions even after long build time.
     - task: InstallSSHKey@0
       inputs:
         knownHostsEntry: ~/.ssh/known_hosts
