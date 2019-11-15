@@ -1,9 +1,17 @@
 - job: new_backend
     timeoutInMinutes: 90
     steps:
-    - checkout: self 
+    - checkout: self
       persistCredentials: true
       clean: true
+
+    # This task enables ssh authentication.
+    # It keeps git permissions even after long build time.
+    - task: InstallSSHKey@0
+      inputs:
+        knownHostsEntry: ~/.ssh/known_hosts
+        sshPublicKey: $(public_deploy_key)
+        sshKeySecureFile: deploy_key
 
     - script: docker build -t scoreboard/new_backend -f runtimes/new_backend/stable/Dockerfile .
       displayName: 'Build docker image'
@@ -11,8 +19,8 @@
     - script: . setup/git-setup.sh
       displayName: 'Git setup'
 
-    - script: docker run --name new_backend--env-file setup/env.list -v `pwd`/results/new_backend/stable:/root/results scoreboard/new_backend || true
+    - script: docker run --name new_backend --env-file setup/env.list -v `pwd`/results/new_backend/stable:/root/results scoreboard/new_backend || true
       displayName: 'Run docker container'
 
-    - script: . setup/git-commit.sh
-      displayName: 'Commit results'
+    - script: . setup/git-deploy-results.sh
+      displayName: 'Deploy results'
