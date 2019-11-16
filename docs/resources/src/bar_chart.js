@@ -8,7 +8,11 @@
   const barChartDatasets = [{
     data: [],
     backgroundColor: palette.passed,
-    label: 'Passed'
+    label: 'Passed',
+    barPercentage: 0.5,
+    barThickness: 1,
+    maxBarThickness: 3,
+    minBarLength: 2
   },
   {
     data: [],
@@ -41,8 +45,8 @@
       },
       scales: {
         xAxes: [{
-          barPercentage: 0.65,  // Bars width
-          categoryPercentage: 0.5  // Bars space
+          barPercentage: 0.2,
+          categoryPercentage: 0.5
         }],
         yAxes: [{
           ticks: {
