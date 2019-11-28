@@ -118,5 +118,25 @@
                 "version": "1.6.0"
             }
         ]
+    },
+    {
+        "date": "11/28/2019 01:00:46",
+        "failed": 180,
+        "passed": 521,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "ngraph-core",
+                "version": "0.0.0.dev0"
+            },
+            {
+                "name": "ngraph-onnx",
+                "version": "0.24.0"
+            },
+            {
+                "name": "onnx",
+                "version": "1.6.0"
+            }
+        ]
     }
 ]
