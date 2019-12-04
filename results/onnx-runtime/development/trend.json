@@ -142,5 +142,21 @@
                 "version": "1.0.0.dev1129"
             }
         ]
+    },
+    {
+        "date": "12/04/2019 00:04:03",
+        "failed": 59,
+        "passed": 642,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.6.0"
+            },
+            {
+                "name": "ort-nightly",
+                "version": "1.0.0.dev1202"
+            }
+        ]
     }
 ]
