@@ -1,5 +1,5 @@
 {
-    "date": "12/17/2019 00:57:48",
+    "date": "12/18/2019 01:04:45",
     "failed": [
         "OnnxBackendNodeModelTest::test_averagepool_2d_ceil_cpu",
         "OnnxBackendNodeModelTest::test_bitshift_left_uint16_cpu",
@@ -126,7 +126,6 @@
         "OnnxBackendNodeModelTest::test_scatter_elements_without_axis_cpu",
         "OnnxBackendNodeModelTest::test_scatter_with_axis_cpu",
         "OnnxBackendNodeModelTest::test_scatter_without_axis_cpu",
-        "OnnxBackendNodeModelTest::test_scatternd_cpu",
         "OnnxBackendNodeModelTest::test_simple_rnn_defaults_cpu",
         "OnnxBackendNodeModelTest::test_simple_rnn_with_initial_bias_cpu",
         "OnnxBackendNodeModelTest::test_slice_cpu",
@@ -504,6 +503,7 @@
         "OnnxBackendNodeModelTest::test_relu_cpu",
         "OnnxBackendNodeModelTest::test_reversesequence_batch_cpu",
         "OnnxBackendNodeModelTest::test_reversesequence_time_cpu",
+        "OnnxBackendNodeModelTest::test_scatternd_cpu",
         "OnnxBackendNodeModelTest::test_selu_cpu",
         "OnnxBackendNodeModelTest::test_selu_default_cpu",
         "OnnxBackendNodeModelTest::test_selu_example_cpu",
