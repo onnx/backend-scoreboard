@@ -302,5 +302,21 @@
                 "version": "1.1.0.dev1226"
             }
         ]
+    },
+    {
+        "date": "12/30/2019 00:04:59",
+        "failed": 58,
+        "passed": 643,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.6.0"
+            },
+            {
+                "name": "ort-nightly",
+                "version": "1.1.0.dev1228"
+            }
+        ]
     }
 ]
