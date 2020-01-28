@@ -3,13 +3,6 @@ body {
     background-color: #ffffff;
 }
 
-.block-blue {
-    padding-top: 65pt;
-    padding-bottom: 15pt;
-    color: #ffffff;
-    background-color: #0071bc;
-}
-
 a {
     font-size: 9pt;
     color: #1fa2ff;
@@ -34,8 +27,6 @@ input:focus {
 
 h1 {
     color: #ffffff;
-    /* margin: 2vh;
-    padding: 3vh; */
     text-align: center;
 }
 
@@ -63,6 +54,13 @@ hr {
     padding: 0;
 }
 
+.block-blue {
+    padding-top: 65pt;
+    padding-bottom: 15pt;
+    color: #ffffff;
+    background-color: #0071bc;
+}
+
 .navbar-custom{
     font-family: "Open Sans", sans-serif;
     max-width: 1600px;
@@ -71,21 +69,25 @@ hr {
     -webkit-transition:all 200ms ease-in-out;
     transition:all 200ms ease-in-out;
 }
+
 header.fixed-top.scrolled .navbar-custom{
     padding: 5pt 1rem;
     -webkit-transition:all 200ms ease-in-out;
     transition:all 200ms ease-in-out;
 }
+
 header.fixed-top .navbar-custom img.onnx-logo{
     height: 30pt;
     -webkit-transition:all 200ms ease-in-out;
     transition:all 200ms ease-in-out;
 }
+
 header.fixed-top{
     top: 0;
     -webkit-transition:all 200ms ease-in-out;
     transition:all 200ms ease-in-out;
 }
+
 header.fixed-top.scrolled{
     position:fixed;
     padding: 0 0;    
@@ -105,9 +107,11 @@ header.fixed-top.scrolled{
     padding: 0;
     line-height: 1;    
 }
+
 .navbar-custom .navbar-nav .nav-link:focus{
     outline: 1px solid #ffffff;
 }
+
 .navbar-custom .navbar-nav .nav-item{
     padding: .5rem 0 .5rem 1rem;
 }
@@ -238,12 +242,12 @@ header.fixed-top.scrolled{
 }
 
 .C {
-    color: #a2d8ff;
+    color: #93d0fc;
     font-size: 30pt;
 }
 
 .D {
-    color: #c1ddf1;
+    color: #b7cddd;
     font-size: 30pt;
 }
 
@@ -256,6 +260,15 @@ header.fixed-top.scrolled{
     .navbar-custom .navbar-nav .nav-item:not(:last-child) .nav-link{
         border-right: none;
     }
+    
+    .navbar-toggler .navbar-toggler-icon {
+        background-image: url('../images/menu-icon.svg');
+        width: 40px;
+        height: 30px;
+        -webkit-transition:0.2s;
+        transition:0.2s;
+    }
+    
     header.header-collapse .navbar-custom .navbar-collapse{
       border-top:1px solid #ffffff;
       background-color: #000000;
