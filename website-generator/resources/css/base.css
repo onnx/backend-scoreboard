@@ -1,23 +1,30 @@
 body {
-    color: #c7d4d3;
-    background-color: #042c34;
+    color: #0071bc;
+    background-color: #ffffff;
+}
+
+.block-blue {
+    padding-top: 65pt;
+    padding-bottom: 15pt;
+    color: #ffffff;
+    background-color: #0071bc;
 }
 
 a {
     font-size: 9pt;
-    color: #00ffea;
+    color: #1fa2ff;
 }
 
 a:hover {
-    color: #00998c;
+    color: #96dbf9;
     text-decoration: none;
 }
 
 input[type=text] {
     border: none;
-    border-bottom: 2px solid #00998c;
+    border-bottom: 2px solid #1fa2ff;
     background-color: transparent;
-    color: #00ffea;
+    color: #0071bc;
     font-size: 10pt;
 }
 
@@ -26,9 +33,9 @@ input:focus {
 }
 
 h1 {
-    color: #c7d4d3;
-    margin: 2vh;
-    padding: 3vh;
+    color: #ffffff;
+    /* margin: 2vh;
+    padding: 3vh; */
     text-align: center;
 }
 
@@ -51,13 +58,62 @@ hr {
     display: block;
     height: 1px;
     border: 0;
-    border-top: 1px solid #c7d4d3;
+    border-top: 1px solid #ffffff;
     margin: 1em 0;
     padding: 0;
 }
 
+.navbar-custom{
+    font-family: "Open Sans", sans-serif;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 5pt 1rem;
+    -webkit-transition:all 200ms ease-in-out;
+    transition:all 200ms ease-in-out;
+}
+header.fixed-top.scrolled .navbar-custom{
+    padding: 5pt 1rem;
+    -webkit-transition:all 200ms ease-in-out;
+    transition:all 200ms ease-in-out;
+}
+header.fixed-top .navbar-custom img.onnx-logo{
+    height: 30pt;
+    -webkit-transition:all 200ms ease-in-out;
+    transition:all 200ms ease-in-out;
+}
+header.fixed-top{
+    top: 0;
+    -webkit-transition:all 200ms ease-in-out;
+    transition:all 200ms ease-in-out;
+}
+header.fixed-top.scrolled{
+    position:fixed;
+    padding: 0 0;    
+    background-color: rgb(0, 0, 0);
+    -webkit-transition:all 200ms ease-in-out;
+    transition:all 200ms ease-in-out;
+} 
+
+.navbar-custom .navbar-nav .nav-item:not(:last-child) .nav-link{
+    border-right: 2px solid #1fa2ff;   
+}
+
+.navbar-custom .navbar-nav .nav-link{
+    color: #ffffff;
+    font-weight: bold;
+    position: relative;
+    padding: 0;
+    line-height: 1;    
+}
+.navbar-custom .navbar-nav .nav-link:focus{
+    outline: 1px solid #ffffff;
+}
+.navbar-custom .navbar-nav .nav-item{
+    padding: .5rem 0 .5rem 1rem;
+}
+
 .header-link:hover {
-    color: #00998c;
+    color: #96dbf9;
 }
 
 .search {
@@ -84,26 +140,26 @@ hr {
 .nav-tabs .nav-item .nav-link {
     border-bottom: 0px;
     background-color: transparent;
-    color: #00998c;
+    color: #7ed4f8;
     font-size: 10pt;
 }
 
 .nav-tabs .nav-item .nav-link:hover {
     border-bottom: 0px;
     background-color: transparent;
-    color: #00ffea;
+    color: #1fa2ff;
     font-size: 10pt;
 }
 
 .nav-tabs .nav-item .nav-link.active {
     border-bottom: 0px;
     background-color: transparent;
-    color: #00ffea;
+    color: #1fa2ff;
     font-size: 10pt;
 }
 
 .section {
-    padding: 30pt;
+    padding: 10pt;
 }
 
 .min-section {
@@ -119,20 +175,20 @@ hr {
 .navigation {
     text-align: center;
     font-size: 9pt;
-    fill: #00ffea;
+    fill: #1fa2ff;
 }
 
 .navigation:hover {
     font-size: 9pt;
-    fill: #00998c;
+    fill: #96dbf9;
 }
 
 .svg-stroke {
-    stroke: #00ffea;
+    stroke: #1fa2ff;
 }
 
 .svg-stroke:hover {
-    stroke: #00998c;
+    stroke: #96dbf9;
 }
 
 .table-chart {
@@ -141,8 +197,9 @@ hr {
 }
 
 .table {
-    color: #c7d4d3;
-    border-bottom: 1px solid #c7d4d3;
+    color: #000000;
+    border-bottom: 1px solid #dfdfdf;
+    background-color: #ffffff;
 }
 
 .transposed {
@@ -163,34 +220,46 @@ hr {
 }
 
 .passed {
-    color: #adff2f;
+    color: #1fa2ff;
 }
 
 .failed {
-    color: #f81f1f;
+    color: #99a5ad;
 }
 
 .A {
-    color: #adff2f;
+    color: #1fa2ff;
     font-size: 30pt;
 }
 
 .B {
-    color: #d0ff00;
+    color: #68c0ff;
     font-size: 30pt;
 }
 
 .C {
-    color: #fbff00;
+    color: #a2d8ff;
     font-size: 30pt;
 }
 
 .D {
-    color: #e9ac27;
+    color: #c1ddf1;
     font-size: 30pt;
 }
 
 .F {
-    color: #f81f1f;
+    color: #b3bfc7;
     font-size: 30pt;
+}
+
+@media only screen and (max-width: 991px) {
+    .navbar-custom .navbar-nav .nav-item:not(:last-child) .nav-link{
+        border-right: none;
+    }
+    header.header-collapse .navbar-custom .navbar-collapse{
+      border-top:1px solid #ffffff;
+      background-color: #000000;
+      -webkit-transition:0.3s;
+      transition:0.3s;
+    }
 }

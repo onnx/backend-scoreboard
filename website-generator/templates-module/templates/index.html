@@ -3,54 +3,58 @@
 {% block content %}
 <!-- Database is a dictionary that contains test results for each backend.
 It is prepared by generator.py script and passed to the charts by database attribute. -->
-<div class="container-fluid" id="content" database='{{ database|tojson }}'>
-    <div class="row justify-content-center">
-        <div class="col-auto">
-            <h1>ONNX Backend Scoreboard</h1>
-        </div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="col-auto">
-            <p>Score is based on ONNX backend unit tests.</p>
-        </div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="col-auto">
-            {% if not development_versions_selected %}
-                <a href="backends_comparison_stable.html" class="navigation">
-                    {%include "svg_list.svg"%}
-                    Go to backends comparison
+<div id="content" database='{{ database|tojson }}'>
+    <div class="container-fluid">
+         <div class="row justify-content-center block-blue">
+            <div class="col-auto">
+                <a href="index.html">
+                    <h1 class="header-link">ONNX Backend Scoreboard</h1>
                 </a>
-            {% endif %}
+            </div>
         </div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="col-auto">
-            {% if development_versions_selected %}
-                <a href="index.html" class="navigation">
-                    {%include "svg_switch_left.svg" %}
-                    Switch to stable builds
-                </a>
-            {% else %}
-                <a href="index_dev.html" class="navigation">
-                    {%include "svg_switch_right.svg" %}
-                    Switch to development builds
-                </a>
-            {% endif %}
+        <div class="row justify-content-center section">
+            <div class="col-auto">
+                <p>Score is based on ONNX backend unit tests.</p>
+            </div>
         </div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="col-auto">
-            {% if development_versions_selected %}
-                <h5>Development Builds</h5>
-            {% else %}
-                <h5>Stable Builds</h5>
-            {% endif %}
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                {% if not development_versions_selected %}
+                    <a href="backends_comparison_stable.html" class="navigation">
+                        {%include "svg_list.svg"%}
+                        Go to backends comparison
+                    </a>
+                {% endif %}
+            </div>
         </div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="col-auto">
-            {%include "score_table_home.html" %}
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                {% if development_versions_selected %}
+                    <a href="index.html" class="navigation">
+                        {%include "svg_switch_left.svg" %}
+                        Switch to stable builds
+                    </a>
+                {% else %}
+                    <a href="index_dev.html" class="navigation">
+                        {%include "svg_switch_right.svg" %}
+                        Switch to development builds
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row justify-content-center section">
+            <div class="col-auto">
+                {% if development_versions_selected %}
+                    <h5>Development Builds</h5>
+                {% else %}
+                    <h5>Stable Builds</h5>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                {%include "score_table_home.html" %}
+            </div>
         </div>
     </div>
 </div>
