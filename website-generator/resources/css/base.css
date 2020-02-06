@@ -61,7 +61,6 @@ hr {
     background-color: #0071bc;
 }
 
-
 .search {
     display: block;
     margin: auto;
@@ -99,17 +98,12 @@ hr {
 }
 
 .section {
-    padding: 10pt;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
-.min-section {
-    padding: 10pt;
-    max-width: 50vw;
-}
-
-.max-section {
-    padding: 50pt;
-    min-width: 90vw;
+.section-score {
+    padding-bottom: 50pt;
 }
 
 .navigation {
@@ -257,17 +251,21 @@ header.fixed-top.scrolled{
 .footer {
     background-color: #333333;
     text-align: left;
-    align-items: center;
-    justify-content: center;
 }
-.footer h2{
+
+.footer h2 {
     font-size: 30px;
 }
-.footer .footer-heading{
+
+.footer h3 {
     color:#1fa2ff;
-    font-size:25px;   
+    font-size:25px;
+    margin: auto auto 0 0;
+    padding-left: 0;
+    text-align: left;
 }
-.footer a{
+
+.footer a {
     font-size:18px;    
     color:#1fa2ff;
     text-decoration: none;
@@ -275,6 +273,7 @@ header.fixed-top.scrolled{
     position: relative;
     display: inline-block;
 }
+
 .footer a .fa-twitter{
     font-size:30px;   
 }
