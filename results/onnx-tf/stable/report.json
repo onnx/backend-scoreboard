@@ -1,5 +1,5 @@
 {
-    "date": "04/11/2020 00:16:34",
+    "date": "04/12/2020 00:18:56",
     "failed": [
         "OnnxBackendNodeModelTest::test_bitshift_left_uint16_cpu",
         "OnnxBackendNodeModelTest::test_bitshift_left_uint32_cpu",
