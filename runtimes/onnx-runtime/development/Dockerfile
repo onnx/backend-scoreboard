@@ -3,11 +3,12 @@ FROM ubuntu:18.04
 # Disable interactive installation mode
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Install Python dependencies
+# Install Python and locales dependencies
 RUN apt-get update && apt-get install -y \
     python3 \
     python3-dev \
-    python3-pip && \
+    python3-pip \
+    locales && \
     apt-get clean autoclean && apt-get autoremove -y
 
 RUN pip3 install --upgrade pip setuptools wheel
@@ -21,6 +22,9 @@ RUN pip3 install --no-cache-dir -r /root/setup/requirements_report.txt
 
 ############## ONNX Backend dependencies ###########
 ENV ONNX_BACKEND="onnxruntime.backend.backend"
+
+# Set locale which is required for StringNormalizer
+RUN locale-gen en_US.UTF-8 && update-locale LANG=en_US.UTF-8
 
 # Install dependencies
 RUN pip3 install onnx
