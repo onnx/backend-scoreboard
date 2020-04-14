@@ -1,5 +1,5 @@
 {
-    "date": "04/13/2020 00:08:04",
+    "date": "04/14/2020 00:09:43",
     "failed": [
         "OnnxBackendNodeModelTest::test_bitshift_left_uint16_cpu",
         "OnnxBackendNodeModelTest::test_bitshift_right_uint16_cpu",
@@ -12,12 +12,6 @@
         "OnnxBackendNodeModelTest::test_resize_upsample_sizes_nearest_ceil_half_pixel_cpu",
         "OnnxBackendNodeModelTest::test_resize_upsample_sizes_nearest_floor_align_corners_cpu",
         "OnnxBackendNodeModelTest::test_resize_upsample_sizes_nearest_round_prefer_ceil_asymmetric_cpu",
-        "OnnxBackendNodeModelTest::test_strnormalizer_export_monday_casesensintive_lower_cpu",
-        "OnnxBackendNodeModelTest::test_strnormalizer_export_monday_casesensintive_nochangecase_cpu",
-        "OnnxBackendNodeModelTest::test_strnormalizer_export_monday_casesensintive_upper_cpu",
-        "OnnxBackendNodeModelTest::test_strnormalizer_export_monday_empty_output_cpu",
-        "OnnxBackendNodeModelTest::test_strnormalizer_export_monday_insensintive_upper_twodim_cpu",
-        "OnnxBackendNodeModelTest::test_strnormalizer_nostopwords_nochangecase_cpu",
         "OnnxBackendNodeModelTest::test_unique_not_sorted_without_axis_cpu",
         "OnnxBackendPyTorchConvertedModelTest::test_AvgPool1d_cpu",
         "OnnxBackendPyTorchConvertedModelTest::test_AvgPool1d_stride_cpu",
@@ -52,13 +46,7 @@
         "OnnxBackendPyTorchOperatorModelTest::test_operator_mm_cpu",
         "OnnxBackendPyTorchOperatorModelTest::test_operator_non_float_params_cpu",
         "OnnxBackendPyTorchOperatorModelTest::test_operator_params_cpu",
-        "OnnxBackendPyTorchOperatorModelTest::test_operator_pow_cpu",
-        "OnnxBackendSimpleModelTest::test_strnorm_model_monday_casesensintive_lower_cpu",
-        "OnnxBackendSimpleModelTest::test_strnorm_model_monday_casesensintive_nochangecase_cpu",
-        "OnnxBackendSimpleModelTest::test_strnorm_model_monday_casesensintive_upper_cpu",
-        "OnnxBackendSimpleModelTest::test_strnorm_model_monday_empty_output_cpu",
-        "OnnxBackendSimpleModelTest::test_strnorm_model_monday_insensintive_upper_twodim_cpu",
-        "OnnxBackendSimpleModelTest::test_strnorm_model_nostopwords_nochangecase_cpu"
+        "OnnxBackendPyTorchOperatorModelTest::test_operator_pow_cpu"
     ],
     "passed": [
         "OnnxBackendNodeModelTest::test_abs_cpu",
@@ -545,6 +533,12 @@
         "OnnxBackendNodeModelTest::test_sqrt_example_cpu",
         "OnnxBackendNodeModelTest::test_squeeze_cpu",
         "OnnxBackendNodeModelTest::test_squeeze_negative_axes_cpu",
+        "OnnxBackendNodeModelTest::test_strnormalizer_export_monday_casesensintive_lower_cpu",
+        "OnnxBackendNodeModelTest::test_strnormalizer_export_monday_casesensintive_nochangecase_cpu",
+        "OnnxBackendNodeModelTest::test_strnormalizer_export_monday_casesensintive_upper_cpu",
+        "OnnxBackendNodeModelTest::test_strnormalizer_export_monday_empty_output_cpu",
+        "OnnxBackendNodeModelTest::test_strnormalizer_export_monday_insensintive_upper_twodim_cpu",
+        "OnnxBackendNodeModelTest::test_strnormalizer_nostopwords_nochangecase_cpu",
         "OnnxBackendNodeModelTest::test_sub_bcast_cpu",
         "OnnxBackendNodeModelTest::test_sub_cpu",
         "OnnxBackendNodeModelTest::test_sub_example_cpu",
@@ -703,7 +697,13 @@
         "OnnxBackendSimpleModelTest::test_sequence_model7_cpu",
         "OnnxBackendSimpleModelTest::test_shrink_cpu",
         "OnnxBackendSimpleModelTest::test_sign_model_cpu",
-        "OnnxBackendSimpleModelTest::test_single_relu_model_cpu"
+        "OnnxBackendSimpleModelTest::test_single_relu_model_cpu",
+        "OnnxBackendSimpleModelTest::test_strnorm_model_monday_casesensintive_lower_cpu",
+        "OnnxBackendSimpleModelTest::test_strnorm_model_monday_casesensintive_nochangecase_cpu",
+        "OnnxBackendSimpleModelTest::test_strnorm_model_monday_casesensintive_upper_cpu",
+        "OnnxBackendSimpleModelTest::test_strnorm_model_monday_empty_output_cpu",
+        "OnnxBackendSimpleModelTest::test_strnorm_model_monday_insensintive_upper_twodim_cpu",
+        "OnnxBackendSimpleModelTest::test_strnorm_model_nostopwords_nochangecase_cpu"
     ],
     "skipped": []
 }
