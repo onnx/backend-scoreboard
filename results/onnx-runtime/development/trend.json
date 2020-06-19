@@ -1374,5 +1374,21 @@
                 "version": "1.3.1.dev202006171"
             }
         ]
+    },
+    {
+        "date": "06/19/2020 00:05:08",
+        "failed": 64,
+        "passed": 831,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.7.0"
+            },
+            {
+                "name": "ort-nightly",
+                "version": "1.3.1.dev202006172"
+            }
+        ]
     }
 ]
