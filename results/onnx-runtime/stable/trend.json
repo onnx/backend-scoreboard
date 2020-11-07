@@ -238,5 +238,21 @@
                 "version": "1.5.2"
             }
         ]
+    },
+    {
+        "date": "11/07/2020 00:03:48",
+        "failed": 256,
+        "passed": 657,
+        "skipped": 9,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.8.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.5.2"
+            }
+        ]
     }
 ]
