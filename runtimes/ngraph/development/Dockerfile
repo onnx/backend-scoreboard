@@ -1,10 +1,12 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 # Disable interactive installation mode
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Install Python dependencies
 RUN apt-get update && apt-get install -y \
+    python \
+    python-dev \
     python3 \
     python3-dev \
     python3-pip && \
@@ -26,7 +28,6 @@ ENV ONNX_BACKEND="ngraph_onnx.onnx_importer.backend"
 RUN apt-get update && apt-get install -y \
     build-essential \
     cmake \
-    clang-3.9 \
     git \
     unzip \
     curl \
