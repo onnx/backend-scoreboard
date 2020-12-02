@@ -158,5 +158,25 @@
                 "version": "1.15.4"
             }
         ]
+    },
+    {
+        "date": "12/02/2020 00:03:17",
+        "failed": 0,
+        "passed": 0,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.8.0"
+            },
+            {
+                "name": "onnx-tf",
+                "version": "1.7.0"
+            },
+            {
+                "name": "tensorflow",
+                "version": "1.15.4"
+            }
+        ]
     }
 ]
