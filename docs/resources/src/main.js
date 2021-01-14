@@ -1,3 +1,7 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 const palette = {
   passed: '#1fa2ff',
   failed: '#c1ddf1',

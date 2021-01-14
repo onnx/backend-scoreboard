@@ -1,3 +1,5 @@
+<!--- SPDX-License-Identifier: Apache-2.0 -->
+
 # ONNX Backend Scoreboard
 
 This is a repository of the ONNX Backend Scoreboard which measures the compliance of ONNX backends with the standard.

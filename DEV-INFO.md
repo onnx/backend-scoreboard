@@ -1,11 +1,13 @@
+<!--- SPDX-License-Identifier: Apache-2.0 -->
+
 # Debugging commands
 
 The following commands may be useful, if you would like to reproduce the Scoreboard locally for testing.
 
 ### Configuration file
 
-Configuration in the `config.json` file contains a list of frameworks included in ONNX Backend Scoreboard. 
-This is a place for base information like results paths and core packages names. 
+Configuration in the `config.json` file contains a list of frameworks included in ONNX Backend Scoreboard.
+This is a place for base information like results paths and core packages names.
 Each new runtime has to be added to this file.
 
 Example of `config.json` file:
@@ -83,8 +85,8 @@ docker build -t scoreboard-<backend> \
 
 ## Run Docker containers
 
-Running a Docker container based on the previously prepared image, will run ONNX tests and 
-store results in the directory specified as `results_dir` in `config.json`.  
+Running a Docker container based on the previously prepared image, will run ONNX tests and
+store results in the directory specified as `results_dir` in `config.json`.
 
 ### Stable
 
@@ -108,12 +110,12 @@ store results in the directory specified as `results_dir` in `config.json`.
 
 ## Generation of the Scoreboard pages
 
-From the main directory of the repository, issue the following command: 
+From the main directory of the repository, issue the following command:
 
 `python3 website-generator/generator.py --config ./setup/config.json`
 
 where `--config` parameter is the path to `config.json` file.
 
-This will generate an HTML version of the Scoreboard in the `docs` directory 
+This will generate an HTML version of the Scoreboard in the `docs` directory
 (or another specified in `deploy_paths` in `config.json`).
 

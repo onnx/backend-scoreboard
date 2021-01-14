@@ -1,3 +1,5 @@
+<!--- SPDX-License-Identifier: Apache-2.0 -->
+
 ## How to add new backend to the scoreboard?
 
 The following tutorial provides steps needed to add an ONNX backend named `new_backend` to the Scoreboard.

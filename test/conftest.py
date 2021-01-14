@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: Apache-2.0
+
 """Implementation of hook functions for pytest.
 
 Pytest calls hook functions to implement

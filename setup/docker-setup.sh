@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# SPDX-License-Identifier: Apache-2.0
+
+
 # This script contains all commands which need to be executed
 # before running the tests.
 
