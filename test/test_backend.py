@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: Apache-2.0
+
 """ONNX backend test initialization."""
 
 import importlib

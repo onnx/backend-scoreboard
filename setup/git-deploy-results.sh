@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# SPDX-License-Identifier: Apache-2.0
+
+
 set -e  # Exit on error
 set -x  # Command echo on
 

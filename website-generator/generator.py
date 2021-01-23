@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: Apache-2.0
+
 """Static page generator based on jinja2 templates API.
 
 Jinja2 docs: https://jinja.palletsprojects.com/en/2.10.x/api/

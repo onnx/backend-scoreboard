@@ -1,3 +1,7 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 // Generate bar chart
 (function () {
   const content = document.getElementById('content');
