@@ -35,14 +35,19 @@ ENV ONNX_BACKEND="onnxruntime.backend.backend"
 # Set locale which is required for StringNormalizer
 RUN locale-gen en_US.UTF-8 && update-locale LANG=en_US.UTF-8
 
-# Install dependencies
+# Temporarily build ONNX from source due to bug fixed in PR #3256 in onnx/onnx
+# After ONNX>1.8.1 is released, revert https://github.com/onnx/backend-scoreboard/pull/24
 RUN mkdir /root/app && \
     cd /root/app && \
-    git clone -b etusien/fix_get_schema https://github.com/Ewa21/onnx.git && \
+    git clone https://github.com/onnx/onnx.git && \
     cd onnx && \
     git submodule update --init --recursive && \
     python3.7 setup.py install
-RUN pip3 install onnxruntime
+
+# Install dependencies
+RUN pip3 install \
+    # onnx \
+    onnxruntime 
 ####################################################
 
 CMD . /root/setup/docker-setup.sh && \
