@@ -366,6 +366,8 @@
                 
                         <th class="testName" scope="row">OnnxBackendNodeModelTest :: test_constantofshape_int_zeros_cpu</th>
                 
+                        <th class="testName" scope="row">OnnxBackendNodeModelTest :: test_conv_with_autopad_same_cpu</th>
+                
                         <th class="testName" scope="row">OnnxBackendNodeModelTest :: test_conv_with_strides_and_asymmetric_padding_cpu</th>
                 
                         <th class="testName" scope="row">OnnxBackendNodeModelTest :: test_conv_with_strides_no_padding_cpu</th>
@@ -377,6 +379,8 @@
                         <th class="testName" scope="row">OnnxBackendNodeModelTest :: test_convtranspose_1d_cpu</th>
                 
                         <th class="testName" scope="row">OnnxBackendNodeModelTest :: test_convtranspose_3d_cpu</th>
+                
+                        <th class="testName" scope="row">OnnxBackendNodeModelTest :: test_convtranspose_autopad_same_cpu</th>
                 
                         <th class="testName" scope="row">OnnxBackendNodeModelTest :: test_convtranspose_cpu</th>
                 
@@ -609,6 +613,8 @@
                         <th class="testName" scope="row">OnnxBackendNodeModelTest :: test_hardsigmoid_example_cpu</th>
                 
                         <th class="testName" scope="row">OnnxBackendNodeModelTest :: test_identity_cpu</th>
+                
+                        <th class="testName" scope="row">OnnxBackendNodeModelTest :: test_identity_sequence_cpu</th>
                 
                         <th class="testName" scope="row">OnnxBackendNodeModelTest :: test_if_cpu</th>
                 
@@ -1177,6 +1183,8 @@
                         <th class="testName" scope="row">OnnxBackendNodeModelTest :: test_reflect_pad_cpu</th>
                 
                         <th class="testName" scope="row">OnnxBackendNodeModelTest :: test_relu_cpu</th>
+                
+                        <th class="testName" scope="row">OnnxBackendNodeModelTest :: test_reshape_allowzero_reordered_cpu</th>
                 
                         <th class="testName" scope="row">OnnxBackendNodeModelTest :: test_reshape_extended_dims_cpu</th>
                 
@@ -1760,7 +1768,11 @@
                 
                         <th class="testName" scope="row">OnnxBackendPyTorchConvertedModelTest :: test_MaxPool1d_stride_cpu</th>
                 
+                        <th class="testName" scope="row">OnnxBackendPyTorchConvertedModelTest :: test_MaxPool1d_stride_padding_dilation_cpu</th>
+                
                         <th class="testName" scope="row">OnnxBackendPyTorchConvertedModelTest :: test_MaxPool2d_cpu</th>
+                
+                        <th class="testName" scope="row">OnnxBackendPyTorchConvertedModelTest :: test_MaxPool2d_stride_padding_dilation_cpu</th>
                 
                         <th class="testName" scope="row">OnnxBackendPyTorchConvertedModelTest :: test_MaxPool3d_cpu</th>
                 
@@ -2740,8 +2752,8 @@
                 </td>
             
                 <td class="testResult" >
-                    <div class='passed'>
-                        Passed
+                    <div class='skipped'>
+                        Skipped
                     </div>
                 </td>
             
@@ -2772,6 +2784,18 @@
                 <td class="testResult" >
                     <div class='passed'>
                         Passed
+                    </div>
+                </td>
+            
+                <td class="testResult" >
+                    <div class='passed'>
+                        Passed
+                    </div>
+                </td>
+            
+                <td class="testResult" >
+                    <div class='skipped'>
+                        Skipped
                     </div>
                 </td>
             
@@ -3468,6 +3492,12 @@
                 <td class="testResult" >
                     <div class='passed'>
                         Passed
+                    </div>
+                </td>
+            
+                <td class="testResult" >
+                    <div class='failed'>
+                        Failed
                     </div>
                 </td>
             
@@ -5176,6 +5206,12 @@
                 </td>
             
                 <td class="testResult" >
+                    <div class='skipped'>
+                        Skipped
+                    </div>
+                </td>
+            
+                <td class="testResult" >
                     <div class='passed'>
                         Passed
                     </div>
@@ -6894,6 +6930,18 @@
                 <td class="testResult" >
                     <div class='failed'>
                         Failed
+                    </div>
+                </td>
+            
+                <td class="testResult" >
+                    <div class='passed'>
+                        Passed
+                    </div>
+                </td>
+            
+                <td class="testResult" >
+                    <div class='passed'>
+                        Passed
                     </div>
                 </td>
             
@@ -13363,6 +13411,18 @@
             
                 <th class="testName" scope="row">Xor</th>
             
+                <th class="testName" scope="row">Celu</th>
+            
+                <th class="testName" scope="row">Einsum</th>
+            
+                <th class="testName" scope="row">GreaterOrEqual</th>
+            
+                <th class="testName" scope="row">LessOrEqual</th>
+            
+                <th class="testName" scope="row">NegativeLogLikelihoodLoss</th>
+            
+                <th class="testName" scope="row">SoftmaxCrossEntropyLoss</th>
+            
                 <th class="testName" scope="row">Summary</th>
             
         </tr>
@@ -13695,168 +13755,6 @@
             </td>
         
             <td class="testResult">
-                <div class='failed'>
-                    Failed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='failed'>
-                    Failed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='failed'>
-                    Failed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='failed'>
-                    Failed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='failed'>
-                    Failed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
                 <div class='passed'>
                     Passed
                 </div>
@@ -13935,218 +13833,32 @@
             </td>
         
             <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
                 <div class='failed'>
                     Failed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='failed'>
-                    Failed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
-                </div>
-            </td>
-        
-            <td class="testResult">
-                <div class='passed'>
-                    Passed
                 </div>
             </td>
         
@@ -14271,6 +13983,60 @@
             </td>
         
             <td class="testResult">
+                <div class='failed'>
+                    Failed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='failed'>
+                    Failed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='failed'>
+                    Failed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='failed'>
+                    Failed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
                 <div class='passed'>
                     Passed
                 </div>
@@ -14307,8 +14073,338 @@
             </td>
         
             <td class="testResult">
-                <div class='145/156 node tests passed'>
-                    145/156 
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='failed'>
+                    Failed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='passed'>
+                    Passed
+                </div>
+            </td>
+        
+            <td class="testResult">
+                <div class='152/162 node tests passed'>
+                    152/162 
                 </div>
             </td>
         
