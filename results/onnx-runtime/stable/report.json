@@ -1,5 +1,5 @@
 {
-    "date": "02/11/2021 00:08:21",
+    "date": "02/12/2021 00:07:17",
     "failed": [
         "OnnxBackendNodeModelTest::test_bitshift_left_uint16_cpu",
         "OnnxBackendNodeModelTest::test_bitshift_right_uint16_cpu",
@@ -7,6 +7,7 @@
         "OnnxBackendNodeModelTest::test_cast_FLOAT_to_BFLOAT16_cpu",
         "OnnxBackendNodeModelTest::test_cast_FLOAT_to_STRING_cpu",
         "OnnxBackendNodeModelTest::test_gru_seq_length_cpu",
+        "OnnxBackendNodeModelTest::test_identity_sequence_cpu",
         "OnnxBackendNodeModelTest::test_if_seq_cpu",
         "OnnxBackendNodeModelTest::test_loop13_seq_cpu",
         "OnnxBackendNodeModelTest::test_max_int16_cpu",
@@ -843,7 +844,9 @@
         "OnnxBackendPyTorchConvertedModelTest::test_LogSoftmax_cpu",
         "OnnxBackendPyTorchConvertedModelTest::test_MaxPool1d_cpu",
         "OnnxBackendPyTorchConvertedModelTest::test_MaxPool1d_stride_cpu",
+        "OnnxBackendPyTorchConvertedModelTest::test_MaxPool1d_stride_padding_dilation_cpu",
         "OnnxBackendPyTorchConvertedModelTest::test_MaxPool2d_cpu",
+        "OnnxBackendPyTorchConvertedModelTest::test_MaxPool2d_stride_padding_dilation_cpu",
         "OnnxBackendPyTorchConvertedModelTest::test_MaxPool3d_cpu",
         "OnnxBackendPyTorchConvertedModelTest::test_MaxPool3d_stride_cpu",
         "OnnxBackendPyTorchConvertedModelTest::test_MaxPool3d_stride_padding_cpu",
@@ -922,9 +925,12 @@
         "OnnxBackendNodeModelTest::test_adagrad_multiple_cpu",
         "OnnxBackendNodeModelTest::test_adam_cpu",
         "OnnxBackendNodeModelTest::test_adam_multiple_cpu",
+        "OnnxBackendNodeModelTest::test_conv_with_autopad_same_cpu",
+        "OnnxBackendNodeModelTest::test_convtranspose_autopad_same_cpu",
         "OnnxBackendNodeModelTest::test_momentum_cpu",
         "OnnxBackendNodeModelTest::test_momentum_multiple_cpu",
         "OnnxBackendNodeModelTest::test_nesterov_momentum_cpu",
+        "OnnxBackendNodeModelTest::test_reshape_allowzero_reordered_cpu",
         "OnnxBackendSimpleModelTest::test_gradient_of_add_and_mul_cpu",
         "OnnxBackendSimpleModelTest::test_gradient_of_add_cpu"
     ]
