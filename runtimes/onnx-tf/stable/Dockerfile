@@ -33,7 +33,7 @@ RUN pip3 install --no-cache-dir -r /root/setup/requirements_report.txt
 ENV ONNX_BACKEND="onnx_tf.backend"
 
 # Temporarily build ONNX from source due to bug fixed in PR #3256 in onnx/onnx
-# After ONNX>1.8.1 is released, revert https://github.com/onnx/backend-scoreboard/pull/25
+# After ONNX>1.8.1 is released, revert https://github.com/onnx/backend-scoreboard/pull/27
 RUN mkdir /root/app && \
     cd /root/app && \
     git clone https://github.com/onnx/onnx.git && \
