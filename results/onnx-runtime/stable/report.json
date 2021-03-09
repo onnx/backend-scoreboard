@@ -1,5 +1,5 @@
 {
-    "date": "03/08/2021 00:06:30",
+    "date": "03/09/2021 00:09:26",
     "failed": [
         "OnnxBackendNodeModelTest::test_bitshift_left_uint16_cpu",
         "OnnxBackendNodeModelTest::test_bitshift_right_uint16_cpu",
@@ -934,6 +934,24 @@
         "OnnxBackendNodeModelTest::test_simple_rnn_batchwise_cpu",
         "OnnxBackendNodeModelTest::test_simple_rnn_defaults_cpu",
         "OnnxBackendNodeModelTest::test_simple_rnn_with_initial_bias_cpu",
+        "OnnxBackendNodeModelTest::test_tril_cpu",
+        "OnnxBackendNodeModelTest::test_tril_neg_cpu",
+        "OnnxBackendNodeModelTest::test_tril_one_row_neg_cpu",
+        "OnnxBackendNodeModelTest::test_tril_out_neg_cpu",
+        "OnnxBackendNodeModelTest::test_tril_out_pos_cpu",
+        "OnnxBackendNodeModelTest::test_tril_pos_cpu",
+        "OnnxBackendNodeModelTest::test_tril_square_cpu",
+        "OnnxBackendNodeModelTest::test_tril_square_neg_cpu",
+        "OnnxBackendNodeModelTest::test_tril_zero_cpu",
+        "OnnxBackendNodeModelTest::test_triu_cpu",
+        "OnnxBackendNodeModelTest::test_triu_neg_cpu",
+        "OnnxBackendNodeModelTest::test_triu_one_row_cpu",
+        "OnnxBackendNodeModelTest::test_triu_out_neg_out_cpu",
+        "OnnxBackendNodeModelTest::test_triu_out_pos_cpu",
+        "OnnxBackendNodeModelTest::test_triu_pos_cpu",
+        "OnnxBackendNodeModelTest::test_triu_square_cpu",
+        "OnnxBackendNodeModelTest::test_triu_square_neg_cpu",
+        "OnnxBackendNodeModelTest::test_triu_zero_cpu",
         "OnnxBackendSimpleModelTest::test_gradient_of_add_and_mul_cpu",
         "OnnxBackendSimpleModelTest::test_gradient_of_add_cpu"
     ]
