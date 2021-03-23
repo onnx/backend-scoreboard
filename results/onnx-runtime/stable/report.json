@@ -1,5 +1,5 @@
 {
-    "date": "03/22/2021 00:09:45",
+    "date": "03/23/2021 00:10:04",
     "failed": [
         "OnnxBackendNodeModelTest::test_bitshift_left_uint16_cpu",
         "OnnxBackendNodeModelTest::test_bitshift_right_uint16_cpu",
@@ -922,6 +922,8 @@
         "OnnxBackendNodeModelTest::test_gru_defaults_cpu",
         "OnnxBackendNodeModelTest::test_gru_seq_length_cpu",
         "OnnxBackendNodeModelTest::test_gru_with_initial_bias_cpu",
+        "OnnxBackendNodeModelTest::test_hardswish_cpu",
+        "OnnxBackendNodeModelTest::test_hardswish_expanded_cpu",
         "OnnxBackendNodeModelTest::test_lstm_batchwise_cpu",
         "OnnxBackendNodeModelTest::test_lstm_defaults_cpu",
         "OnnxBackendNodeModelTest::test_lstm_with_initial_bias_cpu",
