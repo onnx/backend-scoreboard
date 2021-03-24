@@ -1,5 +1,5 @@
 {
-    "date": "03/23/2021 00:10:04",
+    "date": "03/24/2021 00:10:10",
     "failed": [
         "OnnxBackendNodeModelTest::test_bitshift_left_uint16_cpu",
         "OnnxBackendNodeModelTest::test_bitshift_right_uint16_cpu",
@@ -189,7 +189,6 @@
         "OnnxBackendNodeModelTest::test_conv_with_strides_and_asymmetric_padding_cpu",
         "OnnxBackendNodeModelTest::test_conv_with_strides_no_padding_cpu",
         "OnnxBackendNodeModelTest::test_conv_with_strides_padding_cpu",
-        "OnnxBackendNodeModelTest::test_convinteger_with_padding_cpu",
         "OnnxBackendNodeModelTest::test_convtranspose_1d_cpu",
         "OnnxBackendNodeModelTest::test_convtranspose_3d_cpu",
         "OnnxBackendNodeModelTest::test_convtranspose_cpu",
@@ -917,6 +916,8 @@
         "OnnxBackendNodeModelTest::test_adam_cpu",
         "OnnxBackendNodeModelTest::test_adam_multiple_cpu",
         "OnnxBackendNodeModelTest::test_conv_with_autopad_same_cpu",
+        "OnnxBackendNodeModelTest::test_convinteger_with_padding_cpu",
+        "OnnxBackendNodeModelTest::test_convinteger_without_padding_cpu",
         "OnnxBackendNodeModelTest::test_convtranspose_autopad_same_cpu",
         "OnnxBackendNodeModelTest::test_gru_batchwise_cpu",
         "OnnxBackendNodeModelTest::test_gru_defaults_cpu",
