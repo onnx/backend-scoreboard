@@ -19,11 +19,6 @@ Example of `config.json` file:
             "results_dir": "./results/onnx-runtime/stable",
             "core_packages": ["onnxruntime"]
         },
-        "ngraph": {
-            "name": "nGraph",
-            "results_dir": "./results/ngraph/stable",
-            "core_packages": ["ngraph-onnx", "ngraph-core"]
-        },
         "onnxtf": {
             "name": "ONNX-TF",
             "results_dir": "./results/tensorflow/stable",
@@ -34,10 +29,6 @@ Example of `config.json` file:
         "onnxruntime": {
             "name": "ONNX-Runtime",
             "results_dir": "./results/onnxruntime/development"
-        },
-        "ngraph": {
-            "name": "nGraph",
-            "results_dir": "./results/ngraph/development"
         }
     },
     "deploy_paths": {
@@ -57,9 +48,6 @@ Use these commands from the main directory of this repository to build Docker im
 * ONNX-Runtime: <br/>
 `docker build -t scoreboard-onnx -f runtimes/onnx-runtime/stable/Dockerfile .`
 
-* nGraph: <br/>
-`docker build -t scoreboard-ngraph -f runtimes/ngraph/stable/Dockerfile .`
-
 * ONNX-TF: <br/>
 `docker build -t scoreboard-tensorflow -f runtimes/tensorflow/stable/Dockerfile .`
 
@@ -67,9 +55,6 @@ Use these commands from the main directory of this repository to build Docker im
 
 * ONNX-Runtime <br/>
 `docker build -t scoreboard-onnx -f runtimes/onnx-runtime/development/Dockerfile .`
-
-* nGraph <br/>
-`docker build -t scoreboard-ngraph -f runtimes/ngraph/development/Dockerfile .`
 
 
 ###### Proxy settings
@@ -93,9 +78,6 @@ store results in the directory specified as `results_dir` in `config.json`.
 * ONNX-Runtime <br/>
 `docker run --name onnx-runtime --env-file setups/env.list -v ~/backend-scoreboard/results/onnx-runtime/stable:/root/results scoreboard/onnx`
 
-* nGraph <br/>
-`docker run --name ngraph --env-file setups/env.list -v ~/backend-scoreboard/results/ngraph/stable:/root/results scoreboard/ngraph`
-
 * ONNX-TF <br/>
 `docker run --name tensorflow --env-file setups/env.list -v ~/backend-scoreboard/results/tensorflow/stable:/root/results scoreboard/tensorflow`
 
@@ -103,9 +85,6 @@ store results in the directory specified as `results_dir` in `config.json`.
 
 * ONNX-Runtime <br/>
 `docker run --name onnx-runtime --env-file setups/env.list -v ~/backend-scoreboard/results/onnx-runtime/stable:/root/results scoreboard/onnx`
-
-* nGraph <br/>
-`docker run --name ngraph --env-file setups/env.list -v ~/backend-scoreboard/results/ngraph/development:/root/results scoreboard/ngraph`
 
 
 ## Generation of the Scoreboard pages
