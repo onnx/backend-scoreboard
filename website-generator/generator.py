@@ -280,7 +280,8 @@ def generate_page(template, output_dir, name, **template_args):
     page = template.render(template_args)
 
     # Save HTML page to file
-    with open(os.path.join(output_dir, name), "w") as f:
+    os.makedirs(output_dir, exist_ok=True)
+    with open(os.path.join(output_dir, name), "w+") as f:
         f.write(page)
 
 
