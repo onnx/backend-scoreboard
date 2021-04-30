@@ -28,7 +28,7 @@ def pytest_addoption(parser):
     parser.addoption(
         "--onnx_backend",
         help='"Select onnx backend module.\
-            Example:  --onnx_backend="ngraph_onnx.onnx_importer.backend"',
+            Example:  --onnx_backend="onnxruntime.backend.backend"',
     )
 
 
