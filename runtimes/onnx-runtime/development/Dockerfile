@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 # Disable interactive installation mode
 ENV DEBIAN_FRONTEND=noninteractive
@@ -28,7 +28,7 @@ RUN locale-gen en_US.UTF-8 && update-locale LANG=en_US.UTF-8
 
 # Install dependencies
 RUN pip3 install onnx
-RUN pip3 install -i https://test.pypi.org/simple/ ort-nightly
+RUN pip3 install ort-nightly
 ####################################################
 
 CMD . /root/setup/docker-setup.sh && \
