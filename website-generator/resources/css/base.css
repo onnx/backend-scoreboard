@@ -69,6 +69,12 @@ hr {
     min-width: 15vw;
 }
 
+.search-filter {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+
 .score-headers {
     text-align: center;
 }
@@ -375,5 +381,4 @@ p.text-copyright a:active{
       -webkit-transition: 0.3s;
       transition: 0.3s;
     }
-    
 }

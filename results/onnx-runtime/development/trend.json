@@ -3104,7 +3104,7 @@
         ]
     },
     {
-        "date": "02/08/2021 00:04:41",
+        "date": "02/12/2021 00:04:24",
         "failed": 61,
         "passed": 852,
         "skipped": 9,
@@ -3116,6 +3116,310 @@
             {
                 "name": "ort-nightly",
                 "version": "1.6.0.dev202102052"
+            }
+        ]
+    },
+    {
+        "date": "02/14/2021 00:04:53",
+        "failed": 61,
+        "passed": 852,
+        "skipped": 9,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.8.1"
+            },
+            {
+                "name": "ort-nightly",
+                "version": "1.6.0.dev202102123"
+            }
+        ]
+    },
+    {
+        "date": "02/15/2021 00:11:36",
+        "failed": 61,
+        "passed": 852,
+        "skipped": 9,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.8.1"
+            },
+            {
+                "name": "ort-nightly",
+                "version": "1.6.0.dev202102131"
+            }
+        ]
+    },
+    {
+        "date": "02/16/2021 00:04:49",
+        "failed": 61,
+        "passed": 852,
+        "skipped": 9,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.8.1"
+            },
+            {
+                "name": "ort-nightly",
+                "version": "1.6.0.dev202102151"
+            }
+        ]
+    },
+    {
+        "date": "02/17/2021 00:04:01",
+        "failed": 61,
+        "passed": 852,
+        "skipped": 9,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.8.1"
+            },
+            {
+                "name": "ort-nightly",
+                "version": "1.6.0.dev202102161"
+            }
+        ]
+    },
+    {
+        "date": "02/18/2021 00:03:57",
+        "failed": 61,
+        "passed": 852,
+        "skipped": 9,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.8.1"
+            },
+            {
+                "name": "ort-nightly",
+                "version": "1.6.0.dev202102163"
+            }
+        ]
+    },
+    {
+        "date": "02/19/2021 00:06:51",
+        "failed": 61,
+        "passed": 852,
+        "skipped": 9,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.8.1"
+            },
+            {
+                "name": "ort-nightly",
+                "version": "1.6.0.dev202102173"
+            }
+        ]
+    },
+    {
+        "date": "02/22/2021 00:06:04",
+        "failed": 61,
+        "passed": 852,
+        "skipped": 9,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.8.1"
+            },
+            {
+                "name": "ort-nightly",
+                "version": "1.7.0.dev202102191"
+            }
+        ]
+    },
+    {
+        "date": "02/23/2021 00:05:41",
+        "failed": 61,
+        "passed": 852,
+        "skipped": 9,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.8.1"
+            },
+            {
+                "name": "ort-nightly",
+                "version": "1.7.0.dev202102221"
+            }
+        ]
+    },
+    {
+        "date": "02/25/2021 00:03:58",
+        "failed": 61,
+        "passed": 852,
+        "skipped": 9,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.8.1"
+            },
+            {
+                "name": "ort-nightly",
+                "version": "1.7.0.dev202102231"
+            }
+        ]
+    },
+    {
+        "date": "02/26/2021 00:04:17",
+        "failed": 61,
+        "passed": 852,
+        "skipped": 9,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.8.1"
+            },
+            {
+                "name": "ort-nightly",
+                "version": "1.7.0.dev202102241"
+            }
+        ]
+    },
+    {
+        "date": "03/01/2021 00:04:44",
+        "failed": 61,
+        "passed": 852,
+        "skipped": 9,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.8.1"
+            },
+            {
+                "name": "ort-nightly",
+                "version": "1.7.0.dev202102251"
+            }
+        ]
+    },
+    {
+        "date": "03/02/2021 00:04:17",
+        "failed": 61,
+        "passed": 852,
+        "skipped": 9,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.8.1"
+            },
+            {
+                "name": "ort-nightly",
+                "version": "1.7.0.dev202103011"
+            }
+        ]
+    },
+    {
+        "date": "03/03/2021 00:03:59",
+        "failed": 61,
+        "passed": 852,
+        "skipped": 9,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.8.1"
+            },
+            {
+                "name": "ort-nightly",
+                "version": "1.7.0.dev202103021"
+            }
+        ]
+    },
+    {
+        "date": "03/05/2021 00:03:42",
+        "failed": 61,
+        "passed": 852,
+        "skipped": 9,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.8.1"
+            },
+            {
+                "name": "ort-nightly",
+                "version": "1.7.0.dev202103032"
+            }
+        ]
+    },
+    {
+        "date": "03/08/2021 00:04:38",
+        "failed": 61,
+        "passed": 852,
+        "skipped": 9,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.8.1"
+            },
+            {
+                "name": "ort-nightly",
+                "version": "1.7.0.dev202103051"
+            }
+        ]
+    },
+    {
+        "date": "03/09/2021 00:07:14",
+        "failed": 61,
+        "passed": 852,
+        "skipped": 9,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.8.1"
+            },
+            {
+                "name": "ort-nightly",
+                "version": "1.7.0.dev202103081"
+            }
+        ]
+    },
+    {
+        "date": "03/17/2021 00:07:03",
+        "failed": 61,
+        "passed": 852,
+        "skipped": 9,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.8.1"
+            },
+            {
+                "name": "ort-nightly",
+                "version": "1.7.0.dev202103091"
+            }
+        ]
+    },
+    {
+        "date": "03/19/2021 00:04:20",
+        "failed": 61,
+        "passed": 852,
+        "skipped": 9,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.8.1"
+            },
+            {
+                "name": "ort-nightly",
+                "version": "1.7.0.dev202103181"
+            }
+        ]
+    },
+    {
+        "date": "04/11/2021 00:07:27",
+        "failed": 61,
+        "passed": 852,
+        "skipped": 9,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.8.1"
+            },
+            {
+                "name": "ort-nightly",
+                "version": "1.7.0.dev202103191"
             }
         ]
     }
