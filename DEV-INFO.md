@@ -29,6 +29,11 @@ Example of `config.json` file:
         "onnxruntime": {
             "name": "ONNX-Runtime",
             "results_dir": "./results/onnxruntime/development"
+        },
+        "onnxtf": {
+            "name": "ONNX-TF",
+            "results_dir": "./results/tensorflow/development",
+            "core_packages": ["tensorflow"]
         }
     },
     "deploy_paths": {
@@ -55,6 +60,9 @@ Use these commands from the main directory of this repository to build Docker im
 
 * ONNX-Runtime <br/>
 `docker build -t scoreboard-onnx -f runtimes/onnx-runtime/development/Dockerfile .`
+
+* ONNX-TF: <br/>
+`docker build -t scoreboard-tensorflow -f runtimes/tensorflow/development/Dockerfile .`
 
 
 ###### Proxy settings
@@ -84,7 +92,10 @@ store results in the directory specified as `results_dir` in `config.json`.
 ### Development (build from source)
 
 * ONNX-Runtime <br/>
-`docker run --name onnx-runtime --env-file setups/env.list -v ~/backend-scoreboard/results/onnx-runtime/stable:/root/results scoreboard/onnx`
+`docker run --name onnx-runtime --env-file setups/env.list -v ~/backend-scoreboard/results/onnx-runtime/development:/root/results scoreboard/onnx`
+
+* ONNX-TF <br/>
+`docker run --name tensorflow --env-file setups/env.list -v ~/backend-scoreboard/results/tensorflow/development:/root/results scoreboard/tensorflow`
 
 
 ## Generation of the Scoreboard pages
