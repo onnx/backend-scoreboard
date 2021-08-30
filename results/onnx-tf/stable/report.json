@@ -1,5 +1,5 @@
 {
-    "date": "08/29/2021 00:07:21",
+    "date": "08/30/2021 00:09:26",
     "failed": [
         "OnnxBackendNodeModelTest::test_batchnorm_epsilon_training_mode_cpu",
         "OnnxBackendNodeModelTest::test_batchnorm_example_training_mode_cpu",
