@@ -1,5 +1,5 @@
 {
-    "date": "09/16/2021 00:07:21",
+    "date": "09/17/2021 00:09:16",
     "failed": [
         "OnnxBackendNodeModelTest::test_batchnorm_epsilon_training_mode_cpu",
         "OnnxBackendNodeModelTest::test_batchnorm_example_training_mode_cpu",
@@ -14,7 +14,6 @@
         "OnnxBackendNodeModelTest::test_castlike_FLOAT_to_STRING_expanded_cpu",
         "OnnxBackendNodeModelTest::test_conv_with_autopad_same_cpu",
         "OnnxBackendNodeModelTest::test_convtranspose_dilations_cpu",
-        "OnnxBackendNodeModelTest::test_gru_batchwise_cpu",
         "OnnxBackendNodeModelTest::test_gru_defaults_cpu",
         "OnnxBackendNodeModelTest::test_gru_seq_length_cpu",
         "OnnxBackendNodeModelTest::test_gru_with_initial_bias_cpu",
@@ -333,6 +332,7 @@
         "OnnxBackendNodeModelTest::test_greater_equal_bcast_expanded_cpu",
         "OnnxBackendNodeModelTest::test_greater_equal_cpu",
         "OnnxBackendNodeModelTest::test_greater_equal_expanded_cpu",
+        "OnnxBackendNodeModelTest::test_gru_batchwise_cpu",
         "OnnxBackendNodeModelTest::test_hardmax_axis_0_cpu",
         "OnnxBackendNodeModelTest::test_hardmax_axis_1_cpu",
         "OnnxBackendNodeModelTest::test_hardmax_axis_2_cpu",
