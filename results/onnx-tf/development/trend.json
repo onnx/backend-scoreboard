@@ -358,5 +358,25 @@
                 "version": "2.6.0"
             }
         ]
+    },
+    {
+        "date": "09/18/2021 00:08:16",
+        "failed": 71,
+        "passed": 925,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.10.1"
+            },
+            {
+                "name": "onnx-tf",
+                "version": "1.9.0"
+            },
+            {
+                "name": "tensorflow",
+                "version": "2.6.0"
+            }
+        ]
     }
 ]
