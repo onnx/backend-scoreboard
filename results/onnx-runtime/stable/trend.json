@@ -606,5 +606,21 @@
                 "version": "1.11.1"
             }
         ]
+    },
+    {
+        "date": "06/19/2022 00:02:47",
+        "failed": 156,
+        "passed": 925,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.12.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.11.1"
+            }
+        ]
     }
 ]
