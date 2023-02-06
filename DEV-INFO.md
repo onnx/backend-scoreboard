@@ -58,7 +58,7 @@ Use these commands from the main directory of this repository to build Docker im
 
 ### Development versions (built from source)
 
-* ONNX-Runtime <br/>
+* ONNX-Runtime: <br/>
 `docker build -t scoreboard-onnx -f runtimes/onnx-runtime/development/Dockerfile .`
 
 * ONNX-TF: <br/>
