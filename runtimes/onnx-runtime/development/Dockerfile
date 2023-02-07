@@ -29,7 +29,7 @@ RUN locale-gen en_US.UTF-8 && update-locale LANG=en_US.UTF-8
 # Install dependencies
 RUN pip3 install onnx
 RUN pip3 install ort-nightly
-RUN pip3 install protobuf==3.20.1
+RUN pip3 install protobuf==3.20.2
 RUN pip3 install numpy==1.22.4
 
 ####################################################
