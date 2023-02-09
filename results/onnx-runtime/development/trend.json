@@ -3518,5 +3518,21 @@
                 "version": "1.11.0.dev20220320001"
             }
         ]
+    },
+    {
+        "date": "02/09/2023 00:05:40",
+        "failed": 427,
+        "passed": 819,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.13.0"
+            },
+            {
+                "name": "ort-nightly",
+                "version": "1.11.0.dev20220320001"
+            }
+        ]
     }
 ]
