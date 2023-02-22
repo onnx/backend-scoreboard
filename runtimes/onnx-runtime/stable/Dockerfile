@@ -29,7 +29,9 @@ RUN locale-gen en_US.UTF-8 && update-locale LANG=en_US.UTF-8
 # Install dependencies
 RUN pip3 install \
     onnx \
-    onnxruntime 
+    onnxruntime \
+    protobuf==3.20.2 \
+    numpy==1.22.4
 ####################################################
 
 CMD . /root/setup/docker-setup.sh && \
