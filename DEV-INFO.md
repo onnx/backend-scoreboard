@@ -51,10 +51,10 @@ Use these commands from the main directory of this repository to build Docker im
 ### Stable versions
 
 * ONNX-Runtime: <br/>
-`docker build -t scoreboard-onnx -f runtimes/onnx-runtime/stable/Dockerfile .`
+`docker build -t scoreboard/onnx -f runtimes/onnx-runtime/stable/Dockerfile .`
 
 * ONNX-TF: <br/>
-`docker build -t scoreboard-tensorflow -f runtimes/tensorflow/stable/Dockerfile .`
+`docker build -t scoreboard/tensorflow -f runtimes/tensorflow/stable/Dockerfile .`
 
 ### Development versions (built from source)
 
