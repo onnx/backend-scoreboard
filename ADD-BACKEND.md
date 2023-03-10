@@ -51,7 +51,7 @@ For `development` version the `core_packages` list is optional:
 
 ### 3. Add new job to Azure pipelines
 
-* Edit [azure-pipeline.ylm](azure-pipeline.yml) file.
+* Edit [azure-pipelines.yml](azure-pipelines.yml) file.
 * Copy and paste this [job template](examples/job.yml) to the end of file.
 * Fill `new_backend` with the new backend unique name.
 
