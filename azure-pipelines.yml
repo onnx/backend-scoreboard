@@ -65,6 +65,31 @@ jobs:
     - script: . setup/git-deploy-results.sh
       displayName: 'Deploy results'
 
+- job: jaxonnxruntime_stable
+    timeoutInMinutes: 90
+    steps:
+    - checkout: self
+      persistCredentials: true
+      clean: true
+
+    - task: InstallSSHKey@0
+      inputs:
+        knownHostsEntry: ~/.ssh/known_hosts
+        sshPublicKey: $(public_deploy_key)
+        sshKeySecureFile: deploy_key
+
+
+    - script: docker build -t scoreboard/jaxonnxruntime -f runtimes/jaxonnxruntime/stable/Dockerfile .
+      displayName: 'Build docker image'
+
+    - script: . setup/git-setup.sh
+      displayName: 'Git setup'
+
+    - script: docker run --name jaxonnxruntime --env-file setup/env.list -v `pwd`/results/jaxonnxruntime/stable:/root/results scoreboard/jaxonnxruntime || true
+      displayName: 'Run docker container'
+
+    - script: . setup/git-deploy-results.sh
+      displayName: 'Deploy results'
 
   - job: onnxruntime_dev
     timeoutInMinutes: 90
@@ -113,6 +138,32 @@ jobs:
       displayName: 'Git setup'
 
     - script: docker run --name onnxtf --env-file setup/env.list -v `pwd`/results/onnx-tf/development:/root/results scoreboard/onnxtf || true
+      displayName: 'Run docker container'
+
+    - script: . setup/git-deploy-results.sh
+      displayName: 'Deploy results'
+
+- job: jaxonnxruntime_dev
+    timeoutInMinutes: 90
+    steps:
+    - checkout: self
+      persistCredentials: true
+      clean: true
+
+    - task: InstallSSHKey@0
+      inputs:
+        knownHostsEntry: ~/.ssh/known_hosts
+        sshPublicKey: $(public_deploy_key)
+        sshKeySecureFile: deploy_key
+
+
+    - script: docker build -t scoreboard/onnxtf -f runtimes/jaxonnxruntime/development/Dockerfile .
+      displayName: 'Build docker image'
+
+    - script: . setup/git-setup.sh
+      displayName: 'Git setup'
+
+    - script: docker run --name jaxonnxruntime --env-file setup/env.list -v `pwd`/results/jaxonnxruntime/development:/root/results scoreboard/onnxtf || true
       displayName: 'Run docker container'
 
     - script: . setup/git-deploy-results.sh

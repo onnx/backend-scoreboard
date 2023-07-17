@@ -11,6 +11,12 @@
             "results_dir": "./results/onnx-tf/stable",
             "core_packages": ["tensorflow", "onnx-tf"],
             "dockerfile_link": "runtimes/onnx-tf/stable/Dockerfile"
+        },
+        "jaxonnxruntime": {
+            "name": "JAX-ONNX-Runtime",
+            "results_dir": "./results/jaxonnxruntime/stable",
+            "core_packages": ["onnx", "jaxonnxruntime"],
+            "dockerfile_link": "runtimes/jaxonnxruntime/stable/Dockerfile"
         }
     },
     "development": {
@@ -25,6 +31,12 @@
             "results_dir": "./results/onnx-tf/development",
             "core_packages": ["tensorflow"],
             "dockerfile_link": "runtimes/onnx-tf/development/Dockerfile"
+        },
+        "jaxonnxruntime": {
+            "name": "JAX-ONNX-Runtime",
+            "results_dir": "./results/jaxonnxruntime/development",
+            "core_packages": ["onnx", "jaxonnxruntime"],
+            "dockerfile_link": "runtimes/jaxonnxruntime/development/Dockerfile"
         }
     },
     "deploy_paths": {
