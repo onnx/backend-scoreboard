@@ -26,7 +26,7 @@ ENV ONNX_BACKEND="jaxonnxruntime.backend"
 RUN pip3 install onnx
 
 # Install dependencies
-RUN pip3 install git+https://github.com/google/jaxonnxruntime.git@master
+RUN pip3 install git+https://github.com/google/jaxonnxruntime.git@main
 ####################################################
 
 CMD . /root/setup/docker-setup.sh && \
