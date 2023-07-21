@@ -163,7 +163,7 @@ jobs:
     - script: . setup/git-setup.sh
       displayName: 'Git setup'
 
-    - script: docker run --name jaxonnxruntime --env-file setup/env.list -v `pwd`/results/jaxonnxruntime/development:/root/results scoreboard/onnxtf || true
+    - script: docker run --name jaxonnxruntime --env-file setup/env.list -v `pwd`/results/jaxonnxruntime/development:/root/results scoreboard/jaxonnxruntime || true
       displayName: 'Run docker container'
 
     - script: . setup/git-deploy-results.sh
