@@ -14,7 +14,6 @@ passing and failing tests for the scoreboard.
 
 import json
 import os
-import test
 
 from datetime import datetime
 
@@ -35,7 +34,7 @@ def pytest_addoption(parser):
 def pytest_configure(config):
     """Pytest hook function."""
     onnx_backend_module = config.getvalue("onnx_backend")
-    test.ONNX_BACKEND_MODULE = onnx_backend_module
+    os.environ['ONNX_BACKEND_MODULE'] = onnx_backend_module
 
 
 def pytest_terminal_summary(terminalreporter, exitstatus, config):

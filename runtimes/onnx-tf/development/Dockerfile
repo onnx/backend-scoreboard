@@ -27,7 +27,8 @@ RUN pip3 install onnx
 
 # Install dependencies
 RUN pip3 install --no-cache-dir \
-    tensorflow
+    tensorflow \
+    tensorflow-probability
 RUN pip3 install git+https://github.com/onnx/onnx-tensorflow.git@master
 ####################################################
 

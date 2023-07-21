@@ -26,6 +26,7 @@ ENV ONNX_BACKEND="onnx_tf.backend"
 RUN pip3 install --no-cache-dir \
     onnx \
     tensorflow \
+    tensorflow-probability \
     onnx-tf
 ####################################################
 
