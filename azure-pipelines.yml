@@ -157,7 +157,7 @@ jobs:
         sshKeySecureFile: deploy_key
 
 
-    - script: docker build -t scoreboard/onnxtf -f runtimes/jaxonnxruntime/development/Dockerfile .
+    - script: docker build -t scoreboard/jaxonnxruntime -f runtimes/jaxonnxruntime/development/Dockerfile .
       displayName: 'Build docker image'
 
     - script: . setup/git-setup.sh
