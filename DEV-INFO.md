@@ -21,7 +21,7 @@ Example of `config.json` file:
         },
         "onnxtf": {
             "name": "ONNX-TF",
-            "results_dir": "./results/tensorflow/stable",
+            "results_dir": "./results/onnx-tf/stable",
             "core_packages": ["onnx-tf", "tensorflow"]
         }
     },
@@ -32,7 +32,7 @@ Example of `config.json` file:
         },
         "onnxtf": {
             "name": "ONNX-TF",
-            "results_dir": "./results/tensorflow/development",
+            "results_dir": "./results/onnx-tf/development",
             "core_packages": ["tensorflow"]
         }
     },
@@ -54,16 +54,21 @@ Use these commands from the main directory of this repository to build Docker im
 `docker build -t scoreboard/onnx -f runtimes/onnx-runtime/stable/Dockerfile .`
 
 * ONNX-TF: <br/>
-`docker build -t scoreboard/tensorflow -f runtimes/tensorflow/stable/Dockerfile .`
+`docker build -t scoreboard/onnx-tf -f runtimes/onnx-tf/stable/Dockerfile .`
+
+* JaxOnnxRuntime <br/>
+`docker build -t scoreboard/jaxonnxruntime -f runtimes/jaxonnxruntime/stable/Dockerfile .`
 
 ### Development versions (built from source)
 
 * ONNX-Runtime: <br/>
-`docker build -t scoreboard-onnx -f runtimes/onnx-runtime/development/Dockerfile .`
+`docker build -t scoreboard/onnx -f runtimes/onnx-runtime/development/Dockerfile .`
 
 * ONNX-TF: <br/>
-`docker build -t scoreboard-tensorflow -f runtimes/tensorflow/development/Dockerfile .`
+`docker build -t scoreboard/onnx-tf -f runtimes/onnx-tf/onnx-tf/Dockerfile .`
 
+* JaxOnnxRuntime <br/>
+`docker build -t scoreboard/jaxonnxruntime -f runtimes/jaxonnxruntime/development/Dockerfile .`
 
 ###### Proxy settings
 
@@ -87,7 +92,10 @@ store results in the directory specified as `results_dir` in `config.json`.
 `docker run --name onnx-runtime --env-file setup/env.list -v ~/backend-scoreboard/results/onnx-runtime/stable:/root/results scoreboard/onnx`
 
 * ONNX-TF <br/>
-`docker run --name tensorflow --env-file setup/env.list -v ~/backend-scoreboard/results/tensorflow/stable:/root/results scoreboard/tensorflow`
+`docker run --name onnx-tf --env-file setup/env.list -v ~/backend-scoreboard/results/onnx-tf/stable:/root/results scoreboard/onnx-tf`
+
+* JaxOnnxRuntime <br/>
+`docker run --name jaxonnxruntime --env-file setup/env.list -v ~/backend-scoreboard/results/jaxonnxruntime/stable:/root/results scoreboard/jaxonnxruntime`
 
 ### Development (build from source)
 
@@ -95,7 +103,11 @@ store results in the directory specified as `results_dir` in `config.json`.
 `docker run --name onnx-runtime --env-file setup/env.list -v ~/backend-scoreboard/results/onnx-runtime/development:/root/results scoreboard/onnx`
 
 * ONNX-TF <br/>
-`docker run --name tensorflow --env-file setup/env.list -v ~/backend-scoreboard/results/tensorflow/development:/root/results scoreboard/tensorflow`
+`docker run --name onnx-tf --env-file setup/env.list -v ~/backend-scoreboard/results/onnx-tf/development:/root/results scoreboard/onnx-tf`
+
+* JaxOnnxRuntime <br/>
+`docker run --name jaxonnxruntime --env-file setup/env.list -v ~/backend-scoreboard/results/jaxonnxruntime/development:/root/results scoreboard/jaxonnxruntime`
+
 
 
 ## Generation of the Scoreboard pages
