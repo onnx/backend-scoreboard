@@ -26,13 +26,13 @@ jobs:
         sshPublicKey: $(public_deploy_key)
         sshKeySecureFile: deploy_key
 
-    - script: docker build -t scoreboard/onnx -f runtimes/onnx-runtime/stable/Dockerfile .
+    - script: docker build -t scoreboard/ort -f runtimes/onnx-runtime/stable/Dockerfile .
       displayName: 'Build docker image'
 
     - script: . setup/git-setup.sh
       displayName: 'Git setup'
 
-    - script: docker run --name onnx-runtime --env-file setup/env.list -v `pwd`/results/onnx-runtime/stable:/root/results scoreboard/onnx || true
+    - script: docker run --name onnx-runtime --env-file setup/env.list -v `pwd`/results/onnx-runtime/stable:/root/results scoreboard/ort || true
       displayName: 'Run docker container'
 
     - script: . setup/git-deploy-results.sh
@@ -104,13 +104,13 @@ jobs:
         sshPublicKey: $(public_deploy_key)
         sshKeySecureFile: deploy_key
 
-    - script: docker build -t scoreboard/onnx -f runtimes/onnx-runtime/development/Dockerfile .
+    - script: docker build -t scoreboard/ort-dev -f runtimes/onnx-runtime/development/Dockerfile .
       displayName: 'Build docker image'
 
     - script: . setup/git-setup.sh
       displayName: 'Git setup'
 
-    - script: docker run --name onnx-runtime --env-file setup/env.list -v `pwd`/results/onnx-runtime/development:/root/results scoreboard/onnx || true
+    - script: docker run --name onnx-runtime --env-file setup/env.list -v `pwd`/results/onnx-runtime/development:/root/results scoreboard/ort-dev || true
       displayName: 'Run docker container'
 
     - script: . setup/git-deploy-results.sh
@@ -131,13 +131,13 @@ jobs:
         sshKeySecureFile: deploy_key
 
 
-    - script: docker build -t scoreboard/onnxtf -f runtimes/onnx-tf/development/Dockerfile .
+    - script: docker build -t scoreboard/onnxtf-dev -f runtimes/onnx-tf/development/Dockerfile .
       displayName: 'Build docker image'
 
     - script: . setup/git-setup.sh
       displayName: 'Git setup'
 
-    - script: docker run --name onnxtf --env-file setup/env.list -v `pwd`/results/onnx-tf/development:/root/results scoreboard/onnxtf || true
+    - script: docker run --name onnxtf --env-file setup/env.list -v `pwd`/results/onnx-tf/development:/root/results scoreboard/onnxtf-dev || true
       displayName: 'Run docker container'
 
     - script: . setup/git-deploy-results.sh
@@ -157,13 +157,13 @@ jobs:
         sshKeySecureFile: deploy_key
 
 
-    - script: docker build -t scoreboard/jaxonnxruntime -f runtimes/jaxonnxruntime/development/Dockerfile .
+    - script: docker build -t scoreboard/jaxonnxruntime-dev -f runtimes/jaxonnxruntime/development/Dockerfile .
       displayName: 'Build docker image'
 
     - script: . setup/git-setup.sh
       displayName: 'Git setup'
 
-    - script: docker run --name jaxonnxruntime --env-file setup/env.list -v `pwd`/results/jaxonnxruntime/development:/root/results scoreboard/jaxonnxruntime || true
+    - script: docker run --name jaxonnxruntime --env-file setup/env.list -v `pwd`/results/jaxonnxruntime/development:/root/results scoreboard/jaxonnxruntime-dev || true
       displayName: 'Run docker container'
 
     - script: . setup/git-deploy-results.sh
