@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0" defer></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous" defer></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" defer></script>
+    
+    
+        <link rel="icon" href="./resources/images/onnx-favicon.png" type="image/gif" sizes="16x16">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="./resources/css/base.css" />
+    
+    <title> ONNX Backend Scoreboard  | JAX-ONNX-Runtime</title>
+    
+    
+</head>
+
+<body>
+    <div>
+        
+            <header class="fixed-top header-content"  style="background-color: black">
+    <div class="bg-overlay">
+        <nav class="navbar navbar-expand-lg navbar-custom" aria-label="Main menu">
+            <a id="ONNXLogo" class="navbar-brand"  href="http://onnx.ai/" target="_blank">
+                <img src="resources/images/ONNX-Logo.svg" class="d-inline-block align-top onnx-logo" alt="ONNX Home" />
+            </a>
+            <button class="navbar-toggler p-0" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse border-md-top mt-md-0 mt-2" id="navbarNav">
+                <div class="mr-auto"></div>
+                <div class="my-md-2 mb-0 mt-2 my-lg-0 pl-3 pl-lg-0">
+                    <ul class="navbar-nav navbar-nav mr-auto text-uppercase" id="navigation">
+                        <li class="nav-item">
+                            <a class="nav-link pr-3" href="./index.html">SCOREBOARD</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link pr-3" href="https://github.com/onnx/backend-scoreboard/blob/master/ADD-BACKEND.md" target="_blank">ADD NEW BACKEND</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link pr-3" href="https://github.com/onnx/backend-scoreboard" target="_blank">GITHUB</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link pr-3" href="http://onnx.ai/" target="_blank">onnx.ai</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+        
+    </div>
+    <div>
+        
+<!-- Backend data is element of database and contains test results for one backend.
+It is prepared by generator.py script and passed to the charts by backend_data attribute. -->
+<div id="content" backend_data='{"coverage": {"failed": 0, "mark": "F", "passed": 0, "skipped": 0, "total": 0}, "dockerfile_link": "https://github.com/onnx/backend-scoreboard/blob/master/runtimes/jaxonnxruntime/stable/Dockerfile", "name": "JAX-ONNX-Runtime", "ops": {}, "report": {}, "trend": [{"date": "07/27/2023 06:01:12", "failed": 0, "passed": 0, "skipped": 0}]}'>
+    <div class="container-fluid">
+        <div class="row justify-content-center block-blue">
+            <div class="col-auto">
+                <a href="index.html">
+                    <h1 class="header-link">ONNX Backend Scoreboard</h1>
+                </a>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <h3>JAX-ONNX-Runtime</h3>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div>
+                <table class="table">
+    <tr class="score-headers">
+        <th scope="col">&nbsp</th>
+        <th scope="row">Version</th>
+        
+            <th scope="row">Dockerfile</th>
+        
+        <th scope="row">Date</th>
+        <th scope="row">Score</th>
+    </tr>
+    <tr>
+        <th scope="row">
+            <div class="centered">
+                JAX-ONNX-Runtime
+            </div>
+        </th>
+        <td>
+            <div class="centered">
+                
+            </div>
+        </td>
+        
+            <td>
+                <div class="centered">
+                    <div>
+                        <a href='https://github.com/onnx/backend-scoreboard/blob/master/runtimes/jaxonnxruntime/stable/Dockerfile' target="_blank" class="navigation svg-stroke">
+                            <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="navigation"><title/><g id="Docker"><g data-name="&lt;Group&gt;" id="_Group_"><circle cx="5.04" cy="16" data-name="&lt;Path&gt;" id="_Path_" r="0.5" style="fill:none;stroke-linecap:round;stroke-linejoin:round"/><rect data-name="&lt;Rectangle&gt;" height="3" id="_Rectangle_" style="fill:none;stroke-linecap:round;stroke-linejoin:round" width="3" x="1.5" y="9.5"/><rect data-name="&lt;Rectangle&gt;" height="3" id="_Rectangle_2" style="fill:none;stroke-linecap:round;stroke-linejoin:round" width="3" x="4.5" y="9.5"/><rect data-name="&lt;Rectangle&gt;" height="3" id="_Rectangle_3" style="fill:none;stroke-linecap:round;stroke-linejoin:round" width="3" x="7.5" y="9.5"/><rect data-name="&lt;Rectangle&gt;" height="3" id="_Rectangle_4" style="fill:none;stroke-linecap:round;stroke-linejoin:round" width="3" x="10.5" y="9.5"/><rect data-name="&lt;Rectangle&gt;" height="3" id="_Rectangle_5" style="fill:none;stroke-linecap:round;stroke-linejoin:round" width="3" x="4.5" y="6.5"/><rect data-name="&lt;Rectangle&gt;" height="3" id="_Rectangle_6" style="fill:none;stroke-linecap:round;stroke-linejoin:round" width="3" x="7.5" y="6.5"/><rect data-name="&lt;Rectangle&gt;" height="3" id="_Rectangle_7" style="fill:none;stroke-linecap:round;stroke-linejoin:round" width="3" x="10.5" y="6.5"/><rect data-name="&lt;Rectangle&gt;" height="3" id="_Rectangle_8" style="fill:none;stroke-linecap:round;stroke-linejoin:round" width="3" x="10.5" y="3.5"/><rect data-name="&lt;Rectangle&gt;" height="3" id="_Rectangle_9" style="fill:none;stroke-linecap:round;stroke-linejoin:round" width="3" x="13.5" y="9.5"/><path d="M23.5,11.5s-1.75-1.12-3-.5A3.45,3.45,0,0,0,19,8.5a3.64,3.64,0,0,0-.58,2.88,1,1,0,0,1-1,1.12H.5c0,6.25,3.83,8,7.5,8a13.76,13.76,0,0,0,12.06-7A4.68,4.68,0,0,0,23.5,11.5Z" data-name="&lt;Path&gt;" id="_Path_2" style="fill:none;stroke-linecap:round;stroke-linejoin:round"/></g></g></svg>
+                        </a>
+                    </div>
+                </div>
+            </td>
+        
+        <td>
+            <div class="centered">
+              07/27/2023 06:01:12
+            </div>
+        </td>
+        <td>
+            <div class="centered">
+                 <div class='F'>
+                    0.00%
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-auto section">
+                <canvas id="bar_chart" height="400pt" width="400pt"></canvas>
+            </div>
+            <div class="col-auto section">
+                <canvas id="line_trend" height="400pt" width="800pt"></canvas>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col section">
+                
+                    <ul class="nav nav-tabs justify-content-center" id="tables-tabs-nav" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#unittests" role="tab" aria-controls="unittests"
+            aria-selected="true">Backend unit tests list</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#operators" role="tab" aria-controls="operators"
+            aria-selected="false">Operators coverage</a>
+    </li>
+</ul>
+<div class="tab-content" id="tables-tabs">
+    <div class="tab-pane fade show active" id="unittests" role="tabpanel" aria-labelledby="unittests-tab">
+        <div class="row justify-content-center">
+            <div class="col-auto search-filter">
+                <h2>Backend unit tests list</h2>
+                <input type="text" id="testNameInput" class="search"
+                    onkeyup="onSearch('testNameInput', 'unitTestsTable', 'Tests')"
+                    placeholder="Search for test name...">
+                <div>
+                    <input type="checkbox" id="showPassedTests" name="showPassed" value="showPassed"
+                        onclick="onSearch('testNameInput', 'unitTestsTable', 'Tests')" checked>
+                    <label for="showPassed"> Passed </label>
+                    <input type="checkbox" id="showFailedTests" name="showFailed" value="showFailed"
+                        onclick="onSearch('testNameInput', 'unitTestsTable', 'Tests')" checked>
+                    <label for="showFailed"> Failed </label>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <table class="table transposed" id="unitTestsTable">
+    
+        
+            <tr class="headers">
+                <th scope="col">&nbsp</th>
+                
+            </tr>
+        
+        <tr class="backendResults">
+            <th scope="row">JAX-ONNX-Runtime</th>
+            
+        </tr>
+    
+</table>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="operators" role="tabpanel" aria-labelledby="operators-tab">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-auto search-filter">
+                    <h2>Operators coverage</h2>
+                    <input type="text" id="opNameInput" class="search"
+                        onkeyup="onSearch('opNameInput', 'operatorsTable', 'Ops')"
+                        placeholder="Search for operator name...">
+                    <div>
+                        <input type="checkbox" id="showPassedOps" name="showPassed" value="showPassed"
+                            onclick="onSearch('opNameInput', 'operatorsTable', 'Ops')" checked>
+                        <label for="showPassed"> Passed </label>
+                        <input type="checkbox" id="showFailedOps" name="showFailed" value="showFailed"
+                            onclick="onSearch('opNameInput', 'operatorsTable', 'Ops')" checked>
+                        <label for="showFailed"> Failed </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-auto">
+                    <table class="table transposed" id="operatorsTable">
+    
+        
+        <tr class="headers">
+            <th scope="col">&nbsp</th>
+            
+        </tr>
+        
+    <tr class="backendResults">
+        <th scope="row">JAX-ONNX-Runtime</th>
+        
+    </tr>
+    
+</table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+    <div id="footer">
+        
+            <footer class="footer mt-auto py-4 py-md-5 text-white">
+    <div class="outer-container mx-auto">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 co-md">
+                    <h2 class="text-center pb-4 mb-2">Get Involved</h2>
+                </div>
+            </div>
+            <div class="row pb-md-4 pb-0">
+                <div class="col col-sm-5-1 col-md-5-1 pr-xl-4 mb-md-5 mb-lg-0 mb-4">
+                    <h3 class="footer-heading">Use ONNX</h3>
+                    <p class="mb-2">Transform or accelerate your model today.</p>
+                    <a target="_blank" href="http://onnx.ai/get-started.html">
+                        <span class="link-content">Get Started</span><span class="link-arrow fa fa-angle-right"></span></a>
+                </div>
+                <div class="col col-sm-5-1 col-md-5-1 pr-xl-4 mb-md-5 mb-lg-0 mb-4">
+                    <h3 class="footer-heading">Contribute</h3>
+                    <p class="mb-2">ONNX is a community project.</p>
+                    <a class="" target="_blank" href="https://github.com/onnx">
+                        <span class="link-content">Join us on GitHub</span><span class="link-arrow fa fa-angle-right"></span></a>
+                </div>
+                <div class="col col-5-1 pr-xl-4 mb-md-0 mb-4">
+                    <h3 class="footer-heading">Follow Us</h3>
+                    <p class="mb-2">Stay up to date with the latest ONNX news.</p>
+                    <a href="https://twitter.com/onnxai" target="_blank" title="Twitter" class="twitter-icon mr-2" aria-label="Social Icon Twitter">
+                        <span class="fa fa-twitter" aria-hidden="true"></span></a>
+                    <a href="https://www.facebook.com/onnxai/" target="_blank" title="Facebook" class="facebook-icon" aria-label="Social Icon Facebook">
+                        <span class="fa fa-facebook" aria-hidden="true"></span></a>
+                </div>
+                <div class="col col-5-1 pr-xl-4 mb-md-0 mb-4">
+                    <h3 class="footer-heading">ONNX</h3>
+                     <ul class="list-unstyled text-small mb-0">
+                        <li class="mb-2">
+                            <a href="http://onnx.ai/get-started.html">
+                                <span class="link-content">Get Started</span><span class="link-arrow fa fa-angle-right"></span></a>
+                        </li>
+                        <li class="mb-2">
+                            <a target="_blank" href="http://onnx.ai/supported-tools.html">
+                                <span class="link-content">Supported Tools</span><span class="link-arrow fa fa-angle-right"></span></a>
+                        </li>
+                        <li class="mb-2">
+                            <a target="_blank" href="http://onnx.ai/news.html">
+                                <span class="link-content">News</span><span class="link-arrow fa fa-angle-right"></span></a>
+                        </li>
+                        <li class="mb-0">
+                            <a target="_blank" href="http://onnx.ai/about.html">
+                                <span class="link-content">About</span><span class="link-arrow fa fa-angle-right"></span></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col col-sm-4 col-5-1 mb-md-0 mb-4">
+                    <h3 class="footer-heading">Resources</h3>
+                      <ul class="list-unstyled text-small mb-0">
+                        <li class="mb-2">
+                            <a target="_blank" href="https://github.com/onnx/tutorials">
+                                <span class="link-content">Tutorials</span><span class="link-arrow fa fa-angle-right"></span></a>
+                        </li>
+                        <li class="mb-2">
+                            <a target="_blank" href="https://github.com/onnx/models">
+                                <span class="link-content">Model Zoo</span><span class="link-arrow fa fa-angle-right"></span></a>
+                        </li>
+                        <li class="mb-0">
+                            <a target="_blank" href="https://github.com/onnx">
+                                <span class="link-content">GitHub</span><span class="link-arrow fa fa-angle-right"></span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row py-0 pt-md-2 text-center-sm">
+                <div class="col-md-3 col-lg-3 col-xl-2">
+                    <a target="_blank" href="http://onnx.ai/"><img class="mb-0 onnx-footer-logo" src="resources/images/ONNX-Logo.svg" alt="ONNX Home"></a>
+                </div>
+                <div class="col-md-9 col-lg-9 col-xl-10 pl-md-5 pl-lg-3">
+                    <p class="text-copyright py-3 ml-xl-5 ml-0 mb-0">
+                        Copyright &copy; 2019 The Linux Foundation&reg;. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our <a target="_blank" class="link" href="https://www.linuxfoundation.org/trademark-usage/">Trademark Usage</a> page. Linux is a registered trademark of Linus Torvalds. <a target="_blank" class="link" href="https://www.linuxfoundation.org/privacy/">Privacy Policy</a> and <a target="_blank" class="link" href="https://www.linuxfoundation.org/terms/">Terms of Use</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    </div>
+    
+    <script src="./resources/src/main.js" defer></script>
+    <script src="./resources/src/bar_chart.js" defer></script>
+    <script src="./resources/src/line_chart.js" defer></script>
+    <script src="./resources/src/table_search.js" defer></script>
+
+</body>
+
+</html>
