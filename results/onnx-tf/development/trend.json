@@ -1158,5 +1158,25 @@
                 "version": "2.8.0"
             }
         ]
+    },
+    {
+        "date": "07/27/2023 09:19:59",
+        "failed": 163,
+        "passed": 1154,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.14.0"
+            },
+            {
+                "name": "onnx-tf",
+                "version": "1.10.0"
+            },
+            {
+                "name": "tensorflow",
+                "version": "2.13.0"
+            }
+        ]
     }
 ]
