@@ -65,7 +65,7 @@ jobs:
     - script: . setup/git-deploy-results.sh
       displayName: 'Deploy results'
 
-- job: jaxonnxruntime_stable
+  - job: jaxonnxruntime_stable
     timeoutInMinutes: 90
     steps:
     - checkout: self
@@ -143,7 +143,7 @@ jobs:
     - script: . setup/git-deploy-results.sh
       displayName: 'Deploy results'
 
-- job: jaxonnxruntime_dev
+  - job: jaxonnxruntime_dev
     timeoutInMinutes: 90
     steps:
     - checkout: self
