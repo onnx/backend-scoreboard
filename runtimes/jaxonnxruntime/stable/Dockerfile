@@ -34,6 +34,7 @@ RUN pip3 install --upgrade pip setuptools wheel pytest
 ENV JAX_DEFAULT_DTYPE_BITS=64
 ENV JAX_NUMPY_RANK_PROMOTION=warn
 ENV JAXORT_ONLY_ALLOW_INITIALIZERS_AS_STATIC_ARGS=0
+ENV JAXORT_NONZERO_USE_FULLY_PADDING=1
 
 CMD . /root/setup/docker-setup.sh && \
     pytest /root/test/test_backend.py --onnx_backend=${ONNX_BACKEND} -k 'not _cuda' -v
