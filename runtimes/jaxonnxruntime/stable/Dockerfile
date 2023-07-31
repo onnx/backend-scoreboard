@@ -31,6 +31,7 @@ RUN pip3 install --upgrade pip setuptools wheel pytest
 
 ############## JAX and JAXONNXRuntime configs ###########
 # ref to https://github.com/google/jaxonnxruntime/blob/main/tests/onnx_ops_test.py
+ENV JAX_DEFAULT_DTYPE_BITS=64
 ENV JAX_ENABLE_X64=True
 ENV JAX_NUMPY_RANK_PROMOTION=warn
 ENV JAXORT_ONLY_ALLOW_INITIALIZERS_AS_STATIC_ARGS=0
