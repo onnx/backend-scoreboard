@@ -1,5 +1,5 @@
 {
-    "date": "01/31/2024 00:08:35",
+    "date": "02/01/2024 00:09:11",
     "failed": [
         "OnnxBackendNodeModelTest::test_batchnorm_epsilon_training_mode_cpu",
         "OnnxBackendNodeModelTest::test_batchnorm_example_training_mode_cpu",
@@ -162,6 +162,7 @@
         "OnnxBackendPyTorchOperatorModelTest::test_operator_view_cpu",
         "OnnxBackendRealModelTest::test_resnet50_cpu",
         "OnnxBackendRealModelTest::test_shufflenet_cpu",
+        "OnnxBackendRealModelTest::test_squeezenet_cpu",
         "OnnxBackendRealModelTest::test_zfnet512_cpu",
         "OnnxBackendSimpleModelTest::test_sequence_model5_cpu"
     ],
@@ -1380,7 +1381,6 @@
         "OnnxBackendRealModelTest::test_densenet121_cpu",
         "OnnxBackendRealModelTest::test_inception_v1_cpu",
         "OnnxBackendRealModelTest::test_inception_v2_cpu",
-        "OnnxBackendRealModelTest::test_squeezenet_cpu",
         "OnnxBackendRealModelTest::test_vgg19_cpu",
         "OnnxBackendSimpleModelTest::test_expand_shape_model1_cpu",
         "OnnxBackendSimpleModelTest::test_expand_shape_model2_cpu",
