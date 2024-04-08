@@ -6,7 +6,7 @@
 set -e  # Exit on error
 set -x  # Command echo on
 
-git remote set-url origin git@github.com:postrational/backend-scoreboard.git
+git remote set-url origin git@github.com:onnx/backend-scoreboard.git
 
 git config --global user.name "GitHub Action"
 git config --global user.email "action@github.com"
