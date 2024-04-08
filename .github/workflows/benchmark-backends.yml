@@ -1,0 +1,159 @@
+name: Run benchmarks
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  onnxruntime_stable:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build docker image
+        run: docker build -t scoreboard/onnx -f runtimes/onnx-runtime/stable/Dockerfile .
+
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+            ssh-private-key: |
+                  ${{ secrets.DEPLOY_KEY }}
+
+      - name: Git setup
+        run: . setup/git-setup.sh
+
+      - name: Run docker container
+        run: docker run --name onnx-runtime --env-file setup/env.list -v ${{ github.workspace }}/results/onnx-runtime/stable:/root/results scoreboard/onnx || true
+
+      - name: Deploy results
+        run: . setup/git-deploy-results.sh
+
+
+  onnxruntime_dev:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build docker image
+        run: docker build -t scoreboard/ort-dev -f runtimes/onnx-runtime/development/Dockerfile .
+
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+
+      - name: Git setup
+        run: . setup/git-setup.sh
+
+      - name: Run docker container
+        run: docker run --name onnx-runtime --env-file setup/env.list -v ${{ github.workspace }}/results/onnx-runtime/development:/root/results scoreboard/ort-dev || true
+
+      - name: Deploy results
+        run: . setup/git-deploy-results.sh
+
+
+  onnx_tf_stable:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build docker image
+        run: docker build -t scoreboard/onnxtf -f runtimes/onnx-tf/stable/Dockerfile .
+
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+
+      - name: Git setup
+        run: . setup/git-setup.sh
+
+      - name: Run docker container
+        run: docker run --name onnxtf --env-file setup/env.list -v ${{ github.workspace }}/results/onnx-tf/stable:/root/results scoreboard/onnxtf || true
+
+      - name: Deploy results
+        run: . setup/git-deploy-results.sh
+
+
+  onnx_tf_dev:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build docker image
+        run: docker build -t scoreboard/onnxtf-dev -f runtimes/onnx-tf/development/Dockerfile .
+
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+
+      - name: Git setup
+        run: . setup/git-setup.sh
+
+      - name: Run docker container
+        run: docker run --name onnxtf --env-file setup/env.list -v ${{ github.workspace }}/results/onnx-tf/development:/root/results scoreboard/onnxtf-dev || true
+
+      - name: Deploy results
+        run: . setup/git-deploy-results.sh
+
+
+  jaxonnxruntime_stable:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build docker image
+        run: docker build -t scoreboard/jaxonnxruntime -f runtimes/jaxonnxruntime/stable/Dockerfile .
+
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+
+      - name: Git setup
+        run: . setup/git-setup.sh
+
+      - name: Run docker container
+        run: docker run --name jaxonnxruntime --env-file setup/env.list -v ${{ github.workspace }}/results/jaxonnxruntime/stable:/root/results scoreboard/jaxonnxruntime || true
+
+      - name: Deploy results
+        run: . setup/git-deploy-results.sh
+
+  jaxonnxruntime_dev:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+          clean: true
+
+      - name: Build docker image
+        run: docker build -t scoreboard/jaxonnxruntime-dev -f runtimes/jaxonnxruntime/development/Dockerfile .
+
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+
+      - name: Git setup
+        run: . setup/git-setup.sh
+
+      - name: Run docker container
+        run: docker run --name jaxonnxruntime --env-file setup/env.list -v ${{ github.workspace }}/results/jaxonnxruntime/development:/root/results scoreboard/jaxonnxruntime-dev || true
+
+      - name: Deploy results
+        run: . setup/git-deploy-results.sh
