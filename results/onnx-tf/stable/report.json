@@ -1,8 +1,9 @@
 {
-    "date": "05/06/2024 00:08:22",
+    "date": "05/07/2024 00:10:39",
     "failed": [
         "OnnxBackendNodeModelTest::test_batchnorm_epsilon_training_mode_cpu",
         "OnnxBackendNodeModelTest::test_batchnorm_example_training_mode_cpu",
+        "OnnxBackendNodeModelTest::test_bernoulli_cpu",
         "OnnxBackendNodeModelTest::test_bernoulli_double_cpu",
         "OnnxBackendNodeModelTest::test_bernoulli_double_expanded_cpu",
         "OnnxBackendNodeModelTest::test_bernoulli_expanded_cpu",
@@ -161,6 +162,7 @@
         "OnnxBackendPyTorchOperatorModelTest::test_operator_view_cpu",
         "OnnxBackendRealModelTest::test_resnet50_cpu",
         "OnnxBackendRealModelTest::test_shufflenet_cpu",
+        "OnnxBackendRealModelTest::test_squeezenet_cpu",
         "OnnxBackendRealModelTest::test_zfnet512_cpu",
         "OnnxBackendSimpleModelTest::test_sequence_model5_cpu"
     ],
@@ -266,7 +268,6 @@
         "OnnxBackendNodeModelTest::test_basic_deform_conv_without_padding_cpu",
         "OnnxBackendNodeModelTest::test_batchnorm_epsilon_cpu",
         "OnnxBackendNodeModelTest::test_batchnorm_example_cpu",
-        "OnnxBackendNodeModelTest::test_bernoulli_cpu",
         "OnnxBackendNodeModelTest::test_bitshift_left_uint16_cpu",
         "OnnxBackendNodeModelTest::test_bitshift_left_uint32_cpu",
         "OnnxBackendNodeModelTest::test_bitshift_left_uint64_cpu",
@@ -1410,7 +1411,6 @@
         "OnnxBackendRealModelTest::test_densenet121_cpu",
         "OnnxBackendRealModelTest::test_inception_v1_cpu",
         "OnnxBackendRealModelTest::test_inception_v2_cpu",
-        "OnnxBackendRealModelTest::test_squeezenet_cpu",
         "OnnxBackendRealModelTest::test_vgg19_cpu",
         "OnnxBackendSimpleModelTest::test_expand_shape_model1_cpu",
         "OnnxBackendSimpleModelTest::test_expand_shape_model2_cpu",
