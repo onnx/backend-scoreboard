@@ -1,5 +1,5 @@
 {
-    "date": "05/07/2024 00:10:09",
+    "date": "05/08/2024 00:05:59",
     "failed": [
         "OnnxBackendNodeModelTest::test_adagrad_cpu",
         "OnnxBackendNodeModelTest::test_adagrad_multiple_cpu",
@@ -418,7 +418,6 @@
         "OnnxBackendNodeModelTest::test_layer_normalization_default_axis_cpu",
         "OnnxBackendNodeModelTest::test_layer_normalization_default_axis_expanded_cpu",
         "OnnxBackendNodeModelTest::test_layer_normalization_default_axis_expanded_ver18_cpu",
-        "OnnxBackendNodeModelTest::test_logsoftmax_axis_0_cpu",
         "OnnxBackendNodeModelTest::test_loop11_cpu",
         "OnnxBackendNodeModelTest::test_loop13_seq_cpu",
         "OnnxBackendNodeModelTest::test_loop16_seq_none_cpu",
@@ -793,7 +792,6 @@
         "OnnxBackendNodeModelTest::test_simple_rnn_with_initial_bias_cpu",
         "OnnxBackendNodeModelTest::test_size_cpu",
         "OnnxBackendNodeModelTest::test_size_example_cpu",
-        "OnnxBackendNodeModelTest::test_softmax_axis_0_cpu",
         "OnnxBackendNodeModelTest::test_softsign_cpu",
         "OnnxBackendNodeModelTest::test_softsign_example_cpu",
         "OnnxBackendNodeModelTest::test_spacetodepth_cpu",
@@ -1084,6 +1082,7 @@
         "OnnxBackendNodeModelTest::test_less_equal_expanded_cpu",
         "OnnxBackendNodeModelTest::test_log_cpu",
         "OnnxBackendNodeModelTest::test_log_example_cpu",
+        "OnnxBackendNodeModelTest::test_logsoftmax_axis_0_cpu",
         "OnnxBackendNodeModelTest::test_logsoftmax_axis_0_expanded_cpu",
         "OnnxBackendNodeModelTest::test_logsoftmax_axis_0_expanded_ver18_cpu",
         "OnnxBackendNodeModelTest::test_logsoftmax_axis_1_cpu",
@@ -1270,6 +1269,7 @@
         "OnnxBackendNodeModelTest::test_slice_neg_steps_cpu",
         "OnnxBackendNodeModelTest::test_slice_negative_axes_cpu",
         "OnnxBackendNodeModelTest::test_slice_start_out_of_bounds_cpu",
+        "OnnxBackendNodeModelTest::test_softmax_axis_0_cpu",
         "OnnxBackendNodeModelTest::test_softmax_axis_0_expanded_cpu",
         "OnnxBackendNodeModelTest::test_softmax_axis_0_expanded_ver18_cpu",
         "OnnxBackendNodeModelTest::test_softmax_axis_1_cpu",
