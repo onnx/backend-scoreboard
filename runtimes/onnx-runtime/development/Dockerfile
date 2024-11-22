@@ -4,7 +4,7 @@ FROM ubuntu:20.04
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Install Python and locales dependencies
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends  \
     python3 \
     python3-dev \
     python3-pip \
@@ -27,10 +27,10 @@ ENV ONNX_BACKEND="onnxruntime.backend.backend"
 RUN locale-gen en_US.UTF-8 && update-locale LANG=en_US.UTF-8
 
 # Install dependencies
-RUN pip3 install onnx
-RUN pip3 install ort-nightly
-RUN pip3 install protobuf==3.20.2
-RUN pip3 install numpy==1.22.4
+# according to https://github.com/microsoft/onnxruntime/issues/15608
+RUN pip3 install onnx protobuf==3.20.2 numpy==1.22.4 coloredlogs flatbuffers packaging sympy
+RUN pip3 install ort-nightly --index-url https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/ORT-Nightly/pypi/simple/
+
 
 ####################################################
 
