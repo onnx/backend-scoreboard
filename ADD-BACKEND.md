@@ -49,37 +49,40 @@ For `development` version the `core_packages` list is optional:
         }
 ```
 
-### 3. Add new job to Azure pipelines
+### 3. Add new job to GitHub Actions workflow
 
-* Edit [azure-pipelines.yml](azure-pipelines.yml) file.
+* Edit [benchmark-backends.yml](.github/workflows/benchmark-backends.yml) file.
 * Copy and paste this [job template](examples/job.yml) to the end of file.
 * Fill `new_backend` with the new backend unique name.
+* Change the `docker build` and `docker run` commands to match your backend.
 
 ```yml
 
-- job: new_backend
-    timeoutInMinutes: 90
+ jobs:
+  ... # other jobs
+
+  new_backend:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
     steps:
-    - checkout: self
-      persistCredentials: true
-      clean: true
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - task: InstallSSHKey@0
-      inputs:
-        knownHostsEntry: ~/.ssh/known_hosts
-        sshPublicKey: $(public_deploy_key)
-        sshKeySecureFile: deploy_key
+      - name: Build docker image
+        run: docker build -t scoreboard/new_backend -f runtimes/new_backend/stable/Dockerfile .
 
-    - script: docker build -t scoreboard/new_backend -f runtimes/new_backend/stable/Dockerfile .
-      displayName: 'Build docker image'
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+            ssh-private-key: |
+                  ${{ secrets.DEPLOY_KEY }}
 
-    - script: . setup/git-setup.sh
-      displayName: 'Git setup'
+      - name: Git setup
+        run: . setup/git-setup.sh
 
-    - script: docker run --name new_backend --env-file setup/env.list -v `pwd`/results/new_backend/stable:/root/results scoreboard/new_backend || true
-      displayName: 'Run docker container'
+      - name: Run docker container
+        run: docker run --name new_backend --env-file setup/env.list -v `pwd`/results/new_backend/stable:/root/results scoreboard/new_backend || true
 
-    - script: . setup/git-deploy-results.sh
-      displayName: 'Deploy results'
-
+      - name: Deploy results
+        run: . setup/git-deploy-results.sh
 ```
