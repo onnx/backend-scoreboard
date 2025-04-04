@@ -1,26 +1,25 @@
-- job: new_backend
-    timeoutInMinutes: 90
+# add to `jobs` section:
+  new_backend:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
     steps:
-    - checkout: self
-      persistCredentials: true
-      clean: true
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    # This task enables ssh authentication.
-    # It keeps git permissions even after long build time.
-    - task: InstallSSHKey@0
-      inputs:
-        knownHostsEntry: ~/.ssh/known_hosts
-        sshPublicKey: $(public_deploy_key)
-        sshKeySecureFile: deploy_key
+      - name: Build docker image
+        run: docker build -t scoreboard/new_backend -f runtimes/new_backend/stable/Dockerfile .
 
-    - script: docker build -t scoreboard/new_backend -f runtimes/new_backend/stable/Dockerfile .
-      displayName: 'Build docker image'
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+            ssh-private-key: |
+                  ${{ secrets.DEPLOY_KEY }}
 
-    - script: . setup/git-setup.sh
-      displayName: 'Git setup'
+      - name: Git setup
+        run: . setup/git-setup.sh
 
-    - script: docker run --name new_backend --env-file setup/env.list -v `pwd`/results/new_backend/stable:/root/results scoreboard/new_backend || true
-      displayName: 'Run docker container'
+      - name: Run docker container
+        run: docker run --name new_backend --env-file setup/env.list -v `pwd`/results/new_backend/stable:/root/results scoreboard/new_backend || true
 
-    - script: . setup/git-deploy-results.sh
-      displayName: 'Deploy results'
+      - name: Deploy results
+        run: . setup/git-deploy-results.sh

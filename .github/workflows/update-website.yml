@@ -1,0 +1,40 @@
+name: Website Update
+
+on:
+  schedule:
+    - cron: '0 6 * * *'
+
+jobs:
+  generate_website:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          clean: true
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install --upgrade -r requirements_web.txt
+
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+            ssh-private-key: |
+                  ${{ secrets.DEPLOY_KEY }}
+
+      - name: Git setup
+        run: . setup/git-setup.sh
+
+      - name: Generate website
+        run: python3 website-generator/generator.py --config ./setup/config.json
+
+      - name: Deploy website
+        run: . setup/git-deploy-website.sh
