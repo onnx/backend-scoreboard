@@ -25,7 +25,7 @@ jobs:
           pip install --upgrade -r requirements_web.txt
 
       - name: Set up SSH
-        uses: webfactory/ssh-agent@v0.9.0
+        uses: webfactory/ssh-agent@v0.9.1
         with:
             ssh-private-key: |
                   ${{ secrets.DEPLOY_KEY }}
