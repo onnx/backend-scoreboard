@@ -28,7 +28,7 @@ jobs:
         run: . setup/git-setup.sh
 
       - name: Run docker container
-        run: docker run --name ort --env-file setup/env.list -v ${{ github.workspace }}/results/ort/stable:/root/results scoreboard/onnx || true
+        run: docker run --name ort --env-file setup/env.list -v ${{ github.workspace }}/results/ort/stable:/root/results scoreboard/ort || true
 
       - name: Deploy results
         if: ${{ github.event_name == 'schedule' }}
