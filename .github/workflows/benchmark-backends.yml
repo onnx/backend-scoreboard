@@ -3,6 +3,9 @@ name: Run benchmarks
 on:
   schedule:
     - cron: '0 0 * * *'
+  pull_request:
+    branches:
+      - '**'
 
 jobs:
   onnxruntime_stable:
@@ -13,7 +16,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build docker image
-        run: docker build -t scoreboard/onnx -f runtimes/onnx-runtime/stable/Dockerfile .
+        run: docker build -t scoreboard/ort -f runtimes/ort/stable/Dockerfile .
 
       - name: Set up SSH
         uses: webfactory/ssh-agent@v0.9.1
@@ -25,36 +28,11 @@ jobs:
         run: . setup/git-setup.sh
 
       - name: Run docker container
-        run: docker run --name onnx-runtime --env-file setup/env.list -v ${{ github.workspace }}/results/onnx-runtime/stable:/root/results scoreboard/onnx || true
+        run: docker run --name ort --env-file setup/env.list -v ${{ github.workspace }}/results/ort/stable:/root/results scoreboard/onnx || true
 
       - name: Deploy results
+        if: ${{ github.event_name == 'schedule' }}
         run: . setup/git-deploy-results.sh
-
-
-  onnxruntime_dev:
-    runs-on: ubuntu-latest
-    timeout-minutes: 90
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Build docker image
-        run: docker build -t scoreboard/ort-dev -f runtimes/onnx-runtime/development/Dockerfile .
-
-      - name: Set up SSH
-        uses: webfactory/ssh-agent@v0.9.1
-        with:
-          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
-
-      - name: Git setup
-        run: . setup/git-setup.sh
-
-      - name: Run docker container
-        run: docker run --name onnx-runtime --env-file setup/env.list -v ${{ github.workspace }}/results/onnx-runtime/development:/root/results scoreboard/ort-dev || true
-
-      - name: Deploy results
-        run: . setup/git-deploy-results.sh
-
 
   onnx_tf_stable:
     runs-on: ubuntu-latest
@@ -78,6 +56,7 @@ jobs:
         run: docker run --name onnxtf --env-file setup/env.list -v ${{ github.workspace }}/results/onnx-tf/stable:/root/results scoreboard/onnxtf || true
 
       - name: Deploy results
+        if: ${{ github.event_name == 'schedule' }}
         run: . setup/git-deploy-results.sh
 
 
@@ -103,6 +82,7 @@ jobs:
         run: docker run --name onnxtf --env-file setup/env.list -v ${{ github.workspace }}/results/onnx-tf/development:/root/results scoreboard/onnxtf-dev || true
 
       - name: Deploy results
+        if: ${{ github.event_name == 'schedule' }}
         run: . setup/git-deploy-results.sh
 
 
@@ -128,6 +108,7 @@ jobs:
         run: docker run --name jaxonnxruntime --env-file setup/env.list -v ${{ github.workspace }}/results/jaxonnxruntime/stable:/root/results scoreboard/jaxonnxruntime || true
 
       - name: Deploy results
+        if: ${{ github.event_name == 'schedule' }}
         run: . setup/git-deploy-results.sh
 
   jaxonnxruntime_dev:
@@ -156,4 +137,5 @@ jobs:
         run: docker run --name jaxonnxruntime --env-file setup/env.list -v ${{ github.workspace }}/results/jaxonnxruntime/development:/root/results scoreboard/jaxonnxruntime-dev || true
 
       - name: Deploy results
+        if: ${{ github.event_name == 'schedule' }}
         run: . setup/git-deploy-results.sh
