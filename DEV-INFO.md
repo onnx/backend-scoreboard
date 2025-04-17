@@ -16,7 +16,7 @@ Example of `config.json` file:
     "stable": {
         "onnxruntime": {
             "name": "ONNX-Runtime",
-            "results_dir": "./results/onnx-runtime/stable",
+            "results_dir": "./results/ort/stable",
             "core_packages": ["onnxruntime"]
         },
         "onnxtf": {
@@ -51,7 +51,7 @@ Use these commands from the main directory of this repository to build Docker im
 ### Stable versions
 
 * ONNX-Runtime: <br/>
-`docker build -t scoreboard/onnx -f runtimes/onnx-runtime/stable/Dockerfile .`
+`docker build -t scoreboard/ort -f runtimes/onnx-runtime/stable/Dockerfile .`
 
 * ONNX-TF: <br/>
 `docker build -t scoreboard/onnx-tf -f runtimes/onnx-tf/stable/Dockerfile .`
@@ -62,7 +62,7 @@ Use these commands from the main directory of this repository to build Docker im
 ### Development versions (built from source)
 
 * ONNX-Runtime: <br/>
-`docker build -t scoreboard/onnx -f runtimes/onnx-runtime/development/Dockerfile .`
+`docker build -t scoreboard/ort -f runtimes/onnx-runtime/development/Dockerfile .`
 
 * ONNX-TF: <br/>
 `docker build -t scoreboard/onnx-tf -f runtimes/onnx-tf/onnx-tf/Dockerfile .`
@@ -89,7 +89,7 @@ store results in the directory specified as `results_dir` in `config.json`.
 ### Stable
 
 * ONNX-Runtime <br/>
-`docker run --name onnx-runtime --env-file setup/env.list -v ~/backend-scoreboard/results/onnx-runtime/stable:/root/results scoreboard/onnx`
+`docker run --name ort --env-file setup/env.list -v ~/backend-scoreboard/results/ort/stable:/root/results scoreboard/ort`
 
 * ONNX-TF <br/>
 `docker run --name onnx-tf --env-file setup/env.list -v ~/backend-scoreboard/results/onnx-tf/stable:/root/results scoreboard/onnx-tf`
@@ -100,7 +100,7 @@ store results in the directory specified as `results_dir` in `config.json`.
 ### Development (build from source)
 
 * ONNX-Runtime <br/>
-`docker run --name onnx-runtime --env-file setup/env.list -v ~/backend-scoreboard/results/onnx-runtime/development:/root/results scoreboard/onnx`
+`docker run --name ort --env-file setup/env.list -v ~/backend-scoreboard/results/ort/development:/root/results scoreboard/ort`
 
 * ONNX-TF <br/>
 `docker run --name onnx-tf --env-file setup/env.list -v ~/backend-scoreboard/results/onnx-tf/development:/root/results scoreboard/onnx-tf`
