@@ -2,9 +2,9 @@
     "stable": {
         "onnxruntime": {
             "name": "ONNX-Runtime",
-            "results_dir": "./results/onnx-runtime/stable",
+            "results_dir": "./results/ort/stable",
             "core_packages": ["onnxruntime"],
-            "dockerfile_link": "runtimes/onnx-runtime/stable/Dockerfile"
+            "dockerfile_link": "runtimes/ort/stable/Dockerfile"
         },
         "onnx-tf": {
             "name": "ONNX-TF",
@@ -22,9 +22,9 @@
     "development": {
         "onnxruntime": {
             "name": "ONNX-Runtime",
-            "results_dir": "./results/onnx-runtime/development",
+            "results_dir": "./results/ort/development",
             "core_packages": ["ort-nightly"],
-            "dockerfile_link": "runtimes/onnx-runtime/development/Dockerfile"
+            "dockerfile_link": "runtimes/ort/development/Dockerfile"
         },
         "onnx-tf": {
             "name": "ONNX-TF",
