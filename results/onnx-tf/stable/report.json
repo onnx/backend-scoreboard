@@ -1,8 +1,9 @@
 {
-    "date": "09/24/2025 00:35:52",
+    "date": "09/26/2025 00:35:13",
     "failed": [
         "OnnxBackendNodeModelTest::test_batchnorm_epsilon_training_mode_cpu",
         "OnnxBackendNodeModelTest::test_batchnorm_example_training_mode_cpu",
+        "OnnxBackendNodeModelTest::test_gemm_transposeA_cpu",
         "OnnxBackendNodeModelTest::test_loop11_cpu",
         "OnnxBackendNodeModelTest::test_loop13_seq_cpu",
         "OnnxBackendNodeModelTest::test_max_uint64_cpu",
@@ -139,7 +140,6 @@
         "OnnxBackendPyTorchOperatorModelTest::test_operator_view_cpu",
         "OnnxBackendRealModelTest::test_resnet50_cpu",
         "OnnxBackendRealModelTest::test_shufflenet_cpu",
-        "OnnxBackendRealModelTest::test_squeezenet_cpu",
         "OnnxBackendRealModelTest::test_zfnet512_cpu",
         "OnnxBackendSimpleModelTest::test_sequence_model5_cpu"
     ],
@@ -553,7 +553,6 @@
         "OnnxBackendNodeModelTest::test_gemm_default_single_elem_vector_bias_cpu",
         "OnnxBackendNodeModelTest::test_gemm_default_vector_bias_cpu",
         "OnnxBackendNodeModelTest::test_gemm_default_zero_bias_cpu",
-        "OnnxBackendNodeModelTest::test_gemm_transposeA_cpu",
         "OnnxBackendNodeModelTest::test_gemm_transposeB_cpu",
         "OnnxBackendNodeModelTest::test_globalaveragepool_cpu",
         "OnnxBackendNodeModelTest::test_globalaveragepool_precomputed_cpu",
@@ -1417,6 +1416,7 @@
         "OnnxBackendRealModelTest::test_densenet121_cpu",
         "OnnxBackendRealModelTest::test_inception_v1_cpu",
         "OnnxBackendRealModelTest::test_inception_v2_cpu",
+        "OnnxBackendRealModelTest::test_squeezenet_cpu",
         "OnnxBackendRealModelTest::test_vgg19_cpu",
         "OnnxBackendSimpleModelTest::test_expand_shape_model1_cpu",
         "OnnxBackendSimpleModelTest::test_expand_shape_model2_cpu",
