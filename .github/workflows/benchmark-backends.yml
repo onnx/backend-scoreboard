@@ -13,7 +13,7 @@ jobs:
     timeout-minutes: 90
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Build docker image
         run: docker build -t scoreboard/ort -f runtimes/ort/stable/Dockerfile .
@@ -39,7 +39,7 @@ jobs:
     timeout-minutes: 90
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Build docker image
         run: docker build -t scoreboard/onnxtf -f runtimes/onnx-tf/stable/Dockerfile .
@@ -65,7 +65,7 @@ jobs:
     timeout-minutes: 90
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Build docker image
         run: docker build -t scoreboard/onnxtf-dev -f runtimes/onnx-tf/development/Dockerfile .
@@ -91,7 +91,7 @@ jobs:
     timeout-minutes: 90
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Build docker image
         run: docker build -t scoreboard/jaxonnxruntime -f runtimes/jaxonnxruntime/stable/Dockerfile .
@@ -116,7 +116,7 @@ jobs:
     timeout-minutes: 90
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           persist-credentials: true
           fetch-depth: 0
