@@ -2702,5 +2702,21 @@
                 "version": "1.19.0"
             }
         ]
+    },
+    {
+        "date": "10/03/2025 00:34:06",
+        "failed": 1141,
+        "passed": 623,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "jaxonnxruntime",
+                "version": "0.3.0"
+            },
+            {
+                "name": "onnx",
+                "version": "1.19.0"
+            }
+        ]
     }
 ]
