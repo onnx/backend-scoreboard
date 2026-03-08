@@ -6,7 +6,7 @@ on:
 
 jobs:
   generate_website:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
@@ -14,10 +14,10 @@ jobs:
           persist-credentials: false
           clean: true
 
-      - name: Set up Python 3.11
+      - name: Set up Python 3.12
         uses: actions/setup-python@v6
         with:
-          python-version: '3.11'
+          python-version: '3.12'
 
       - name: Install dependencies
         run: |

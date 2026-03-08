@@ -1,5 +1,5 @@
 ##### SCOREBOARD DOCKERFILE TEMPLATE #####
-FROM ubuntu:18.04
+FROM ubuntu:22.04
 
 # Disable interactive installation mode
 ENV DEBIAN_FRONTEND=noninteractive
