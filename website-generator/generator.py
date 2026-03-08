@@ -223,7 +223,7 @@ def load_config(file_path="./setup/config.json"):
         with open(file_path, "r") as config_file:
             config = json.load(config_file)
     except (IOError, json.decoder.JSONDecodeError) as err:
-        raise ScoreboardError("Can't load the scoreboard config file!", err)
+        raise ScoreboardError("Can't load the scoreboard config file!", err) from err
     return config
 
 
