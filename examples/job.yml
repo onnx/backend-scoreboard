@@ -4,7 +4,7 @@
     timeout-minutes: 90
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Build docker image
         run: docker build -t scoreboard/new_backend -f runtimes/new_backend/stable/Dockerfile .
