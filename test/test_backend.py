@@ -25,7 +25,7 @@ def import_backend(onnx_backend_module):
 
 
 # Import custom backend
-backend = import_backend(os.getenv('ONNX_BACKEND_MODULE'))
+backend = import_backend(os.getenv("ONNX_BACKEND_MODULE"))
 
 # Set backend device name to be used
 backend.backend_name = "CPU"
