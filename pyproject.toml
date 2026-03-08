@@ -1,0 +1,27 @@
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.lint]
+select = [
+    "E", "W",   # pycodestyle (flake8)
+    "F",        # pyflakes
+    "B",        # flake8-bugbear
+    "A",        # flake8-builtins
+    "C4",       # flake8-comprehensions
+    "T10",      # flake8-debugger
+    "D",        # pydocstyle (flake8-docstrings)
+    "Q",        # flake8-quotes
+    "BLE",      # flake8-blind-except
+    "C90",      # mccabe complexity
+]
+ignore = [
+    "COM812",   # missing trailing comma (was C812)
+    "COM813",   # missing trailing comma Python 3 (was C813)
+    "D104",     # missing docstring in public package
+]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 6
+
+[tool.ruff.lint.flake8-quotes]
+inline-quotes = "double"
