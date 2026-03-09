@@ -9,5 +9,9 @@ set -x  # Command echo on
 git checkout master
 git pull
 git add docs
-git commit -m "Update website [skip ci]" || true  # Do not fail if nothing to commit
-git push
+if ! git diff --cached --quiet; then
+  git commit -s -m "Update website [skip ci]"
+  git push
+else
+  echo "No changes to commit"
+fi
