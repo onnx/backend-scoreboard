@@ -24,6 +24,7 @@ RUN pip3 install --no-cache-dir -r /root/setup/requirements_report.txt
 
 ############## ONNX Backend dependencies ###########
 ENV ONNX_BACKEND="emx_backend"
+ENV PYTHONPATH="/root"
 
 # Set locale which is required for StringNormalizer
 RUN locale-gen en_US.UTF-8 && update-locale LANG=en_US.UTF-8
