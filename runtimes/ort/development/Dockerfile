@@ -26,7 +26,7 @@ ENV ONNX_BACKEND="onnxruntime.backend.backend"
 RUN locale-gen en_US.UTF-8 && update-locale LANG=en_US.UTF-8
 
 # Install nightly onnxruntime and latest onnx
-RUN pip3 install \
+RUN pip3 install --no-input \
     onnx \
     numpy \
     ort-nightly --extra-index-url https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/ORT-Nightly/pypi/simple/
