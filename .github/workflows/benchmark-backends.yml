@@ -255,25 +255,25 @@ jobs:
           fi
 
       - name: Download ort stable results
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: results-ort-stable
           path: results/ort/stable/
 
       - name: Download onnx-tf stable results
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: results-onnxtf-stable
           path: results/onnx-tf/stable/
 
       - name: Download onnx-tf dev results
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: results-onnxtf-dev
           path: results/onnx-tf/development/
 
       - name: Download jaxonnxruntime stable results
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: results-jaxonnxruntime-stable
           path: results/jaxonnxruntime/stable/
@@ -285,13 +285,13 @@ jobs:
           path: results/jaxonnxruntime/development/
 
       - name: Download ort dev results
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: results-ort-dev
           path: results/ort/development/
 
       - name: Download emx-onnx-cgen stable results
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: results-emx-onnx-cgen-stable
           path: results/emx-onnx-cgen/stable/
