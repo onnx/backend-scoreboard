@@ -23,6 +23,12 @@
             "results_dir": "./results/emx-onnx-cgen/stable",
             "core_packages": ["emx-onnx-cgen"],
             "dockerfile_link": "runtimes/emx-onnx-cgen/stable/Dockerfile"
+        },
+        "tract": {
+            "name": "tract",
+            "results_dir": "./results/tract/stable",
+            "core_packages": ["tract"],
+            "dockerfile_link": "runtimes/tract/stable/Dockerfile"
         }
     },
     "development": {
