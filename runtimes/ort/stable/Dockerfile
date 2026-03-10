@@ -30,8 +30,7 @@ RUN pip3 install \
     onnx \
     onnxruntime \
     protobuf \
-    numpy \
-    ml_dtypes
+    numpy
 ####################################################
 
 CMD ["sh", "-c", ". /root/setup/docker-setup.sh && pytest /root/test/test_backend.py --onnx_backend=${ONNX_BACKEND} -k 'not _cuda' -v"]

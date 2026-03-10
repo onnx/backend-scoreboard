@@ -24,11 +24,9 @@ RUN pip3 install --no-cache-dir -r /root/setup/requirements_report.txt
 ENV ONNX_BACKEND="tract_backend"
 ENV PYTHONPATH="/root"
 
-# Set locale which is required for StringNormalizer
-RUN locale-gen en_US.UTF-8 && update-locale LANG=en_US.UTF-8
-
-# Install tract and onnx
-RUN pip3 install \
+# Set locale and install tract and onnx
+RUN locale-gen en_US.UTF-8 && update-locale LANG=en_US.UTF-8 && \
+    pip3 install \
     onnx \
     tract
 ####################################################
