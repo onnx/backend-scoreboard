@@ -1,0 +1,1138 @@
+[
+    {
+        "date": "04/24/2019 23:47:38",
+        "failed": 97,
+        "passed": 461,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.5.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "0.3.0"
+            }
+        ]
+    },
+    {
+        "date": "05/02/2019 23:40:24",
+        "failed": 55,
+        "passed": 503,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.5.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "0.4.0"
+            }
+        ]
+    },
+    {
+        "date": "08/01/2019 08:54:12",
+        "failed": 51,
+        "passed": 507,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.5.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "0.5.0"
+            }
+        ]
+    },
+    {
+        "date": "09/28/2019 17:32:51",
+        "failed": 151,
+        "passed": 549,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.6.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "0.5.0"
+            }
+        ]
+    },
+    {
+        "date": "12/19/2019 00:04:00",
+        "failed": 59,
+        "passed": 642,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.6.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.0.0"
+            }
+        ]
+    },
+    {
+        "date": "01/23/2020 00:03:05",
+        "failed": 58,
+        "passed": 643,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.6.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.1.0"
+            }
+        ]
+    },
+    {
+        "date": "02/21/2020 00:03:28",
+        "failed": 58,
+        "passed": 643,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.6.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.1.1"
+            }
+        ]
+    },
+    {
+        "date": "03/10/2020 00:03:09",
+        "failed": 58,
+        "passed": 643,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.6.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.1.2"
+            }
+        ]
+    },
+    {
+        "date": "04/13/2020 00:08:04",
+        "failed": 58,
+        "passed": 643,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.6.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.2.0"
+            }
+        ]
+    },
+    {
+        "date": "05/08/2020 00:03:53",
+        "failed": 46,
+        "passed": 655,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.6.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.2.0"
+            }
+        ]
+    },
+    {
+        "date": "05/17/2020 00:03:57",
+        "failed": 264,
+        "passed": 631,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.7.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.2.0"
+            }
+        ]
+    },
+    {
+        "date": "07/17/2020 00:03:33",
+        "failed": 65,
+        "passed": 830,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.7.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.3.0"
+            }
+        ]
+    },
+    {
+        "date": "09/29/2020 00:05:26",
+        "failed": 64,
+        "passed": 831,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.7.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.4.0"
+            }
+        ]
+    },
+    {
+        "date": "10/15/2020 00:04:33",
+        "failed": 64,
+        "passed": 831,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.7.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.5.1"
+            }
+        ]
+    },
+    {
+        "date": "11/06/2020 00:03:51",
+        "failed": 64,
+        "passed": 831,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.7.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.5.2"
+            }
+        ]
+    },
+    {
+        "date": "12/10/2020 00:06:51",
+        "failed": 256,
+        "passed": 657,
+        "skipped": 9,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.8.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.5.2"
+            }
+        ]
+    },
+    {
+        "date": "01/30/2021 00:09:04",
+        "failed": 61,
+        "passed": 852,
+        "skipped": 9,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.8.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.6.0"
+            }
+        ]
+    },
+    {
+        "date": "02/11/2021 00:08:21",
+        "failed": 61,
+        "passed": 852,
+        "skipped": 9,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.8.1"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.6.0"
+            }
+        ]
+    },
+    {
+        "date": "02/18/2021 00:06:11",
+        "failed": 62,
+        "passed": 854,
+        "skipped": 12,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.8.1"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.6.0"
+            }
+        ]
+    },
+    {
+        "date": "03/02/2021 00:06:06",
+        "failed": 61,
+        "passed": 846,
+        "skipped": 24,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.8.1"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.6.0"
+            }
+        ]
+    },
+    {
+        "date": "03/08/2021 00:06:30",
+        "failed": 61,
+        "passed": 846,
+        "skipped": 24,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.8.1"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.7.0"
+            }
+        ]
+    },
+    {
+        "date": "03/22/2021 00:09:45",
+        "failed": 61,
+        "passed": 846,
+        "skipped": 42,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.8.1"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.7.0"
+            }
+        ]
+    },
+    {
+        "date": "03/23/2021 00:10:04",
+        "failed": 61,
+        "passed": 846,
+        "skipped": 44,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.8.1"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.7.0"
+            }
+        ]
+    },
+    {
+        "date": "03/26/2021 00:11:29",
+        "failed": 61,
+        "passed": 845,
+        "skipped": 46,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.8.1"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.7.0"
+            }
+        ]
+    },
+    {
+        "date": "03/31/2021 00:06:57",
+        "failed": 61,
+        "passed": 842,
+        "skipped": 55,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.8.1"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.7.0"
+            }
+        ]
+    },
+    {
+        "date": "04/21/2021 00:06:20",
+        "failed": 60,
+        "passed": 842,
+        "skipped": 56,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.8.1"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.7.0"
+            }
+        ]
+    },
+    {
+        "date": "06/03/2021 00:05:29",
+        "failed": 107,
+        "passed": 842,
+        "skipped": 9,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.9.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.7.0"
+            }
+        ]
+    },
+    {
+        "date": "07/07/2021 00:03:45",
+        "failed": 71,
+        "passed": 878,
+        "skipped": 9,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.9.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.8.0"
+            }
+        ]
+    },
+    {
+        "date": "07/31/2021 00:06:00",
+        "failed": 71,
+        "passed": 878,
+        "skipped": 9,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.9.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.8.1"
+            }
+        ]
+    },
+    {
+        "date": "08/02/2021 00:06:18",
+        "failed": 211,
+        "passed": 776,
+        "skipped": 9,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.10.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.8.1"
+            }
+        ]
+    },
+    {
+        "date": "09/22/2021 00:05:39",
+        "failed": 211,
+        "passed": 776,
+        "skipped": 9,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.10.1"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.8.1"
+            }
+        ]
+    },
+    {
+        "date": "10/26/2021 00:03:17",
+        "failed": 80,
+        "passed": 907,
+        "skipped": 9,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.10.1"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.9.0"
+            }
+        ]
+    },
+    {
+        "date": "12/07/2021 00:06:34",
+        "failed": 80,
+        "passed": 907,
+        "skipped": 9,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.10.2"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.9.0"
+            }
+        ]
+    },
+    {
+        "date": "02/17/2022 00:03:06",
+        "failed": 80,
+        "passed": 907,
+        "skipped": 9,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.10.2"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.10.0"
+            }
+        ]
+    },
+    {
+        "date": "03/25/2022 00:02:33",
+        "failed": 95,
+        "passed": 909,
+        "skipped": 9,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.11.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.10.0"
+            }
+        ]
+    },
+    {
+        "date": "04/27/2022 00:03:48",
+        "failed": 79,
+        "passed": 925,
+        "skipped": 9,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.11.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.11.0"
+            }
+        ]
+    },
+    {
+        "date": "05/27/2022 00:03:59",
+        "failed": 79,
+        "passed": 925,
+        "skipped": 9,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.11.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.11.1"
+            }
+        ]
+    },
+    {
+        "date": "06/18/2022 00:03:31",
+        "failed": 0,
+        "passed": 0,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.11.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.11.1"
+            }
+        ]
+    },
+    {
+        "date": "07/22/2022 00:03:17",
+        "failed": 156,
+        "passed": 925,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.12.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.11.1"
+            }
+        ]
+    },
+    {
+        "date": "08/04/2022 00:03:33",
+        "failed": 93,
+        "passed": 988,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.12.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.12.0"
+            }
+        ]
+    },
+    {
+        "date": "10/24/2022 00:05:26",
+        "failed": 93,
+        "passed": 988,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.12.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.12.1"
+            }
+        ]
+    },
+    {
+        "date": "12/12/2022 00:05:03",
+        "failed": 92,
+        "passed": 989,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.12.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.13.1"
+            }
+        ]
+    },
+    {
+        "date": "12/18/2022 00:07:51",
+        "failed": 354,
+        "passed": 892,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.13.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.13.1"
+            }
+        ]
+    },
+    {
+        "date": "02/10/2023 00:07:43",
+        "failed": 1246,
+        "passed": 0,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.13.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.13.1"
+            }
+        ]
+    },
+    {
+        "date": "02/22/2023 00:06:08",
+        "failed": 1246,
+        "passed": 0,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.13.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.14.0"
+            }
+        ]
+    },
+    {
+        "date": "02/27/2023 00:03:27",
+        "failed": 97,
+        "passed": 1149,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.13.1"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.14.0"
+            }
+        ]
+    },
+    {
+        "date": "05/04/2023 00:04:10",
+        "failed": 97,
+        "passed": 1149,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.13.1"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.14.1"
+            }
+        ]
+    },
+    {
+        "date": "06/16/2023 00:08:00",
+        "failed": 205,
+        "passed": 1112,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.14.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.15.0"
+            }
+        ]
+    },
+    {
+        "date": "08/25/2023 00:05:29",
+        "failed": 205,
+        "passed": 1112,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.14.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.15.1"
+            }
+        ]
+    },
+    {
+        "date": "09/19/2023 00:06:01",
+        "failed": 205,
+        "passed": 1112,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.14.1"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.15.1"
+            }
+        ]
+    },
+    {
+        "date": "10/11/2023 00:03:38",
+        "failed": 142,
+        "passed": 1175,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.14.1"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.16.0"
+            }
+        ]
+    },
+    {
+        "date": "10/26/2023 00:05:41",
+        "failed": 142,
+        "passed": 1175,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.14.1"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.16.1"
+            }
+        ]
+    },
+    {
+        "date": "11/10/2023 00:05:41",
+        "failed": 232,
+        "passed": 1169,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.15.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.16.1"
+            }
+        ]
+    },
+    {
+        "date": "11/20/2023 00:05:51",
+        "failed": 232,
+        "passed": 1169,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.15.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.16.2"
+            }
+        ]
+    },
+    {
+        "date": "01/31/2024 00:05:58",
+        "failed": 232,
+        "passed": 1169,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.15.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.16.3"
+            }
+        ]
+    },
+    {
+        "date": "02/25/2024 00:05:24",
+        "failed": 156,
+        "passed": 1245,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.15.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.17.0"
+            }
+        ]
+    },
+    {
+        "date": "03/25/2024 00:06:29",
+        "failed": 156,
+        "passed": 1245,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.15.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.17.1"
+            }
+        ]
+    },
+    {
+        "date": "04/12/2024 00:06:34",
+        "failed": 276,
+        "passed": 1155,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.16.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.17.1"
+            }
+        ]
+    },
+    {
+        "date": "05/17/2024 00:08:19",
+        "failed": 276,
+        "passed": 1155,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.16.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.17.3"
+            }
+        ]
+    },
+    {
+        "date": "05/23/2024 00:06:27",
+        "failed": 182,
+        "passed": 1249,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.16.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.18.0"
+            }
+        ]
+    },
+    {
+        "date": "06/27/2024 00:07:47",
+        "failed": 182,
+        "passed": 1249,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.16.1"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.18.0"
+            }
+        ]
+    },
+    {
+        "date": "08/01/2024 00:07:48",
+        "failed": 182,
+        "passed": 1249,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.16.1"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.18.1"
+            }
+        ]
+    },
+    {
+        "date": "08/15/2024 00:08:15",
+        "failed": 182,
+        "passed": 1249,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.16.2"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.18.1"
+            }
+        ]
+    },
+    {
+        "date": "09/04/2024 00:07:31",
+        "failed": 179,
+        "passed": 1252,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.16.2"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.19.0"
+            }
+        ]
+    },
+    {
+        "date": "10/01/2024 00:06:09",
+        "failed": 179,
+        "passed": 1252,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.16.2"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.19.2"
+            }
+        ]
+    },
+    {
+        "date": "04/04/2025 00:06:30",
+        "failed": 369,
+        "passed": 1068,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.17.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.19.2"
+            }
+        ]
+    },
+    {
+        "date": "05/09/2025 00:35:16",
+        "failed": 172,
+        "passed": 1265,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.17.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.21.1"
+            }
+        ]
+    },
+    {
+        "date": "07/10/2025 00:37:02",
+        "failed": 172,
+        "passed": 1265,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.17.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.22.0"
+            }
+        ]
+    },
+    {
+        "date": "09/18/2025 00:32:37",
+        "failed": 172,
+        "passed": 1265,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.17.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.22.1"
+            }
+        ]
+    },
+    {
+        "date": "10/08/2025 00:33:11",
+        "failed": 172,
+        "passed": 1265,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.17.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.23.0"
+            }
+        ]
+    },
+    {
+        "date": "11/09/2025 00:38:23",
+        "failed": 172,
+        "passed": 1265,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.17.0"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.23.2"
+            }
+        ]
+    }
+]
