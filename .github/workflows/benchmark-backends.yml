@@ -31,9 +31,12 @@ jobs:
       - name: Run docker container
         run: docker run --name ort --env-file setup/env.list -v ${{ github.workspace }}/results/ort/stable:/root/results scoreboard/ort || true
 
-      - name: Deploy results
+      - name: Upload results
         if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
-        run: . setup/git-deploy-results.sh
+        uses: actions/upload-artifact@v4
+        with:
+          name: results-ort-stable
+          path: results/ort/stable/
 
   onnx_tf_stable:
     runs-on: ubuntu-latest
@@ -56,9 +59,12 @@ jobs:
       - name: Run docker container
         run: docker run --name onnxtf --env-file setup/env.list -v ${{ github.workspace }}/results/onnx-tf/stable:/root/results scoreboard/onnxtf || true
 
-      - name: Deploy results
+      - name: Upload results
         if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
-        run: . setup/git-deploy-results.sh
+        uses: actions/upload-artifact@v4
+        with:
+          name: results-onnxtf-stable
+          path: results/onnx-tf/stable/
 
 
   onnx_tf_dev:
@@ -82,9 +88,12 @@ jobs:
       - name: Run docker container
         run: docker run --name onnxtf --env-file setup/env.list -v ${{ github.workspace }}/results/onnx-tf/development:/root/results scoreboard/onnxtf-dev || true
 
-      - name: Deploy results
+      - name: Upload results
         if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
-        run: . setup/git-deploy-results.sh
+        uses: actions/upload-artifact@v4
+        with:
+          name: results-onnxtf-dev
+          path: results/onnx-tf/development/
 
 
   jaxonnxruntime_stable:
@@ -108,9 +117,12 @@ jobs:
       - name: Run docker container
         run: docker run --name jaxonnxruntime --env-file setup/env.list -v ${{ github.workspace }}/results/jaxonnxruntime/stable:/root/results scoreboard/jaxonnxruntime || true
 
-      - name: Deploy results
+      - name: Upload results
         if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
-        run: . setup/git-deploy-results.sh
+        uses: actions/upload-artifact@v4
+        with:
+          name: results-jaxonnxruntime-stable
+          path: results/jaxonnxruntime/stable/
 
   jaxonnxruntime_dev:
     runs-on: ubuntu-latest
@@ -137,6 +149,69 @@ jobs:
       - name: Run docker container
         run: docker run --name jaxonnxruntime --env-file setup/env.list -v ${{ github.workspace }}/results/jaxonnxruntime/development:/root/results scoreboard/jaxonnxruntime-dev || true
 
-      - name: Deploy results
+      - name: Upload results
         if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
-        run: . setup/git-deploy-results.sh
+        uses: actions/upload-artifact@v4
+        with:
+          name: results-jaxonnxruntime-dev
+          path: results/jaxonnxruntime/development/
+
+  collect_and_deploy:
+    runs-on: ubuntu-latest
+    needs: [onnxruntime_stable, onnx_tf_stable, onnx_tf_dev, jaxonnxruntime_stable, jaxonnxruntime_dev]
+    if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Switch to benchmark-results branch
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          git fetch origin
+          if git ls-remote --exit-code --heads origin benchmark-results > /dev/null 2>&1; then
+            git checkout -B benchmark-results origin/benchmark-results
+          else
+            git checkout --orphan benchmark-results
+            git rm -rf --cached . 2>/dev/null || true
+          fi
+
+      - name: Download ort stable results
+        uses: actions/download-artifact@v4
+        with:
+          name: results-ort-stable
+          path: results/ort/stable/
+
+      - name: Download onnx-tf stable results
+        uses: actions/download-artifact@v4
+        with:
+          name: results-onnxtf-stable
+          path: results/onnx-tf/stable/
+
+      - name: Download onnx-tf dev results
+        uses: actions/download-artifact@v4
+        with:
+          name: results-onnxtf-dev
+          path: results/onnx-tf/development/
+
+      - name: Download jaxonnxruntime stable results
+        uses: actions/download-artifact@v4
+        with:
+          name: results-jaxonnxruntime-stable
+          path: results/jaxonnxruntime/stable/
+
+      - name: Download jaxonnxruntime dev results
+        uses: actions/download-artifact@v4
+        with:
+          name: results-jaxonnxruntime-dev
+          path: results/jaxonnxruntime/development/
+
+      - name: Deploy results
+        run: |
+          git add results
+          if ! git diff --cached --quiet; then
+            git commit -s -m "Scoreboard results [skip ci]"
+            git push origin benchmark-results
+          else
+            echo "No changes to commit"
+          fi
