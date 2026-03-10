@@ -1,4 +1,4 @@
-FROM python:3.9
+FROM python:3.10
 
 # Disable interactive installation mode
 ENV DEBIAN_FRONTEND=noninteractive
@@ -24,10 +24,8 @@ ENV ONNX_BACKEND="jaxonnxruntime.backend"
 # Install dependencies
 RUN pip3 install --no-cache-dir \
     onnx \
-    jaxonnxruntime
-
-####################################################
-RUN pip3 install --upgrade pip setuptools wheel pytest
+    jaxonnxruntime && \
+    pip3 install --upgrade pip setuptools wheel pytest
 
 ############## JAX and JAXONNXRuntime configs ###########
 # ref to https://github.com/google/jaxonnxruntime/blob/main/tests/onnx_ops_test.py

@@ -21,13 +21,9 @@ RUN pip3 install --no-cache-dir -r /root/setup/requirements_report.txt
 ############## ONNX Backend dependencies ###########
 ENV ONNX_BACKEND="jaxonnxruntime.backend"
 
-RUN pip3 install onnx
-
-# Install dependencies
-RUN pip3 install git+https://github.com/google/jaxonnxruntime.git@main
-####################################################
-
-RUN pip3 install --upgrade pip setuptools wheel pytest
+RUN pip3 install onnx && \
+    pip3 install git+https://github.com/google/jaxonnxruntime.git@main && \
+    pip3 install --upgrade pip setuptools wheel pytest
 
 ############## JAX and JAXONNXRuntime configs ###########
 # ref to https://github.com/google/jaxonnxruntime/blob/main/tests/onnx_ops_test.py

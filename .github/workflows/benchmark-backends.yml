@@ -1,8 +1,5 @@
 name: Run benchmarks
 
-permissions:
-  contents: read
-
 on:
   schedule:
     - cron: '0 0 * * *'
@@ -15,6 +12,8 @@ jobs:
   onnxruntime_stable:
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    permissions:
+      contents: read
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
@@ -44,6 +43,8 @@ jobs:
   onnx_tf_stable:
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    permissions:
+      contents: read
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
@@ -73,6 +74,8 @@ jobs:
   onnx_tf_dev:
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    permissions:
+      contents: read
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
@@ -102,6 +105,8 @@ jobs:
   jaxonnxruntime_stable:
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    permissions:
+      contents: read
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
@@ -130,6 +135,8 @@ jobs:
   jaxonnxruntime_dev:
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    permissions:
+      contents: read
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
@@ -162,6 +169,8 @@ jobs:
   onnxruntime_dev:
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    permissions:
+      contents: read
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
@@ -177,6 +186,9 @@ jobs:
       - name: Git setup
         run: . setup/git-setup.sh
 
+      - name: Prepare results directory
+        run: mkdir -p ${{ github.workspace }}/results/ort/development && chmod 777 ${{ github.workspace }}/results/ort/development
+
       - name: Run docker container
         run: docker run --name ort-dev --env-file setup/env.list -v ${{ github.workspace }}/results/ort/development:/root/results scoreboard/ort-dev || true
 
@@ -190,6 +202,8 @@ jobs:
   emx_onnx_cgen_stable:
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    permissions:
+      contents: read
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
@@ -205,6 +219,9 @@ jobs:
       - name: Git setup
         run: . setup/git-setup.sh
 
+      - name: Prepare results directory
+        run: mkdir -p ${{ github.workspace }}/results/emx-onnx-cgen/stable && chmod 777 ${{ github.workspace }}/results/emx-onnx-cgen/stable
+
       - name: Run docker container
         run: docker run --name emx-onnx-cgen --env-file setup/env.list -v ${{ github.workspace }}/results/emx-onnx-cgen/stable:/root/results scoreboard/emx-onnx-cgen || true
 
@@ -217,6 +234,8 @@ jobs:
 
   collect_and_deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     needs: [onnxruntime_stable, onnxruntime_dev, onnx_tf_stable, onnx_tf_dev, jaxonnxruntime_stable, jaxonnxruntime_dev, emx_onnx_cgen_stable]
     if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
     steps:

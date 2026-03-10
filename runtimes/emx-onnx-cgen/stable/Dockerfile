@@ -10,9 +10,8 @@ RUN apt-get update && apt-get install -y \
     python3-pip \
     gcc \
     locales && \
-    apt-get clean autoclean && apt-get autoremove -y
-
-RUN pip3 install --upgrade pip setuptools wheel
+    apt-get clean autoclean && apt-get autoremove -y && \
+    pip3 install --upgrade pip setuptools wheel
 
 # Copy local directories
 COPY ./test /root/test
