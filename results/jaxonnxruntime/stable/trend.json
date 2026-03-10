@@ -352,7 +352,7 @@
         ]
     },
     {
-        "date": "03/10/2026 17:51:54",
+        "date": "11/14/2025 00:36:17",
         "failed": 0,
         "passed": 0,
         "skipped": 0,
@@ -364,6 +364,22 @@
             {
                 "name": "onnx",
                 "version": "1.19.1"
+            }
+        ]
+    },
+    {
+        "date": "03/10/2026 22:02:52",
+        "failed": 0,
+        "passed": 0,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "jaxonnxruntime",
+                "version": "0.3.0"
+            },
+            {
+                "name": "onnx",
+                "version": "1.20.1"
             }
         ]
     }

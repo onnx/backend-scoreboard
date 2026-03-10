@@ -1,0 +1,18 @@
+[
+    {
+        "date": "03/10/2026 22:20:25",
+        "failed": 294,
+        "passed": 1508,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.20.1"
+            },
+            {
+                "name": "tract",
+                "version": "0.22.1"
+            }
+        ]
+    }
+]

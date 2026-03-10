@@ -1,0 +1,18 @@
+[
+    {
+        "date": "03/10/2026 22:28:13",
+        "failed": 422,
+        "passed": 1380,
+        "skipped": 0,
+        "versions": [
+            {
+                "name": "emx-onnx-cgen",
+                "version": "1.0.0"
+            },
+            {
+                "name": "onnx",
+                "version": "1.20.1"
+            }
+        ]
+    }
+]
