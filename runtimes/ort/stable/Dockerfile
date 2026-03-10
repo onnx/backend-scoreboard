@@ -1,17 +1,16 @@
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 
 # Disable interactive installation mode
 ENV DEBIAN_FRONTEND=noninteractive
+ENV PIP_BREAK_SYSTEM_PACKAGES=1
 
 # Install Python and locales dependencies
 RUN apt-get update && apt-get install -y \
-	python3 \	
-    python3-dev \	
+	python3 \
+    python3-dev \
     python3-pip \
     locales && \
     apt-get clean autoclean && apt-get autoremove -y
-
-RUN pip3 install --upgrade pip setuptools wheel
 
 # Copy local directories
 COPY ./test /root/test
@@ -34,5 +33,4 @@ RUN pip3 install \
     numpy
 ####################################################
 
-CMD . /root/setup/docker-setup.sh && \
-    pytest /root/test/test_backend.py --onnx_backend=${ONNX_BACKEND} -k 'not _cuda' -v
+CMD ["sh", "-c", ". /root/setup/docker-setup.sh && pytest /root/test/test_backend.py --onnx_backend=${ONNX_BACKEND} -k 'not _cuda' -v"]

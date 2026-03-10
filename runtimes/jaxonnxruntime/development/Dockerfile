@@ -21,13 +21,9 @@ RUN pip3 install --no-cache-dir -r /root/setup/requirements_report.txt
 ############## ONNX Backend dependencies ###########
 ENV ONNX_BACKEND="jaxonnxruntime.backend"
 
-RUN pip3 install onnx
-
-# Install dependencies
-RUN pip3 install git+https://github.com/google/jaxonnxruntime.git@main
-####################################################
-
-RUN pip3 install --upgrade pip setuptools wheel pytest
+RUN pip3 install onnx && \
+    pip3 install git+https://github.com/google/jaxonnxruntime.git@main && \
+    pip3 install --upgrade pip setuptools wheel pytest
 
 ############## JAX and JAXONNXRuntime configs ###########
 # ref to https://github.com/google/jaxonnxruntime/blob/main/tests/onnx_ops_test.py
@@ -37,5 +33,4 @@ ENV JAX_NUMPY_RANK_PROMOTION=warn
 ENV JAXORT_ONLY_ALLOW_INITIALIZERS_AS_STATIC_ARGS=0
 ENV JAXORT_NONZERO_USE_FULLY_PADDING=1
 
-CMD . /root/setup/docker-setup.sh && \
-    pytest /root/test/test_backend.py --onnx_backend=${ONNX_BACKEND} -k 'not _cuda' -v
+CMD ["sh", "-c", ". /root/setup/docker-setup.sh && pytest /root/test/test_backend.py --onnx_backend=${ONNX_BACKEND} -k 'not _cuda' -v"]

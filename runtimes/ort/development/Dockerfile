@@ -1,14 +1,14 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 # Disable interactive installation mode
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Install Python dependencies
+# Install Python and locales dependencies
 RUN apt-get update && apt-get install -y \
-    python3 \
+	python3 \
     python3-dev \
     python3-pip \
-    git && \
+    locales && \
     apt-get clean autoclean && apt-get autoremove -y && \
     pip3 install --upgrade pip setuptools wheel
 
@@ -20,13 +20,19 @@ COPY ./setup /root/setup
 RUN pip3 install --no-cache-dir -r /root/setup/requirements_report.txt
 
 ############## ONNX Backend dependencies ###########
-ENV ONNX_BACKEND="onnx_tf.backend"
+ENV ONNX_BACKEND="onnxruntime.backend.backend"
 
-RUN pip3 install onnx && \
-    pip3 install --no-cache-dir \
-        tensorflow \
-        tensorflow-probability && \
-    pip3 install git+https://github.com/onnx/onnx-tensorflow.git@main
+# Set locale which is required for StringNormalizer
+RUN locale-gen en_US.UTF-8 && update-locale LANG=en_US.UTF-8
+
+# Install nightly onnxruntime and latest onnx
+RUN pip3 install --no-input \
+    onnx \
+    numpy \
+    ort-nightly --extra-index-url https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/ORT-Nightly/pypi/simple/
 ####################################################
+
+RUN useradd -m -u 1000 runner && chown -R runner:runner /root
+USER runner
 
 CMD ["sh", "-c", ". /root/setup/docker-setup.sh && pytest /root/test/test_backend.py --onnx_backend=${ONNX_BACKEND} -k 'not _cuda' -v"]

@@ -8,9 +8,8 @@ RUN apt-get update && apt-get install -y \
     python3 \
     python3-dev \
     python3-pip && \
-    apt-get clean autoclean && apt-get autoremove -y
-
-RUN pip3 install --upgrade pip setuptools wheel
+    apt-get clean autoclean && apt-get autoremove -y && \
+    pip3 install --upgrade pip setuptools wheel
 
 # Copy local directories
 COPY ./test /root/test
@@ -30,5 +29,4 @@ RUN pip3 install --no-cache-dir \
     onnx-tf
 ####################################################
 
-CMD . /root/setup/docker-setup.sh && \
-    pytest /root/test/test_backend.py --onnx_backend=${ONNX_BACKEND} -k 'not _cuda' -v
+CMD ["sh", "-c", ". /root/setup/docker-setup.sh && pytest /root/test/test_backend.py --onnx_backend=${ONNX_BACKEND} -k 'not _cuda' -v"]

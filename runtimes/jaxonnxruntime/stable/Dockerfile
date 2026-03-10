@@ -1,4 +1,4 @@
-FROM python:3.9
+FROM python:3.10
 
 # Disable interactive installation mode
 ENV DEBIAN_FRONTEND=noninteractive
@@ -24,10 +24,8 @@ ENV ONNX_BACKEND="jaxonnxruntime.backend"
 # Install dependencies
 RUN pip3 install --no-cache-dir \
     onnx \
-    jaxonnxruntime
-
-####################################################
-RUN pip3 install --upgrade pip setuptools wheel pytest
+    jaxonnxruntime && \
+    pip3 install --upgrade pip setuptools wheel pytest
 
 ############## JAX and JAXONNXRuntime configs ###########
 # ref to https://github.com/google/jaxonnxruntime/blob/main/tests/onnx_ops_test.py
@@ -37,5 +35,4 @@ ENV JAX_NUMPY_RANK_PROMOTION=warn
 ENV JAXORT_ONLY_ALLOW_INITIALIZERS_AS_STATIC_ARGS=0
 ENV JAXORT_NONZERO_USE_FULLY_PADDING=1
 
-CMD . /root/setup/docker-setup.sh && \
-    pytest /root/test/test_backend.py --onnx_backend=${ONNX_BACKEND} -k 'not _cuda' -v
+CMD ["sh", "-c", ". /root/setup/docker-setup.sh && pytest /root/test/test_backend.py --onnx_backend=${ONNX_BACKEND} -k 'not _cuda' -v"]
