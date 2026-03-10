@@ -9,7 +9,7 @@ set -x  # Command echo on
 git fetch origin
 
 # Switch to benchmark-results branch or create it as orphan on first run
-if git ls-remote --heads origin benchmark-results | grep -q benchmark-results; then
+if git ls-remote --exit-code --heads origin benchmark-results > /dev/null 2>&1; then
   git checkout -B benchmark-results origin/benchmark-results
 else
   git checkout --orphan benchmark-results
