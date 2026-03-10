@@ -30,5 +30,4 @@ RUN pip3 install --no-cache-dir \
     onnx-tf
 ####################################################
 
-CMD . /root/setup/docker-setup.sh && \
-    pytest /root/test/test_backend.py --onnx_backend=${ONNX_BACKEND} -k 'not _cuda' -v
+CMD ["sh", "-c", ". /root/setup/docker-setup.sh && pytest /root/test/test_backend.py --onnx_backend=${ONNX_BACKEND} -k 'not _cuda' -v"]

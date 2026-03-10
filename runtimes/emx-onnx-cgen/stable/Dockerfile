@@ -35,7 +35,8 @@ RUN pip3 install \
     emx-onnx-cgen
 ####################################################
 
+RUN useradd -m -u 1000 runner && chown -R runner:runner /root
+USER runner
 WORKDIR /root
 
-CMD . /root/setup/docker-setup.sh && \
-    pytest /root/test/test_backend.py --onnx_backend=${ONNX_BACKEND} -k 'not _cuda' -v
+CMD ["sh", "-c", ". /root/setup/docker-setup.sh && pytest /root/test/test_backend.py --onnx_backend=${ONNX_BACKEND} -k 'not _cuda' -v"]

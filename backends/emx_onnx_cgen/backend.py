@@ -61,13 +61,20 @@ class EmxBackendRep(BackendRep):
         output_json = json.loads(result.stdout.decode())
         outputs_data = output_json.get("outputs", {})
 
+        def _decode(v):
+            if isinstance(v, str):
+                return float.fromhex(v)
+            if isinstance(v, list):
+                return [_decode(x) for x in v]
+            return v
+
         results = []
         for i, (name, dtype) in enumerate(self.output_infos):
             # Look up by name first, fall back to index order
             key = name if name in outputs_data else list(outputs_data.keys())[i]
             out = outputs_data[key]
             shape = out["shape"]
-            data = out["data"]
+            data = _decode(out["data"])
             arr = np.array(data, dtype=dtype)
             if shape:
                 arr = arr.reshape(shape)
@@ -85,7 +92,7 @@ class EmxBackend(Backend):
     def prepare(cls, model, device="CPU", **kwargs):
         from emx_onnx_cgen.compiler import Compiler, CompilerOptions
 
-        model_hash = hashlib.md5(model.SerializeToString()).hexdigest()
+        model_hash = hashlib.sha256(model.SerializeToString()).hexdigest()
 
         if model_hash not in _compile_cache:
             options = CompilerOptions(
@@ -103,7 +110,7 @@ class EmxBackend(Backend):
             c_file.write_text(c_code)
 
             result = subprocess.run(
-                ["gcc", "-O2", "-lm", str(c_file), "-o", str(exe_file)],
+                ["gcc", "-O2", str(c_file), "-o", str(exe_file), "-lm"],
                 capture_output=True,
             )
             if result.returncode != 0:
