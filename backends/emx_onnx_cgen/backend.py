@@ -130,3 +130,4 @@ class EmxBackend(Backend):
 
 prepare = EmxBackend.prepare
 run_model = EmxBackend.run_model
+supports_device = EmxBackend.supports_device
