@@ -156,9 +156,65 @@ jobs:
           name: results-jaxonnxruntime-dev
           path: results/jaxonnxruntime/development/
 
+  onnxruntime_dev:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Build docker image
+        run: docker build -t scoreboard/ort-dev -f runtimes/ort/development/Dockerfile .
+
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.9.1
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+
+      - name: Git setup
+        run: . setup/git-setup.sh
+
+      - name: Run docker container
+        run: docker run --name ort-dev --env-file setup/env.list -v ${{ github.workspace }}/results/ort/development:/root/results scoreboard/ort-dev || true
+
+      - name: Upload results
+        if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: results-ort-dev
+          path: results/ort/development/
+
+  emx_onnx_cgen_stable:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Build docker image
+        run: docker build -t scoreboard/emx-onnx-cgen -f runtimes/emx-onnx-cgen/stable/Dockerfile .
+
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.9.1
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+
+      - name: Git setup
+        run: . setup/git-setup.sh
+
+      - name: Run docker container
+        run: docker run --name emx-onnx-cgen --env-file setup/env.list -v ${{ github.workspace }}/results/emx-onnx-cgen/stable:/root/results scoreboard/emx-onnx-cgen || true
+
+      - name: Upload results
+        if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: results-emx-onnx-cgen-stable
+          path: results/emx-onnx-cgen/stable/
+
   collect_and_deploy:
     runs-on: ubuntu-latest
-    needs: [onnxruntime_stable, onnx_tf_stable, onnx_tf_dev, jaxonnxruntime_stable, jaxonnxruntime_dev]
+    needs: [onnxruntime_stable, onnxruntime_dev, onnx_tf_stable, onnx_tf_dev, jaxonnxruntime_stable, jaxonnxruntime_dev, emx_onnx_cgen_stable]
     if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
     steps:
       - name: Checkout code
@@ -205,6 +261,18 @@ jobs:
         with:
           name: results-jaxonnxruntime-dev
           path: results/jaxonnxruntime/development/
+
+      - name: Download ort dev results
+        uses: actions/download-artifact@v4
+        with:
+          name: results-ort-dev
+          path: results/ort/development/
+
+      - name: Download emx-onnx-cgen stable results
+        uses: actions/download-artifact@v4
+        with:
+          name: results-emx-onnx-cgen-stable
+          path: results/emx-onnx-cgen/stable/
 
       - name: Deploy results
         run: |

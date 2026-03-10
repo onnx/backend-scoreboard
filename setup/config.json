@@ -17,6 +17,12 @@
             "results_dir": "./results/jaxonnxruntime/stable",
             "core_packages": ["onnx", "jaxonnxruntime"],
             "dockerfile_link": "runtimes/jaxonnxruntime/stable/Dockerfile"
+        },
+        "emx-onnx-cgen": {
+            "name": "emx-onnx-cgen",
+            "results_dir": "./results/emx-onnx-cgen/stable",
+            "core_packages": ["emx-onnx-cgen"],
+            "dockerfile_link": "runtimes/emx-onnx-cgen/stable/Dockerfile"
         }
     },
     "development": {
