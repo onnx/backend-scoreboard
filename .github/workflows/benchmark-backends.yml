@@ -279,7 +279,7 @@ jobs:
           path: results/jaxonnxruntime/stable/
 
       - name: Download jaxonnxruntime dev results
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: results-jaxonnxruntime-dev
           path: results/jaxonnxruntime/development/
