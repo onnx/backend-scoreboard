@@ -29,6 +29,12 @@
             "results_dir": "./results/tract/stable",
             "core_packages": ["tract"],
             "dockerfile_link": "runtimes/tract/stable/Dockerfile"
+        },
+        "onnx-reference": {
+            "name": "ONNX Reference",
+            "results_dir": "./results/onnx-reference/stable",
+            "core_packages": ["onnx"],
+            "dockerfile_link": "runtimes/onnx-reference/stable/Dockerfile"
         }
     },
     "development": {
