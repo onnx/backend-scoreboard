@@ -35,6 +35,12 @@
             "results_dir": "./results/onnx-reference/stable",
             "core_packages": ["onnx"],
             "dockerfile_link": "runtimes/onnx-reference/stable/Dockerfile"
+        },
+        "opencv": {
+            "name": "OpenCV DNN",
+            "results_dir": "./results/opencv/stable",
+            "core_packages": ["opencv-python-headless"],
+            "dockerfile_link": "runtimes/opencv/stable/Dockerfile"
         }
     },
     "development": {
