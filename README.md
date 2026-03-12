@@ -10,12 +10,12 @@ This is a repository of the ONNX Backend Scoreboard which measures the complianc
 
 ## 🛠 Maintainer Wanted
 
-We are currently **looking for a new maintainer** to help support and evolve the `backend-scorecard` project.
+We are currently **looking for a new maintainer** to help support and evolve the `backend-scoreboard` project.
 
 If you're passionate about the ONNX standard or contributing to the open source machine learning ecosystem, we'd love to hear from you! This is a great opportunity to contribute to a widely used project and collaborate with the ONNX community.
 
 **To express interest:**  
-Please open an issue or comment on [this thread](https://github.com/onnx/backend-scorecard/issues) and let us know about your interest and background.
+Please open an issue or comment on [this thread](https://github.com/onnx/backend-scoreboard/issues) and let us know about your interest and background.
 
 
 ### :chart_with_upwards_trend: [Check out the scoreboard page](http://onnx.ai/backend-scoreboard/)
