@@ -14,29 +14,36 @@ class ReferenceEvaluatorBackendRep(BackendRep):
     """BackendRep wrapper around ONNX ReferenceEvaluator."""
 
     def __init__(self, session: ReferenceEvaluator):
+        """Initialize the wrapper with a ready reference evaluator session."""
         self._session = session
 
+    def _feeds_from_list(self, inputs: list[np.ndarray]) -> dict[str, np.ndarray]:
+        """Build named input feeds from positional inputs."""
+        if len(inputs) == len(self._session.input_names):
+            return dict(zip(self._session.input_names, inputs, strict=True))
+
+        feeds: dict[str, np.ndarray] = {}
+        pos_inputs = 0
+        for inp, tshape in zip(
+            self._session.input_names,
+            self._session.input_types,
+            strict=True,
+        ):
+            if pos_inputs >= len(inputs):
+                break
+            shape = tuple(d.dim_value for d in tshape.tensor_type.shape.dim)
+            if shape == inputs[pos_inputs].shape:
+                feeds[inp] = inputs[pos_inputs]
+                pos_inputs += 1
+        return feeds
+
     def run(self, inputs, **kwargs):
+        """Run inference on a list, array, or dict of input tensors."""
         if isinstance(inputs, np.ndarray):
             inputs = [inputs]
 
         if isinstance(inputs, list):
-            if len(inputs) == len(self._session.input_names):
-                feeds = dict(zip(self._session.input_names, inputs, strict=True))
-            else:
-                feeds = {}
-                pos_inputs = 0
-                for inp, tshape in zip(
-                    self._session.input_names,
-                    self._session.input_types,
-                    strict=True,
-                ):
-                    shape = tuple(d.dim_value for d in tshape.tensor_type.shape.dim)
-                    if shape == inputs[pos_inputs].shape:
-                        feeds[inp] = inputs[pos_inputs]
-                        pos_inputs += 1
-                        if pos_inputs >= len(inputs):
-                            break
+            feeds = self._feeds_from_list(inputs)
         elif isinstance(inputs, dict):
             feeds = inputs
         else:
@@ -50,21 +57,25 @@ class ReferenceEvaluatorBackend(Backend):
 
     @classmethod
     def is_opset_supported(cls, model):
+        """Return whether the backend supports the model opset."""
         return True, ""
 
     @classmethod
     def supports_device(cls, device: str) -> bool:
+        """Return whether the requested device is CPU."""
         d = Device(device)
         return d.type == DeviceType.CPU
 
     @classmethod
     def create_inference_session(cls, model):
+        """Create a ReferenceEvaluator session from a model object."""
         return ReferenceEvaluator(model)
 
     @classmethod
     def prepare(
         cls, model: Any, device: str = "CPU", **kwargs: Any
     ) -> ReferenceEvaluatorBackendRep:
+        """Build and return a backend representation for the provided model."""
         if isinstance(model, ReferenceEvaluator):
             return ReferenceEvaluatorBackendRep(model)
         if isinstance(model, (str, bytes, ModelProto)):
@@ -74,6 +85,7 @@ class ReferenceEvaluatorBackend(Backend):
 
     @classmethod
     def run_model(cls, model, inputs, device=None, **kwargs):
+        """Prepare and execute model inference in one call."""
         rep = cls.prepare(model, device, **kwargs)
         return rep.run(inputs, **kwargs)
 

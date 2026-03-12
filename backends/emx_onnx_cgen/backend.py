@@ -10,7 +10,6 @@ import tempfile
 from pathlib import Path
 
 import numpy as np
-import onnx
 from onnx import TensorProto
 from onnx.backend.base import Backend, BackendRep
 
@@ -34,15 +33,48 @@ _compile_cache: dict[str, Path] = {}
 
 
 class EmxBackendRep(BackendRep):
+    """Runtime representation for an emx-compiled ONNX model."""
+
     def __init__(self, executable: Path, output_infos: list[tuple[str, np.dtype]]):
+        """Store executable path and output dtype metadata."""
         self.executable = executable
         self.output_infos = output_infos
 
-    def run(self, inputs, **kwargs):
+    @staticmethod
+    def _decode(v):
+        """Decode JSON values, including hex-encoded float strings."""
+        if isinstance(v, str):
+            return float.fromhex(v)
+        if isinstance(v, list):
+            return [EmxBackendRep._decode(x) for x in v]
+        return v
+
+    @staticmethod
+    def _write_inputs(inputs) -> str:
+        """Serialize all inputs to a temporary binary file and return its path."""
         with tempfile.NamedTemporaryFile(delete=False, suffix=".bin") as f:
-            input_path = f.name
             for inp in inputs:
                 f.write(np.asarray(inp).tobytes())
+            return f.name
+
+    def _collect_outputs(self, outputs_data: dict) -> list[np.ndarray]:
+        """Reconstruct numpy outputs using declared output metadata."""
+        results: list[np.ndarray] = []
+        output_keys = list(outputs_data.keys())
+        for i, (name, dtype) in enumerate(self.output_infos):
+            key = name if name in outputs_data else output_keys[i]
+            out = outputs_data[key]
+            shape = out["shape"]
+            data = self._decode(out["data"])
+            arr = np.array(data, dtype=dtype)
+            if shape:
+                arr = arr.reshape(shape)
+            results.append(arr)
+        return results
+
+    def run(self, inputs, **kwargs):
+        """Execute the compiled model and return decoded outputs."""
+        input_path = self._write_inputs(inputs)
 
         try:
             result = subprocess.run(
@@ -60,36 +92,20 @@ class EmxBackendRep(BackendRep):
 
         output_json = json.loads(result.stdout.decode())
         outputs_data = output_json.get("outputs", {})
-
-        def _decode(v):
-            if isinstance(v, str):
-                return float.fromhex(v)
-            if isinstance(v, list):
-                return [_decode(x) for x in v]
-            return v
-
-        results = []
-        for i, (name, dtype) in enumerate(self.output_infos):
-            # Look up by name first, fall back to index order
-            key = name if name in outputs_data else list(outputs_data.keys())[i]
-            out = outputs_data[key]
-            shape = out["shape"]
-            data = _decode(out["data"])
-            arr = np.array(data, dtype=dtype)
-            if shape:
-                arr = arr.reshape(shape)
-            results.append(arr)
-
-        return results
+        return self._collect_outputs(outputs_data)
 
 
 class EmxBackend(Backend):
+    """ONNX backend implementation backed by emx-onnx-cgen."""
+
     @classmethod
     def is_compatible(cls, model, device="CPU", **kwargs):
+        """Return whether this backend can attempt to handle the model."""
         return True
 
     @classmethod
     def prepare(cls, model, device="CPU", **kwargs):
+        """Compile model C code and return a runnable backend representation."""
         from emx_onnx_cgen.compiler import Compiler, CompilerOptions
 
         model_hash = hashlib.sha256(model.SerializeToString()).hexdigest()
@@ -101,7 +117,7 @@ class EmxBackend(Backend):
             )
             try:
                 c_code = Compiler(options).compile(model)
-            except Exception as e:
+            except (RuntimeError, ValueError, TypeError, OSError) as e:
                 raise RuntimeError(f"C code generation failed: {e}") from e
 
             tmp_dir = Path(tempfile.mkdtemp(prefix="emx_"))
@@ -121,17 +137,25 @@ class EmxBackend(Backend):
             _compile_cache[model_hash] = exe_file
 
         output_infos = [
-            (out.name, _ELEM_TYPE_TO_DTYPE.get(out.type.tensor_type.elem_type, np.dtype("float32")))
+            (
+                out.name,
+                _ELEM_TYPE_TO_DTYPE.get(
+                    out.type.tensor_type.elem_type,
+                    np.dtype("float32"),
+                ),
+            )
             for out in model.graph.output
         ]
         return EmxBackendRep(_compile_cache[model_hash], output_infos)
 
     @classmethod
     def run_model(cls, model, inputs, device="CPU", **kwargs):
+        """Prepare then run a model in one call."""
         return cls.prepare(model, device, **kwargs).run(inputs)
 
     @classmethod
     def supports_device(cls, device):
+        """Return whether the backend supports the given device."""
         return device == "CPU"
 
 
