@@ -24,6 +24,7 @@ ENV ONNX_BACKEND="jaxonnxruntime.backend"
 # Install dependencies
 RUN pip3 install --no-cache-dir \
     onnx \
+    absl-py \
     jaxonnxruntime && \
     pip3 install --upgrade pip setuptools wheel pytest
 
