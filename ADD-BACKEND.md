@@ -55,6 +55,7 @@ For `development` version the `core_packages` list is optional:
 * Copy and paste this [job template](examples/job.yml) to the end of file.
 * Fill `new_backend` with the new backend unique name.
 * Change the `docker build` and `docker run` commands to match your backend.
+* Add your job name to `collect_and_deploy.needs` and add a matching `download-artifact` step there.
 
 ```yml
 
@@ -64,25 +65,22 @@ For `development` version the `core_packages` list is optional:
   new_backend:
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    permissions:
+      contents: read
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v6
 
       - name: Build docker image
         run: docker build -t scoreboard/new_backend -f runtimes/new_backend/stable/Dockerfile .
 
-      - name: Set up SSH
-        uses: webfactory/ssh-agent@v0.9.0
-        with:
-            ssh-private-key: |
-                  ${{ secrets.DEPLOY_KEY }}
-
-      - name: Git setup
-        run: . setup/git-setup.sh
-
       - name: Run docker container
-        run: docker run --name new_backend --env-file setup/env.list -v `pwd`/results/new_backend/stable:/root/results scoreboard/new_backend || true
+        run: docker run --name new_backend --env-file setup/env.list -v ${{ github.workspace }}/results/new_backend/stable:/root/results scoreboard/new_backend || true
 
-      - name: Deploy results
-        run: . setup/git-deploy-results.sh
+      - name: Upload results
+        if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: results-new_backend-stable
+          path: results/new_backend/stable/
 ```
