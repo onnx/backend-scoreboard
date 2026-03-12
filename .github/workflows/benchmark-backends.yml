@@ -295,11 +295,44 @@ jobs:
           name: results-onnx-reference-stable
           path: results/onnx-reference/stable/
 
+  opencv_stable:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Build docker image
+        run: docker build -t scoreboard/opencv -f runtimes/opencv/stable/Dockerfile .
+
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@a6f90b1f127823b31d4d4a8d96047790581349bd  # v0.9.1
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+
+      - name: Git setup
+        run: . setup/git-setup.sh
+
+      - name: Prepare results directory
+        run: mkdir -p ${{ github.workspace }}/results/opencv/stable && chmod 777 ${{ github.workspace }}/results/opencv/stable
+
+      - name: Run docker container
+        run: docker run --name opencv --env-file setup/env.list -v ${{ github.workspace }}/results/opencv/stable:/root/results scoreboard/opencv || true
+
+      - name: Upload results
+        if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: results-opencv-stable
+          path: results/opencv/stable/
+
   collect_and_deploy:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    needs: [onnxruntime_stable, onnxruntime_dev, onnx_tf_stable, onnx_tf_dev, jaxonnxruntime_stable, jaxonnxruntime_dev, emx_onnx_cgen_stable, tract_stable, onnx_reference_stable]
+    needs: [onnxruntime_stable, onnxruntime_dev, onnx_tf_stable, onnx_tf_dev, jaxonnxruntime_stable, jaxonnxruntime_dev, emx_onnx_cgen_stable, tract_stable, onnx_reference_stable, opencv_stable]
     if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
     steps:
       - name: Checkout code
@@ -370,6 +403,12 @@ jobs:
         with:
           name: results-onnx-reference-stable
           path: results/onnx-reference/stable/
+
+      - name: Download opencv stable results
+        uses: actions/download-artifact@v8
+        with:
+          name: results-opencv-stable
+          path: results/opencv/stable/
 
       - name: Deploy results
         run: |
