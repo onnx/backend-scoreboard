@@ -21,7 +21,7 @@ def _opencv_worker(model_bytes, inputs, input_names, output_names, result_queue)
         path = f.name
     try:
         net = cv2.dnn.readNetFromONNX(path)
-        for name, inp in zip(input_names, inputs):
+        for name, inp in zip(input_names, inputs, strict=True):
             net.setInput(np.asarray(inp, dtype=np.float32), name)
         raw = net.forward(output_names)
         # forward() returns ndarray for single output, list for multiple
