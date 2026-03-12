@@ -18,7 +18,7 @@ If you're passionate about the ONNX standard or contributing to the open source 
 Please open an issue or comment on [this thread](https://github.com/onnx/backend-scoreboard/issues) and let us know about your interest and background.
 
 
-### :chart_with_upwards_trend: [Check out the scoreboard page](http://onnx.ai/backend-scoreboard/)
+### :chart_with_upwards_trend: [Check out the scoreboard page](https://onnx.ai/backend-scoreboard/)
 
 - To add another backend to the scoreboard please follow [these instructions](ADD-BACKEND.md).
 - More information for developers [here](DEV-INFO.md).
