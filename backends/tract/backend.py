@@ -20,12 +20,7 @@ def _tract_worker(model_bytes, inputs, output_count, result_queue):
         f.write(model_bytes)
         path = f.name
     try:
-        runnable = (
-            _tract.onnx()
-            .model_for_path(path)
-            .into_optimized()
-            .into_runnable()
-        )
+        runnable = _tract.onnx().model_for_path(path).into_optimized().into_runnable()
         tract_inputs = [np.asarray(inp) for inp in inputs]
         results = runnable.run(tract_inputs)
         output = [results[i].to_numpy() for i in range(output_count)]
