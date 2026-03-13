@@ -6,7 +6,7 @@
 set -e  # Exit on error
 set -x  # Command echo on
 
-git checkout master
+git checkout main
 git pull
 git add docs
 if ! git diff --cached --quiet; then

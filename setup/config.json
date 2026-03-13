@@ -68,5 +68,5 @@
         "subpages": "./docs",
         "resources": "./docs/resources"
     },
-    "repo_url": "https://github.com/onnx/backend-scoreboard/blob/master/"
+    "repo_url": "https://github.com/onnx/backend-scoreboard/blob/main/"
 }
