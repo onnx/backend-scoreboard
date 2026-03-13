@@ -15,11 +15,27 @@ passing and failing tests for the scoreboard.
 import json
 import os
 
+import pytest
+
 from datetime import datetime
 
 
 # Keys for values to save in report (matched with terminalreporter.stats)
 REPORT_KEYS = ["passed", "failed", "skipped"]
+
+# Ops seen across ALL collected test items (populated before -k deselection)
+_suite_ops: set = set()
+
+
+@pytest.hookimpl(tryfirst=True)
+def pytest_collection_modifyitems(session, config, items):  # noqa: ARG001
+    """Collect all op names from onnx_coverage marks before -k deselection."""
+    for item in items:
+        for mark in item.iter_markers("onnx_coverage"):
+            proto = mark.args[0] if mark.args else None
+            if proto is not None and hasattr(proto, "graph"):
+                for node in proto.graph.node:
+                    _suite_ops.add(node.op_type)
 
 
 def pytest_addoption(parser):
@@ -116,6 +132,7 @@ def _prepare_summary(report, package_versions=None):
 
     summary = {"date": report.get("date", datetime.now().strftime("%m/%d/%Y %H:%M:%S"))}
     summary["versions"] = package_versions
+    summary["total_ops"] = len(_suite_ops)
     for key in report.keys():
         if isinstance(report.get(key), list):
             summary[key] = len(report.get(key))

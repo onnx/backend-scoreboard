@@ -1,12 +1,38 @@
 # SPDX-License-Identifier: Apache-2.0
 
-"""ONNX backend wrapper for Apache TVM (Relay frontend)."""
+"""ONNX backend wrapper for Apache TVM (Relay frontend, native ops only)."""
 
+import logging
 import multiprocessing as mp
+import sys
 
 import numpy as np
 from onnx.backend.base import Backend, BackendRep
 from onnx.backend.test.runner import BackendIsNotSupposedToImplementIt
+
+logging.basicConfig(level=logging.WARNING)
+logger = logging.getLogger(__name__)
+
+
+def _native_ops_only(model):
+    """Return ops in the model that have no native TVM Relay converter.
+
+    Uses TVM's internal converter map to detect ops that would silently fall
+    back to the ONNX reference runtime instead of being compiled natively.
+    Returns an empty list when the check cannot be performed.
+    """
+    try:
+        from tvm.relay.frontend.onnx import _get_convert_map
+
+        opset = max(
+            (x.version for x in model.opset_import if x.domain == ""),
+            default=1,
+        )
+        convert_map = _get_convert_map(opset)
+        unsupported = {n.op_type for n in model.graph.node if n.op_type not in convert_map}
+        return sorted(unsupported)
+    except (ImportError, AttributeError):
+        return []
 
 
 def _tvm_worker(model_bytes, inputs, input_names, output_count, result_queue):
@@ -18,6 +44,14 @@ def _tvm_worker(model_bytes, inputs, input_names, output_count, result_queue):
 
     model = onnx.ModelProto()
     model.ParseFromString(model_bytes)
+
+    unsupported = _native_ops_only(model)
+    if unsupported:
+        msg = f"no native TVM converter for: {unsupported}"
+        print(f"[tvm] SKIP {msg}", file=sys.stderr, flush=True)
+        result_queue.put(("error", msg))
+        return
+
     shape_dict = {
         name: np.asarray(inp).shape
         for name, inp in zip(input_names, inputs, strict=True)
@@ -33,7 +67,10 @@ def _tvm_worker(model_bytes, inputs, input_names, output_count, result_queue):
         outputs = [module.get_output(i).numpy() for i in range(output_count)]
         result_queue.put(("ok", outputs))
     except (tvm.TVMError, RuntimeError, ValueError, TypeError, OSError) as e:
-        result_queue.put(("error", str(e)))
+        ops = sorted({n.op_type for n in model.graph.node})
+        msg = f"ops={ops} error={type(e).__name__}: {e}"
+        print(f"[tvm] SKIP {msg}", file=sys.stderr, flush=True)
+        result_queue.put(("error", msg))
 
 
 class TVMBackendRep(BackendRep):
@@ -58,13 +95,16 @@ class TVMBackendRep(BackendRep):
         if p.is_alive():
             p.terminate()
             p.join()
-            raise BackendIsNotSupposedToImplementIt("tvm process timed out")
+            msg = "tvm process timed out"
+            logger.warning(msg)
+            raise BackendIsNotSupposedToImplementIt(msg)
         if p.exitcode != 0:
-            raise BackendIsNotSupposedToImplementIt(
-                f"tvm process crashed (exit code {p.exitcode})"
-            )
+            msg = f"tvm process crashed (exit code {p.exitcode})"
+            logger.warning(msg)
+            raise BackendIsNotSupposedToImplementIt(msg)
         status, result = q.get_nowait()
         if status == "error":
+            logger.warning("tvm skip: %s", result)
             raise BackendIsNotSupposedToImplementIt(result)
         return result
 
