@@ -29,6 +29,24 @@
             "results_dir": "./results/tract/stable",
             "core_packages": ["tract"],
             "dockerfile_link": "runtimes/tract/stable/Dockerfile"
+        },
+        "onnx-reference": {
+            "name": "ONNX Reference",
+            "results_dir": "./results/onnx-reference/stable",
+            "core_packages": ["onnx"],
+            "dockerfile_link": "runtimes/onnx-reference/stable/Dockerfile"
+        },
+        "opencv": {
+            "name": "OpenCV DNN",
+            "results_dir": "./results/opencv/stable",
+            "core_packages": ["opencv-python-headless"],
+            "dockerfile_link": "runtimes/opencv/stable/Dockerfile"
+        },
+        "tvm": {
+            "name": "Apache TVM",
+            "results_dir": "./results/tvm/stable",
+            "core_packages": ["apache-tvm"],
+            "dockerfile_link": "runtimes/tvm/stable/Dockerfile"
         }
     },
     "development": {

@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: Apache-2.0
 
-"""ONNX backend wrapper for tract (Rust inference engine by Sonos)."""
+"""ONNX backend wrapper for OpenCV DNN module."""
 
 import multiprocessing as mp
 import os
@@ -10,52 +10,56 @@ from onnx.backend.base import Backend, BackendRep
 from onnx.backend.test.runner import BackendIsNotSupposedToImplementIt
 
 
-def _tract_worker(model_bytes, inputs, output_count, result_queue):
-    """Load and run a tract model in an isolated subprocess."""
+def _opencv_worker(model_bytes, inputs, input_names, output_names, result_queue):
+    """Load and run an ONNX model via OpenCV DNN in an isolated subprocess."""
     import tempfile
 
-    import tract as _tract
+    import cv2
 
     with tempfile.NamedTemporaryFile(suffix=".onnx", delete=False) as f:
         f.write(model_bytes)
         path = f.name
     try:
-        runnable = _tract.onnx().model_for_path(path).into_optimized().into_runnable()
-        tract_inputs = [np.asarray(inp) for inp in inputs]
-        results = runnable.run(tract_inputs)
-        output = [results[i].to_numpy() for i in range(output_count)]
-        result_queue.put(("ok", output))
-    except (RuntimeError, ValueError, TypeError, OSError) as e:
+        net = cv2.dnn.readNetFromONNX(path)
+        for name, inp in zip(input_names, inputs, strict=True):
+            net.setInput(np.asarray(inp, dtype=np.float32), name)
+        raw = net.forward(output_names)
+        # forward() returns ndarray for single output, list for multiple
+        if isinstance(raw, np.ndarray):
+            raw = [raw]
+        result_queue.put(("ok", [np.array(o) for o in raw]))
+    except (cv2.error, RuntimeError, ValueError, TypeError, OSError) as e:
         result_queue.put(("error", str(e)))
     finally:
         os.unlink(path)
 
 
-class TractBackendRep(BackendRep):
-    """Runtime representation for executing models with tract."""
+class OpenCVBackendRep(BackendRep):
+    """Runtime representation for executing models with OpenCV DNN."""
 
-    def __init__(self, model_bytes, output_count):
-        """Store serialized model bytes and expected output count."""
+    def __init__(self, model_bytes, input_names, output_names):
+        """Store serialized model bytes and graph I/O names."""
         self.model_bytes = model_bytes
-        self.output_count = output_count
+        self.input_names = input_names
+        self.output_names = output_names
 
     def run(self, inputs, **kwargs):
         """Execute inference in a spawned worker process."""
         ctx = mp.get_context("spawn")
         q = ctx.Queue()
         p = ctx.Process(
-            target=_tract_worker,
-            args=(self.model_bytes, inputs, self.output_count, q),
+            target=_opencv_worker,
+            args=(self.model_bytes, inputs, self.input_names, self.output_names, q),
         )
         p.start()
         p.join(timeout=60)
         if p.is_alive():
             p.terminate()
             p.join()
-            raise BackendIsNotSupposedToImplementIt("tract process timed out")
+            raise BackendIsNotSupposedToImplementIt("opencv process timed out")
         if p.exitcode != 0:
             raise BackendIsNotSupposedToImplementIt(
-                f"tract process crashed (exit code {p.exitcode})"
+                f"opencv process crashed (exit code {p.exitcode})"
             )
         status, result = q.get_nowait()
         if status == "error":
@@ -63,8 +67,8 @@ class TractBackendRep(BackendRep):
         return result
 
 
-class TractBackend(Backend):
-    """ONNX backend implementation backed by tract."""
+class OpenCVBackend(Backend):
+    """ONNX backend implementation backed by OpenCV DNN."""
 
     @classmethod
     def is_compatible(cls, model, device="CPU", **kwargs):
@@ -75,8 +79,9 @@ class TractBackend(Backend):
     def prepare(cls, model, device="CPU", **kwargs):
         """Serialize the model and return a runnable backend representation."""
         model_bytes = model.SerializeToString()
-        output_count = len(model.graph.output)
-        return TractBackendRep(model_bytes, output_count)
+        input_names = [inp.name for inp in model.graph.input]
+        output_names = [out.name for out in model.graph.output]
+        return OpenCVBackendRep(model_bytes, input_names, output_names)
 
     @classmethod
     def run_model(cls, model, inputs, device="CPU", **kwargs):
@@ -89,6 +94,6 @@ class TractBackend(Backend):
         return device == "CPU"
 
 
-prepare = TractBackend.prepare
-run_model = TractBackend.run_model
-supports_device = TractBackend.supports_device
+prepare = OpenCVBackend.prepare
+run_model = OpenCVBackend.run_model
+supports_device = OpenCVBackend.supports_device

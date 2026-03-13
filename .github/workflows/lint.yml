@@ -15,5 +15,5 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install ruff
-      - run: ruff check test website-generator
-      - run: ruff format --check test website-generator
+      - run: ruff check test website-generator backends
+      - run: ruff format --check test website-generator backends

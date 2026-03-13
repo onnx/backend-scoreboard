@@ -285,7 +285,7 @@ def generate_page(template, output_dir, name, **template_args):
         f.write(page)
 
 
-def generate_pages(template, database, suffix):
+def generate_pages(template, database, suffix, output_dir):
     """Generate HTML page for each backend in the specified database.
 
     :param template: Jinja2 HTML template, generated from jinja2.Environment.
@@ -294,12 +294,14 @@ def generate_pages(template, database, suffix):
     :type database: dict
     :param suffix: File name suffix for the output, e.g. "details_stable.html".
     :type suffix: str
+    :param output_dir: Directory to save generated backend detail pages.
+    :type output_dir: str
     """
     for backend, backend_data in database.items():
         output_name = "{name}_{suffix}".format(name=backend, suffix=suffix)
         generate_page(
             template,
-            deploy_paths.get("subpages", "./"),
+            output_dir,
             output_name,
             backend_data=backend_data,
         )
@@ -379,8 +381,9 @@ if __name__ == "__main__":
 
     # Create details page for each backend
     template = env.get_template("details.html")
-    generate_pages(template, database_stable, "details_stable.html")
-    generate_pages(template, database_dev, "details_dev.html")
+    details_output_dir = deploy_paths.get("subpages", "./")
+    generate_pages(template, database_stable, "details_stable.html", details_output_dir)
+    generate_pages(template, database_dev, "details_dev.html", details_output_dir)
 
     # Copy resources to deploy dir
     # shutil.copytree function raises error if destination path exists

@@ -51,7 +51,7 @@ Use these commands from the main directory of this repository to build Docker im
 ### Stable versions
 
 * ONNX-Runtime: <br/>
-`docker build -t scoreboard/ort -f runtimes/onnx-runtime/stable/Dockerfile .`
+`docker build -t scoreboard/ort -f runtimes/ort/stable/Dockerfile .`
 
 * ONNX-TF: <br/>
 `docker build -t scoreboard/onnx-tf -f runtimes/onnx-tf/stable/Dockerfile .`
@@ -59,16 +59,25 @@ Use these commands from the main directory of this repository to build Docker im
 * JaxOnnxRuntime <br/>
 `docker build -t scoreboard/jaxonnxruntime -f runtimes/jaxonnxruntime/stable/Dockerfile .`
 
+* emx-onnx-cgen <br/>
+`docker build -t scoreboard/emx-onnx-cgen -f runtimes/emx-onnx-cgen/stable/Dockerfile .`
+
+* tract <br/>
+`docker build -t scoreboard/tract -f runtimes/tract/stable/Dockerfile .`
+
+* ONNX Reference <br/>
+`docker build -t scoreboard/onnx-reference -f runtimes/onnx-reference/stable/Dockerfile .`
+
 ### Development versions (built from source)
 
 * ONNX-Runtime: <br/>
-`docker build -t scoreboard/ort -f runtimes/onnx-runtime/development/Dockerfile .`
+`docker build -t scoreboard/ort-dev -f runtimes/ort/development/Dockerfile .`
 
 * ONNX-TF: <br/>
-`docker build -t scoreboard/onnx-tf -f runtimes/onnx-tf/onnx-tf/Dockerfile .`
+`docker build -t scoreboard/onnxtf-dev -f runtimes/onnx-tf/development/Dockerfile .`
 
 * JaxOnnxRuntime <br/>
-`docker build -t scoreboard/jaxonnxruntime -f runtimes/jaxonnxruntime/development/Dockerfile .`
+`docker build -t scoreboard/jaxonnxruntime-dev -f runtimes/jaxonnxruntime/development/Dockerfile .`
 
 ###### Proxy settings
 
@@ -97,16 +106,25 @@ store results in the directory specified as `results_dir` in `config.json`.
 * JaxOnnxRuntime <br/>
 `docker run --name jaxonnxruntime --env-file setup/env.list -v ~/backend-scoreboard/results/jaxonnxruntime/stable:/root/results scoreboard/jaxonnxruntime`
 
+* emx-onnx-cgen <br/>
+`docker run --name emx-onnx-cgen --env-file setup/env.list -v ~/backend-scoreboard/results/emx-onnx-cgen/stable:/root/results scoreboard/emx-onnx-cgen`
+
+* tract <br/>
+`docker run --name tract --env-file setup/env.list -v ~/backend-scoreboard/results/tract/stable:/root/results scoreboard/tract`
+
+* ONNX Reference <br/>
+`docker run --name onnx-reference --env-file setup/env.list -v ~/backend-scoreboard/results/onnx-reference/stable:/root/results scoreboard/onnx-reference`
+
 ### Development (build from source)
 
 * ONNX-Runtime <br/>
-`docker run --name ort --env-file setup/env.list -v ~/backend-scoreboard/results/ort/development:/root/results scoreboard/ort`
+`docker run --name ort-dev --env-file setup/env.list -v ~/backend-scoreboard/results/ort/development:/root/results scoreboard/ort-dev`
 
 * ONNX-TF <br/>
-`docker run --name onnx-tf --env-file setup/env.list -v ~/backend-scoreboard/results/onnx-tf/development:/root/results scoreboard/onnx-tf`
+`docker run --name onnxtf-dev --env-file setup/env.list -v ~/backend-scoreboard/results/onnx-tf/development:/root/results scoreboard/onnxtf-dev`
 
 * JaxOnnxRuntime <br/>
-`docker run --name jaxonnxruntime --env-file setup/env.list -v ~/backend-scoreboard/results/jaxonnxruntime/development:/root/results scoreboard/jaxonnxruntime`
+`docker run --name jaxonnxruntime-dev --env-file setup/env.list -v ~/backend-scoreboard/results/jaxonnxruntime/development:/root/results scoreboard/jaxonnxruntime-dev`
 
 
 

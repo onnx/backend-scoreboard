@@ -3,9 +3,6 @@ name: Run benchmarks
 on:
   schedule:
     - cron: '0 0 * * *'
-  pull_request:
-    branches:
-      - '**'
   workflow_dispatch:
 
 jobs:
@@ -22,7 +19,7 @@ jobs:
         run: docker build -t scoreboard/ort -f runtimes/ort/stable/Dockerfile .
 
       - name: Set up SSH
-        uses: webfactory/ssh-agent@a6f90b1f127823b31d4d4a8d96047790581349bd  # v0.9.1
+        uses: webfactory/ssh-agent@e83874834305fe9a4a2997156cb26c5de65a8555  # v0.10.0
         with:
             ssh-private-key: |
                   ${{ secrets.DEPLOY_KEY }}
@@ -35,7 +32,7 @@ jobs:
 
       - name: Upload results
         if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: results-ort-stable
           path: results/ort/stable/
@@ -53,7 +50,7 @@ jobs:
         run: docker build -t scoreboard/onnxtf -f runtimes/onnx-tf/stable/Dockerfile .
 
       - name: Set up SSH
-        uses: webfactory/ssh-agent@a6f90b1f127823b31d4d4a8d96047790581349bd  # v0.9.1
+        uses: webfactory/ssh-agent@e83874834305fe9a4a2997156cb26c5de65a8555  # v0.10.0
         with:
           ssh-private-key: ${{ secrets.DEPLOY_KEY }}
 
@@ -65,7 +62,7 @@ jobs:
 
       - name: Upload results
         if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: results-onnxtf-stable
           path: results/onnx-tf/stable/
@@ -84,7 +81,7 @@ jobs:
         run: docker build -t scoreboard/onnxtf-dev -f runtimes/onnx-tf/development/Dockerfile .
 
       - name: Set up SSH
-        uses: webfactory/ssh-agent@a6f90b1f127823b31d4d4a8d96047790581349bd  # v0.9.1
+        uses: webfactory/ssh-agent@e83874834305fe9a4a2997156cb26c5de65a8555  # v0.10.0
         with:
           ssh-private-key: ${{ secrets.DEPLOY_KEY }}
 
@@ -96,7 +93,7 @@ jobs:
 
       - name: Upload results
         if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: results-onnxtf-dev
           path: results/onnx-tf/development/
@@ -115,7 +112,7 @@ jobs:
         run: docker build -t scoreboard/jaxonnxruntime -f runtimes/jaxonnxruntime/stable/Dockerfile .
 
       - name: Set up SSH
-        uses: webfactory/ssh-agent@a6f90b1f127823b31d4d4a8d96047790581349bd  # v0.9.1
+        uses: webfactory/ssh-agent@e83874834305fe9a4a2997156cb26c5de65a8555  # v0.10.0
         with:
           ssh-private-key: ${{ secrets.DEPLOY_KEY }}
 
@@ -127,7 +124,7 @@ jobs:
 
       - name: Upload results
         if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: results-jaxonnxruntime-stable
           path: results/jaxonnxruntime/stable/
@@ -149,7 +146,7 @@ jobs:
         run: docker build -t scoreboard/jaxonnxruntime-dev -f runtimes/jaxonnxruntime/development/Dockerfile .
 
       - name: Set up SSH
-        uses: webfactory/ssh-agent@a6f90b1f127823b31d4d4a8d96047790581349bd  # v0.9.1
+        uses: webfactory/ssh-agent@e83874834305fe9a4a2997156cb26c5de65a8555  # v0.10.0
         with:
           ssh-private-key: ${{ secrets.DEPLOY_KEY }}
 
@@ -161,7 +158,7 @@ jobs:
 
       - name: Upload results
         if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: results-jaxonnxruntime-dev
           path: results/jaxonnxruntime/development/
@@ -179,7 +176,7 @@ jobs:
         run: docker build -t scoreboard/ort-dev -f runtimes/ort/development/Dockerfile .
 
       - name: Set up SSH
-        uses: webfactory/ssh-agent@a6f90b1f127823b31d4d4a8d96047790581349bd  # v0.9.1
+        uses: webfactory/ssh-agent@e83874834305fe9a4a2997156cb26c5de65a8555  # v0.10.0
         with:
           ssh-private-key: ${{ secrets.DEPLOY_KEY }}
 
@@ -194,7 +191,7 @@ jobs:
 
       - name: Upload results
         if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: results-ort-dev
           path: results/ort/development/
@@ -212,7 +209,7 @@ jobs:
         run: docker build -t scoreboard/emx-onnx-cgen -f runtimes/emx-onnx-cgen/stable/Dockerfile .
 
       - name: Set up SSH
-        uses: webfactory/ssh-agent@a6f90b1f127823b31d4d4a8d96047790581349bd  # v0.9.1
+        uses: webfactory/ssh-agent@e83874834305fe9a4a2997156cb26c5de65a8555  # v0.10.0
         with:
           ssh-private-key: ${{ secrets.DEPLOY_KEY }}
 
@@ -227,7 +224,7 @@ jobs:
 
       - name: Upload results
         if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: results-emx-onnx-cgen-stable
           path: results/emx-onnx-cgen/stable/
@@ -245,7 +242,7 @@ jobs:
         run: docker build -t scoreboard/tract -f runtimes/tract/stable/Dockerfile .
 
       - name: Set up SSH
-        uses: webfactory/ssh-agent@a6f90b1f127823b31d4d4a8d96047790581349bd  # v0.9.1
+        uses: webfactory/ssh-agent@e83874834305fe9a4a2997156cb26c5de65a8555  # v0.10.0
         with:
           ssh-private-key: ${{ secrets.DEPLOY_KEY }}
 
@@ -260,16 +257,115 @@ jobs:
 
       - name: Upload results
         if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: results-tract-stable
           path: results/tract/stable/
+
+  onnx_reference_stable:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Build docker image
+        run: docker build -t scoreboard/onnx-reference -f runtimes/onnx-reference/stable/Dockerfile .
+
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@e83874834305fe9a4a2997156cb26c5de65a8555  # v0.10.0
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+
+      - name: Git setup
+        run: . setup/git-setup.sh
+
+      - name: Prepare results directory
+        run: mkdir -p ${{ github.workspace }}/results/onnx-reference/stable && chmod 777 ${{ github.workspace }}/results/onnx-reference/stable
+
+      - name: Run docker container
+        run: docker run --name onnx-reference --env-file setup/env.list -v ${{ github.workspace }}/results/onnx-reference/stable:/root/results scoreboard/onnx-reference || true
+
+      - name: Upload results
+        if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: results-onnx-reference-stable
+          path: results/onnx-reference/stable/
+
+  opencv_stable:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Build docker image
+        run: docker build -t scoreboard/opencv -f runtimes/opencv/stable/Dockerfile .
+
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@e83874834305fe9a4a2997156cb26c5de65a8555  # v0.10.0
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+
+      - name: Git setup
+        run: . setup/git-setup.sh
+
+      - name: Prepare results directory
+        run: mkdir -p ${{ github.workspace }}/results/opencv/stable && chmod 777 ${{ github.workspace }}/results/opencv/stable
+
+      - name: Run docker container
+        run: docker run --name opencv --env-file setup/env.list -v ${{ github.workspace }}/results/opencv/stable:/root/results scoreboard/opencv || true
+
+      - name: Upload results
+        if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: results-opencv-stable
+          path: results/opencv/stable/
+
+  tvm_stable:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Build docker image
+        run: docker build -t scoreboard/tvm -f runtimes/tvm/stable/Dockerfile .
+
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@e83874834305fe9a4a2997156cb26c5de65a8555  # v0.10.0
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+
+      - name: Git setup
+        run: . setup/git-setup.sh
+
+      - name: Prepare results directory
+        run: mkdir -p ${{ github.workspace }}/results/tvm/stable && chmod 777 ${{ github.workspace }}/results/tvm/stable
+
+      - name: Run docker container
+        run: docker run --name tvm --env-file setup/env.list -v ${{ github.workspace }}/results/tvm/stable:/root/results scoreboard/tvm || true
+
+      - name: Upload results
+        if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: results-tvm-stable
+          path: results/tvm/stable/
 
   collect_and_deploy:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    needs: [onnxruntime_stable, onnxruntime_dev, onnx_tf_stable, onnx_tf_dev, jaxonnxruntime_stable, jaxonnxruntime_dev, emx_onnx_cgen_stable, tract_stable]
+    needs: [onnxruntime_stable, onnxruntime_dev, onnx_tf_stable, onnx_tf_dev, jaxonnxruntime_stable, jaxonnxruntime_dev, emx_onnx_cgen_stable, tract_stable, onnx_reference_stable, opencv_stable, tvm_stable]
     if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
     steps:
       - name: Checkout code
@@ -334,6 +430,24 @@ jobs:
         with:
           name: results-tract-stable
           path: results/tract/stable/
+
+      - name: Download ONNX reference stable results
+        uses: actions/download-artifact@v8
+        with:
+          name: results-onnx-reference-stable
+          path: results/onnx-reference/stable/
+
+      - name: Download opencv stable results
+        uses: actions/download-artifact@v8
+        with:
+          name: results-opencv-stable
+          path: results/opencv/stable/
+
+      - name: Download tvm stable results
+        uses: actions/download-artifact@v8
+        with:
+          name: results-tvm-stable
+          path: results/tvm/stable/
 
       - name: Deploy results
         run: |
