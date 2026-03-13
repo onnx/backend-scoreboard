@@ -1,9 +1,10 @@
 [
     {
-        "date": "03/13/2026 15:37:44",
+        "date": "03/13/2026 19:22:47",
         "failed": 294,
         "passed": 1508,
         "skipped": 0,
+        "total_ops": 0,
         "versions": [
             {
                 "name": "onnx",

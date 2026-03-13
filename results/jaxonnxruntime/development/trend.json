@@ -2816,10 +2816,11 @@
         ]
     },
     {
-        "date": "03/13/2026 15:22:47",
-        "failed": 1141,
-        "passed": 623,
+        "date": "03/13/2026 19:07:55",
+        "failed": 1142,
+        "passed": 622,
         "skipped": 0,
+        "total_ops": 0,
         "versions": [
             {
                 "name": "jaxonnxruntime",
