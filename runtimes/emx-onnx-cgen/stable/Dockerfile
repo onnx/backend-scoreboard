@@ -16,22 +16,20 @@ RUN apt-get update && apt-get install -y \
 # Copy local directories
 COPY ./test /root/test
 COPY ./setup /root/setup
-COPY ./backends/emx_onnx_cgen/backend.py /root/emx_backend.py
 
 # Install test report dependencies
 RUN pip3 install --no-cache-dir -r /root/setup/requirements_report.txt
 
 ############## ONNX Backend dependencies ###########
-ENV ONNX_BACKEND="emx_backend"
-ENV PYTHONPATH="/root"
+ENV ONNX_BACKEND="emx_onnx_cgen.onnx_backend"
 
 # Set locale which is required for StringNormalizer
 RUN locale-gen en_US.UTF-8 && update-locale LANG=en_US.UTF-8
 
-# Install emx-onnx-cgen and onnx
+# Install pinned emx-onnx-cgen backend and onnx
 RUN pip3 install \
     onnx \
-    emx-onnx-cgen
+    emx-onnx-cgen==1.1.0
 ####################################################
 
 RUN useradd -m -u 1000 runner && chown -R runner:runner /root
