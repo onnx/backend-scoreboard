@@ -29,7 +29,8 @@ def _native_ops_only(model):
             default=1,
         )
         convert_map = _get_convert_map(opset)
-        return sorted({n.op_type for n in model.graph.node if n.op_type not in convert_map})
+        unsupported = {n.op_type for n in model.graph.node if n.op_type not in convert_map}
+        return sorted(unsupported)
     except (ImportError, AttributeError):
         return []
 
@@ -66,7 +67,8 @@ def _tvm_worker(model_bytes, inputs, input_names, output_count, result_queue):
         outputs = [module.get_output(i).numpy() for i in range(output_count)]
         result_queue.put(("ok", outputs))
     except (tvm.TVMError, RuntimeError, ValueError, TypeError, OSError) as e:
-        msg = f"ops={sorted({n.op_type for n in model.graph.node})} error={type(e).__name__}: {e}"
+        ops = sorted({n.op_type for n in model.graph.node})
+        msg = f"ops={ops} error={type(e).__name__}: {e}"
         print(f"[tvm] SKIP {msg}", file=sys.stderr, flush=True)
         result_queue.put(("error", msg))
 
