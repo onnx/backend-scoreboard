@@ -1,13 +1,13 @@
 [
     {
-        "date": "03/13/2026 01:10:14",
-        "failed": 422,
-        "passed": 1380,
+        "date": "03/13/2026 15:46:55",
+        "failed": 207,
+        "passed": 1595,
         "skipped": 0,
         "versions": [
             {
                 "name": "emx-onnx-cgen",
-                "version": "1.0.0"
+                "version": "1.1.1"
             },
             {
                 "name": "onnx",

@@ -46,7 +46,7 @@ DequantizeLinear,Passed!
 Det,Passed!
 Div,Passed!
 Dropout,Passed!
-DynamicQuantizeLinear,Failed!
+DynamicQuantizeLinear,Passed!
 Einsum,Passed!
 Elu,Passed!
 Equal,Passed!
@@ -113,7 +113,7 @@ Not,Passed!
 OneHot,Passed!
 Optional,Failed!
 OptionalGetElement,Passed!
-OptionalHasElement,Failed!
+OptionalHasElement,Passed!
 Or,Passed!
 PRelu,Passed!
 Pad,Passed!
@@ -155,10 +155,10 @@ ScatterND,Passed!
 Selu,Passed!
 SequenceAt,Passed!
 SequenceConstruct,Passed!
-SequenceEmpty,Passed!
+SequenceEmpty,Failed!
 SequenceErase,Passed!
 SequenceInsert,Passed!
-SequenceLength,Failed!
+SequenceLength,Passed!
 SequenceMap,Failed!
 Shape,Passed!
 Shrink,Passed!
@@ -177,9 +177,9 @@ Split,Passed!
 SplitToSequence,Passed!
 Sqrt,Passed!
 Squeeze,Passed!
-StringConcat,Failed!
-StringNormalizer,Failed!
-StringSplit,Failed!
+StringConcat,Passed!
+StringNormalizer,Passed!
+StringSplit,Passed!
 Sub,Passed!
 Sum,Passed!
 Swish,Passed!
@@ -197,4 +197,4 @@ Unsqueeze,Passed!
 Upsample,Passed!
 Where,Passed!
 Xor,Passed!
-Summary,187/198 node tests passed
+Summary,194/198 node tests passed
