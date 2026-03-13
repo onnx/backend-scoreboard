@@ -26,10 +26,10 @@ ENV ONNX_BACKEND="emx_onnx_cgen.onnx_backend"
 # Set locale which is required for StringNormalizer
 RUN locale-gen en_US.UTF-8 && update-locale LANG=en_US.UTF-8
 
-# Install pinned emx-onnx-cgen backend and onnx
+# Install emx-onnx-cgen and onnx
 RUN pip3 install \
     onnx \
-    emx-onnx-cgen==1.1.0
+    emx-onnx-cgen
 ####################################################
 
 RUN useradd -m -u 1000 runner && chown -R runner:runner /root
