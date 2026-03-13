@@ -18,6 +18,11 @@
     data: [],
     backgroundColor: palette.failed,
     label: 'Failed'
+  },
+  {
+    data: [],
+    backgroundColor: palette.skipped,
+    label: 'Skipped'
   }];
 
   const trend = backendData.trend;
@@ -25,6 +30,7 @@
   barChartLabels.push(backendData.name);
   barChartDatasets[0].data.push(trend[lastIdx].passed);
   barChartDatasets[1].data.push(trend[lastIdx].failed);
+  barChartDatasets[2].data.push(trend[lastIdx].skipped || 0);
 
   new Chart(barChart, {
     type: 'bar',

@@ -30,6 +30,9 @@
             <div class="centered">
                  <div class='{{backend_data.coverage.mark}}'>
                     {{ "{:,.2f}%".format(backend_data.coverage.passed) }}
+                    {% if backend_data.coverage.total_ops > 0 %}
+                    <br><small>{{ backend_data.coverage.passed_ops }}/{{ backend_data.coverage.total_ops }} ops</small>
+                    {% endif %}
                 </div>
             </div>
         </td>

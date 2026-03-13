@@ -12,12 +12,13 @@
     const trend = database[backend].trend;
     const lastIdx = trend.length - 1;
     const chartData = {
-      labels: ['Passed', 'Failed'],
+      labels: ['Passed', 'Failed', 'Skipped'],
       datasets: [{
-        backgroundColor: [palette.passed, palette.failed],
+        backgroundColor: [palette.passed, palette.failed, palette.skipped],
         borderWidth: 0,
         data: [trend[lastIdx].passed,
-          trend[lastIdx].failed
+          trend[lastIdx].failed,
+          trend[lastIdx].skipped || 0
         ]
       }]
     };
