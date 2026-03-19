@@ -28,7 +28,6 @@ jobs:
 
       - name: Fetch benchmark results
         run: |
-          rm -rf results
           git fetch origin benchmark-results
           git checkout origin/benchmark-results -- results
 
