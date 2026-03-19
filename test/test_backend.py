@@ -27,10 +27,12 @@ def import_backend(onnx_backend_module):
 
 
 def _device_test_name(test_name, device):
+    """Build the unittest-style test name for a specific device."""
     return f"{test_name}_{device.lower()}"
 
 
 def _guard_duplicate_test(test_items, category, device_test_name):
+    """Reject duplicate test registrations from the ONNX runner."""
     if device_test_name in test_items[category]:
         raise ValueError(
             f'Duplicated test name "{device_test_name}" in category "{category}"'
@@ -38,6 +40,8 @@ def _guard_duplicate_test(test_items, category, device_test_name):
 
 
 def _wrap_device_test(self, test_func, device, device_test_name, kwargs):
+    """Wrap a generated ONNX backend test with scoreboard-specific skip handling."""
+
     @unittest.skipIf(
         not self.backend.supports_device(device),
         f"Backend doesn't support device {device}",
@@ -66,6 +70,7 @@ def _add_test_hardened(
     devices=("CPU", "CUDA"),
     **kwargs,
 ):
+    """Register per-device ONNX tests while preserving scoreboard skip semantics."""
     if not test_name.startswith("test_"):
         raise ValueError(f"Test name must start with test_: {test_name}")
 
@@ -95,13 +100,16 @@ backend = import_backend(os.getenv("ONNX_BACKEND_MODULE"))
 # Set backend device name to be used
 backend.backend_name = "CPU"
 
+# Patch the ONNX runner before tests are materialized so backend opt-outs are
+# reported as skipped in report.json/trend.json.
 harden_backend_test_skips()
 
 # This is a pytest variable to load extra plugins
 # Enable the ONNX compatibility report
 pytest_plugins = "onnx.backend.test.report"
 
-# Import all test cases at global scope to make them visible to python.unittest
+# Materialize ONNX-generated unittest cases at module scope so pytest can
+# discover and execute them normally.
 backend_test = onnx.backend.test.BackendTest(backend, __name__)
 globals().update(backend_test.enable_report().test_cases)
 
