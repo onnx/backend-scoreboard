@@ -18,15 +18,6 @@ jobs:
       - name: Build docker image
         run: docker build -t scoreboard/ort -f runtimes/ort/stable/Dockerfile .
 
-      - name: Set up SSH
-        uses: webfactory/ssh-agent@e83874834305fe9a4a2997156cb26c5de65a8555  # v0.10.0
-        with:
-            ssh-private-key: |
-                  ${{ secrets.DEPLOY_KEY }}
-
-      - name: Git setup
-        run: . setup/git-setup.sh
-
       - name: Run docker container
         run: docker run --name ort --env-file setup/env.list -v ${{ github.workspace }}/results/ort/stable:/root/results scoreboard/ort || true
 
@@ -48,14 +39,6 @@ jobs:
 
       - name: Build docker image
         run: docker build -t scoreboard/onnxtf -f runtimes/onnx-tf/stable/Dockerfile .
-
-      - name: Set up SSH
-        uses: webfactory/ssh-agent@e83874834305fe9a4a2997156cb26c5de65a8555  # v0.10.0
-        with:
-          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
-
-      - name: Git setup
-        run: . setup/git-setup.sh
 
       - name: Run docker container
         run: docker run --name onnxtf --env-file setup/env.list -v ${{ github.workspace }}/results/onnx-tf/stable:/root/results scoreboard/onnxtf || true
@@ -80,14 +63,6 @@ jobs:
       - name: Build docker image
         run: docker build -t scoreboard/onnxtf-dev -f runtimes/onnx-tf/development/Dockerfile .
 
-      - name: Set up SSH
-        uses: webfactory/ssh-agent@e83874834305fe9a4a2997156cb26c5de65a8555  # v0.10.0
-        with:
-          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
-
-      - name: Git setup
-        run: . setup/git-setup.sh
-
       - name: Run docker container
         run: docker run --name onnxtf --env-file setup/env.list -v ${{ github.workspace }}/results/onnx-tf/development:/root/results scoreboard/onnxtf-dev || true
 
@@ -110,14 +85,6 @@ jobs:
 
       - name: Build docker image
         run: docker build -t scoreboard/jaxonnxruntime -f runtimes/jaxonnxruntime/stable/Dockerfile .
-
-      - name: Set up SSH
-        uses: webfactory/ssh-agent@e83874834305fe9a4a2997156cb26c5de65a8555  # v0.10.0
-        with:
-          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
-
-      - name: Git setup
-        run: . setup/git-setup.sh
 
       - name: Run docker container
         run: docker run --name jaxonnxruntime --env-file setup/env.list -v ${{ github.workspace }}/results/jaxonnxruntime/stable:/root/results scoreboard/jaxonnxruntime || true
@@ -145,14 +112,6 @@ jobs:
       - name: Build docker image
         run: docker build -t scoreboard/jaxonnxruntime-dev -f runtimes/jaxonnxruntime/development/Dockerfile .
 
-      - name: Set up SSH
-        uses: webfactory/ssh-agent@e83874834305fe9a4a2997156cb26c5de65a8555  # v0.10.0
-        with:
-          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
-
-      - name: Git setup
-        run: . setup/git-setup.sh
-
       - name: Run docker container
         run: docker run --name jaxonnxruntime --env-file setup/env.list -v ${{ github.workspace }}/results/jaxonnxruntime/development:/root/results scoreboard/jaxonnxruntime-dev || true
 
@@ -174,14 +133,6 @@ jobs:
 
       - name: Build docker image
         run: docker build -t scoreboard/ort-dev -f runtimes/ort/development/Dockerfile .
-
-      - name: Set up SSH
-        uses: webfactory/ssh-agent@e83874834305fe9a4a2997156cb26c5de65a8555  # v0.10.0
-        with:
-          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
-
-      - name: Git setup
-        run: . setup/git-setup.sh
 
       - name: Prepare results directory
         run: mkdir -p ${{ github.workspace }}/results/ort/development && chmod 777 ${{ github.workspace }}/results/ort/development
@@ -208,14 +159,6 @@ jobs:
       - name: Build docker image
         run: docker build -t scoreboard/emx-onnx-cgen -f runtimes/emx-onnx-cgen/stable/Dockerfile .
 
-      - name: Set up SSH
-        uses: webfactory/ssh-agent@e83874834305fe9a4a2997156cb26c5de65a8555  # v0.10.0
-        with:
-          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
-
-      - name: Git setup
-        run: . setup/git-setup.sh
-
       - name: Prepare results directory
         run: mkdir -p ${{ github.workspace }}/results/emx-onnx-cgen/stable && chmod 777 ${{ github.workspace }}/results/emx-onnx-cgen/stable
 
@@ -240,14 +183,6 @@ jobs:
 
       - name: Build docker image
         run: docker build -t scoreboard/tract -f runtimes/tract/stable/Dockerfile .
-
-      - name: Set up SSH
-        uses: webfactory/ssh-agent@e83874834305fe9a4a2997156cb26c5de65a8555  # v0.10.0
-        with:
-          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
-
-      - name: Git setup
-        run: . setup/git-setup.sh
 
       - name: Prepare results directory
         run: mkdir -p ${{ github.workspace }}/results/tract/stable && chmod 777 ${{ github.workspace }}/results/tract/stable
@@ -274,14 +209,6 @@ jobs:
       - name: Build docker image
         run: docker build -t scoreboard/onnx-reference -f runtimes/onnx-reference/stable/Dockerfile .
 
-      - name: Set up SSH
-        uses: webfactory/ssh-agent@e83874834305fe9a4a2997156cb26c5de65a8555  # v0.10.0
-        with:
-          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
-
-      - name: Git setup
-        run: . setup/git-setup.sh
-
       - name: Prepare results directory
         run: mkdir -p ${{ github.workspace }}/results/onnx-reference/stable && chmod 777 ${{ github.workspace }}/results/onnx-reference/stable
 
@@ -307,14 +234,6 @@ jobs:
       - name: Build docker image
         run: docker build -t scoreboard/opencv -f runtimes/opencv/stable/Dockerfile .
 
-      - name: Set up SSH
-        uses: webfactory/ssh-agent@e83874834305fe9a4a2997156cb26c5de65a8555  # v0.10.0
-        with:
-          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
-
-      - name: Git setup
-        run: . setup/git-setup.sh
-
       - name: Prepare results directory
         run: mkdir -p ${{ github.workspace }}/results/opencv/stable && chmod 777 ${{ github.workspace }}/results/opencv/stable
 
@@ -339,14 +258,6 @@ jobs:
 
       - name: Build docker image
         run: docker build -t scoreboard/tvm -f runtimes/tvm/stable/Dockerfile .
-
-      - name: Set up SSH
-        uses: webfactory/ssh-agent@e83874834305fe9a4a2997156cb26c5de65a8555  # v0.10.0
-        with:
-          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
-
-      - name: Git setup
-        run: . setup/git-setup.sh
 
       - name: Prepare results directory
         run: mkdir -p ${{ github.workspace }}/results/tvm/stable && chmod 777 ${{ github.workspace }}/results/tvm/stable
