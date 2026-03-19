@@ -26,52 +26,64 @@ def import_backend(onnx_backend_module):
     return backend
 
 
+def _device_test_name(test_name, device):
+    return f"{test_name}_{device.lower()}"
+
+
+def _guard_duplicate_test(test_items, category, device_test_name):
+    if device_test_name in test_items[category]:
+        raise ValueError(
+            f'Duplicated test name "{device_test_name}" in category "{category}"'
+        )
+
+
+def _wrap_device_test(self, test_func, device, device_test_name, kwargs):
+    @unittest.skipIf(
+        not self.backend.supports_device(device),
+        f"Backend doesn't support device {device}",
+    )
+    @functools.wraps(test_func)
+    def device_test_func(*args, **device_test_kwarg):
+        try:
+            merged_kwargs = {**kwargs, **device_test_kwarg}
+            return test_func(*args, device, **merged_kwargs)
+        except onnx_test_runner.BackendIsNotSupposedToImplementIt as err:
+            # Surface backend opt-outs as real pytest skips so they end up
+            # in report.json/trend.json under "skipped" instead of "passed".
+            raise unittest.SkipTest(
+                f"{device_test_name} skipped by backend code: {err}"
+            ) from err
+
+    return device_test_func
+
+
+def _add_test_hardened(
+    self,
+    category,
+    test_name,
+    test_func,
+    report_item,
+    devices=("CPU", "CUDA"),
+    **kwargs,
+):
+    if not test_name.startswith("test_"):
+        raise ValueError(f"Test name must start with test_: {test_name}")
+
+    for device in devices:
+        device_test_name = _device_test_name(test_name, device)
+        _guard_duplicate_test(self._test_items, category, device_test_name)
+        device_test_func = _wrap_device_test(
+            self, test_func, device, device_test_name, kwargs
+        )
+        self._test_items[category][device_test_name] = onnx_test_runner.TestItem(
+            device_test_func, report_item
+        )
+
+
 def harden_backend_test_skips():
     """Treat backend opt-out exceptions as explicit skips in pytest stats."""
     if getattr(onnx_test_runner.Runner, "_scoreboard_hardened", False):
         return
-
-    def _add_test_hardened(
-        self,
-        category,
-        test_name,
-        test_func,
-        report_item,
-        devices=("CPU", "CUDA"),
-        **kwargs,
-    ):
-        if not test_name.startswith("test_"):
-            raise ValueError(f"Test name must start with test_: {test_name}")
-
-        def add_device_test(device):
-            device_test_name = f"{test_name}_{device.lower()}"
-            if device_test_name in self._test_items[category]:
-                raise ValueError(
-                    f'Duplicated test name "{device_test_name}" in category "{category}"'
-                )
-
-            @unittest.skipIf(
-                not self.backend.supports_device(device),
-                f"Backend doesn't support device {device}",
-            )
-            @functools.wraps(test_func)
-            def device_test_func(*args, **device_test_kwarg):
-                try:
-                    merged_kwargs = {**kwargs, **device_test_kwarg}
-                    return test_func(*args, device, **merged_kwargs)
-                except onnx_test_runner.BackendIsNotSupposedToImplementIt as err:
-                    # Surface backend opt-outs as real pytest skips so they end up
-                    # in report.json/trend.json under "skipped" instead of "passed".
-                    raise unittest.SkipTest(
-                        f"{device_test_name} skipped by backend code: {err}"
-                    ) from err
-
-            self._test_items[category][device_test_name] = onnx_test_runner.TestItem(
-                device_test_func, report_item
-            )
-
-        for device in devices:
-            add_device_test(device)
 
     onnx_test_runner.Runner._add_test = _add_test_hardened
     onnx_test_runner.Runner._scoreboard_hardened = True
