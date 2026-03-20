@@ -29,7 +29,9 @@ def _native_ops_only(model):
             default=1,
         )
         convert_map = _get_convert_map(opset)
-        unsupported = {n.op_type for n in model.graph.node if n.op_type not in convert_map}
+        unsupported = {
+            n.op_type for n in model.graph.node if n.op_type not in convert_map
+        }
         return sorted(unsupported)
     except (ImportError, AttributeError):
         return []

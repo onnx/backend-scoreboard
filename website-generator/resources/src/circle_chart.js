@@ -23,7 +23,7 @@
       }]
     };
 
-    new Chart(circleChart, {
+    circleChart._chart = new Chart(circleChart, {
       type: 'doughnut',
       data: chartData,
       options: {

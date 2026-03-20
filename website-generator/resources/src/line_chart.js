@@ -51,7 +51,7 @@
     }]
   };
 
-  new Chart(lineTrend, {
+  lineTrend._chart = new Chart(lineTrend, {
     type: 'line',
     data: lineChartData,
     options: {
