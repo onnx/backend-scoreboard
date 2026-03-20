@@ -102,11 +102,19 @@ def mark_coverage(percentage):
             return mark
 
 
-def get_coverage_percentage(trend):
+def get_coverage_percentage(trend, ops=None):
     """Create and return a dict with passed and failed tests percentage.
+
+    When ``total_ops`` is available in the latest trend entry and ``ops`` is
+    provided, the primary ``passed`` score is based on operator coverage
+    (passed_ops / total_ops) rather than raw test counts.  This prevents
+    backends that delegate unsupported ops to a reference runtime from
+    reporting an inflated 100 % score.
 
     :param trend: Trend is a list of report summaries per date.
     :type trend: list
+    :param ops: Operator table from nodes.csv (op name → status string).
+    :type ops: dict or None
     :return: Dictionary with passed and failed tests percentage.
     :rtype: dict
     """
@@ -130,19 +138,42 @@ def get_coverage_percentage(trend):
             + latest_result.get("passed", 0)
             + latest_result.get("skipped", 0)
         )
-        coverage["passed"] = (
+        coverage["tests_passed"] = (
             latest_result.get("passed", 0) / coverage.get("total", 0) * 100
         )
-        coverage["failed"] = (
+        coverage["tests_failed"] = (
             latest_result.get("failed", 0) / coverage.get("total", 0) * 100
         )
-        coverage["skipped"] = (
+        coverage["tests_skipped"] = (
             latest_result.get("skipped", 0) / coverage.get("total", 0) * 100
         )
     except ZeroDivisionError:
+        coverage["tests_passed"] = 0
+        coverage["tests_failed"] = 0
+        coverage["tests_skipped"] = 0
+
+    # Op-level coverage: use when total_ops was captured during the test run.
+    total_ops = latest_result.get("total_ops", 0)
+    ops = ops or {}
+    passed_ops = sum(1 for s in ops.values() if "pass" in s)
+    loaded_ops = len(ops)
+    coverage["passed_ops"] = passed_ops
+    coverage["loaded_ops"] = loaded_ops
+    coverage["total_ops"] = total_ops
+
+    try:
+        if total_ops > 0:
+            # Primary score: fraction of all suite ops that this backend passes
+            coverage["passed"] = passed_ops / total_ops * 100
+        else:
+            # Fallback: use test pass rate when total_ops not yet captured
+            coverage["passed"] = coverage["tests_passed"]
+    except ZeroDivisionError:
         coverage["passed"] = 0
-        coverage["failed"] = 0
-        coverage["skipped"] = 0
+
+    # Retain legacy aliases for templates that reference failed/skipped
+    coverage["failed"] = coverage["tests_failed"]
+    coverage["skipped"] = coverage["tests_skipped"]
 
     coverage["mark"] = mark_coverage(coverage["passed"])
     return coverage
@@ -249,8 +280,8 @@ def prepare_database(config, state="stable"):
         dockerfile_link = backend_config.get("dockerfile_link", "")
         name = backend_config.get("name", backend_id)
         trend = load_trend(results_dir)
-        coverage = get_coverage_percentage(trend)
         ops = load_ops_csv(results_dir)
+        coverage = get_coverage_percentage(trend, ops)
         report = load_report(results_dir)
 
         database[backend_id] = {

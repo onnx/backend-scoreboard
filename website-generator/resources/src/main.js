@@ -5,6 +5,7 @@
 const palette = {
   passed: '#1fa2ff',
   failed: '#c1ddf1',
+  skipped: '#e0e0e0',
   font: '#000000'
 };
 Chart.defaults.global.defaultFontColor = palette.font;
