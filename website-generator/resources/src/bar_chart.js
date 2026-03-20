@@ -32,7 +32,7 @@
   barChartDatasets[1].data.push(trend[lastIdx].failed);
   barChartDatasets[2].data.push(trend[lastIdx].skipped || 0);
 
-  new Chart(barChart, {
+  barChart._chart = new Chart(barChart, {
     type: 'bar',
     data: {
       labels: barChartLabels,
