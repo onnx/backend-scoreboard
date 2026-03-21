@@ -72,15 +72,42 @@ def _parse_tensor_info(value_info):
     else:
         return None
 
+    if not shape:
+        # Scalar tensors use pointer parameters in onnx2c — not supported here
+        return None
+
     return _c_name(value_info.name), c_type, np_dtype, shape
 
 
-def _io_lines(tensors_info, arg_offset, mode):
-    """Return C lines that open and read/write tensor binary files via argv."""
+def _c_tensor_dims(shape):
+    """Return C array dimension string e.g. '[3][4][5]' for shape [3, 4, 5]."""
+    return "".join(f"[{d}]" for d in shape)
+
+
+def _decl_lines(inputs_info, outputs_info):
+    """Return buffer declarations and entry() forward declaration."""
+    lines = []
+    for i, (_, c_type, _, shape) in enumerate(inputs_info):
+        lines.append(f"{c_type} inp_{i}{_c_tensor_dims(shape)};")
+    for i, (_, c_type, _, shape) in enumerate(outputs_info):
+        lines.append(f"{c_type} out_{i}{_c_tensor_dims(shape)};")
+    lines.append("")
+    params = []
+    for i, (_, c_type, _, shape) in enumerate(inputs_info):
+        params.append(f"const {c_type} inp_{i}{_c_tensor_dims(shape)}")
+    for i, (_, c_type, _, shape) in enumerate(outputs_info):
+        params.append(f"{c_type} out_{i}{_c_tensor_dims(shape)}")
+    lines.append(f"void entry({', '.join(params)});")
+    return lines
+
+
+def _file_io_lines(tensors_info, arg_offset, mode):
+    """Return C lines to read/write tensor binary files using positional buffers."""
     rw_func = "fread" if mode == "rb" else "fwrite"
     direction = "input" if mode == "rb" else "output"
+    prefix = "inp" if mode == "rb" else "out"
     lines = []
-    for i, (c_nm, c_type, _, shape) in enumerate(tensors_info):
+    for i, (_, c_type, _, shape) in enumerate(tensors_info):
         n = math.prod(shape)
         arg_idx = arg_offset + i + 1
         lines.append(f'    f = fopen(argv[{arg_idx}], "{mode}");')
@@ -88,33 +115,22 @@ def _io_lines(tensors_info, arg_offset, mode):
             f'    if (!f) {{ fprintf(stderr, "Cannot open {direction} {i}\\n"); '
             f"return 1; }}"
         )
-        lines.append(f"    {rw_func}({c_nm}, sizeof({c_type}), {n}, f);")
+        lines.append(f"    {rw_func}({prefix}_{i}, sizeof({c_type}), {n}, f);")
         lines.append("    fclose(f);")
     return lines
 
 
 def _generate_harness(inputs_info, outputs_info):
-    """Return C harness source that feeds inputs, calls entry(), writes outputs."""
-    lines = [
-        "#include <stdio.h>",
-        "#include <stdlib.h>",
-        "#include <stdint.h>",
-        "#include <stdbool.h>",
-        "",
-    ]
-
-    for c_nm, c_type, _, shape in inputs_info:
-        lines.append(f"extern {c_type} {c_nm}[{math.prod(shape)}];")
-
-    for c_nm, c_type, _, shape in outputs_info:
-        lines.append(f"extern {c_type} {c_nm}[{math.prod(shape)}];")
-
-    lines += ["", "void entry(void);", "", "int main(int argc, char** argv) {"]
-    lines.append("    FILE* f;")
+    """Return C harness that calls onnx2c entry() with array parameters."""
+    lines = ["#include <stdio.h>", "#include <stdint.h>", "#include <stdbool.h>", ""]
+    lines += _decl_lines(inputs_info, outputs_info)
+    lines += ["", "int main(int argc, char** argv) {", "    FILE* f;", ""]
+    lines += _file_io_lines(inputs_info, 0, "rb")
+    in_args = [f"inp_{i}" for i in range(len(inputs_info))]
+    out_args = [f"out_{i}" for i in range(len(outputs_info))]
+    lines.append(f"\n    entry({', '.join(in_args + out_args)});")
     lines.append("")
-    lines += _io_lines(inputs_info, 0, "rb")
-    lines += ["", "    entry();", ""]
-    lines += _io_lines(outputs_info, len(inputs_info), "wb")
+    lines += _file_io_lines(outputs_info, len(inputs_info), "wb")
     lines += ["", "    return 0;", "}"]
     return "\n".join(lines)
 
