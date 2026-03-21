@@ -40,9 +40,16 @@ def _native_ops_only(model):
 def _tvm_worker(model_bytes, inputs, input_names, output_count, result_queue):
     """Compile and run an ONNX model via TVM Relay in an isolated subprocess."""
     import onnx
-    import tvm
-    from tvm import relay
-    from tvm.contrib import graph_executor
+
+    try:
+        import tvm
+        from tvm import relay
+        from tvm.contrib import graph_executor
+    except (ImportError, AttributeError, OSError, RuntimeError) as e:
+        msg = f"tvm import failed: {type(e).__name__}: {e}"
+        print(f"[tvm] SKIP {msg}", file=sys.stderr, flush=True)
+        result_queue.put(("error", msg))
+        return
 
     model = onnx.ModelProto()
     model.ParseFromString(model_bytes)
@@ -68,7 +75,14 @@ def _tvm_worker(model_bytes, inputs, input_names, output_count, result_queue):
         module.run()
         outputs = [module.get_output(i).numpy() for i in range(output_count)]
         result_queue.put(("ok", outputs))
-    except (tvm.TVMError, RuntimeError, ValueError, TypeError, OSError) as e:
+    except (
+        tvm.TVMError,
+        RuntimeError,
+        ValueError,
+        TypeError,
+        OSError,
+        ImportError,
+    ) as e:
         ops = sorted({n.op_type for n in model.graph.node})
         msg = f"ops={ops} error={type(e).__name__}: {e}"
         print(f"[tvm] SKIP {msg}", file=sys.stderr, flush=True)

@@ -27,7 +27,8 @@ ENV PYTHONPATH="/root"
 # Set locale and install TVM and onnx
 RUN locale-gen en_US.UTF-8 && update-locale LANG=en_US.UTF-8 && \
     pip3 install \
-    onnx \
+    "numpy<2" \
+    "onnx<1.19" \
     apache-tvm
 ####################################################
 
