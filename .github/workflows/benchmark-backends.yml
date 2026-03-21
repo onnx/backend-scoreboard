@@ -10,13 +10,17 @@ on:
       - 'runtimes/**'
       - 'backends/**'
       - 'test/**'
-      - 'setup/**'
+      - 'setup/docker-setup.sh'
+      - 'setup/env.list'
+      - 'setup/requirements_report.txt'
   pull_request:
     paths:
       - 'runtimes/**'
       - 'backends/**'
       - 'test/**'
-      - 'setup/**'
+      - 'setup/docker-setup.sh'
+      - 'setup/env.list'
+      - 'setup/requirements_report.txt'
 
 jobs:
   changes:
@@ -41,44 +45,62 @@ jobs:
             onnxruntime:
               - 'runtimes/ort/**'
               - 'test/**'
-              - 'setup/**'
+              - 'setup/docker-setup.sh'
+              - 'setup/env.list'
+              - 'setup/requirements_report.txt'
             onnx_tf:
               - 'runtimes/onnx-tf/**'
               - 'test/**'
-              - 'setup/**'
+              - 'setup/docker-setup.sh'
+              - 'setup/env.list'
+              - 'setup/requirements_report.txt'
             jaxonnxruntime:
               - 'runtimes/jaxonnxruntime/**'
               - 'test/**'
-              - 'setup/**'
+              - 'setup/docker-setup.sh'
+              - 'setup/env.list'
+              - 'setup/requirements_report.txt'
             emx_onnx_cgen:
               - 'runtimes/emx-onnx-cgen/**'
               - 'test/**'
-              - 'setup/**'
+              - 'setup/docker-setup.sh'
+              - 'setup/env.list'
+              - 'setup/requirements_report.txt'
             tract:
               - 'runtimes/tract/**'
               - 'backends/tract/**'
               - 'test/**'
-              - 'setup/**'
+              - 'setup/docker-setup.sh'
+              - 'setup/env.list'
+              - 'setup/requirements_report.txt'
             onnx_reference:
               - 'runtimes/onnx-reference/**'
               - 'backends/onnx_reference/**'
               - 'test/**'
-              - 'setup/**'
+              - 'setup/docker-setup.sh'
+              - 'setup/env.list'
+              - 'setup/requirements_report.txt'
             opencv:
               - 'runtimes/opencv/**'
               - 'backends/opencv/**'
               - 'test/**'
-              - 'setup/**'
+              - 'setup/docker-setup.sh'
+              - 'setup/env.list'
+              - 'setup/requirements_report.txt'
             tvm:
               - 'runtimes/tvm/**'
               - 'backends/tvm/**'
               - 'test/**'
-              - 'setup/**'
+              - 'setup/docker-setup.sh'
+              - 'setup/env.list'
+              - 'setup/requirements_report.txt'
             onnx2c:
               - 'runtimes/onnx2c/**'
               - 'backends/onnx2c/**'
               - 'test/**'
-              - 'setup/**'
+              - 'setup/docker-setup.sh'
+              - 'setup/env.list'
+              - 'setup/requirements_report.txt'
 
   onnxruntime_stable:
     runs-on: ubuntu-latest
