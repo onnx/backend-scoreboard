@@ -151,9 +151,7 @@ def _build_binary(workdir, model, inputs_info, outputs_info):
     with open(model_path, "wb") as f:
         f.write(model.SerializeToString())
 
-    result = subprocess.run(
-        ["onnx2c", model_path], capture_output=True, timeout=120
-    )
+    result = subprocess.run(["onnx2c", model_path], capture_output=True, timeout=120)
     if result.returncode != 0:
         raise BackendIsNotSupposedToImplementIt(
             f"onnx2c failed: {result.stderr.decode()}"
