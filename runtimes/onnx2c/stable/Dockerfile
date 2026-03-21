@@ -35,6 +35,8 @@ RUN pip3 install onnx
 # Build onnx2c from source
 RUN git clone --recurse-submodules https://github.com/kraiskil/onnx2c /opt/onnx2c && \
     cd /opt/onnx2c && \
+    git checkout e6308a729d067ea3be729c840558ee7832e10b6c && \
+    git submodule update --init --recursive && \
     mkdir build && cd build && \
     cmake -DCMAKE_BUILD_TYPE=Release .. && \
     make -j$(nproc) && \
