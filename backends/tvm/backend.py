@@ -45,7 +45,7 @@ def _tvm_worker(model_bytes, inputs, input_names, output_count, result_queue):
         import tvm
         from tvm import relay
         from tvm.contrib import graph_executor
-    except Exception as e:
+    except (ImportError, AttributeError, OSError, RuntimeError) as e:
         msg = f"tvm import failed: {type(e).__name__}: {e}"
         print(f"[tvm] SKIP {msg}", file=sys.stderr, flush=True)
         result_queue.put(("error", msg))
@@ -75,7 +75,14 @@ def _tvm_worker(model_bytes, inputs, input_names, output_count, result_queue):
         module.run()
         outputs = [module.get_output(i).numpy() for i in range(output_count)]
         result_queue.put(("ok", outputs))
-    except (tvm.TVMError, RuntimeError, ValueError, TypeError, OSError, ImportError) as e:
+    except (
+        tvm.TVMError,
+        RuntimeError,
+        ValueError,
+        TypeError,
+        OSError,
+        ImportError,
+    ) as e:
         ops = sorted({n.op_type for n in model.graph.node})
         msg = f"ops={ops} error={type(e).__name__}: {e}"
         print(f"[tvm] SKIP {msg}", file=sys.stderr, flush=True)
