@@ -4,11 +4,109 @@ on:
   schedule:
     - cron: '0 0 * * *'
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'runtimes/**'
+      - 'backends/**'
+      - 'test/**'
+      - 'setup/docker-setup.sh'
+      - 'setup/env.list'
+      - 'setup/requirements_report.txt'
+  pull_request:
+    paths:
+      - 'runtimes/**'
+      - 'backends/**'
+      - 'test/**'
+      - 'setup/docker-setup.sh'
+      - 'setup/env.list'
+      - 'setup/requirements_report.txt'
 
 jobs:
+  changes:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' || github.event_name == 'pull_request'
+    outputs:
+      onnxruntime: ${{ steps.filter.outputs.onnxruntime }}
+      onnx_tf: ${{ steps.filter.outputs.onnx_tf }}
+      jaxonnxruntime: ${{ steps.filter.outputs.jaxonnxruntime }}
+      emx_onnx_cgen: ${{ steps.filter.outputs.emx_onnx_cgen }}
+      tract: ${{ steps.filter.outputs.tract }}
+      onnx_reference: ${{ steps.filter.outputs.onnx_reference }}
+      opencv: ${{ steps.filter.outputs.opencv }}
+      tvm: ${{ steps.filter.outputs.tvm }}
+      onnx2c: ${{ steps.filter.outputs.onnx2c }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            onnxruntime:
+              - 'runtimes/ort/**'
+              - 'test/**'
+              - 'setup/docker-setup.sh'
+              - 'setup/env.list'
+              - 'setup/requirements_report.txt'
+            onnx_tf:
+              - 'runtimes/onnx-tf/**'
+              - 'test/**'
+              - 'setup/docker-setup.sh'
+              - 'setup/env.list'
+              - 'setup/requirements_report.txt'
+            jaxonnxruntime:
+              - 'runtimes/jaxonnxruntime/**'
+              - 'test/**'
+              - 'setup/docker-setup.sh'
+              - 'setup/env.list'
+              - 'setup/requirements_report.txt'
+            emx_onnx_cgen:
+              - 'runtimes/emx-onnx-cgen/**'
+              - 'test/**'
+              - 'setup/docker-setup.sh'
+              - 'setup/env.list'
+              - 'setup/requirements_report.txt'
+            tract:
+              - 'runtimes/tract/**'
+              - 'backends/tract/**'
+              - 'test/**'
+              - 'setup/docker-setup.sh'
+              - 'setup/env.list'
+              - 'setup/requirements_report.txt'
+            onnx_reference:
+              - 'runtimes/onnx-reference/**'
+              - 'backends/onnx_reference/**'
+              - 'test/**'
+              - 'setup/docker-setup.sh'
+              - 'setup/env.list'
+              - 'setup/requirements_report.txt'
+            opencv:
+              - 'runtimes/opencv/**'
+              - 'backends/opencv/**'
+              - 'test/**'
+              - 'setup/docker-setup.sh'
+              - 'setup/env.list'
+              - 'setup/requirements_report.txt'
+            tvm:
+              - 'runtimes/tvm/**'
+              - 'backends/tvm/**'
+              - 'test/**'
+              - 'setup/docker-setup.sh'
+              - 'setup/env.list'
+              - 'setup/requirements_report.txt'
+            onnx2c:
+              - 'runtimes/onnx2c/**'
+              - 'backends/onnx2c/**'
+              - 'test/**'
+              - 'setup/docker-setup.sh'
+              - 'setup/env.list'
+              - 'setup/requirements_report.txt'
+
   onnxruntime_stable:
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    needs: changes
+    if: always() && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || needs.changes.outputs.onnxruntime == 'true')
     permissions:
       contents: read
     steps:
@@ -31,6 +129,8 @@ jobs:
   onnx_tf_stable:
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    needs: changes
+    if: always() && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || needs.changes.outputs.onnx_tf == 'true')
     permissions:
       contents: read
     steps:
@@ -54,6 +154,8 @@ jobs:
   onnx_tf_dev:
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    needs: changes
+    if: always() && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || needs.changes.outputs.onnx_tf == 'true')
     permissions:
       contents: read
     steps:
@@ -77,6 +179,8 @@ jobs:
   jaxonnxruntime_stable:
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    needs: changes
+    if: always() && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || needs.changes.outputs.jaxonnxruntime == 'true')
     permissions:
       contents: read
     steps:
@@ -99,6 +203,8 @@ jobs:
   jaxonnxruntime_dev:
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    needs: changes
+    if: always() && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || needs.changes.outputs.jaxonnxruntime == 'true')
     permissions:
       contents: read
     steps:
@@ -125,6 +231,8 @@ jobs:
   onnxruntime_dev:
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    needs: changes
+    if: always() && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || needs.changes.outputs.onnxruntime == 'true')
     permissions:
       contents: read
     steps:
@@ -150,6 +258,8 @@ jobs:
   emx_onnx_cgen_stable:
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    needs: changes
+    if: always() && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || needs.changes.outputs.emx_onnx_cgen == 'true')
     permissions:
       contents: read
     steps:
@@ -175,6 +285,8 @@ jobs:
   tract_stable:
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    needs: changes
+    if: always() && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || needs.changes.outputs.tract == 'true')
     permissions:
       contents: read
     steps:
@@ -200,6 +312,8 @@ jobs:
   onnx_reference_stable:
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    needs: changes
+    if: always() && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || needs.changes.outputs.onnx_reference == 'true')
     permissions:
       contents: read
     steps:
@@ -225,6 +339,8 @@ jobs:
   opencv_stable:
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    needs: changes
+    if: always() && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || needs.changes.outputs.opencv == 'true')
     permissions:
       contents: read
     steps:
@@ -250,6 +366,8 @@ jobs:
   tvm_stable:
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    needs: changes
+    if: always() && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || needs.changes.outputs.tvm == 'true')
     permissions:
       contents: read
     steps:
@@ -272,11 +390,38 @@ jobs:
           name: results-tvm-stable
           path: results/tvm/stable/
 
+  onnx2c_stable:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    needs: changes
+    if: always() && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || needs.changes.outputs.onnx2c == 'true')
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Build docker image
+        run: docker build -t scoreboard/onnx2c -f runtimes/onnx2c/stable/Dockerfile .
+
+      - name: Prepare results directory
+        run: mkdir -p ${{ github.workspace }}/results/onnx2c/stable && chmod 777 ${{ github.workspace }}/results/onnx2c/stable
+
+      - name: Run docker container
+        run: docker run --name onnx2c --env-file setup/env.list -v ${{ github.workspace }}/results/onnx2c/stable:/root/results scoreboard/onnx2c || true
+
+      - name: Upload results
+        if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: results-onnx2c-stable
+          path: results/onnx2c/stable/
+
   collect_and_deploy:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    needs: [onnxruntime_stable, onnxruntime_dev, onnx_tf_stable, onnx_tf_dev, jaxonnxruntime_stable, jaxonnxruntime_dev, emx_onnx_cgen_stable, tract_stable, onnx_reference_stable, opencv_stable, tvm_stable]
+    needs: [onnxruntime_stable, onnxruntime_dev, onnx_tf_stable, onnx_tf_dev, jaxonnxruntime_stable, jaxonnxruntime_dev, emx_onnx_cgen_stable, tract_stable, onnx_reference_stable, opencv_stable, tvm_stable, onnx2c_stable]
     if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
     steps:
       - name: Checkout code
@@ -359,6 +504,12 @@ jobs:
         with:
           name: results-tvm-stable
           path: results/tvm/stable/
+
+      - name: Download onnx2c stable results
+        uses: actions/download-artifact@v8
+        with:
+          name: results-onnx2c-stable
+          path: results/onnx2c/stable/
 
       - name: Deploy results
         run: |
