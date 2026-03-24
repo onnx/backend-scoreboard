@@ -10,8 +10,12 @@
     {% for backend, backend_data in database.items() %}
     <tr>
         <th scope="row">
-            <div class="centered">
-                {{ backend_data.name }}
+            <div class="backend-summary">
+                {% if backend_data.link %}
+                    <a href='{{ backend_data.link }}' target="_blank" rel="noopener noreferrer" class="backend-link"{% if backend_data.description %} title="{{ backend_data.description }}"{% endif %}>{{ backend_data.name }}</a>
+                {% else %}
+                    <span class="backend-name"{% if backend_data.description %} title="{{ backend_data.description }}"{% endif %}>{{ backend_data.name }}</span>
+                {% endif %}
             </div>
         </th>
         <td>

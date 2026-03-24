@@ -88,6 +88,48 @@ hr {
     overflow: auto;
 }
 
+.backend-summary {
+    min-width: 220px;
+    max-width: 320px;
+    height: 80pt;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.backend-name,
+.backend-link {
+    display: inline-block;
+    font-size: 12pt;
+    font-weight: 700;
+}
+
+.backend-meta-card {
+    margin: 10px 0 20px;
+    padding: 18px 24px;
+    border: 1px solid #d8e6ef;
+    border-radius: 6px;
+    background-color: #f8fbfd;
+    color: #21313c;
+}
+
+.backend-meta-lead {
+    margin-bottom: 10px;
+    color: #0071bc;
+    font-size: 12pt;
+    font-weight: 600;
+}
+
+.backend-meta-copy {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.backend-meta-link-row {
+    margin-bottom: 0;
+}
+
 .nav-tabs .nav-item .nav-link {
     border-bottom: 0px;
     background-color: transparent;

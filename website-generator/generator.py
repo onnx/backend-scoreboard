@@ -279,6 +279,9 @@ def prepare_database(config, state="stable"):
         results_dir = backend_config.get("results_dir", "")
         dockerfile_link = backend_config.get("dockerfile_link", "")
         name = backend_config.get("name", backend_id)
+        link = backend_config.get("link", "")
+        description = backend_config.get("description", "")
+        long_description = backend_config.get("long_description", "")
         trend = load_trend(results_dir)
         ops = load_ops_csv(results_dir)
         coverage = get_coverage_percentage(trend, ops)
@@ -286,6 +289,9 @@ def prepare_database(config, state="stable"):
 
         database[backend_id] = {
             "name": name,
+            "link": link,
+            "description": description,
+            "long_description": long_description,
             "trend": trend,
             "coverage": coverage,
             "ops": ops,
