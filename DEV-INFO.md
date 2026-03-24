@@ -16,11 +16,17 @@ Example of `config.json` file:
     "stable": {
         "onnxruntime": {
             "name": "ONNX-Runtime",
+            "link": "https://onnxruntime.ai/",
+            "description": "Production-grade AI engine for running ONNX models efficiently across hardware and platforms.",
+            "long_description": "ONNX Runtime is a production-focused inference and training engine for ONNX models across CPUs, GPUs, and accelerators.",
             "results_dir": "./results/ort/stable",
             "core_packages": ["onnxruntime"]
         },
         "onnxtf": {
             "name": "ONNX-TF",
+            "link": "https://github.com/onnx/onnx-tensorflow",
+            "description": "TensorFlow backend for ONNX that converts ONNX models to TensorFlow for execution.",
+            "long_description": "ONNX-TF converts ONNX graphs into TensorFlow representations so they can be executed within the TensorFlow ecosystem.",
             "results_dir": "./results/onnx-tf/stable",
             "core_packages": ["onnx-tf", "tensorflow"]
         }
@@ -28,10 +34,16 @@ Example of `config.json` file:
     "development": {
         "onnxruntime": {
             "name": "ONNX-Runtime",
+            "link": "https://onnxruntime.ai/",
+            "description": "Production-grade AI engine for running ONNX models efficiently across hardware and platforms.",
+            "long_description": "ONNX Runtime is a production-focused inference and training engine for ONNX models across CPUs, GPUs, and accelerators.",
             "results_dir": "./results/onnxruntime/development"
         },
         "onnxtf": {
             "name": "ONNX-TF",
+            "link": "https://github.com/onnx/onnx-tensorflow",
+            "description": "TensorFlow backend for ONNX that converts ONNX models to TensorFlow for execution.",
+            "long_description": "ONNX-TF converts ONNX graphs into TensorFlow representations so they can be executed within the TensorFlow ecosystem.",
             "results_dir": "./results/onnx-tf/development",
             "core_packages": ["tensorflow"]
         }

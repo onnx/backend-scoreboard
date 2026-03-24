@@ -2,48 +2,72 @@
     "stable": {
         "onnxruntime": {
             "name": "ONNX-Runtime",
+            "link": "https://onnxruntime.ai/",
+            "description": "Production-grade AI engine for running ONNX models efficiently across hardware and platforms.",
+            "long_description": "ONNX Runtime is a production-focused inference and training engine for models in the Open Neural Network Exchange format. It is designed to run efficiently across CPUs, GPUs, and specialized accelerators while providing broad operator support, execution providers for different hardware backends, and deployment options that scale from local applications to cloud services.",
             "results_dir": "./results/ort/stable",
             "core_packages": ["onnxruntime"],
             "dockerfile_link": "runtimes/ort/stable/Dockerfile"
         },
         "onnx-tf": {
             "name": "ONNX-TF",
+            "link": "https://github.com/onnx/onnx-tensorflow",
+            "description": "TensorFlow backend for ONNX that converts ONNX models to TensorFlow for execution.",
+            "long_description": "ONNX-TF bridges the ONNX ecosystem with TensorFlow by converting ONNX graphs into TensorFlow representations that can be executed with TensorFlow tooling and runtimes. It is useful when a model originates in ONNX but should be validated, integrated, or deployed within environments that are already centered around the TensorFlow stack.",
             "results_dir": "./results/onnx-tf/stable",
             "core_packages": ["tensorflow", "onnx-tf"],
             "dockerfile_link": "runtimes/onnx-tf/stable/Dockerfile"
         },
         "jaxonnxruntime": {
             "name": "JAX-ONNX-Runtime",
+            "link": "https://github.com/google/jaxonnxruntime",
+            "description": "Tool chain for executing ONNX models with JAX as the backend.",
+            "long_description": "JAX-ONNX-Runtime provides a path to execute ONNX models using JAX primitives and the JAX execution model. It targets users who want to combine ONNX model interchange with the transformation, compilation, and accelerator-friendly execution capabilities available in the JAX ecosystem.",
             "results_dir": "./results/jaxonnxruntime/stable",
             "core_packages": ["onnx", "jaxonnxruntime"],
             "dockerfile_link": "runtimes/jaxonnxruntime/stable/Dockerfile"
         },
         "emx-onnx-cgen": {
             "name": "emx-onnx-cgen",
+            "link": "https://github.com/emmtrix/emx-onnx-cgen/",
+            "description": "Open-source tool that compiles ONNX models into portable, deterministic generic C code for embedded targets.",
+            "long_description": "emx-onnx-cgen is aimed at embedded and constrained deployments where a generated C implementation is preferable to bundling a larger runtime. It translates supported ONNX models into portable generic C code so that inference can be integrated into firmware and embedded software projects with predictable dependencies, deterministic behavior, and tight control over the generated artifacts.",
             "results_dir": "./results/emx-onnx-cgen/stable",
             "core_packages": ["emx-onnx-cgen"],
             "dockerfile_link": "runtimes/emx-onnx-cgen/stable/Dockerfile"
         },
         "tract": {
             "name": "tract",
+            "link": "https://github.com/sonos/tract",
+            "description": "Self-contained neural network inference toolkit that can read ONNX, optimize models, and run them.",
+            "long_description": "tract is a compact inference toolkit focused on being self-contained and practical to embed into applications. It can import ONNX models, apply graph-level optimizations, and execute inference without requiring heavyweight external runtime dependencies, which makes it attractive for native deployments and tightly controlled environments.",
             "results_dir": "./results/tract/stable",
             "core_packages": ["tract"],
             "dockerfile_link": "runtimes/tract/stable/Dockerfile"
         },
         "onnx-reference": {
             "name": "ONNX Reference",
+            "link": "https://onnx.ai/onnx/api/reference.html",
+            "description": "Reference evaluator and operator implementations for executing ONNX models from the ONNX project.",
+            "long_description": "The ONNX Reference implementation provides canonical operator behavior and a reference evaluator for ONNX graphs directly within the ONNX project. It is especially valuable as a correctness baseline because it prioritizes standards conformance and clear semantics over aggressive optimization or hardware-specific acceleration.",
             "results_dir": "./results/onnx-reference/stable",
             "core_packages": ["onnx"],
             "dockerfile_link": "runtimes/onnx-reference/stable/Dockerfile"
         },
         "opencv": {
             "name": "OpenCV DNN",
+            "link": "https://docs.opencv.org/master/d6/d0f/group__dnn.html",
+            "description": "OpenCV deep neural network module for forward-pass inference, including ONNX model loading.",
+            "long_description": "OpenCV DNN is the deep learning inference module inside OpenCV and supports loading models from formats such as ONNX for forward-pass execution. It is a practical choice when computer vision pipelines already depend on OpenCV and model execution needs to be integrated alongside image processing, pre-processing, and post-processing steps in the same library stack.",
             "results_dir": "./results/opencv/stable",
             "core_packages": ["opencv-python-headless"],
             "dockerfile_link": "runtimes/opencv/stable/Dockerfile"
         },
         "tvm": {
             "name": "Apache TVM",
+            "link": "https://tvm.apache.org/",
+            "description": "Open machine learning compiler framework for optimizing models for diverse hardware.",
+            "long_description": "Apache TVM is an end-to-end machine learning compiler stack that ingests models from frameworks such as ONNX and optimizes them for a wide range of target hardware. Rather than acting only as a runtime, it focuses on compilation, scheduling, and code generation techniques that can improve portability and performance across heterogeneous deployment environments.",
             "results_dir": "./results/tvm/stable",
             "core_packages": ["apache-tvm"],
             "dockerfile_link": "runtimes/tvm/stable/Dockerfile"
@@ -52,18 +76,27 @@
     "development": {
         "onnxruntime": {
             "name": "ONNX-Runtime",
+            "link": "https://onnxruntime.ai/",
+            "description": "Production-grade AI engine for running ONNX models efficiently across hardware and platforms.",
+            "long_description": "ONNX Runtime is a production-focused inference and training engine for models in the Open Neural Network Exchange format. It is designed to run efficiently across CPUs, GPUs, and specialized accelerators while providing broad operator support, execution providers for different hardware backends, and deployment options that scale from local applications to cloud services.",
             "results_dir": "./results/ort/development",
             "core_packages": ["ort-nightly"],
             "dockerfile_link": "runtimes/ort/development/Dockerfile"
         },
         "onnx-tf": {
             "name": "ONNX-TF",
+            "link": "https://github.com/onnx/onnx-tensorflow",
+            "description": "TensorFlow backend for ONNX that converts ONNX models to TensorFlow for execution.",
+            "long_description": "ONNX-TF bridges the ONNX ecosystem with TensorFlow by converting ONNX graphs into TensorFlow representations that can be executed with TensorFlow tooling and runtimes. It is useful when a model originates in ONNX but should be validated, integrated, or deployed within environments that are already centered around the TensorFlow stack.",
             "results_dir": "./results/onnx-tf/development",
             "core_packages": ["tensorflow"],
             "dockerfile_link": "runtimes/onnx-tf/development/Dockerfile"
         },
         "jaxonnxruntime": {
             "name": "JAX-ONNX-Runtime",
+            "link": "https://github.com/google/jaxonnxruntime",
+            "description": "Tool chain for executing ONNX models with JAX as the backend.",
+            "long_description": "JAX-ONNX-Runtime provides a path to execute ONNX models using JAX primitives and the JAX execution model. It targets users who want to combine ONNX model interchange with the transformation, compilation, and accelerator-friendly execution capabilities available in the JAX ecosystem.",
             "results_dir": "./results/jaxonnxruntime/development",
             "core_packages": ["onnx", "jaxonnxruntime"],
             "dockerfile_link": "runtimes/jaxonnxruntime/development/Dockerfile"

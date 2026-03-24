@@ -19,6 +19,23 @@ It is prepared by generator.py script and passed to the charts by backend_data a
             </div>
         </div>
         <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10 section">
+                <div class="backend-meta-card">
+                    {% if backend_data.description %}
+                        <p class="backend-meta-lead">{{ backend_data.description }}</p>
+                    {% endif %}
+                    {% if backend_data.long_description %}
+                        <p class="backend-meta-copy">{{ backend_data.long_description }}</p>
+                    {% endif %}
+                    {% if backend_data.link %}
+                        <p class="backend-meta-link-row">
+                            <a href='{{ backend_data.link }}' target="_blank" rel="noopener noreferrer" class="backend-link">Official project page</a>
+                        </p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
             <div>
                 {%include "score_table_details.html" %}
             </div>
