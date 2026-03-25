@@ -1,5 +1,6 @@
 # Developer scripts for test only
-scripts/
+scripts/*
+!scripts/merge_trends.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
