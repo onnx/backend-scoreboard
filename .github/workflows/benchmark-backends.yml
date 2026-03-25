@@ -282,6 +282,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v6
 
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
       - name: Switch to benchmark-results branch
         run: |
           git config --global user.name "GitHub Action"
@@ -359,6 +364,9 @@ jobs:
         with:
           name: results-tvm-stable
           path: results/tvm/stable/
+
+      - name: Merge trend history
+        run: python3 scripts/merge_trends.py --config ./setup/config.json --base-ref HEAD
 
       - name: Deploy results
         run: |
