@@ -33,12 +33,12 @@
             </td>
         {% endif %}
         <td>
-            <div class="centered">
-              {{ backend_data.trend[-1].date }}
+            <div class="centered centered-date">
+              <span data-utc-datetime="{{ backend_data.trend[-1].date }}">{{ backend_data.trend[-1].date }} UTC</span>
             </div>
         </td>
         <td>
-            <div class="centered">
+            <div class="centered score-cell">
                  <div class='{{backend_data.coverage.mark}}'>
                     {{ "{:,.2f}%".format(backend_data.coverage.passed) }}
                     {% if backend_data.coverage.total_ops > 0 %}

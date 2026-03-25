@@ -89,8 +89,6 @@ hr {
 }
 
 .backend-summary {
-    min-width: 220px;
-    max-width: 320px;
     height: 80pt;
     display: flex;
     align-items: center;
@@ -128,6 +126,24 @@ hr {
 
 .backend-meta-link-row {
     margin-bottom: 0;
+}
+
+.centered-date {
+    line-height: 1.35;
+    overflow: visible;
+}
+
+.centered-date [data-utc-datetime] {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.score-cell {
+    justify-content: flex-end;
+    text-align: right;
+    padding-left: 20pt;
+    padding-right: 8px;
+    overflow: visible;
 }
 
 .nav-tabs .nav-item .nav-link {
