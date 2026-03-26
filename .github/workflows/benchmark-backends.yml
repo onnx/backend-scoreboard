@@ -287,6 +287,12 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Preserve merge inputs
+        run: |
+          mkdir -p /tmp/scoreboard-merge
+          cp scripts/merge_trends.py /tmp/scoreboard-merge/merge_trends.py
+          cp setup/config.json /tmp/scoreboard-merge/config.json
+
       - name: Switch to benchmark-results branch
         run: |
           git config --global user.name "GitHub Action"
@@ -366,7 +372,7 @@ jobs:
           path: results/tvm/stable/
 
       - name: Merge trend history
-        run: python3 scripts/merge_trends.py --config ./setup/config.json --base-ref HEAD
+        run: python3 /tmp/scoreboard-merge/merge_trends.py --config /tmp/scoreboard-merge/config.json --base-ref HEAD
 
       - name: Deploy results
         run: |
