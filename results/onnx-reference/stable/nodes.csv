@@ -15,6 +15,7 @@ Attention,Passed!
 AveragePool,Passed!
 BatchNormalization,Passed!
 Bernoulli,Failed!
+BitCast,Passed!
 BitShift,Passed!
 BitwiseAnd,Passed!
 BitwiseNot,Passed!
@@ -38,6 +39,7 @@ ConvInteger,Passed!
 ConvTranspose,Passed!
 Cos,Passed!
 Cosh,Passed!
+CumProd,Passed!
 CumSum,Passed!
 DFT,Passed!
 DeformConv,Passed!
@@ -197,4 +199,4 @@ Unsqueeze,Passed!
 Upsample,Passed!
 Where,Passed!
 Xor,Passed!
-Summary,194/198 node tests passed
+Summary,196/200 node tests passed
