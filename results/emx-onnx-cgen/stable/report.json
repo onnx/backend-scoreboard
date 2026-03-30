@@ -1,5 +1,5 @@
 {
-    "date": "03/29/2026 01:22:38",
+    "date": "03/30/2026 01:22:31",
     "failed": [
         "OnnxBackendNodeModelTest::test_adam_multiple_cpu",
         "OnnxBackendNodeModelTest::test_attention_4d_fp16_cpu",
@@ -47,7 +47,6 @@
         "OnnxBackendNodeModelTest::test_l2normalization_axis_0_cpu",
         "OnnxBackendNodeModelTest::test_loop13_seq_cpu",
         "OnnxBackendNodeModelTest::test_loop16_seq_none_cpu",
-        "OnnxBackendNodeModelTest::test_reduce_l2_empty_set_expanded_cpu",
         "OnnxBackendNodeModelTest::test_reduce_sum_square_empty_set_expanded_cpu",
         "OnnxBackendNodeModelTest::test_sequence_insert_at_back_cpu",
         "OnnxBackendNodeModelTest::test_sequence_insert_at_front_cpu",
@@ -1161,6 +1160,7 @@
         "OnnxBackendNodeModelTest::test_reduce_l2_do_not_keepdims_random_cpu",
         "OnnxBackendNodeModelTest::test_reduce_l2_do_not_keepdims_random_expanded_cpu",
         "OnnxBackendNodeModelTest::test_reduce_l2_empty_set_cpu",
+        "OnnxBackendNodeModelTest::test_reduce_l2_empty_set_expanded_cpu",
         "OnnxBackendNodeModelTest::test_reduce_l2_keep_dims_example_cpu",
         "OnnxBackendNodeModelTest::test_reduce_l2_keep_dims_example_expanded_cpu",
         "OnnxBackendNodeModelTest::test_reduce_l2_keep_dims_random_cpu",

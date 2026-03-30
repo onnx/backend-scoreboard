@@ -1,5 +1,5 @@
 {
-    "date": "03/29/2026 00:55:54",
+    "date": "03/30/2026 00:55:17",
     "failed": [
         "OnnxBackendNodeModelTest::test_adam_multiple_cpu",
         "OnnxBackendNodeModelTest::test_bernoulli_cpu",
@@ -26,6 +26,7 @@
         "OnnxBackendNodeModelTest::test_scatter_without_axis_cpu",
         "OnnxBackendRealModelTest::test_bvlc_alexnet_cpu",
         "OnnxBackendRealModelTest::test_densenet121_cpu",
+        "OnnxBackendRealModelTest::test_inception_v1_cpu",
         "OnnxBackendRealModelTest::test_squeezenet_cpu",
         "OnnxBackendRealModelTest::test_vgg19_cpu",
         "OnnxBackendRealModelTest::test_zfnet512_cpu",
@@ -1805,7 +1806,6 @@
         "OnnxBackendPyTorchOperatorModelTest::test_operator_symbolic_override_cpu",
         "OnnxBackendPyTorchOperatorModelTest::test_operator_symbolic_override_nested_cpu",
         "OnnxBackendPyTorchOperatorModelTest::test_operator_view_cpu",
-        "OnnxBackendRealModelTest::test_inception_v1_cpu",
         "OnnxBackendRealModelTest::test_inception_v2_cpu",
         "OnnxBackendRealModelTest::test_resnet50_cpu",
         "OnnxBackendRealModelTest::test_shufflenet_cpu",
