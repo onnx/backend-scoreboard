@@ -8,7 +8,9 @@ from pathlib import Path
 
 
 CONFTEST_PATH = Path(__file__).resolve().parent / "conftest.py"
-SPEC = importlib.util.spec_from_file_location("scoreboard_pytest_conftest", CONFTEST_PATH)
+SPEC = importlib.util.spec_from_file_location(
+    "scoreboard_pytest_conftest", CONFTEST_PATH
+)
 CONFTEST = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(CONFTEST)
 
