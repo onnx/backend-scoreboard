@@ -5,6 +5,7 @@
         <th scope="row">Date</th>
         <th scope="row">Score</th>
         <th scope="row">Coverage</th>
+        <th scope="row">Supported Ops</th>
         <th scope="row">Details</th>
     </tr>
     {% for backend, backend_data in database.items() %}
@@ -34,9 +35,6 @@
             <div class="centered score-cell">
                  <div class='{{backend_data.coverage.mark}}'>
                     {{ "{:,.2f}%".format(backend_data.coverage.passed) }}
-                    {% if backend_data.coverage.total_ops > 0 %}
-                    <br><small>{{ backend_data.coverage.passed_ops }}/{{ backend_data.coverage.total_ops }} ops</small>
-                    {% endif %}
                 </div>
             </div>
         </td>
@@ -45,6 +43,15 @@
                 <div>
                     <canvas width="100" height="60" id='circle_{{ backend_data.name }}'></canvas>
                 </div>
+            </div>
+        </td>
+        <td>
+            <div class="centered supported-ops-cell">
+                {% if backend_data.coverage.total_ops > 0 %}
+                    <div class="supported-ops-value">{{ backend_data.coverage.passed_ops }}/{{ backend_data.coverage.total_ops }}</div>
+                {% else %}
+                    <div class="supported-ops-value">-</div>
+                {% endif %}
             </div>
         </td>
         <td>

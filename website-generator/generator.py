@@ -105,11 +105,9 @@ def mark_coverage(percentage):
 def get_coverage_percentage(trend, ops=None):
     """Create and return a dict with passed and failed tests percentage.
 
-    When ``total_ops`` is available in the latest trend entry and ``ops`` is
-    provided, the primary ``passed`` score is based on operator coverage
-    (passed_ops / total_ops) rather than raw test counts.  This prevents
-    backends that delegate unsupported ops to a reference runtime from
-    reporting an inflated 100 % score.
+    The primary ``passed`` score is based on unit test results so the summary
+    score matches the trend chart. Operator coverage is still exposed as
+    auxiliary metadata via ``passed_ops`` and ``total_ops``.
 
     :param trend: Trend is a list of report summaries per date.
     :type trend: list
@@ -161,15 +159,7 @@ def get_coverage_percentage(trend, ops=None):
     coverage["loaded_ops"] = loaded_ops
     coverage["total_ops"] = total_ops
 
-    try:
-        if total_ops > 0:
-            # Primary score: fraction of all suite ops that this backend passes
-            coverage["passed"] = passed_ops / total_ops * 100
-        else:
-            # Fallback: use test pass rate when total_ops not yet captured
-            coverage["passed"] = coverage["tests_passed"]
-    except ZeroDivisionError:
-        coverage["passed"] = 0
+    coverage["passed"] = coverage["tests_passed"]
 
     # Retain legacy aliases for templates that reference failed/skipped
     coverage["failed"] = coverage["tests_failed"]
@@ -197,10 +187,26 @@ def load_ops_csv(file_dir, file_name="nodes.csv"):
         with open(os.path.join(file_dir, file_name), newline="") as csv_file:
             reader = csv.DictReader(csv_file)
             for row in reader:
-                ops_table[row["Op"]] = row.get("None", "").replace("!", "").lower()
+                op_name = row.get("Op")
+                if not op_name or op_name == "Summary":
+                    continue
+                ops_table[op_name] = row.get("None", "").replace("!", "").lower()
     except IOError:
         pass  # Return empty dict
     return ops_table
+
+
+def load_ops_summary(file_dir, file_name="nodes.csv"):
+    """Load the synthetic Summary entry from the operators coverage CSV."""
+    try:
+        with open(os.path.join(file_dir, file_name), newline="") as csv_file:
+            reader = csv.DictReader(csv_file)
+            for row in reader:
+                if row.get("Op") == "Summary":
+                    return row.get("None", "").replace("!", "")
+    except IOError:
+        pass
+    return ""
 
 
 def load_report(file_dir, file_name="report.json"):
@@ -284,6 +290,7 @@ def prepare_database(config, state="stable"):
         long_description = backend_config.get("long_description", "")
         trend = load_trend(results_dir)
         ops = load_ops_csv(results_dir)
+        ops_summary = load_ops_summary(results_dir)
         coverage = get_coverage_percentage(trend, ops)
         report = load_report(results_dir)
 
@@ -295,6 +302,7 @@ def prepare_database(config, state="stable"):
             "trend": trend,
             "coverage": coverage,
             "ops": ops,
+            "ops_summary": ops_summary,
             "report": report,
             "dockerfile_link": repo_url + dockerfile_link,
         }
