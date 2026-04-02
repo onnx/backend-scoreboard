@@ -16,6 +16,21 @@ from pathlib import Path
 REPORT_KEYS = ["passed", "failed", "skipped"]
 
 
+def count_total_ops_from_ops_json(results_dir):
+    """Count unique ops from ops.json for the current run."""
+    ops = load_json_file(results_dir / "ops.json", [])
+    if not isinstance(ops, list):
+        return 0
+
+    return len(
+        {
+            ((entry.get("domain") or ""), entry.get("op_type"))
+            for entry in ops
+            if isinstance(entry, dict) and entry.get("op_type")
+        }
+    )
+
+
 def load_json_file(file_path, default):
     """Load JSON from a file and return a default value on failure."""
     try:
@@ -53,11 +68,15 @@ def filter_packages(package_versions, backend_config):
 
 
 def count_total_ops(results_dir):
-    """Count unique ops from nodes.csv for the current run."""
+    """Count unique ops from ops.json, falling back to nodes.csv."""
+    total_ops = count_total_ops_from_ops_json(results_dir)
+    if total_ops:
+        return total_ops
+
     try:
         with open(results_dir / "nodes.csv", newline="") as csv_file:
             reader = csv.DictReader(csv_file)
-            return len({row.get("Op") for row in reader if row.get("Op")})
+            return len({row.get("Op") for row in reader if row.get("Op") != "Summary"})
     except IOError:
         return 0
 
