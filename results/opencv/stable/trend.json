@@ -117,5 +117,22 @@
                 "version": "4.13.0.92"
             }
         ]
+    },
+    {
+        "date": "04/02/2026 09:03:10",
+        "failed": 428,
+        "passed": 267,
+        "skipped": 1132,
+        "total_ops": 201,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.21.0"
+            },
+            {
+                "name": "opencv-python-headless",
+                "version": "4.13.0.92"
+            }
+        ]
     }
 ]

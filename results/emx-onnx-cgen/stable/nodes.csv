@@ -157,11 +157,11 @@ ScatterND,Passed!
 Selu,Passed!
 SequenceAt,Passed!
 SequenceConstruct,Passed!
-SequenceEmpty,Passed!
+SequenceEmpty,Failed!
 SequenceErase,Passed!
 SequenceInsert,Passed!
 SequenceLength,Passed!
-SequenceMap,Passed!
+SequenceMap,Failed!
 Shape,Passed!
 Shrink,Passed!
 Sigmoid,Passed!
@@ -199,4 +199,4 @@ Unsqueeze,Passed!
 Upsample,Passed!
 Where,Passed!
 Xor,Passed!
-Summary,196/200 node tests passed
+Summary,194/200 node tests passed

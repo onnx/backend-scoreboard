@@ -1,0 +1,19 @@
+[
+    {
+        "date": "04/02/2026 08:52:49",
+        "failed": 540,
+        "passed": 1287,
+        "skipped": 0,
+        "total_ops": 200,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.21.0"
+            },
+            {
+                "name": "onnxruntime-openvino",
+                "version": "1.23.0"
+            }
+        ]
+    }
+]

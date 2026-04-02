@@ -1,0 +1,1610 @@
+[
+    {
+        "domain": "",
+        "failed_tests": 6,
+        "op_type": "Abs",
+        "passed_tests": 2,
+        "skipped_tests": 5,
+        "total_tests": 13
+    },
+    {
+        "domain": "",
+        "failed_tests": 1,
+        "op_type": "Acos",
+        "passed_tests": 1,
+        "skipped_tests": 0,
+        "total_tests": 2
+    },
+    {
+        "domain": "",
+        "failed_tests": 1,
+        "op_type": "Acosh",
+        "passed_tests": 1,
+        "skipped_tests": 0,
+        "total_tests": 2
+    },
+    {
+        "domain": "",
+        "failed_tests": 11,
+        "op_type": "Add",
+        "passed_tests": 2,
+        "skipped_tests": 164,
+        "total_tests": 177
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "AffineGrid",
+        "passed_tests": 0,
+        "skipped_tests": 4,
+        "total_tests": 4
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "And",
+        "passed_tests": 0,
+        "skipped_tests": 70,
+        "total_tests": 70
+    },
+    {
+        "domain": "",
+        "failed_tests": 16,
+        "op_type": "ArgMax",
+        "passed_tests": 0,
+        "skipped_tests": 0,
+        "total_tests": 16
+    },
+    {
+        "domain": "",
+        "failed_tests": 16,
+        "op_type": "ArgMin",
+        "passed_tests": 0,
+        "skipped_tests": 0,
+        "total_tests": 16
+    },
+    {
+        "domain": "",
+        "failed_tests": 1,
+        "op_type": "Asin",
+        "passed_tests": 1,
+        "skipped_tests": 0,
+        "total_tests": 2
+    },
+    {
+        "domain": "",
+        "failed_tests": 1,
+        "op_type": "Asinh",
+        "passed_tests": 1,
+        "skipped_tests": 0,
+        "total_tests": 2
+    },
+    {
+        "domain": "",
+        "failed_tests": 1,
+        "op_type": "Atan",
+        "passed_tests": 1,
+        "skipped_tests": 0,
+        "total_tests": 2
+    },
+    {
+        "domain": "",
+        "failed_tests": 1,
+        "op_type": "Atanh",
+        "passed_tests": 1,
+        "skipped_tests": 0,
+        "total_tests": 2
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "Attention",
+        "passed_tests": 0,
+        "skipped_tests": 62,
+        "total_tests": 62
+    },
+    {
+        "domain": "",
+        "failed_tests": 10,
+        "op_type": "AveragePool",
+        "passed_tests": 16,
+        "skipped_tests": 6,
+        "total_tests": 32
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "BatchNormalization",
+        "passed_tests": 0,
+        "skipped_tests": 13,
+        "total_tests": 13
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "Bernoulli",
+        "passed_tests": 0,
+        "skipped_tests": 3,
+        "total_tests": 3
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "BitCast",
+        "passed_tests": 0,
+        "skipped_tests": 10,
+        "total_tests": 10
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "BitShift",
+        "passed_tests": 0,
+        "skipped_tests": 8,
+        "total_tests": 8
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "BitwiseAnd",
+        "passed_tests": 0,
+        "skipped_tests": 4,
+        "total_tests": 4
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "BitwiseNot",
+        "passed_tests": 0,
+        "skipped_tests": 3,
+        "total_tests": 3
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "BitwiseOr",
+        "passed_tests": 0,
+        "skipped_tests": 4,
+        "total_tests": 4
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "BitwiseXor",
+        "passed_tests": 0,
+        "skipped_tests": 4,
+        "total_tests": 4
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "BlackmanWindow",
+        "passed_tests": 0,
+        "skipped_tests": 2,
+        "total_tests": 2
+    },
+    {
+        "domain": "",
+        "failed_tests": 53,
+        "op_type": "Cast",
+        "passed_tests": 14,
+        "skipped_tests": 217,
+        "total_tests": 284
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "CastLike",
+        "passed_tests": 0,
+        "skipped_tests": 108,
+        "total_tests": 108
+    },
+    {
+        "domain": "",
+        "failed_tests": 1,
+        "op_type": "Ceil",
+        "passed_tests": 1,
+        "skipped_tests": 2,
+        "total_tests": 4
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "Celu",
+        "passed_tests": 1,
+        "skipped_tests": 0,
+        "total_tests": 1
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "CenterCropPad",
+        "passed_tests": 0,
+        "skipped_tests": 6,
+        "total_tests": 6
+    },
+    {
+        "domain": "",
+        "failed_tests": 5,
+        "op_type": "Clip",
+        "passed_tests": 1,
+        "skipped_tests": 10,
+        "total_tests": 16
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "Col2Im",
+        "passed_tests": 0,
+        "skipped_tests": 5,
+        "total_tests": 5
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "Compress",
+        "passed_tests": 0,
+        "skipped_tests": 4,
+        "total_tests": 4
+    },
+    {
+        "domain": "",
+        "failed_tests": 2,
+        "op_type": "Concat",
+        "passed_tests": 11,
+        "skipped_tests": 125,
+        "total_tests": 138
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "ConcatFromSequence",
+        "passed_tests": 0,
+        "skipped_tests": 2,
+        "total_tests": 2
+    },
+    {
+        "domain": "",
+        "failed_tests": 12,
+        "op_type": "Constant",
+        "passed_tests": 37,
+        "skipped_tests": 225,
+        "total_tests": 274
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "ConstantOfShape",
+        "passed_tests": 0,
+        "skipped_tests": 81,
+        "total_tests": 81
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "Conv",
+        "passed_tests": 6,
+        "skipped_tests": 36,
+        "total_tests": 42
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "ConvInteger",
+        "passed_tests": 0,
+        "skipped_tests": 2,
+        "total_tests": 2
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "ConvTranspose",
+        "passed_tests": 0,
+        "skipped_tests": 14,
+        "total_tests": 14
+    },
+    {
+        "domain": "",
+        "failed_tests": 1,
+        "op_type": "Cos",
+        "passed_tests": 1,
+        "skipped_tests": 6,
+        "total_tests": 8
+    },
+    {
+        "domain": "",
+        "failed_tests": 1,
+        "op_type": "Cosh",
+        "passed_tests": 1,
+        "skipped_tests": 0,
+        "total_tests": 2
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "CumProd",
+        "passed_tests": 0,
+        "skipped_tests": 9,
+        "total_tests": 9
+    },
+    {
+        "domain": "",
+        "failed_tests": 9,
+        "op_type": "CumSum",
+        "passed_tests": 0,
+        "skipped_tests": 0,
+        "total_tests": 9
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "DFT",
+        "passed_tests": 0,
+        "skipped_tests": 10,
+        "total_tests": 10
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "DeformConv",
+        "passed_tests": 0,
+        "skipped_tests": 4,
+        "total_tests": 4
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "DepthToSpace",
+        "passed_tests": 2,
+        "skipped_tests": 0,
+        "total_tests": 2
+    },
+    {
+        "domain": "",
+        "failed_tests": 12,
+        "op_type": "DequantizeLinear",
+        "passed_tests": 2,
+        "skipped_tests": 0,
+        "total_tests": 14
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "Det",
+        "passed_tests": 0,
+        "skipped_tests": 2,
+        "total_tests": 2
+    },
+    {
+        "domain": "",
+        "failed_tests": 14,
+        "op_type": "Div",
+        "passed_tests": 17,
+        "skipped_tests": 154,
+        "total_tests": 185
+    },
+    {
+        "domain": "",
+        "failed_tests": 7,
+        "op_type": "Dropout",
+        "passed_tests": 4,
+        "skipped_tests": 5,
+        "total_tests": 16
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "DynamicQuantizeLinear",
+        "passed_tests": 0,
+        "skipped_tests": 3,
+        "total_tests": 3
+    },
+    {
+        "domain": "",
+        "failed_tests": 4,
+        "op_type": "Einsum",
+        "passed_tests": 0,
+        "skipped_tests": 2,
+        "total_tests": 6
+    },
+    {
+        "domain": "",
+        "failed_tests": 1,
+        "op_type": "Elu",
+        "passed_tests": 4,
+        "skipped_tests": 0,
+        "total_tests": 5
+    },
+    {
+        "domain": "",
+        "failed_tests": 10,
+        "op_type": "Equal",
+        "passed_tests": 1,
+        "skipped_tests": 88,
+        "total_tests": 99
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "Erf",
+        "passed_tests": 1,
+        "skipped_tests": 2,
+        "total_tests": 3
+    },
+    {
+        "domain": "",
+        "failed_tests": 1,
+        "op_type": "Exp",
+        "passed_tests": 31,
+        "skipped_tests": 17,
+        "total_tests": 49
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "Expand",
+        "passed_tests": 0,
+        "skipped_tests": 68,
+        "total_tests": 68
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "EyeLike",
+        "passed_tests": 0,
+        "skipped_tests": 3,
+        "total_tests": 3
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "Flatten",
+        "passed_tests": 10,
+        "skipped_tests": 39,
+        "total_tests": 49
+    },
+    {
+        "domain": "",
+        "failed_tests": 1,
+        "op_type": "Floor",
+        "passed_tests": 1,
+        "skipped_tests": 0,
+        "total_tests": 2
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "GRU",
+        "passed_tests": 0,
+        "skipped_tests": 4,
+        "total_tests": 4
+    },
+    {
+        "domain": "",
+        "failed_tests": 4,
+        "op_type": "Gather",
+        "passed_tests": 1,
+        "skipped_tests": 28,
+        "total_tests": 33
+    },
+    {
+        "domain": "",
+        "failed_tests": 7,
+        "op_type": "GatherElements",
+        "passed_tests": 6,
+        "skipped_tests": 8,
+        "total_tests": 21
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "GatherND",
+        "passed_tests": 0,
+        "skipped_tests": 3,
+        "total_tests": 3
+    },
+    {
+        "domain": "",
+        "failed_tests": 3,
+        "op_type": "Gelu",
+        "passed_tests": 1,
+        "skipped_tests": 0,
+        "total_tests": 4
+    },
+    {
+        "domain": "",
+        "failed_tests": 9,
+        "op_type": "Gemm",
+        "passed_tests": 3,
+        "skipped_tests": 9,
+        "total_tests": 21
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "GlobalAveragePool",
+        "passed_tests": 2,
+        "skipped_tests": 2,
+        "total_tests": 4
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "GlobalMaxPool",
+        "passed_tests": 2,
+        "skipped_tests": 0,
+        "total_tests": 2
+    },
+    {
+        "domain": "",
+        "failed_tests": 7,
+        "op_type": "Greater",
+        "passed_tests": 0,
+        "skipped_tests": 12,
+        "total_tests": 19
+    },
+    {
+        "domain": "",
+        "failed_tests": 7,
+        "op_type": "GreaterOrEqual",
+        "passed_tests": 0,
+        "skipped_tests": 1,
+        "total_tests": 8
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "GridSample",
+        "passed_tests": 0,
+        "skipped_tests": 18,
+        "total_tests": 18
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "GroupNormalization",
+        "passed_tests": 2,
+        "skipped_tests": 0,
+        "total_tests": 2
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "HammingWindow",
+        "passed_tests": 0,
+        "skipped_tests": 2,
+        "total_tests": 2
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "HannWindow",
+        "passed_tests": 0,
+        "skipped_tests": 2,
+        "total_tests": 2
+    },
+    {
+        "domain": "",
+        "failed_tests": 1,
+        "op_type": "HardSigmoid",
+        "passed_tests": 3,
+        "skipped_tests": 0,
+        "total_tests": 4
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "HardSwish",
+        "passed_tests": 1,
+        "skipped_tests": 0,
+        "total_tests": 1
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "Hardmax",
+        "passed_tests": 0,
+        "skipped_tests": 7,
+        "total_tests": 7
+    },
+    {
+        "domain": "",
+        "failed_tests": 5,
+        "op_type": "Identity",
+        "passed_tests": 1,
+        "skipped_tests": 96,
+        "total_tests": 102
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "If",
+        "passed_tests": 0,
+        "skipped_tests": 7,
+        "total_tests": 7
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "ImageDecoder",
+        "passed_tests": 0,
+        "skipped_tests": 9,
+        "total_tests": 9
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "InstanceNormalization",
+        "passed_tests": 2,
+        "skipped_tests": 1,
+        "total_tests": 3
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "IsInf",
+        "passed_tests": 0,
+        "skipped_tests": 4,
+        "total_tests": 4
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "IsNaN",
+        "passed_tests": 0,
+        "skipped_tests": 2,
+        "total_tests": 2
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "LRN",
+        "passed_tests": 2,
+        "skipped_tests": 3,
+        "total_tests": 5
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "LSTM",
+        "passed_tests": 0,
+        "skipped_tests": 4,
+        "total_tests": 4
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "LayerNormalization",
+        "passed_tests": 0,
+        "skipped_tests": 19,
+        "total_tests": 19
+    },
+    {
+        "domain": "",
+        "failed_tests": 1,
+        "op_type": "LeakyRelu",
+        "passed_tests": 4,
+        "skipped_tests": 0,
+        "total_tests": 5
+    },
+    {
+        "domain": "",
+        "failed_tests": 14,
+        "op_type": "Less",
+        "passed_tests": 3,
+        "skipped_tests": 36,
+        "total_tests": 53
+    },
+    {
+        "domain": "",
+        "failed_tests": 7,
+        "op_type": "LessOrEqual",
+        "passed_tests": 0,
+        "skipped_tests": 1,
+        "total_tests": 8
+    },
+    {
+        "domain": "",
+        "failed_tests": 4,
+        "op_type": "Log",
+        "passed_tests": 15,
+        "skipped_tests": 13,
+        "total_tests": 32
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "LogSoftmax",
+        "passed_tests": 10,
+        "skipped_tests": 34,
+        "total_tests": 44
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "Loop",
+        "passed_tests": 0,
+        "skipped_tests": 11,
+        "total_tests": 11
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "LpNormalization",
+        "passed_tests": 0,
+        "skipped_tests": 6,
+        "total_tests": 6
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "LpPool",
+        "passed_tests": 0,
+        "skipped_tests": 8,
+        "total_tests": 8
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "MatMul",
+        "passed_tests": 4,
+        "skipped_tests": 70,
+        "total_tests": 74
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "MatMulInteger",
+        "passed_tests": 0,
+        "skipped_tests": 1,
+        "total_tests": 1
+    },
+    {
+        "domain": "",
+        "failed_tests": 17,
+        "op_type": "Max",
+        "passed_tests": 1,
+        "skipped_tests": 10,
+        "total_tests": 28
+    },
+    {
+        "domain": "",
+        "failed_tests": 10,
+        "op_type": "MaxPool",
+        "passed_tests": 16,
+        "skipped_tests": 11,
+        "total_tests": 37
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "MaxUnpool",
+        "passed_tests": 1,
+        "skipped_tests": 1,
+        "total_tests": 2
+    },
+    {
+        "domain": "",
+        "failed_tests": 3,
+        "op_type": "Mean",
+        "passed_tests": 0,
+        "skipped_tests": 0,
+        "total_tests": 3
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "MeanVarianceNormalization",
+        "passed_tests": 0,
+        "skipped_tests": 1,
+        "total_tests": 1
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "MelWeightMatrix",
+        "passed_tests": 0,
+        "skipped_tests": 1,
+        "total_tests": 1
+    },
+    {
+        "domain": "",
+        "failed_tests": 17,
+        "op_type": "Min",
+        "passed_tests": 1,
+        "skipped_tests": 3,
+        "total_tests": 21
+    },
+    {
+        "domain": "",
+        "failed_tests": 1,
+        "op_type": "Mish",
+        "passed_tests": 0,
+        "skipped_tests": 0,
+        "total_tests": 1
+    },
+    {
+        "domain": "",
+        "failed_tests": 13,
+        "op_type": "Mod",
+        "passed_tests": 0,
+        "skipped_tests": 62,
+        "total_tests": 75
+    },
+    {
+        "domain": "",
+        "failed_tests": 18,
+        "op_type": "Mul",
+        "passed_tests": 7,
+        "skipped_tests": 184,
+        "total_tests": 209
+    },
+    {
+        "domain": "",
+        "failed_tests": 10,
+        "op_type": "Neg",
+        "passed_tests": 5,
+        "skipped_tests": 31,
+        "total_tests": 46
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "NegativeLogLikelihoodLoss",
+        "passed_tests": 0,
+        "skipped_tests": 52,
+        "total_tests": 52
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "NonMaxSuppression",
+        "passed_tests": 0,
+        "skipped_tests": 10,
+        "total_tests": 10
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "NonZero",
+        "passed_tests": 0,
+        "skipped_tests": 1,
+        "total_tests": 1
+    },
+    {
+        "domain": "",
+        "failed_tests": 3,
+        "op_type": "Not",
+        "passed_tests": 0,
+        "skipped_tests": 62,
+        "total_tests": 65
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "OneHot",
+        "passed_tests": 0,
+        "skipped_tests": 4,
+        "total_tests": 4
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "OptionalGetElement",
+        "passed_tests": 0,
+        "skipped_tests": 4,
+        "total_tests": 4
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "OptionalHasElement",
+        "passed_tests": 0,
+        "skipped_tests": 7,
+        "total_tests": 7
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "Or",
+        "passed_tests": 0,
+        "skipped_tests": 24,
+        "total_tests": 24
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "PRelu",
+        "passed_tests": 0,
+        "skipped_tests": 8,
+        "total_tests": 8
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "Pad",
+        "passed_tests": 5,
+        "skipped_tests": 13,
+        "total_tests": 18
+    },
+    {
+        "domain": "",
+        "failed_tests": 11,
+        "op_type": "Pow",
+        "passed_tests": 2,
+        "skipped_tests": 4,
+        "total_tests": 17
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "QLinearConv",
+        "passed_tests": 0,
+        "skipped_tests": 1,
+        "total_tests": 1
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "QLinearMatMul",
+        "passed_tests": 0,
+        "skipped_tests": 8,
+        "total_tests": 8
+    },
+    {
+        "domain": "",
+        "failed_tests": 16,
+        "op_type": "QuantizeLinear",
+        "passed_tests": 0,
+        "skipped_tests": 0,
+        "total_tests": 16
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "RMSNormalization",
+        "passed_tests": 0,
+        "skipped_tests": 19,
+        "total_tests": 19
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "RNN",
+        "passed_tests": 0,
+        "skipped_tests": 4,
+        "total_tests": 4
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "RandomUniformLike",
+        "passed_tests": 0,
+        "skipped_tests": 3,
+        "total_tests": 3
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "Range",
+        "passed_tests": 0,
+        "skipped_tests": 42,
+        "total_tests": 42
+    },
+    {
+        "domain": "",
+        "failed_tests": 1,
+        "op_type": "Reciprocal",
+        "passed_tests": 1,
+        "skipped_tests": 38,
+        "total_tests": 40
+    },
+    {
+        "domain": "",
+        "failed_tests": 6,
+        "op_type": "ReduceL1",
+        "passed_tests": 0,
+        "skipped_tests": 3,
+        "total_tests": 9
+    },
+    {
+        "domain": "",
+        "failed_tests": 6,
+        "op_type": "ReduceL2",
+        "passed_tests": 0,
+        "skipped_tests": 3,
+        "total_tests": 9
+    },
+    {
+        "domain": "",
+        "failed_tests": 3,
+        "op_type": "ReduceLogSum",
+        "passed_tests": 0,
+        "skipped_tests": 2,
+        "total_tests": 5
+    },
+    {
+        "domain": "",
+        "failed_tests": 6,
+        "op_type": "ReduceLogSumExp",
+        "passed_tests": 0,
+        "skipped_tests": 3,
+        "total_tests": 9
+    },
+    {
+        "domain": "",
+        "failed_tests": 10,
+        "op_type": "ReduceMax",
+        "passed_tests": 30,
+        "skipped_tests": 1,
+        "total_tests": 41
+    },
+    {
+        "domain": "",
+        "failed_tests": 9,
+        "op_type": "ReduceMean",
+        "passed_tests": 2,
+        "skipped_tests": 62,
+        "total_tests": 73
+    },
+    {
+        "domain": "",
+        "failed_tests": 10,
+        "op_type": "ReduceMin",
+        "passed_tests": 2,
+        "skipped_tests": 1,
+        "total_tests": 13
+    },
+    {
+        "domain": "",
+        "failed_tests": 6,
+        "op_type": "ReduceProd",
+        "passed_tests": 2,
+        "skipped_tests": 1,
+        "total_tests": 9
+    },
+    {
+        "domain": "",
+        "failed_tests": 25,
+        "op_type": "ReduceSum",
+        "passed_tests": 30,
+        "skipped_tests": 39,
+        "total_tests": 94
+    },
+    {
+        "domain": "",
+        "failed_tests": 6,
+        "op_type": "ReduceSumSquare",
+        "passed_tests": 0,
+        "skipped_tests": 3,
+        "total_tests": 9
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "RegexFullMatch",
+        "passed_tests": 0,
+        "skipped_tests": 3,
+        "total_tests": 3
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "Relu",
+        "passed_tests": 3,
+        "skipped_tests": 11,
+        "total_tests": 14
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "Reshape",
+        "passed_tests": 2,
+        "skipped_tests": 165,
+        "total_tests": 167
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "Resize",
+        "passed_tests": 0,
+        "skipped_tests": 39,
+        "total_tests": 39
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "ReverseSequence",
+        "passed_tests": 0,
+        "skipped_tests": 2,
+        "total_tests": 2
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "RoiAlign",
+        "passed_tests": 0,
+        "skipped_tests": 3,
+        "total_tests": 3
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "RotaryEmbedding",
+        "passed_tests": 0,
+        "skipped_tests": 8,
+        "total_tests": 8
+    },
+    {
+        "domain": "",
+        "failed_tests": 4,
+        "op_type": "Round",
+        "passed_tests": 0,
+        "skipped_tests": 0,
+        "total_tests": 4
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "STFT",
+        "passed_tests": 0,
+        "skipped_tests": 2,
+        "total_tests": 2
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "Scan",
+        "passed_tests": 0,
+        "skipped_tests": 2,
+        "total_tests": 2
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "Scatter",
+        "passed_tests": 2,
+        "skipped_tests": 0,
+        "total_tests": 2
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "ScatterElements",
+        "passed_tests": 6,
+        "skipped_tests": 0,
+        "total_tests": 6
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "ScatterND",
+        "passed_tests": 5,
+        "skipped_tests": 0,
+        "total_tests": 5
+    },
+    {
+        "domain": "",
+        "failed_tests": 1,
+        "op_type": "Selu",
+        "passed_tests": 4,
+        "skipped_tests": 0,
+        "total_tests": 5
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "SequenceAt",
+        "passed_tests": 0,
+        "skipped_tests": 4,
+        "total_tests": 4
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "SequenceConstruct",
+        "passed_tests": 0,
+        "skipped_tests": 4,
+        "total_tests": 4
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "SequenceEmpty",
+        "passed_tests": 0,
+        "skipped_tests": 7,
+        "total_tests": 7
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "SequenceErase",
+        "passed_tests": 0,
+        "skipped_tests": 2,
+        "total_tests": 2
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "SequenceInsert",
+        "passed_tests": 0,
+        "skipped_tests": 4,
+        "total_tests": 4
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "SequenceLength",
+        "passed_tests": 0,
+        "skipped_tests": 8,
+        "total_tests": 8
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "SequenceMap",
+        "passed_tests": 0,
+        "skipped_tests": 6,
+        "total_tests": 6
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "Shape",
+        "passed_tests": 0,
+        "skipped_tests": 180,
+        "total_tests": 180
+    },
+    {
+        "domain": "",
+        "failed_tests": 3,
+        "op_type": "Shrink",
+        "passed_tests": 0,
+        "skipped_tests": 0,
+        "total_tests": 3
+    },
+    {
+        "domain": "",
+        "failed_tests": 2,
+        "op_type": "Sigmoid",
+        "passed_tests": 4,
+        "skipped_tests": 2,
+        "total_tests": 8
+    },
+    {
+        "domain": "",
+        "failed_tests": 2,
+        "op_type": "Sign",
+        "passed_tests": 0,
+        "skipped_tests": 0,
+        "total_tests": 2
+    },
+    {
+        "domain": "",
+        "failed_tests": 1,
+        "op_type": "Sin",
+        "passed_tests": 1,
+        "skipped_tests": 0,
+        "total_tests": 2
+    },
+    {
+        "domain": "",
+        "failed_tests": 1,
+        "op_type": "Sinh",
+        "passed_tests": 1,
+        "skipped_tests": 0,
+        "total_tests": 2
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "Size",
+        "passed_tests": 0,
+        "skipped_tests": 63,
+        "total_tests": 63
+    },
+    {
+        "domain": "",
+        "failed_tests": 8,
+        "op_type": "Slice",
+        "passed_tests": 3,
+        "skipped_tests": 72,
+        "total_tests": 83
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "Softmax",
+        "passed_tests": 11,
+        "skipped_tests": 70,
+        "total_tests": 81
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "SoftmaxCrossEntropyLoss",
+        "passed_tests": 0,
+        "skipped_tests": 34,
+        "total_tests": 34
+    },
+    {
+        "domain": "",
+        "failed_tests": 2,
+        "op_type": "Softplus",
+        "passed_tests": 2,
+        "skipped_tests": 0,
+        "total_tests": 4
+    },
+    {
+        "domain": "",
+        "failed_tests": 1,
+        "op_type": "Softsign",
+        "passed_tests": 1,
+        "skipped_tests": 0,
+        "total_tests": 2
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "SpaceToDepth",
+        "passed_tests": 2,
+        "skipped_tests": 0,
+        "total_tests": 2
+    },
+    {
+        "domain": "",
+        "failed_tests": 5,
+        "op_type": "Split",
+        "passed_tests": 4,
+        "skipped_tests": 18,
+        "total_tests": 27
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "SplitToSequence",
+        "passed_tests": 0,
+        "skipped_tests": 6,
+        "total_tests": 6
+    },
+    {
+        "domain": "",
+        "failed_tests": 2,
+        "op_type": "Sqrt",
+        "passed_tests": 2,
+        "skipped_tests": 135,
+        "total_tests": 139
+    },
+    {
+        "domain": "",
+        "failed_tests": 8,
+        "op_type": "Squeeze",
+        "passed_tests": 5,
+        "skipped_tests": 21,
+        "total_tests": 34
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "StringConcat",
+        "passed_tests": 0,
+        "skipped_tests": 5,
+        "total_tests": 5
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "StringNormalizer",
+        "passed_tests": 0,
+        "skipped_tests": 12,
+        "total_tests": 12
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "StringSplit",
+        "passed_tests": 0,
+        "skipped_tests": 6,
+        "total_tests": 6
+    },
+    {
+        "domain": "",
+        "failed_tests": 14,
+        "op_type": "Sub",
+        "passed_tests": 31,
+        "skipped_tests": 76,
+        "total_tests": 121
+    },
+    {
+        "domain": "",
+        "failed_tests": 4,
+        "op_type": "Sum",
+        "passed_tests": 0,
+        "skipped_tests": 6,
+        "total_tests": 10
+    },
+    {
+        "domain": "",
+        "failed_tests": 1,
+        "op_type": "Swish",
+        "passed_tests": 0,
+        "skipped_tests": 0,
+        "total_tests": 1
+    },
+    {
+        "domain": "",
+        "failed_tests": 1,
+        "op_type": "Tan",
+        "passed_tests": 1,
+        "skipped_tests": 0,
+        "total_tests": 2
+    },
+    {
+        "domain": "",
+        "failed_tests": 3,
+        "op_type": "Tanh",
+        "passed_tests": 2,
+        "skipped_tests": 11,
+        "total_tests": 16
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "TensorScatter",
+        "passed_tests": 0,
+        "skipped_tests": 3,
+        "total_tests": 3
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "TfIdfVectorizer",
+        "passed_tests": 0,
+        "skipped_tests": 7,
+        "total_tests": 7
+    },
+    {
+        "domain": "",
+        "failed_tests": 1,
+        "op_type": "ThresholdedRelu",
+        "passed_tests": 2,
+        "skipped_tests": 0,
+        "total_tests": 3
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "Tile",
+        "passed_tests": 2,
+        "skipped_tests": 2,
+        "total_tests": 4
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "TopK",
+        "passed_tests": 0,
+        "skipped_tests": 7,
+        "total_tests": 7
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "Transpose",
+        "passed_tests": 9,
+        "skipped_tests": 109,
+        "total_tests": 118
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "Trilu",
+        "passed_tests": 0,
+        "skipped_tests": 18,
+        "total_tests": 18
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "Unique",
+        "passed_tests": 0,
+        "skipped_tests": 6,
+        "total_tests": 6
+    },
+    {
+        "domain": "",
+        "failed_tests": 7,
+        "op_type": "Unsqueeze",
+        "passed_tests": 5,
+        "skipped_tests": 91,
+        "total_tests": 103
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "Upsample",
+        "passed_tests": 0,
+        "skipped_tests": 1,
+        "total_tests": 1
+    },
+    {
+        "domain": "",
+        "failed_tests": 11,
+        "op_type": "Where",
+        "passed_tests": 5,
+        "skipped_tests": 81,
+        "total_tests": 97
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "Xor",
+        "passed_tests": 0,
+        "skipped_tests": 8,
+        "total_tests": 8
+    },
+    {
+        "domain": "ai.onnx.ml",
+        "failed_tests": 0,
+        "op_type": "ArrayFeatureExtractor",
+        "passed_tests": 0,
+        "skipped_tests": 1,
+        "total_tests": 1
+    },
+    {
+        "domain": "ai.onnx.ml",
+        "failed_tests": 0,
+        "op_type": "Binarizer",
+        "passed_tests": 0,
+        "skipped_tests": 1,
+        "total_tests": 1
+    },
+    {
+        "domain": "ai.onnx.ml",
+        "failed_tests": 0,
+        "op_type": "LabelEncoder",
+        "passed_tests": 0,
+        "skipped_tests": 4,
+        "total_tests": 4
+    },
+    {
+        "domain": "ai.onnx.ml",
+        "failed_tests": 0,
+        "op_type": "TreeEnsemble",
+        "passed_tests": 0,
+        "skipped_tests": 2,
+        "total_tests": 2
+    },
+    {
+        "domain": "ai.onnx.preview.training",
+        "failed_tests": 0,
+        "op_type": "Adagrad",
+        "passed_tests": 0,
+        "skipped_tests": 2,
+        "total_tests": 2
+    },
+    {
+        "domain": "ai.onnx.preview.training",
+        "failed_tests": 0,
+        "op_type": "Adam",
+        "passed_tests": 0,
+        "skipped_tests": 2,
+        "total_tests": 2
+    },
+    {
+        "domain": "ai.onnx.preview.training",
+        "failed_tests": 0,
+        "op_type": "Gradient",
+        "passed_tests": 0,
+        "skipped_tests": 2,
+        "total_tests": 2
+    },
+    {
+        "domain": "ai.onnx.preview.training",
+        "failed_tests": 0,
+        "op_type": "Momentum",
+        "passed_tests": 0,
+        "skipped_tests": 3,
+        "total_tests": 3
+    }
+]
