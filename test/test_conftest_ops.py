@@ -35,9 +35,7 @@ def test_prepare_ops_preserves_domain_and_adds_counts():
 
     CONFTEST._test_proto_refs.update(
         {
-            "OnnxBackendNodeModelTest::test_add_cpu": [
-                Model([Node("", "Add")])
-            ],
+            "OnnxBackendNodeModelTest::test_add_cpu": [Model([Node("", "Add")])],
             "OnnxBackendNodeModelTest::test_ml_cpu": [
                 Model([Node("", "Add"), Node("ai.onnx.ml", "ArrayFeatureExtractor")])
             ],
@@ -102,9 +100,7 @@ def test_extract_ops_from_proto_ref_uses_mutable_onnx_mark_payload():
         def __init__(self, nodes):
             self.graph = Graph(nodes)
 
-    proto_ref = [
-        Model([Node("", "Add"), Node("ai.onnx.ml", "ArrayFeatureExtractor")])
-    ]
+    proto_ref = [Model([Node("", "Add"), Node("ai.onnx.ml", "ArrayFeatureExtractor")])]
 
     assert CONFTEST._extract_ops_from_proto_ref(proto_ref) == {
         ("", "Add"),
