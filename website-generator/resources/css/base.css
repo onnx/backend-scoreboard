@@ -146,6 +146,26 @@ hr {
     overflow: visible;
 }
 
+.supported-ops-cell {
+    justify-content: flex-end;
+    text-align: right;
+    overflow: visible;
+}
+
+.supported-ops-value {
+    color: #1fa2ff;
+    font-size: 30pt;
+    white-space: nowrap;
+}
+
+.ops-summary {
+    margin-top: 12px;
+    color: #0071bc;
+    font-size: 12pt;
+    font-weight: 600;
+    text-align: left;
+}
+
 .nav-tabs .nav-item .nav-link {
     border-bottom: 0px;
     background-color: transparent;
