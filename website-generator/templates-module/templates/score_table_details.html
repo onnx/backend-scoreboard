@@ -7,6 +7,7 @@
         {% endif %}
         <th scope="row">Date</th>
         <th scope="row">Score</th>
+        <th scope="row">Supported Ops</th>
     </tr>
     <tr>
         <th scope="row">
@@ -41,10 +42,16 @@
             <div class="centered score-cell">
                  <div class='{{backend_data.coverage.mark}}'>
                     {{ "{:,.2f}%".format(backend_data.coverage.passed) }}
-                    {% if backend_data.coverage.total_ops > 0 %}
-                    <br><small>{{ backend_data.coverage.passed_ops }}/{{ backend_data.coverage.total_ops }} ops</small>
-                    {% endif %}
                 </div>
+            </div>
+        </td>
+        <td>
+            <div class="centered supported-ops-cell">
+                {% if backend_data.coverage.total_ops > 0 %}
+                    <div class="supported-ops-value">{{ backend_data.coverage.passed_ops }}/{{ backend_data.coverage.total_ops }}</div>
+                {% else %}
+                    <div class="supported-ops-value">-</div>
+                {% endif %}
             </div>
         </td>
     </tr>
