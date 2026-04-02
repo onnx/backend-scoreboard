@@ -272,11 +272,36 @@ jobs:
           name: results-tvm-stable
           path: results/tvm/stable/
 
+  onnxruntime_openvino_stable:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Build docker image
+        run: docker build -t scoreboard/onnxruntime-openvino -f runtimes/onnxruntime-openvino/stable/Dockerfile .
+
+      - name: Prepare results directory
+        run: mkdir -p ${{ github.workspace }}/results/onnxruntime-openvino/stable && chmod 777 ${{ github.workspace }}/results/onnxruntime-openvino/stable
+
+      - name: Run docker container
+        run: docker run --name onnxruntime-openvino --env-file setup/env.list -v ${{ github.workspace }}/results/onnxruntime-openvino/stable:/root/results scoreboard/onnxruntime-openvino || true
+
+      - name: Upload results
+        if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: results-onnxruntime-openvino-stable
+          path: results/onnxruntime-openvino/stable/
+
   collect_and_deploy:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    needs: [onnxruntime_stable, onnxruntime_dev, onnx_tf_stable, onnx_tf_dev, jaxonnxruntime_stable, jaxonnxruntime_dev, emx_onnx_cgen_stable, tract_stable, onnx_reference_stable, opencv_stable, tvm_stable]
+    needs: [onnxruntime_stable, onnxruntime_dev, onnx_tf_stable, onnx_tf_dev, jaxonnxruntime_stable, jaxonnxruntime_dev, emx_onnx_cgen_stable, tract_stable, onnx_reference_stable, opencv_stable, tvm_stable, onnxruntime_openvino_stable]
     if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
     steps:
       - name: Checkout code
@@ -370,6 +395,12 @@ jobs:
         with:
           name: results-tvm-stable
           path: results/tvm/stable/
+
+      - name: Download onnxruntime-openvino stable results
+        uses: actions/download-artifact@v8
+        with:
+          name: results-onnxruntime-openvino-stable
+          path: results/onnxruntime-openvino/stable/
 
       - name: Merge trend history
         run: python3 /tmp/scoreboard-merge/merge_trends.py --config /tmp/scoreboard-merge/config.json --base-ref HEAD
