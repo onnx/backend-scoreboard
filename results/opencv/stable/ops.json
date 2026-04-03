@@ -513,9 +513,9 @@
     },
     {
         "domain": "",
-        "failed_tests": 9,
+        "failed_tests": 10,
         "op_type": "Gemm",
-        "passed_tests": 3,
+        "passed_tests": 2,
         "skipped_tests": 9,
         "total_tests": 21
     },
