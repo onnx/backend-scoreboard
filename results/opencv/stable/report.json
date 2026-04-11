@@ -1,5 +1,5 @@
 {
-    "date": "04/10/2026 01:06:50",
+    "date": "04/11/2026 01:03:51",
     "failed": [
         "OnnxBackendNodeModelTest::test_acos_example_cpu",
         "OnnxBackendNodeModelTest::test_acosh_example_cpu",
@@ -173,6 +173,7 @@
         "OnnxBackendNodeModelTest::test_gelu_tanh_1_cpu",
         "OnnxBackendNodeModelTest::test_gelu_tanh_2_cpu",
         "OnnxBackendNodeModelTest::test_gemm_all_attributes_cpu",
+        "OnnxBackendNodeModelTest::test_gemm_alpha_cpu",
         "OnnxBackendNodeModelTest::test_gemm_beta_cpu",
         "OnnxBackendNodeModelTest::test_gemm_default_scalar_bias_cpu",
         "OnnxBackendNodeModelTest::test_gemm_default_single_elem_vector_bias_cpu",
@@ -511,7 +512,6 @@
         "OnnxBackendNodeModelTest::test_gather_elements_1_cpu",
         "OnnxBackendNodeModelTest::test_gather_elements_negative_indices_cpu",
         "OnnxBackendNodeModelTest::test_gelu_default_2_cpu",
-        "OnnxBackendNodeModelTest::test_gemm_alpha_cpu",
         "OnnxBackendNodeModelTest::test_gemm_default_matrix_bias_cpu",
         "OnnxBackendNodeModelTest::test_gemm_default_no_bias_cpu",
         "OnnxBackendNodeModelTest::test_gemm_transposeA_cpu",
