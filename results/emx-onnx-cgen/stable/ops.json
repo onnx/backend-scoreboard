@@ -185,17 +185,17 @@
     },
     {
         "domain": "",
-        "failed_tests": 5,
+        "failed_tests": 4,
         "op_type": "Cast",
-        "passed_tests": 279,
+        "passed_tests": 280,
         "skipped_tests": 0,
         "total_tests": 284
     },
     {
         "domain": "",
-        "failed_tests": 1,
+        "failed_tests": 0,
         "op_type": "CastLike",
-        "passed_tests": 107,
+        "passed_tests": 108,
         "skipped_tests": 0,
         "total_tests": 108
     },
@@ -833,9 +833,9 @@
     },
     {
         "domain": "",
-        "failed_tests": 3,
+        "failed_tests": 1,
         "op_type": "Mul",
-        "passed_tests": 206,
+        "passed_tests": 208,
         "skipped_tests": 0,
         "total_tests": 209
     },
@@ -1065,9 +1065,9 @@
     },
     {
         "domain": "",
-        "failed_tests": 2,
+        "failed_tests": 0,
         "op_type": "ReduceSum",
-        "passed_tests": 92,
+        "passed_tests": 94,
         "skipped_tests": 0,
         "total_tests": 94
     },
@@ -1369,9 +1369,9 @@
     },
     {
         "domain": "",
-        "failed_tests": 2,
+        "failed_tests": 1,
         "op_type": "Sqrt",
-        "passed_tests": 137,
+        "passed_tests": 138,
         "skipped_tests": 0,
         "total_tests": 139
     },
