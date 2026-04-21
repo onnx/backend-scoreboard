@@ -288,7 +288,12 @@ jobs:
         run: mkdir -p ${{ github.workspace }}/results/onnxruntime-openvino/stable && chmod 777 ${{ github.workspace }}/results/onnxruntime-openvino/stable
 
       - name: Run docker container
-        run: docker run --name onnxruntime-openvino --env-file setup/env.list -v ${{ github.workspace }}/results/onnxruntime-openvino/stable:/root/results scoreboard/onnxruntime-openvino || true
+        run: |
+          docker run --name onnxruntime-openvino --env-file setup/env.list \
+            -e RESULTS_DIR=/home/onnx/results \
+            -e CSVDIR=/home/onnx/results \
+            -v ${{ github.workspace }}/results/onnxruntime-openvino/stable:/home/onnx/results \
+            scoreboard/onnxruntime-openvino || true
 
       - name: Upload results
         if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
