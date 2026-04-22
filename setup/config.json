@@ -76,9 +76,9 @@
             "name": "ONNX-Runtime OpenVINO EP",
             "link": "https://onnxruntime.ai/docs/execution-providers/OpenVINO-ExecutionProvider.html",
             "description": "ONNX Runtime with the OpenVINO Execution Provider for accelerated inference on Intel hardware.",
-            "long_description": "ONNX Runtime OpenVINO Execution Provider integrates Intel's OpenVINO toolkit into ORT to accelerate inference on Intel CPUs, integrated GPUs, and VPUs. The onnxruntime-openvino PyPI package bundles ORT with the OpenVINO EP and exposes the standard onnxruntime.backend.backend interface, making it a drop-in replacement for plain onnxruntime while enabling hardware-optimized execution paths for supported Intel targets.",
+            "long_description": "ONNX Runtime OpenVINO Execution Provider integrates Intel's OpenVINO toolkit into ORT to accelerate inference on Intel CPUs, integrated GPUs, and VPUs. The onnxruntime-ep-openvino ABI EP plugin loads OpenVINO as a shared library at runtime alongside onnxruntime, enabling hardware-optimized execution paths for supported Intel targets.",
             "results_dir": "./results/onnxruntime-openvino/stable",
-            "core_packages": ["onnxruntime-openvino"],
+            "core_packages": ["onnxruntime", "onnxruntime-ep-openvino"],
             "dockerfile_link": "runtimes/onnxruntime-openvino/stable/Dockerfile"
         }
     },
