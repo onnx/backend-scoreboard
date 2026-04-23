@@ -97,9 +97,9 @@
     },
     {
         "domain": "",
-        "failed_tests": 5,
+        "failed_tests": 3,
         "op_type": "Attention",
-        "passed_tests": 57,
+        "passed_tests": 59,
         "skipped_tests": 0,
         "total_tests": 62
     },
@@ -129,9 +129,9 @@
     },
     {
         "domain": "",
-        "failed_tests": 10,
+        "failed_tests": 1,
         "op_type": "BitCast",
-        "passed_tests": 0,
+        "passed_tests": 9,
         "skipped_tests": 0,
         "total_tests": 10
     },
@@ -321,9 +321,9 @@
     },
     {
         "domain": "",
-        "failed_tests": 9,
+        "failed_tests": 0,
         "op_type": "CumProd",
-        "passed_tests": 0,
+        "passed_tests": 9,
         "skipped_tests": 0,
         "total_tests": 9
     },
@@ -345,9 +345,9 @@
     },
     {
         "domain": "",
-        "failed_tests": 4,
+        "failed_tests": 0,
         "op_type": "DeformConv",
-        "passed_tests": 0,
+        "passed_tests": 4,
         "skipped_tests": 0,
         "total_tests": 4
     },
@@ -729,9 +729,9 @@
     },
     {
         "domain": "",
-        "failed_tests": 6,
+        "failed_tests": 0,
         "op_type": "LpNormalization",
-        "passed_tests": 0,
+        "passed_tests": 6,
         "skipped_tests": 0,
         "total_tests": 6
     },
@@ -1449,9 +1449,9 @@
     },
     {
         "domain": "",
-        "failed_tests": 3,
+        "failed_tests": 0,
         "op_type": "TensorScatter",
-        "passed_tests": 0,
+        "passed_tests": 3,
         "skipped_tests": 0,
         "total_tests": 3
     },
