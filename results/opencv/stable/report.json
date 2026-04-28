@@ -1,5 +1,5 @@
 {
-    "date": "04/27/2026 01:14:50",
+    "date": "04/28/2026 01:16:24",
     "failed": [
         "OnnxBackendNodeModelTest::test_acos_example_cpu",
         "OnnxBackendNodeModelTest::test_acosh_example_cpu",
@@ -179,6 +179,7 @@
         "OnnxBackendNodeModelTest::test_gemm_default_single_elem_vector_bias_cpu",
         "OnnxBackendNodeModelTest::test_gemm_default_vector_bias_cpu",
         "OnnxBackendNodeModelTest::test_gemm_default_zero_bias_cpu",
+        "OnnxBackendNodeModelTest::test_gemm_transposeA_cpu",
         "OnnxBackendNodeModelTest::test_gemm_transposeB_cpu",
         "OnnxBackendNodeModelTest::test_greater_cpu",
         "OnnxBackendNodeModelTest::test_greater_equal_cpu",
@@ -514,7 +515,6 @@
         "OnnxBackendNodeModelTest::test_gelu_default_2_cpu",
         "OnnxBackendNodeModelTest::test_gemm_default_matrix_bias_cpu",
         "OnnxBackendNodeModelTest::test_gemm_default_no_bias_cpu",
-        "OnnxBackendNodeModelTest::test_gemm_transposeA_cpu",
         "OnnxBackendNodeModelTest::test_globalaveragepool_cpu",
         "OnnxBackendNodeModelTest::test_globalaveragepool_precomputed_cpu",
         "OnnxBackendNodeModelTest::test_globalmaxpool_cpu",
