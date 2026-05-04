@@ -14,7 +14,7 @@ Atanh,Passed!
 Attention,Passed!
 AveragePool,Passed!
 BatchNormalization,Passed!
-Bernoulli,Failed!
+Bernoulli,Passed!
 BitCast,Passed!
 BitShift,Passed!
 BitwiseAnd,Passed!
@@ -199,4 +199,4 @@ Unsqueeze,Passed!
 Upsample,Passed!
 Where,Passed!
 Xor,Passed!
-Summary,196/200 node tests passed
+Summary,197/200 node tests passed

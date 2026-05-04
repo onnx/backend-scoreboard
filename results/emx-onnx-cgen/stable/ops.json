@@ -185,17 +185,17 @@
     },
     {
         "domain": "",
-        "failed_tests": 4,
+        "failed_tests": 5,
         "op_type": "Cast",
-        "passed_tests": 280,
+        "passed_tests": 279,
         "skipped_tests": 0,
         "total_tests": 284
     },
     {
         "domain": "",
-        "failed_tests": 0,
+        "failed_tests": 1,
         "op_type": "CastLike",
-        "passed_tests": 108,
+        "passed_tests": 107,
         "skipped_tests": 0,
         "total_tests": 108
     },
@@ -1369,9 +1369,9 @@
     },
     {
         "domain": "",
-        "failed_tests": 1,
+        "failed_tests": 2,
         "op_type": "Sqrt",
-        "passed_tests": 138,
+        "passed_tests": 137,
         "skipped_tests": 0,
         "total_tests": 139
     },

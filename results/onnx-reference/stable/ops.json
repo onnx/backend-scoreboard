@@ -121,9 +121,9 @@
     },
     {
         "domain": "",
-        "failed_tests": 3,
+        "failed_tests": 2,
         "op_type": "Bernoulli",
-        "passed_tests": 0,
+        "passed_tests": 1,
         "skipped_tests": 0,
         "total_tests": 3
     },
