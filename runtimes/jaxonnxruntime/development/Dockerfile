@@ -1,4 +1,4 @@
-FROM python:3.9
+FROM python:3.10
 
 # Disable interactive installation mode
 ENV DEBIAN_FRONTEND=noninteractive
