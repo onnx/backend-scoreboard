@@ -16,8 +16,11 @@ RUN apt-get update && apt-get install -y \
 COPY ./test /root/test
 COPY ./setup /root/setup
 
-# Install test report dependencies
-RUN pip3 install --no-cache-dir -r /root/setup/requirements_report.txt
+# Install test report dependencies (pytest<9 required for Python 3.8)
+RUN pip3 install --no-cache-dir \
+    "pytest>=8.0,<9" \
+    "tabulate>=0.10.0" \
+    "PyYAML>=6.0.3"
 
 ############## ONNX Backend dependencies ###########
 ENV ONNX_BACKEND="onnx_tf.backend"
