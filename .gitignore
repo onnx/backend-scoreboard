@@ -1,6 +1,7 @@
 # Developer scripts for test only
 scripts/*
 !scripts/merge_trends.py
+!scripts/check_scoreboard_freshness.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
