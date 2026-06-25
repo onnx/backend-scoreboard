@@ -24,6 +24,7 @@ BitwiseXor,Failed!
 BlackmanWindow,Failed!
 Cast,Passed!
 CastLike,Failed!
+CausalConvWithState,Failed!
 Ceil,Passed!
 Celu,Passed!
 CenterCropPad,Failed!
@@ -88,6 +89,7 @@ LayerNormalization,Failed!
 LeakyRelu,Passed!
 Less,Passed!
 LessOrEqual,Failed!
+LinearAttention,Failed!
 Log,Passed!
 LogSoftmax,Passed!
 Loop,Failed!
@@ -199,4 +201,4 @@ Unsqueeze,Passed!
 Upsample,Failed!
 Where,Passed!
 Xor,Failed!
-Summary,84/200 node tests passed
+Summary,84/202 node tests passed
