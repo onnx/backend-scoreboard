@@ -15,10 +15,10 @@ RUN apt-get update && apt-get install -y \
 COPY ./test /root/test
 COPY ./setup /root/setup
 
-# Install test report dependencies (pytest<9 required for Python 3.8)
+# Install test report dependencies (pytest<9 and tabulate<0.10 required for Python 3.8)
 RUN pip3 install --no-cache-dir \
     "pytest>=8.0,<9" \
-    "tabulate>=0.10.0" \
+    "tabulate>=0.8.10,<0.10" \
     "PyYAML>=6.0.3"
 
 ############## ONNX Backend dependencies ###########

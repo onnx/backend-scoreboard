@@ -307,7 +307,9 @@ jobs:
     permissions:
       contents: write
     needs: [onnxruntime_stable, onnxruntime_dev, onnx_tf_stable, onnx_tf_dev, jaxonnxruntime_stable, jaxonnxruntime_dev, emx_onnx_cgen_stable, tract_stable, onnx_reference_stable, opencv_stable, tvm_stable, onnxruntime_openvino_stable]
-    if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
+    # Run even if some backend jobs failed, so the scoreboard is still deployed
+    # with the results that did succeed (missing artifacts are skipped below).
+    if: ${{ always() && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch') }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
@@ -337,72 +339,84 @@ jobs:
 
       - name: Download ort stable results
         uses: actions/download-artifact@v8
+        continue-on-error: true
         with:
           name: results-ort-stable
           path: results/ort/stable/
 
       - name: Download onnx-tf stable results
         uses: actions/download-artifact@v8
+        continue-on-error: true
         with:
           name: results-onnxtf-stable
           path: results/onnx-tf/stable/
 
       - name: Download onnx-tf dev results
         uses: actions/download-artifact@v8
+        continue-on-error: true
         with:
           name: results-onnxtf-dev
           path: results/onnx-tf/development/
 
       - name: Download jaxonnxruntime stable results
         uses: actions/download-artifact@v8
+        continue-on-error: true
         with:
           name: results-jaxonnxruntime-stable
           path: results/jaxonnxruntime/stable/
 
       - name: Download jaxonnxruntime dev results
         uses: actions/download-artifact@v8
+        continue-on-error: true
         with:
           name: results-jaxonnxruntime-dev
           path: results/jaxonnxruntime/development/
 
       - name: Download ort dev results
         uses: actions/download-artifact@v8
+        continue-on-error: true
         with:
           name: results-ort-dev
           path: results/ort/development/
 
       - name: Download emx-onnx-cgen stable results
         uses: actions/download-artifact@v8
+        continue-on-error: true
         with:
           name: results-emx-onnx-cgen-stable
           path: results/emx-onnx-cgen/stable/
 
       - name: Download tract stable results
         uses: actions/download-artifact@v8
+        continue-on-error: true
         with:
           name: results-tract-stable
           path: results/tract/stable/
 
       - name: Download ONNX reference stable results
         uses: actions/download-artifact@v8
+        continue-on-error: true
         with:
           name: results-onnx-reference-stable
           path: results/onnx-reference/stable/
 
       - name: Download opencv stable results
         uses: actions/download-artifact@v8
+        continue-on-error: true
         with:
           name: results-opencv-stable
           path: results/opencv/stable/
 
       - name: Download tvm stable results
         uses: actions/download-artifact@v8
+        continue-on-error: true
         with:
           name: results-tvm-stable
           path: results/tvm/stable/
 
       - name: Download onnxruntime-openvino stable results
         uses: actions/download-artifact@v8
+        continue-on-error: true
         with:
           name: results-onnxruntime-openvino-stable
           path: results/onnxruntime-openvino/stable/
