@@ -1,0 +1,99 @@
+# Copyright (c) ONNX Project Contributors
+#
+# SPDX-License-Identifier: Apache-2.0
+
+name: Scoreboard freshness check
+
+on:
+  schedule:
+    # Run a few hours after the website is rebuilt/deployed.
+    - cron: '0 9 * * *'
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  check_freshness:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+        with:
+          python-version: '3.12'
+
+      - name: Check published scoreboard freshness
+        id: check
+        run: |
+          python3 scripts/check_scoreboard_freshness.py \
+            --url "https://onnx.ai/backend-scoreboard/index.html" \
+            --max-age-days 3
+
+      - name: Open, update or close the tracking issue
+        uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7.1.0
+        env:
+          STALE: ${{ steps.check.outputs.stale }}
+          STALE_BACKENDS: ${{ steps.check.outputs.stale_backends }}
+          ISSUE_BODY: ${{ steps.check.outputs.body }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        with:
+          script: |
+            const label = 'scoreboard-stale';
+            const title = '⚠️ Scoreboard data is out of date';
+            const stale = process.env.STALE === 'true';
+            const footer = `\n\n---\n_Automated by [Scoreboard freshness check](${process.env.RUN_URL})._`;
+            const body = (process.env.ISSUE_BODY || '').trim() + footer;
+
+            const existing = await github.paginate(github.rest.issues.listForRepo, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: label,
+              per_page: 100,
+            });
+            const issue = existing.find(i => i.title === title) || existing[0];
+
+            if (stale) {
+              if (issue) {
+                // Refresh the body silently so we don't spam subscribers daily.
+                await github.rest.issues.update({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issue.number,
+                  body,
+                });
+                core.info(`Updated existing issue #${issue.number}`);
+              } else {
+                const created = await github.rest.issues.create({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  title,
+                  body,
+                  labels: [label],
+                });
+                core.info(`Created issue #${created.data.number}`);
+              }
+            } else if (issue) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: `✅ All scoreboard backends are up to date again as of this run.${footer}`,
+              });
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                state: 'closed',
+              });
+              core.info(`Closed resolved issue #${issue.number}`);
+            } else {
+              core.info('Scoreboard is fresh; nothing to do.');
+            }
