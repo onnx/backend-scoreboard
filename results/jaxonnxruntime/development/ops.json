@@ -257,9 +257,9 @@
     },
     {
         "domain": "",
-        "failed_tests": 154,
+        "failed_tests": 155,
         "op_type": "Concat",
-        "passed_tests": 24,
+        "passed_tests": 23,
         "skipped_tests": 0,
         "total_tests": 178
     },
@@ -281,17 +281,17 @@
     },
     {
         "domain": "",
-        "failed_tests": 92,
+        "failed_tests": 93,
         "op_type": "ConstantOfShape",
-        "passed_tests": 9,
+        "passed_tests": 8,
         "skipped_tests": 0,
         "total_tests": 101
     },
     {
         "domain": "",
-        "failed_tests": 19,
+        "failed_tests": 20,
         "op_type": "Conv",
-        "passed_tests": 36,
+        "passed_tests": 35,
         "skipped_tests": 0,
         "total_tests": 55
     },
@@ -393,9 +393,9 @@
     },
     {
         "domain": "",
-        "failed_tests": 4,
+        "failed_tests": 5,
         "op_type": "Dropout",
-        "passed_tests": 12,
+        "passed_tests": 11,
         "skipped_tests": 0,
         "total_tests": 16
     },
@@ -529,9 +529,9 @@
     },
     {
         "domain": "",
-        "failed_tests": 2,
+        "failed_tests": 3,
         "op_type": "GlobalAveragePool",
-        "passed_tests": 2,
+        "passed_tests": 1,
         "skipped_tests": 0,
         "total_tests": 4
     },
@@ -785,9 +785,9 @@
     },
     {
         "domain": "",
-        "failed_tests": 19,
+        "failed_tests": 20,
         "op_type": "MaxPool",
-        "passed_tests": 18,
+        "passed_tests": 17,
         "skipped_tests": 0,
         "total_tests": 37
     },
@@ -1105,9 +1105,9 @@
     },
     {
         "domain": "",
-        "failed_tests": 4,
+        "failed_tests": 5,
         "op_type": "Relu",
-        "passed_tests": 12,
+        "passed_tests": 11,
         "skipped_tests": 0,
         "total_tests": 16
     },
@@ -1329,9 +1329,9 @@
     },
     {
         "domain": "",
-        "failed_tests": 75,
+        "failed_tests": 76,
         "op_type": "Softmax",
-        "passed_tests": 19,
+        "passed_tests": 18,
         "skipped_tests": 0,
         "total_tests": 94
     },
