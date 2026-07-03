@@ -1,34 +1,34 @@
 [
     {
         "domain": "",
-        "failed_tests": 6,
+        "failed_tests": 0,
         "op_type": "Abs",
-        "passed_tests": 2,
-        "skipped_tests": 5,
+        "passed_tests": 6,
+        "skipped_tests": 7,
         "total_tests": 13
     },
     {
         "domain": "",
-        "failed_tests": 1,
+        "failed_tests": 0,
         "op_type": "Acos",
-        "passed_tests": 1,
-        "skipped_tests": 0,
-        "total_tests": 2
-    },
-    {
-        "domain": "",
-        "failed_tests": 1,
-        "op_type": "Acosh",
-        "passed_tests": 1,
-        "skipped_tests": 0,
-        "total_tests": 2
-    },
-    {
-        "domain": "",
-        "failed_tests": 11,
-        "op_type": "Add",
         "passed_tests": 2,
-        "skipped_tests": 168,
+        "skipped_tests": 0,
+        "total_tests": 2
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "Acosh",
+        "passed_tests": 2,
+        "skipped_tests": 0,
+        "total_tests": 2
+    },
+    {
+        "domain": "",
+        "failed_tests": 9,
+        "op_type": "Add",
+        "passed_tests": 107,
+        "skipped_tests": 65,
         "total_tests": 181
     },
     {
@@ -41,73 +41,73 @@
     },
     {
         "domain": "",
-        "failed_tests": 0,
+        "failed_tests": 1,
         "op_type": "And",
-        "passed_tests": 0,
-        "skipped_tests": 72,
+        "passed_tests": 33,
+        "skipped_tests": 38,
         "total_tests": 72
     },
     {
         "domain": "",
-        "failed_tests": 16,
+        "failed_tests": 0,
         "op_type": "ArgMax",
-        "passed_tests": 0,
+        "passed_tests": 16,
         "skipped_tests": 0,
         "total_tests": 16
     },
     {
         "domain": "",
-        "failed_tests": 16,
+        "failed_tests": 0,
         "op_type": "ArgMin",
-        "passed_tests": 0,
+        "passed_tests": 16,
         "skipped_tests": 0,
         "total_tests": 16
     },
     {
         "domain": "",
-        "failed_tests": 1,
+        "failed_tests": 0,
         "op_type": "Asin",
-        "passed_tests": 1,
-        "skipped_tests": 0,
-        "total_tests": 2
-    },
-    {
-        "domain": "",
-        "failed_tests": 1,
-        "op_type": "Asinh",
-        "passed_tests": 1,
-        "skipped_tests": 0,
-        "total_tests": 2
-    },
-    {
-        "domain": "",
-        "failed_tests": 1,
-        "op_type": "Atan",
-        "passed_tests": 1,
-        "skipped_tests": 0,
-        "total_tests": 2
-    },
-    {
-        "domain": "",
-        "failed_tests": 1,
-        "op_type": "Atanh",
-        "passed_tests": 1,
+        "passed_tests": 2,
         "skipped_tests": 0,
         "total_tests": 2
     },
     {
         "domain": "",
         "failed_tests": 0,
+        "op_type": "Asinh",
+        "passed_tests": 2,
+        "skipped_tests": 0,
+        "total_tests": 2
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "Atan",
+        "passed_tests": 2,
+        "skipped_tests": 0,
+        "total_tests": 2
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "Atanh",
+        "passed_tests": 2,
+        "skipped_tests": 0,
+        "total_tests": 2
+    },
+    {
+        "domain": "",
+        "failed_tests": 3,
         "op_type": "Attention",
-        "passed_tests": 0,
-        "skipped_tests": 64,
+        "passed_tests": 35,
+        "skipped_tests": 26,
         "total_tests": 64
     },
     {
         "domain": "",
-        "failed_tests": 10,
+        "failed_tests": 3,
         "op_type": "AveragePool",
-        "passed_tests": 16,
+        "passed_tests": 23,
         "skipped_tests": 6,
         "total_tests": 32
     },
@@ -115,8 +115,8 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "BatchNormalization",
-        "passed_tests": 0,
-        "skipped_tests": 13,
+        "passed_tests": 2,
+        "skipped_tests": 11,
         "total_tests": 13
     },
     {
@@ -185,18 +185,18 @@
     },
     {
         "domain": "",
-        "failed_tests": 53,
+        "failed_tests": 10,
         "op_type": "Cast",
-        "passed_tests": 14,
-        "skipped_tests": 249,
+        "passed_tests": 111,
+        "skipped_tests": 195,
         "total_tests": 316
     },
     {
         "domain": "",
-        "failed_tests": 0,
+        "failed_tests": 3,
         "op_type": "CastLike",
-        "passed_tests": 0,
-        "skipped_tests": 132,
+        "passed_tests": 39,
+        "skipped_tests": 90,
         "total_tests": 132
     },
     {
@@ -209,9 +209,9 @@
     },
     {
         "domain": "",
-        "failed_tests": 1,
+        "failed_tests": 0,
         "op_type": "Ceil",
-        "passed_tests": 1,
+        "passed_tests": 2,
         "skipped_tests": 4,
         "total_tests": 6
     },
@@ -233,10 +233,10 @@
     },
     {
         "domain": "",
-        "failed_tests": 5,
+        "failed_tests": 1,
         "op_type": "Clip",
-        "passed_tests": 1,
-        "skipped_tests": 10,
+        "passed_tests": 11,
+        "skipped_tests": 4,
         "total_tests": 16
     },
     {
@@ -257,10 +257,10 @@
     },
     {
         "domain": "",
-        "failed_tests": 2,
+        "failed_tests": 3,
         "op_type": "Concat",
-        "passed_tests": 11,
-        "skipped_tests": 165,
+        "passed_tests": 92,
+        "skipped_tests": 83,
         "total_tests": 178
     },
     {
@@ -273,26 +273,26 @@
     },
     {
         "domain": "",
-        "failed_tests": 12,
+        "failed_tests": 7,
         "op_type": "Constant",
-        "passed_tests": 37,
-        "skipped_tests": 265,
+        "passed_tests": 165,
+        "skipped_tests": 142,
         "total_tests": 314
     },
     {
         "domain": "",
         "failed_tests": 0,
         "op_type": "ConstantOfShape",
-        "passed_tests": 0,
-        "skipped_tests": 101,
+        "passed_tests": 38,
+        "skipped_tests": 63,
         "total_tests": 101
     },
     {
         "domain": "",
         "failed_tests": 0,
         "op_type": "Conv",
-        "passed_tests": 6,
-        "skipped_tests": 49,
+        "passed_tests": 10,
+        "skipped_tests": 45,
         "total_tests": 55
     },
     {
@@ -305,25 +305,25 @@
     },
     {
         "domain": "",
-        "failed_tests": 0,
+        "failed_tests": 1,
         "op_type": "ConvTranspose",
-        "passed_tests": 0,
-        "skipped_tests": 14,
+        "passed_tests": 10,
+        "skipped_tests": 3,
         "total_tests": 14
     },
     {
         "domain": "",
-        "failed_tests": 1,
+        "failed_tests": 0,
         "op_type": "Cos",
-        "passed_tests": 1,
+        "passed_tests": 2,
         "skipped_tests": 6,
         "total_tests": 8
     },
     {
         "domain": "",
-        "failed_tests": 1,
+        "failed_tests": 0,
         "op_type": "Cosh",
-        "passed_tests": 1,
+        "passed_tests": 2,
         "skipped_tests": 0,
         "total_tests": 2
     },
@@ -337,18 +337,18 @@
     },
     {
         "domain": "",
-        "failed_tests": 9,
+        "failed_tests": 0,
         "op_type": "CumSum",
         "passed_tests": 0,
-        "skipped_tests": 0,
+        "skipped_tests": 9,
         "total_tests": 9
     },
     {
         "domain": "",
         "failed_tests": 0,
         "op_type": "DFT",
-        "passed_tests": 0,
-        "skipped_tests": 10,
+        "passed_tests": 4,
+        "skipped_tests": 6,
         "total_tests": 10
     },
     {
@@ -369,34 +369,34 @@
     },
     {
         "domain": "",
-        "failed_tests": 12,
+        "failed_tests": 0,
         "op_type": "DequantizeLinear",
-        "passed_tests": 2,
-        "skipped_tests": 0,
+        "passed_tests": 0,
+        "skipped_tests": 14,
         "total_tests": 14
     },
     {
         "domain": "",
-        "failed_tests": 0,
+        "failed_tests": 1,
         "op_type": "Det",
-        "passed_tests": 0,
-        "skipped_tests": 2,
+        "passed_tests": 1,
+        "skipped_tests": 0,
         "total_tests": 2
     },
     {
         "domain": "",
-        "failed_tests": 14,
+        "failed_tests": 6,
         "op_type": "Div",
-        "passed_tests": 17,
-        "skipped_tests": 183,
+        "passed_tests": 119,
+        "skipped_tests": 89,
         "total_tests": 214
     },
     {
         "domain": "",
-        "failed_tests": 7,
+        "failed_tests": 2,
         "op_type": "Dropout",
         "passed_tests": 4,
-        "skipped_tests": 5,
+        "skipped_tests": 10,
         "total_tests": 16
     },
     {
@@ -409,50 +409,50 @@
     },
     {
         "domain": "",
-        "failed_tests": 4,
+        "failed_tests": 0,
         "op_type": "Einsum",
-        "passed_tests": 0,
-        "skipped_tests": 2,
+        "passed_tests": 6,
+        "skipped_tests": 0,
         "total_tests": 6
     },
     {
         "domain": "",
-        "failed_tests": 1,
+        "failed_tests": 0,
         "op_type": "Elu",
-        "passed_tests": 4,
+        "passed_tests": 5,
         "skipped_tests": 0,
         "total_tests": 5
     },
     {
         "domain": "",
-        "failed_tests": 10,
+        "failed_tests": 1,
         "op_type": "Equal",
-        "passed_tests": 1,
-        "skipped_tests": 90,
+        "passed_tests": 37,
+        "skipped_tests": 63,
         "total_tests": 101
     },
     {
         "domain": "",
         "failed_tests": 0,
         "op_type": "Erf",
-        "passed_tests": 1,
-        "skipped_tests": 2,
+        "passed_tests": 3,
+        "skipped_tests": 0,
         "total_tests": 3
     },
     {
         "domain": "",
-        "failed_tests": 1,
+        "failed_tests": 0,
         "op_type": "Exp",
-        "passed_tests": 31,
-        "skipped_tests": 17,
+        "passed_tests": 42,
+        "skipped_tests": 7,
         "total_tests": 49
     },
     {
         "domain": "",
-        "failed_tests": 0,
+        "failed_tests": 1,
         "op_type": "Expand",
-        "passed_tests": 0,
-        "skipped_tests": 81,
+        "passed_tests": 34,
+        "skipped_tests": 46,
         "total_tests": 81
     },
     {
@@ -467,15 +467,15 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "Flatten",
-        "passed_tests": 10,
-        "skipped_tests": 39,
+        "passed_tests": 49,
+        "skipped_tests": 0,
         "total_tests": 49
     },
     {
         "domain": "",
-        "failed_tests": 1,
+        "failed_tests": 0,
         "op_type": "Floor",
-        "passed_tests": 1,
+        "passed_tests": 2,
         "skipped_tests": 0,
         "total_tests": 2
     },
@@ -483,24 +483,24 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "GRU",
-        "passed_tests": 0,
-        "skipped_tests": 4,
+        "passed_tests": 4,
+        "skipped_tests": 0,
         "total_tests": 4
     },
     {
         "domain": "",
-        "failed_tests": 4,
+        "failed_tests": 0,
         "op_type": "Gather",
-        "passed_tests": 1,
-        "skipped_tests": 38,
+        "passed_tests": 4,
+        "skipped_tests": 39,
         "total_tests": 43
     },
     {
         "domain": "",
-        "failed_tests": 7,
+        "failed_tests": 0,
         "op_type": "GatherElements",
-        "passed_tests": 6,
-        "skipped_tests": 8,
+        "passed_tests": 0,
+        "skipped_tests": 21,
         "total_tests": 21
     },
     {
@@ -513,18 +513,18 @@
     },
     {
         "domain": "",
-        "failed_tests": 3,
+        "failed_tests": 1,
         "op_type": "Gelu",
-        "passed_tests": 1,
+        "passed_tests": 3,
         "skipped_tests": 0,
         "total_tests": 4
     },
     {
         "domain": "",
-        "failed_tests": 10,
+        "failed_tests": 0,
         "op_type": "Gemm",
-        "passed_tests": 2,
-        "skipped_tests": 9,
+        "passed_tests": 13,
+        "skipped_tests": 8,
         "total_tests": 21
     },
     {
@@ -545,26 +545,26 @@
     },
     {
         "domain": "",
-        "failed_tests": 7,
+        "failed_tests": 0,
         "op_type": "Greater",
-        "passed_tests": 0,
-        "skipped_tests": 12,
+        "passed_tests": 4,
+        "skipped_tests": 15,
         "total_tests": 19
     },
     {
         "domain": "",
-        "failed_tests": 7,
+        "failed_tests": 0,
         "op_type": "GreaterOrEqual",
-        "passed_tests": 0,
-        "skipped_tests": 2,
+        "passed_tests": 2,
+        "skipped_tests": 7,
         "total_tests": 9
     },
     {
         "domain": "",
-        "failed_tests": 0,
+        "failed_tests": 3,
         "op_type": "GridSample",
-        "passed_tests": 0,
-        "skipped_tests": 18,
+        "passed_tests": 15,
+        "skipped_tests": 0,
         "total_tests": 18
     },
     {
@@ -593,9 +593,9 @@
     },
     {
         "domain": "",
-        "failed_tests": 1,
+        "failed_tests": 0,
         "op_type": "HardSigmoid",
-        "passed_tests": 3,
+        "passed_tests": 4,
         "skipped_tests": 0,
         "total_tests": 4
     },
@@ -611,16 +611,16 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "Hardmax",
-        "passed_tests": 0,
-        "skipped_tests": 7,
+        "passed_tests": 7,
+        "skipped_tests": 0,
         "total_tests": 7
     },
     {
         "domain": "",
-        "failed_tests": 5,
+        "failed_tests": 2,
         "op_type": "Identity",
-        "passed_tests": 1,
-        "skipped_tests": 118,
+        "passed_tests": 53,
+        "skipped_tests": 69,
         "total_tests": 124
     },
     {
@@ -651,16 +651,16 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "IsInf",
-        "passed_tests": 0,
-        "skipped_tests": 4,
+        "passed_tests": 4,
+        "skipped_tests": 0,
         "total_tests": 4
     },
     {
         "domain": "",
         "failed_tests": 0,
         "op_type": "IsNaN",
-        "passed_tests": 0,
-        "skipped_tests": 2,
+        "passed_tests": 2,
+        "skipped_tests": 0,
         "total_tests": 2
     },
     {
@@ -675,40 +675,40 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "LSTM",
-        "passed_tests": 0,
-        "skipped_tests": 4,
+        "passed_tests": 3,
+        "skipped_tests": 1,
         "total_tests": 4
     },
     {
         "domain": "",
         "failed_tests": 0,
         "op_type": "LayerNormalization",
-        "passed_tests": 0,
-        "skipped_tests": 19,
+        "passed_tests": 19,
+        "skipped_tests": 0,
         "total_tests": 19
     },
     {
         "domain": "",
-        "failed_tests": 1,
+        "failed_tests": 0,
         "op_type": "LeakyRelu",
-        "passed_tests": 4,
+        "passed_tests": 5,
         "skipped_tests": 0,
         "total_tests": 5
     },
     {
         "domain": "",
-        "failed_tests": 14,
+        "failed_tests": 0,
         "op_type": "Less",
-        "passed_tests": 3,
-        "skipped_tests": 36,
+        "passed_tests": 32,
+        "skipped_tests": 21,
         "total_tests": 53
     },
     {
         "domain": "",
-        "failed_tests": 7,
+        "failed_tests": 0,
         "op_type": "LessOrEqual",
-        "passed_tests": 0,
-        "skipped_tests": 1,
+        "passed_tests": 2,
+        "skipped_tests": 6,
         "total_tests": 8
     },
     {
@@ -721,10 +721,10 @@
     },
     {
         "domain": "",
-        "failed_tests": 4,
+        "failed_tests": 0,
         "op_type": "Log",
-        "passed_tests": 15,
-        "skipped_tests": 13,
+        "passed_tests": 21,
+        "skipped_tests": 11,
         "total_tests": 32
     },
     {
@@ -747,8 +747,8 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "LpNormalization",
-        "passed_tests": 0,
-        "skipped_tests": 6,
+        "passed_tests": 6,
+        "skipped_tests": 0,
         "total_tests": 6
     },
     {
@@ -761,10 +761,10 @@
     },
     {
         "domain": "",
-        "failed_tests": 0,
+        "failed_tests": 1,
         "op_type": "MatMul",
-        "passed_tests": 4,
-        "skipped_tests": 83,
+        "passed_tests": 38,
+        "skipped_tests": 48,
         "total_tests": 87
     },
     {
@@ -777,33 +777,33 @@
     },
     {
         "domain": "",
-        "failed_tests": 17,
+        "failed_tests": 2,
         "op_type": "Max",
-        "passed_tests": 1,
-        "skipped_tests": 10,
+        "passed_tests": 12,
+        "skipped_tests": 14,
         "total_tests": 28
     },
     {
         "domain": "",
-        "failed_tests": 10,
+        "failed_tests": 3,
         "op_type": "MaxPool",
-        "passed_tests": 16,
-        "skipped_tests": 11,
+        "passed_tests": 22,
+        "skipped_tests": 12,
         "total_tests": 37
     },
     {
         "domain": "",
         "failed_tests": 0,
         "op_type": "MaxUnpool",
-        "passed_tests": 1,
-        "skipped_tests": 1,
+        "passed_tests": 0,
+        "skipped_tests": 2,
         "total_tests": 2
     },
     {
         "domain": "",
-        "failed_tests": 3,
+        "failed_tests": 0,
         "op_type": "Mean",
-        "passed_tests": 0,
+        "passed_tests": 3,
         "skipped_tests": 0,
         "total_tests": 3
     },
@@ -825,42 +825,42 @@
     },
     {
         "domain": "",
-        "failed_tests": 17,
+        "failed_tests": 2,
         "op_type": "Min",
-        "passed_tests": 1,
-        "skipped_tests": 3,
+        "passed_tests": 11,
+        "skipped_tests": 8,
         "total_tests": 21
     },
     {
         "domain": "",
-        "failed_tests": 1,
+        "failed_tests": 0,
         "op_type": "Mish",
-        "passed_tests": 0,
+        "passed_tests": 1,
         "skipped_tests": 0,
         "total_tests": 1
     },
     {
         "domain": "",
-        "failed_tests": 13,
+        "failed_tests": 2,
         "op_type": "Mod",
-        "passed_tests": 0,
-        "skipped_tests": 64,
+        "passed_tests": 35,
+        "skipped_tests": 40,
         "total_tests": 77
     },
     {
         "domain": "",
-        "failed_tests": 18,
+        "failed_tests": 3,
         "op_type": "Mul",
-        "passed_tests": 7,
-        "skipped_tests": 201,
+        "passed_tests": 128,
+        "skipped_tests": 95,
         "total_tests": 226
     },
     {
         "domain": "",
-        "failed_tests": 10,
+        "failed_tests": 0,
         "op_type": "Neg",
-        "passed_tests": 5,
-        "skipped_tests": 31,
+        "passed_tests": 27,
+        "skipped_tests": 19,
         "total_tests": 46
     },
     {
@@ -889,18 +889,18 @@
     },
     {
         "domain": "",
-        "failed_tests": 3,
+        "failed_tests": 1,
         "op_type": "Not",
-        "passed_tests": 0,
-        "skipped_tests": 64,
+        "passed_tests": 33,
+        "skipped_tests": 33,
         "total_tests": 67
     },
     {
         "domain": "",
         "failed_tests": 0,
         "op_type": "OneHot",
-        "passed_tests": 0,
-        "skipped_tests": 4,
+        "passed_tests": 2,
+        "skipped_tests": 2,
         "total_tests": 4
     },
     {
@@ -923,8 +923,8 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "Or",
-        "passed_tests": 0,
-        "skipped_tests": 24,
+        "passed_tests": 4,
+        "skipped_tests": 20,
         "total_tests": 24
     },
     {
@@ -945,10 +945,10 @@
     },
     {
         "domain": "",
-        "failed_tests": 11,
+        "failed_tests": 2,
         "op_type": "Pow",
-        "passed_tests": 2,
-        "skipped_tests": 4,
+        "passed_tests": 7,
+        "skipped_tests": 8,
         "total_tests": 17
     },
     {
@@ -969,18 +969,18 @@
     },
     {
         "domain": "",
-        "failed_tests": 16,
+        "failed_tests": 1,
         "op_type": "QuantizeLinear",
-        "passed_tests": 0,
-        "skipped_tests": 0,
+        "passed_tests": 2,
+        "skipped_tests": 13,
         "total_tests": 16
     },
     {
         "domain": "",
         "failed_tests": 0,
         "op_type": "RMSNormalization",
-        "passed_tests": 0,
-        "skipped_tests": 19,
+        "passed_tests": 19,
+        "skipped_tests": 0,
         "total_tests": 19
     },
     {
@@ -1001,98 +1001,98 @@
     },
     {
         "domain": "",
-        "failed_tests": 0,
+        "failed_tests": 2,
         "op_type": "Range",
-        "passed_tests": 0,
-        "skipped_tests": 46,
+        "passed_tests": 24,
+        "skipped_tests": 20,
         "total_tests": 46
     },
     {
         "domain": "",
-        "failed_tests": 1,
+        "failed_tests": 0,
         "op_type": "Reciprocal",
-        "passed_tests": 1,
-        "skipped_tests": 51,
+        "passed_tests": 40,
+        "skipped_tests": 13,
         "total_tests": 53
     },
     {
         "domain": "",
-        "failed_tests": 6,
+        "failed_tests": 0,
         "op_type": "ReduceL1",
-        "passed_tests": 0,
-        "skipped_tests": 3,
+        "passed_tests": 2,
+        "skipped_tests": 7,
         "total_tests": 9
     },
     {
         "domain": "",
-        "failed_tests": 6,
+        "failed_tests": 0,
         "op_type": "ReduceL2",
-        "passed_tests": 0,
-        "skipped_tests": 3,
+        "passed_tests": 2,
+        "skipped_tests": 7,
         "total_tests": 9
     },
     {
         "domain": "",
-        "failed_tests": 3,
+        "failed_tests": 0,
         "op_type": "ReduceLogSum",
-        "passed_tests": 0,
-        "skipped_tests": 2,
+        "passed_tests": 1,
+        "skipped_tests": 4,
         "total_tests": 5
     },
     {
         "domain": "",
-        "failed_tests": 6,
+        "failed_tests": 0,
         "op_type": "ReduceLogSumExp",
-        "passed_tests": 0,
-        "skipped_tests": 3,
+        "passed_tests": 2,
+        "skipped_tests": 7,
         "total_tests": 9
     },
     {
         "domain": "",
-        "failed_tests": 10,
+        "failed_tests": 1,
         "op_type": "ReduceMax",
-        "passed_tests": 30,
-        "skipped_tests": 1,
+        "passed_tests": 32,
+        "skipped_tests": 8,
         "total_tests": 41
     },
     {
         "domain": "",
-        "failed_tests": 9,
+        "failed_tests": 4,
         "op_type": "ReduceMean",
-        "passed_tests": 2,
-        "skipped_tests": 62,
+        "passed_tests": 61,
+        "skipped_tests": 8,
         "total_tests": 73
     },
     {
         "domain": "",
-        "failed_tests": 10,
+        "failed_tests": 1,
         "op_type": "ReduceMin",
-        "passed_tests": 2,
-        "skipped_tests": 1,
+        "passed_tests": 4,
+        "skipped_tests": 8,
         "total_tests": 13
     },
     {
         "domain": "",
-        "failed_tests": 6,
+        "failed_tests": 0,
         "op_type": "ReduceProd",
         "passed_tests": 2,
-        "skipped_tests": 1,
+        "skipped_tests": 7,
         "total_tests": 9
     },
     {
         "domain": "",
-        "failed_tests": 25,
+        "failed_tests": 0,
         "op_type": "ReduceSum",
-        "passed_tests": 30,
-        "skipped_tests": 39,
+        "passed_tests": 43,
+        "skipped_tests": 51,
         "total_tests": 94
     },
     {
         "domain": "",
-        "failed_tests": 6,
+        "failed_tests": 0,
         "op_type": "ReduceSumSquare",
-        "passed_tests": 0,
-        "skipped_tests": 3,
+        "passed_tests": 2,
+        "skipped_tests": 7,
         "total_tests": 9
     },
     {
@@ -1113,18 +1113,18 @@
     },
     {
         "domain": "",
-        "failed_tests": 0,
+        "failed_tests": 3,
         "op_type": "Reshape",
-        "passed_tests": 2,
-        "skipped_tests": 192,
+        "passed_tests": 77,
+        "skipped_tests": 114,
         "total_tests": 194
     },
     {
         "domain": "",
-        "failed_tests": 0,
+        "failed_tests": 7,
         "op_type": "Resize",
-        "passed_tests": 0,
-        "skipped_tests": 39,
+        "passed_tests": 12,
+        "skipped_tests": 20,
         "total_tests": 39
     },
     {
@@ -1147,15 +1147,15 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "RotaryEmbedding",
-        "passed_tests": 0,
-        "skipped_tests": 8,
+        "passed_tests": 3,
+        "skipped_tests": 5,
         "total_tests": 8
     },
     {
         "domain": "",
-        "failed_tests": 4,
+        "failed_tests": 1,
         "op_type": "Round",
-        "passed_tests": 0,
+        "passed_tests": 3,
         "skipped_tests": 0,
         "total_tests": 4
     },
@@ -1179,31 +1179,31 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "Scatter",
-        "passed_tests": 2,
-        "skipped_tests": 0,
+        "passed_tests": 0,
+        "skipped_tests": 2,
         "total_tests": 2
     },
     {
         "domain": "",
         "failed_tests": 0,
         "op_type": "ScatterElements",
-        "passed_tests": 7,
-        "skipped_tests": 0,
+        "passed_tests": 0,
+        "skipped_tests": 7,
         "total_tests": 7
     },
     {
         "domain": "",
         "failed_tests": 0,
         "op_type": "ScatterND",
-        "passed_tests": 5,
-        "skipped_tests": 0,
+        "passed_tests": 0,
+        "skipped_tests": 5,
         "total_tests": 5
     },
     {
         "domain": "",
-        "failed_tests": 1,
+        "failed_tests": 0,
         "op_type": "Selu",
-        "passed_tests": 4,
+        "passed_tests": 5,
         "skipped_tests": 0,
         "total_tests": 5
     },
@@ -1265,74 +1265,74 @@
     },
     {
         "domain": "",
-        "failed_tests": 0,
+        "failed_tests": 3,
         "op_type": "Shape",
-        "passed_tests": 0,
-        "skipped_tests": 220,
+        "passed_tests": 108,
+        "skipped_tests": 109,
         "total_tests": 220
     },
     {
         "domain": "",
-        "failed_tests": 3,
+        "failed_tests": 0,
         "op_type": "Shrink",
-        "passed_tests": 0,
+        "passed_tests": 3,
         "skipped_tests": 0,
         "total_tests": 3
     },
     {
         "domain": "",
-        "failed_tests": 2,
+        "failed_tests": 0,
         "op_type": "Sigmoid",
-        "passed_tests": 4,
-        "skipped_tests": 6,
+        "passed_tests": 8,
+        "skipped_tests": 4,
         "total_tests": 12
     },
     {
         "domain": "",
-        "failed_tests": 2,
+        "failed_tests": 0,
         "op_type": "Sign",
-        "passed_tests": 0,
-        "skipped_tests": 0,
-        "total_tests": 2
-    },
-    {
-        "domain": "",
-        "failed_tests": 1,
-        "op_type": "Sin",
-        "passed_tests": 1,
-        "skipped_tests": 0,
-        "total_tests": 2
-    },
-    {
-        "domain": "",
-        "failed_tests": 1,
-        "op_type": "Sinh",
-        "passed_tests": 1,
+        "passed_tests": 2,
         "skipped_tests": 0,
         "total_tests": 2
     },
     {
         "domain": "",
         "failed_tests": 0,
+        "op_type": "Sin",
+        "passed_tests": 2,
+        "skipped_tests": 0,
+        "total_tests": 2
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "Sinh",
+        "passed_tests": 2,
+        "skipped_tests": 0,
+        "total_tests": 2
+    },
+    {
+        "domain": "",
+        "failed_tests": 2,
         "op_type": "Size",
-        "passed_tests": 0,
-        "skipped_tests": 63,
+        "passed_tests": 57,
+        "skipped_tests": 4,
         "total_tests": 63
     },
     {
         "domain": "",
-        "failed_tests": 8,
+        "failed_tests": 0,
         "op_type": "Slice",
-        "passed_tests": 3,
-        "skipped_tests": 85,
+        "passed_tests": 46,
+        "skipped_tests": 50,
         "total_tests": 96
     },
     {
         "domain": "",
-        "failed_tests": 0,
+        "failed_tests": 1,
         "op_type": "Softmax",
-        "passed_tests": 11,
-        "skipped_tests": 83,
+        "passed_tests": 45,
+        "skipped_tests": 48,
         "total_tests": 94
     },
     {
@@ -1345,17 +1345,17 @@
     },
     {
         "domain": "",
-        "failed_tests": 2,
+        "failed_tests": 0,
         "op_type": "Softplus",
-        "passed_tests": 2,
+        "passed_tests": 4,
         "skipped_tests": 0,
         "total_tests": 4
     },
     {
         "domain": "",
-        "failed_tests": 1,
+        "failed_tests": 0,
         "op_type": "Softsign",
-        "passed_tests": 1,
+        "passed_tests": 2,
         "skipped_tests": 0,
         "total_tests": 2
     },
@@ -1369,10 +1369,10 @@
     },
     {
         "domain": "",
-        "failed_tests": 5,
+        "failed_tests": 0,
         "op_type": "Split",
-        "passed_tests": 4,
-        "skipped_tests": 18,
+        "passed_tests": 14,
+        "skipped_tests": 13,
         "total_tests": 27
     },
     {
@@ -1385,18 +1385,18 @@
     },
     {
         "domain": "",
-        "failed_tests": 2,
+        "failed_tests": 5,
         "op_type": "Sqrt",
-        "passed_tests": 2,
-        "skipped_tests": 161,
+        "passed_tests": 100,
+        "skipped_tests": 60,
         "total_tests": 165
     },
     {
         "domain": "",
-        "failed_tests": 8,
+        "failed_tests": 0,
         "op_type": "Squeeze",
-        "passed_tests": 5,
-        "skipped_tests": 34,
+        "passed_tests": 7,
+        "skipped_tests": 40,
         "total_tests": 47
     },
     {
@@ -1425,42 +1425,42 @@
     },
     {
         "domain": "",
-        "failed_tests": 14,
+        "failed_tests": 5,
         "op_type": "Sub",
-        "passed_tests": 31,
-        "skipped_tests": 92,
+        "passed_tests": 87,
+        "skipped_tests": 45,
         "total_tests": 137
     },
     {
         "domain": "",
-        "failed_tests": 4,
+        "failed_tests": 0,
         "op_type": "Sum",
-        "passed_tests": 0,
-        "skipped_tests": 6,
+        "passed_tests": 8,
+        "skipped_tests": 2,
         "total_tests": 10
     },
     {
         "domain": "",
-        "failed_tests": 1,
+        "failed_tests": 0,
         "op_type": "Swish",
-        "passed_tests": 0,
+        "passed_tests": 1,
         "skipped_tests": 0,
         "total_tests": 1
     },
     {
         "domain": "",
-        "failed_tests": 1,
+        "failed_tests": 0,
         "op_type": "Tan",
-        "passed_tests": 1,
+        "passed_tests": 2,
         "skipped_tests": 0,
         "total_tests": 2
     },
     {
         "domain": "",
-        "failed_tests": 3,
+        "failed_tests": 0,
         "op_type": "Tanh",
-        "passed_tests": 2,
-        "skipped_tests": 14,
+        "passed_tests": 11,
+        "skipped_tests": 8,
         "total_tests": 19
     },
     {
@@ -1481,9 +1481,9 @@
     },
     {
         "domain": "",
-        "failed_tests": 1,
+        "failed_tests": 0,
         "op_type": "ThresholdedRelu",
-        "passed_tests": 2,
+        "passed_tests": 3,
         "skipped_tests": 0,
         "total_tests": 3
     },
@@ -1505,10 +1505,10 @@
     },
     {
         "domain": "",
-        "failed_tests": 0,
+        "failed_tests": 1,
         "op_type": "Transpose",
-        "passed_tests": 9,
-        "skipped_tests": 136,
+        "passed_tests": 46,
+        "skipped_tests": 98,
         "total_tests": 145
     },
     {
@@ -1523,32 +1523,32 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "Unique",
-        "passed_tests": 0,
-        "skipped_tests": 6,
+        "passed_tests": 5,
+        "skipped_tests": 1,
         "total_tests": 6
     },
     {
         "domain": "",
-        "failed_tests": 7,
+        "failed_tests": 1,
         "op_type": "Unsqueeze",
-        "passed_tests": 5,
-        "skipped_tests": 104,
+        "passed_tests": 39,
+        "skipped_tests": 76,
         "total_tests": 116
     },
     {
         "domain": "",
         "failed_tests": 0,
         "op_type": "Upsample",
-        "passed_tests": 0,
-        "skipped_tests": 1,
+        "passed_tests": 1,
+        "skipped_tests": 0,
         "total_tests": 1
     },
     {
         "domain": "",
-        "failed_tests": 11,
+        "failed_tests": 1,
         "op_type": "Where",
-        "passed_tests": 5,
-        "skipped_tests": 84,
+        "passed_tests": 57,
+        "skipped_tests": 42,
         "total_tests": 100
     },
     {
