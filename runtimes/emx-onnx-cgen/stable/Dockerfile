@@ -8,12 +8,20 @@ ENV CC=gcc-14
 # Install Python, gcc and locales dependencies
 # emx-onnx-cgen needs a compiler with C23 _BitInt(N) support. Ubuntu 24.04's
 # default gcc-13 does not provide it on this target, so install and prefer gcc-14.
+# The image decoding libraries (libjpeg-turbo, libwebp, libtiff, openjpeg) back
+# the ImageDecoder operator; the onnx_backend links against them by default
+# since emx-onnx-cgen 1.4.0 and resolves openjpeg include dirs via pkg-config.
 RUN apt-get update && apt-get install -y \
     python3 \
     python3-dev \
     python3-pip \
     gcc-14 \
     g++-14 \
+    pkg-config \
+    libjpeg-turbo8-dev \
+    libwebp-dev \
+    libtiff-dev \
+    libopenjp2-7-dev \
     locales && \
     apt-get clean autoclean && apt-get autoremove -y
 
