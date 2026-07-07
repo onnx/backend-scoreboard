@@ -13,7 +13,7 @@ jobs:
       contents: read
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Build docker image
         run: docker build -t scoreboard/ort -f runtimes/ort/stable/Dockerfile .
@@ -35,7 +35,7 @@ jobs:
       contents: read
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Build docker image
         run: docker build -t scoreboard/onnxtf -f runtimes/onnx-tf/stable/Dockerfile .
@@ -58,7 +58,7 @@ jobs:
       contents: read
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Build docker image
         run: docker build -t scoreboard/onnxtf-dev -f runtimes/onnx-tf/development/Dockerfile .
@@ -81,7 +81,7 @@ jobs:
       contents: read
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Build docker image
         run: docker build -t scoreboard/jaxonnxruntime -f runtimes/jaxonnxruntime/stable/Dockerfile .
@@ -103,7 +103,7 @@ jobs:
       contents: read
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           persist-credentials: true
           fetch-depth: 0
@@ -129,7 +129,7 @@ jobs:
       contents: read
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Build docker image
         run: docker build -t scoreboard/ort-dev -f runtimes/ort/development/Dockerfile .
@@ -154,7 +154,7 @@ jobs:
       contents: read
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Build docker image
         run: docker build -t scoreboard/emx-onnx-cgen -f runtimes/emx-onnx-cgen/stable/Dockerfile .
@@ -179,7 +179,7 @@ jobs:
       contents: read
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Build docker image
         run: docker build -t scoreboard/tract -f runtimes/tract/stable/Dockerfile .
@@ -204,7 +204,7 @@ jobs:
       contents: read
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Build docker image
         run: docker build -t scoreboard/onnx-reference -f runtimes/onnx-reference/stable/Dockerfile .
@@ -229,7 +229,7 @@ jobs:
       contents: read
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Build docker image
         run: docker build -t scoreboard/opencv -f runtimes/opencv/stable/Dockerfile .
@@ -254,7 +254,7 @@ jobs:
       contents: read
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Build docker image
         run: docker build -t scoreboard/tvm -f runtimes/tvm/stable/Dockerfile .
@@ -279,7 +279,7 @@ jobs:
       contents: read
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Build docker image
         run: docker build -t scoreboard/onnxruntime-openvino -f runtimes/onnxruntime-openvino/stable/Dockerfile .
@@ -312,7 +312,7 @@ jobs:
     if: ${{ always() && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch') }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Set up Python 3.12
         uses: actions/setup-python@v6
