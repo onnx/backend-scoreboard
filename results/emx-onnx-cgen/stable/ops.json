@@ -633,9 +633,9 @@
     },
     {
         "domain": "",
-        "failed_tests": 9,
+        "failed_tests": 0,
         "op_type": "ImageDecoder",
-        "passed_tests": 0,
+        "passed_tests": 9,
         "skipped_tests": 0,
         "total_tests": 9
     },

@@ -79,7 +79,7 @@ HardSwish,Passed!
 Hardmax,Passed!
 Identity,Passed!
 If,Passed!
-ImageDecoder,Failed!
+ImageDecoder,Passed!
 InstanceNormalization,Passed!
 IsInf,Passed!
 IsNaN,Passed!
@@ -201,4 +201,4 @@ Unsqueeze,Passed!
 Upsample,Passed!
 Where,Passed!
 Xor,Passed!
-Summary,199/202 node tests passed
+Summary,200/202 node tests passed
