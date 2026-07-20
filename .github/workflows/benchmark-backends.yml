@@ -26,6 +26,8 @@ jobs:
   changes:
     runs-on: ubuntu-latest
     if: github.event_name == 'push' || github.event_name == 'pull_request'
+    permissions:
+      contents: read
     outputs:
       onnxruntime: ${{ steps.filter.outputs.onnxruntime }}
       onnx_tf: ${{ steps.filter.outputs.onnx_tf }}
@@ -38,7 +40,9 @@ jobs:
       onnx2c: ${{ steps.filter.outputs.onnx2c }}
     steps:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
-      - uses: dorny/paths-filter@6852f92c20ea7fd3b0c25de3b5112db3a98da050 # v3
+        with:
+          persist-credentials: false
+      - uses: dorny/paths-filter@d1c1ffe0248f9d5937d8104b7b350f7c4f7da3d8 # v3.0.2
         id: filter
         with:
           filters: |
@@ -111,7 +115,9 @@ jobs:
       contents: read
     steps:
       - name: Checkout code
-        uses: actions/checkout@v7
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
 
       - name: Build docker image
         run: docker build -t scoreboard/ort -f runtimes/ort/stable/Dockerfile .
@@ -412,7 +418,7 @@ jobs:
 
       - name: Upload results
         if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
         with:
           name: results-onnx2c-stable
           path: results/onnx2c/stable/
@@ -559,7 +565,7 @@ jobs:
           path: results/tvm/stable/
 
       - name: Download onnx2c stable results
-        uses: actions/download-artifact@v8
+        uses: actions/download-artifact@70fc10c6e5e1ce46ad2ea6f2b72d43f7d47b13c3 # v8.0.0
         continue-on-error: true
         with:
           name: results-onnx2c-stable

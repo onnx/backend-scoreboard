@@ -29,7 +29,7 @@ ENV PYTHONPATH="/root"
 # Install pinned Python dependencies and build onnx2c from source.
 RUN pip3 install --no-cache-dir --only-binary=:all: \
     onnx==1.17.0 \
-    PyYAML==6.0 \
+    PyYAML==6.0.3 \
     pytest==7.0.0 \
     tabulate==0.8.10 && \
     git clone --recurse-submodules https://github.com/kraiskil/onnx2c /opt/onnx2c && \
