@@ -23,6 +23,8 @@ import sys
 import urllib.request
 
 from datetime import datetime, timezone
+from pathlib import Path
+from urllib.parse import urlparse
 
 
 DEFAULT_URL = "https://onnx.ai/backend-scoreboard/index.html"
@@ -39,11 +41,24 @@ DATE_FORMAT = "%m/%d/%Y %H:%M:%S"
 
 def fetch_html(url: str, timeout: int = 60) -> str:
     """Download the scoreboard page."""
+    parsed = urlparse(url)
+    if parsed.scheme not in {"http", "https"} or not parsed.netloc:
+        raise ValueError(f"Unsupported scoreboard URL: {url!r}")
+    if parsed.username or parsed.password:
+        raise ValueError("Scoreboard URL must not include credentials")
     headers = {"User-Agent": "scoreboard-freshness-check"}
     request = urllib.request.Request(url, headers=headers)
     with urllib.request.urlopen(request, timeout=timeout) as response:  # noqa: S310
         charset = response.headers.get_content_charset() or "utf-8"
         return response.read().decode(charset, errors="replace")
+
+
+def load_html_file(path: str) -> str:
+    """Read and return a validated local HTML file."""
+    html_path = Path(path).expanduser().resolve(strict=True)
+    if not html_path.is_file():
+        raise ValueError(f"Scoreboard HTML path must point to a file: {path!r}")
+    return html_path.read_text(encoding="utf-8")
 
 
 def extract_database(html: str) -> dict:
@@ -181,8 +196,7 @@ def main(argv: list[str] | None = None) -> int:
     source = args.html_file or args.url
     try:
         if args.html_file:
-            with open(args.html_file, encoding="utf-8") as handle:
-                html = handle.read()
+            html = load_html_file(args.html_file)
         else:
             html = fetch_html(args.url)
         database = extract_database(html)
@@ -194,7 +208,7 @@ def main(argv: list[str] | None = None) -> int:
             f"- Source: {source}\n- Error: `{error}`"
         )
         write_outputs(True, [], body)
-        return 0
+        return 1
 
     now = datetime.now(timezone.utc)
     report = evaluate(database, args.max_age_days, now)
