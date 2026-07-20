@@ -70,6 +70,7 @@ def test_evaluate_marks_stale_and_missing_backends():
 def test_render_markdown_includes_backend_statuses():
     """Render a stable issue body that highlights stale backends."""
     now = datetime(2026, 3, 28, 0, 50, 48, tzinfo=timezone.utc)
+    source = "scoreboard-source"
     report = [
         {
             "backend": "stale",
@@ -89,12 +90,12 @@ def test_render_markdown_includes_backend_statuses():
         },
     ]
 
-    body = render_markdown(report, "https://example.invalid", 3.0, now)
+    body = render_markdown(report, source, 3.0, now)
 
     assert "Stale Backend" in body
     assert "✅ ok" in body
     assert "⚠️ stale" in body
-    assert "https://example.invalid" in body
+    assert source in body
 
 
 def test_parse_date_uses_scoreboard_format():
