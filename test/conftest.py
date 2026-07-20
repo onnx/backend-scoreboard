@@ -24,18 +24,90 @@ from datetime import datetime
 REPORT_KEYS = ["passed", "failed", "skipped"]
 
 # Ops seen across ALL collected test items (populated before -k deselection)
-_suite_ops: set = set()
+_suite_ops: set[tuple[str, str]] = set()
+_test_proto_refs: dict[str, object] = {}
+
+
+def _normalize_op_domain(node):
+    """Return the normalized ONNX domain for a collected node."""
+    return getattr(node, "domain", "") or ""
+
+
+def _normalize_record_name(nodeid):
+    """Remove the python file name from a pytest node id."""
+    split_id = nodeid.split("::")
+    clear_id = filter(lambda x: ".py" not in x, split_id)
+    return "::".join(clear_id)
+
+
+def _extract_ops_from_proto(proto):
+    """Extract unique ops from an ONNX model proto."""
+    if proto is None or not hasattr(proto, "graph"):
+        return set()
+    return {
+        (_normalize_op_domain(node), node.op_type)
+        for node in getattr(proto.graph, "node", [])
+    }
+
+
+def _extract_ops_from_proto_ref(proto_ref):
+    """Resolve ONNX's mutable proto reference and extract its ops."""
+    if isinstance(proto_ref, list):
+        if len(proto_ref) != 1:
+            return set()
+        proto_ref = proto_ref[0]
+    return _extract_ops_from_proto(proto_ref)
+
+
+def _prepare_ops(report):
+    """Return collected operators enriched with per-status test counts."""
+    _suite_ops.clear()
+    ops_table = {}
+
+    for proto_ref in _test_proto_refs.values():
+        for op_key in _extract_ops_from_proto_ref(proto_ref):
+            _suite_ops.add(op_key)
+            ops_table.setdefault(
+                op_key,
+                {
+                    "domain": op_key[0],
+                    "op_type": op_key[1],
+                    "total_tests": 0,
+                    "passed_tests": 0,
+                    "failed_tests": 0,
+                    "skipped_tests": 0,
+                },
+            )
+
+    for status in REPORT_KEYS:
+        for test_name in report.get(status, []):
+            for op_key in _extract_ops_from_proto_ref(_test_proto_refs.get(test_name)):
+                _suite_ops.add(op_key)
+                op_entry = ops_table.setdefault(
+                    op_key,
+                    {
+                        "domain": op_key[0],
+                        "op_type": op_key[1],
+                        "total_tests": 0,
+                        "passed_tests": 0,
+                        "failed_tests": 0,
+                        "skipped_tests": 0,
+                    },
+                )
+                op_entry["total_tests"] += 1
+                op_entry[f"{status}_tests"] += 1
+
+    return [ops_table[op_key] for op_key in sorted(ops_table)]
 
 
 @pytest.hookimpl(tryfirst=True)
 def pytest_collection_modifyitems(session, config, items):  # noqa: ARG001
-    """Collect all op names from onnx_coverage marks before -k deselection."""
+    """Collect ONNX proto references from coverage marks before deselection."""
+    _test_proto_refs.clear()
     for item in items:
-        for mark in item.iter_markers("onnx_coverage"):
-            proto = mark.args[0] if mark.args else None
-            if proto is not None and hasattr(proto, "graph"):
-                for node in proto.graph.node:
-                    _suite_ops.add(node.op_type)
+        mark = item.get_closest_marker("onnx_coverage")
+        if mark is not None and mark.args:
+            _test_proto_refs[_normalize_record_name(item.nodeid)] = mark.args[0]
 
 
 def pytest_addoption(parser):
@@ -61,6 +133,7 @@ def pytest_terminal_summary(terminalreporter, exitstatus, config):
     # Collect and save the results
     report = _prepare_report(terminalreporter.stats)
     _save_report(report, results_dir)
+    _save_ops(_prepare_ops(report), results_dir)
     package_versions = _load_versions(results_dir)
     scoreboard_config = _load_scoreboard_config("/root/setup/config.json")
     core_package_versions = _filter_packages(package_versions, scoreboard_config)
@@ -89,10 +162,7 @@ def _prepare_report(stats):
         report[key] = []
         for record in stats_group:
             if hasattr(record, "nodeid"):
-                # Remove file name from test id
-                split_id = record.nodeid.split("::")
-                clear_id = filter(lambda x: ".py" not in x, split_id)
-                record_name = "::".join(clear_id)
+                record_name = _normalize_record_name(record.nodeid)
                 report[key].append(record_name)
         report[key].sort()
     return report
@@ -151,6 +221,12 @@ def _save_report(report, results_dir, file_name="report.json"):
     """
     with open(os.path.join(results_dir, file_name), "w") as report_file:
         json.dump(report, report_file, sort_keys=True, indent=4)
+
+
+def _save_ops(ops, results_dir, file_name="ops.json"):
+    """Save the collected operators to the json file."""
+    with open(os.path.join(results_dir, file_name), "w") as ops_file:
+        json.dump(ops, ops_file, sort_keys=True, indent=4)
 
 
 def _save_trend(trend, results_dir, file_name="trend.json"):

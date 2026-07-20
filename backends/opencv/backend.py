@@ -22,7 +22,10 @@ def _opencv_worker(model_bytes, inputs, input_names, output_names, result_queue)
     try:
         net = cv2.dnn.readNetFromONNX(path)
         for name, inp in zip(input_names, inputs, strict=True):
-            net.setInput(np.asarray(inp, dtype=np.float32), name)
+            # Feed each input with its declared ONNX dtype instead of forcing
+            # everything to float32, which corrupts non-float inputs such as
+            # int64 label/index tensors and boolean masks.
+            net.setInput(np.ascontiguousarray(inp), name)
         raw = net.forward(output_names)
         # forward() returns ndarray for single output, list for multiple
         if isinstance(raw, np.ndarray):
