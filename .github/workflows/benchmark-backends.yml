@@ -395,10 +395,6 @@ jobs:
     timeout-minutes: 90
     needs: changes
     if: always() && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || needs.changes.outputs.onnx2c == 'true')
-
-  onnxruntime_openvino_stable:
-    runs-on: ubuntu-latest
-    timeout-minutes: 90
     permissions:
       contents: read
     steps:
