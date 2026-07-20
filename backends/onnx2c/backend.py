@@ -17,7 +17,7 @@ from onnx.backend.test.runner import BackendIsNotSupposedToImplementIt
 
 def _c_name(name):
     """Convert ONNX tensor name to valid C identifier (matching onnx2c's naming)."""
-    name = re.sub(r"[^a-zA-Z0-9_]", "_", name)
+    name = re.sub(r"\W", "_", name)
     if name and name[0].isdigit():
         name = "_" + name
     return name

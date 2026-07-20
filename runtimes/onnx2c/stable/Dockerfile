@@ -29,11 +29,9 @@ RUN pip3 install --no-cache-dir -r /root/setup/requirements_report.txt
 ENV ONNX_BACKEND="onnx2c_backend"
 ENV PYTHONPATH="/root"
 
-# Install onnx (needed for Python backend wrapper and onnx2c build)
-RUN pip3 install onnx
-
-# Build onnx2c from source
-RUN git clone --recurse-submodules https://github.com/kraiskil/onnx2c /opt/onnx2c && \
+# Install onnx (needed for Python backend wrapper and onnx2c build) and build onnx2c from source.
+RUN pip3 install onnx && \
+    git clone --recurse-submodules https://github.com/kraiskil/onnx2c /opt/onnx2c && \
     cd /opt/onnx2c && \
     git checkout e6308a729d067ea3be729c840558ee7832e10b6c && \
     git submodule update --init --recursive && \
