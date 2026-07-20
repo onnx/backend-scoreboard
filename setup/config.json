@@ -45,6 +45,15 @@
             "core_packages": ["tract"],
             "dockerfile_link": "runtimes/tract/stable/Dockerfile"
         },
+        "rten": {
+            "name": "RTen",
+            "link": "https://github.com/robertknight/rten",
+            "description": "Rust-based neural network runtime for running ONNX models efficiently on CPU.",
+            "long_description": "RTen is a lightweight, end-to-end Rust inference runtime that can load ONNX models directly and execute them efficiently on CPU targets. It emphasizes portability, small footprint, and practical deployment across native and WebAssembly environments.",
+            "results_dir": "./results/rten/stable",
+            "core_packages": ["rten-convert"],
+            "dockerfile_link": "runtimes/rten/stable/Dockerfile"
+        },
         "onnx-reference": {
             "name": "ONNX Reference",
             "link": "https://onnx.ai/onnx/api/reference.html",
