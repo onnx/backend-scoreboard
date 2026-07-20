@@ -38,7 +38,7 @@ jobs:
       onnx2c: ${{ steps.filter.outputs.onnx2c }}
     steps:
       - uses: actions/checkout@v6
-      - uses: dorny/paths-filter@v3
+      - uses: dorny/paths-filter@6852f92c20ea7fd3b0c25de3b5112db3a98da050 # v3
         id: filter
         with:
           filters: |
