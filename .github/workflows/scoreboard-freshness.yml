@@ -51,6 +51,25 @@ jobs:
             const footer = `\n\n---\n_Automated by [Scoreboard freshness check](${process.env.RUN_URL})._`;
             const body = (process.env.ISSUE_BODY || '').trim() + footer;
 
+            try {
+              await github.rest.issues.getLabel({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                name: label,
+              });
+            } catch (error) {
+              if (error.status !== 404) {
+                throw error;
+              }
+              await github.rest.issues.createLabel({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                name: label,
+                color: 'd73a4a',
+                description: 'Tracking issue for stale backend scoreboard data',
+              });
+            }
+
             const existing = await github.paginate(github.rest.issues.listForRepo, {
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -58,7 +77,7 @@ jobs:
               labels: label,
               per_page: 100,
             });
-            const issue = existing.find(i => i.title === title) || existing[0];
+            const issue = existing.find(i => i.title === title);
 
             if (stale) {
               if (issue) {
