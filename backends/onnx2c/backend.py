@@ -4,7 +4,6 @@
 
 import math
 import os
-import re
 import shutil
 import subprocess
 import tempfile
@@ -13,14 +12,6 @@ import numpy as np
 from onnx import TensorProto, shape_inference
 from onnx.backend.base import Backend, BackendRep
 from onnx.backend.test.runner import BackendIsNotSupposedToImplementIt
-
-
-def _c_name(name):
-    """Convert ONNX tensor name to valid C identifier (matching onnx2c's naming)."""
-    name = re.sub(r"\W", "_", name)
-    if name and name[0].isdigit():
-        name = "_" + name
-    return name
 
 
 _ONNX_TO_C_TYPE = {
@@ -53,7 +44,7 @@ _ONNX_TO_NUMPY = {
 
 
 def _parse_tensor_info(value_info):
-    """Return (c_name, c_type, numpy_dtype, shape) or None if unsupported."""
+    """Return (c_type, numpy_dtype, shape) or None if unsupported."""
     t = value_info.type.tensor_type
     elem_type = t.elem_type
     c_type = _ONNX_TO_C_TYPE.get(elem_type)
@@ -76,7 +67,7 @@ def _parse_tensor_info(value_info):
         # Scalar tensors use pointer parameters in onnx2c — not supported here
         return None
 
-    return _c_name(value_info.name), c_type, np_dtype, shape
+    return c_type, np_dtype, shape
 
 
 def _c_tensor_dims(shape):
@@ -87,15 +78,15 @@ def _c_tensor_dims(shape):
 def _decl_lines(inputs_info, outputs_info):
     """Return buffer declarations and entry() forward declaration."""
     lines = []
-    for i, (_, c_type, _, shape) in enumerate(inputs_info):
+    for i, (c_type, _, shape) in enumerate(inputs_info):
         lines.append(f"{c_type} inp_{i}{_c_tensor_dims(shape)};")
-    for i, (_, c_type, _, shape) in enumerate(outputs_info):
+    for i, (c_type, _, shape) in enumerate(outputs_info):
         lines.append(f"{c_type} out_{i}{_c_tensor_dims(shape)};")
     lines.append("")
     params = []
-    for i, (_, c_type, _, shape) in enumerate(inputs_info):
+    for i, (c_type, _, shape) in enumerate(inputs_info):
         params.append(f"const {c_type} inp_{i}{_c_tensor_dims(shape)}")
-    for i, (_, c_type, _, shape) in enumerate(outputs_info):
+    for i, (c_type, _, shape) in enumerate(outputs_info):
         params.append(f"{c_type} out_{i}{_c_tensor_dims(shape)}")
     lines.append(f"void entry({', '.join(params)});")
     return lines
@@ -107,7 +98,7 @@ def _file_io_lines(tensors_info, arg_offset, mode):
     direction = "input" if mode == "rb" else "output"
     prefix = "inp" if mode == "rb" else "out"
     lines = []
-    for i, (_, c_type, _, shape) in enumerate(tensors_info):
+    for i, (c_type, _, shape) in enumerate(tensors_info):
         n = math.prod(shape)
         arg_idx = arg_offset + i + 1
         lines.append(f'    f = fopen(argv[{arg_idx}], "{mode}");')
@@ -201,10 +192,8 @@ class Onnx2cBackendRep(BackendRep):
         self._binary = binary_path
         self._workdir = workdir
         # Store only dtype and shape needed at run time
-        self._input_dtypes = [np_dtype for _, _, np_dtype, _ in inputs_info]
-        self._output_info = [
-            (np_dtype, shape) for _, _, np_dtype, shape in outputs_info
-        ]
+        self._input_dtypes = [np_dtype for _, np_dtype, _ in inputs_info]
+        self._output_info = [(np_dtype, shape) for _, np_dtype, shape in outputs_info]
 
     def __del__(self):
         """Remove the temporary working directory on garbage collection."""
@@ -218,7 +207,7 @@ class Onnx2cBackendRep(BackendRep):
             # Write each input as raw binary with the expected dtype
             input_files = []
             for i, (inp, dtype) in enumerate(
-                zip(inputs, self._input_dtypes, strict=False)
+                zip(inputs, self._input_dtypes, strict=True)
             ):
                 path = os.path.join(run_dir, f"input_{i}.bin")
                 np.asarray(inp, dtype=dtype).flatten().tofile(path)
@@ -241,7 +230,7 @@ class Onnx2cBackendRep(BackendRep):
 
             outputs = []
             for path, (dtype, shape) in zip(
-                output_files, self._output_info, strict=False
+                output_files, self._output_info, strict=True
             ):
                 arr = np.fromfile(path, dtype=dtype).reshape(shape)
                 outputs.append(arr)
