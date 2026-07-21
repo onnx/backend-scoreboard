@@ -38,6 +38,7 @@ jobs:
       opencv: ${{ steps.filter.outputs.opencv }}
       tvm: ${{ steps.filter.outputs.tvm }}
       onnx2c: ${{ steps.filter.outputs.onnx2c }}
+      onnxruntime_openvino: ${{ steps.filter.outputs.onnxruntime_openvino }}
     steps:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
@@ -101,6 +102,13 @@ jobs:
             onnx2c:
               - 'runtimes/onnx2c/**'
               - 'backends/onnx2c/**'
+              - 'test/**'
+              - 'setup/docker-setup.sh'
+              - 'setup/env.list'
+              - 'setup/requirements_report.txt'
+            onnxruntime_openvino:
+              - 'runtimes/onnxruntime-openvino/**'
+              - 'backends/onnxruntime_openvino/**'
               - 'test/**'
               - 'setup/docker-setup.sh'
               - 'setup/env.list'
@@ -444,6 +452,8 @@ jobs:
   onnxruntime_openvino_stable:
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    needs: changes
+    if: always() && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || needs.changes.outputs.onnxruntime_openvino == 'true')
     permissions:
       contents: read
     steps:
