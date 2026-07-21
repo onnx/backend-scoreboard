@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc \
     git \
     libprotobuf-dev \
+    make \
     protobuf-compiler \
     python3 \
     python3-dev \
