@@ -1,0 +1,10 @@
+[package]
+name = "rten_bridge_runner"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1"
+rten = { git = "https://github.com/robertknight/rten" }
+rten-serialize = { git = "https://github.com/robertknight/rten", package = "rten-serialize", features = ["safetensors"] }
+rten-tensor = { git = "https://github.com/robertknight/rten", package = "rten-tensor" }

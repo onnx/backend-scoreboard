@@ -51,7 +51,7 @@
             "description": "Rust-based neural network runtime for running ONNX models efficiently on CPU.",
             "long_description": "RTen is a lightweight, end-to-end Rust inference runtime that can load ONNX models directly and execute them efficiently on CPU targets. It emphasizes portability, small footprint, and practical deployment across native and WebAssembly environments.",
             "results_dir": "./results/rten/stable",
-            "core_packages": ["rten-convert"],
+            "core_packages": ["safetensors"],
             "dockerfile_link": "runtimes/rten/stable/Dockerfile"
         },
         "onnx-reference": {
