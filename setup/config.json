@@ -81,6 +81,12 @@
             "core_packages": ["apache-tvm"],
             "dockerfile_link": "runtimes/tvm/stable/Dockerfile"
         },
+        "onnx2c": {
+            "name": "onnx2c",
+            "results_dir": "./results/onnx2c/stable",
+            "core_packages": ["onnx2c"],
+            "dockerfile_link": "runtimes/onnx2c/stable/Dockerfile"
+        },
         "onnxruntime-openvino": {
             "name": "ONNX-Runtime OpenVINO EP",
             "link": "https://onnxruntime.ai/docs/execution-providers/OpenVINO-ExecutionProvider.html",
