@@ -449,11 +449,15 @@ jobs:
         run: python3 /tmp/scoreboard-merge/merge_trends.py --config /tmp/scoreboard-merge/config.json --base-ref HEAD
 
       - name: Deploy results
+        env:
+          # Checkout runs with persist-credentials: false, so pass the token
+          # explicitly for the push.
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
           git add results
           if ! git diff --cached --quiet; then
             git commit -s -m "Scoreboard results [skip ci]"
-            git push origin benchmark-results
+            git push "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" benchmark-results
           else
             echo "No changes to commit"
           fi
