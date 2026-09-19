@@ -27,9 +27,9 @@
         "domain": "",
         "failed_tests": 3,
         "op_type": "Add",
-        "passed_tests": 178,
+        "passed_tests": 207,
         "skipped_tests": 0,
-        "total_tests": 181
+        "total_tests": 210
     },
     {
         "domain": "",
@@ -43,9 +43,9 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "And",
-        "passed_tests": 72,
+        "passed_tests": 101,
         "skipped_tests": 0,
-        "total_tests": 72
+        "total_tests": 101
     },
     {
         "domain": "",
@@ -99,9 +99,9 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "Attention",
-        "passed_tests": 64,
+        "passed_tests": 93,
         "skipped_tests": 0,
-        "total_tests": 64
+        "total_tests": 93
     },
     {
         "domain": "",
@@ -139,9 +139,9 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "BitShift",
-        "passed_tests": 8,
+        "passed_tests": 28,
         "skipped_tests": 0,
-        "total_tests": 8
+        "total_tests": 28
     },
     {
         "domain": "",
@@ -187,17 +187,17 @@
         "domain": "",
         "failed_tests": 7,
         "op_type": "Cast",
-        "passed_tests": 309,
+        "passed_tests": 338,
         "skipped_tests": 0,
-        "total_tests": 316
+        "total_tests": 345
     },
     {
         "domain": "",
         "failed_tests": 0,
         "op_type": "CastLike",
-        "passed_tests": 132,
+        "passed_tests": 227,
         "skipped_tests": 0,
-        "total_tests": 132
+        "total_tests": 227
     },
     {
         "domain": "",
@@ -219,9 +219,9 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "Celu",
-        "passed_tests": 1,
+        "passed_tests": 3,
         "skipped_tests": 0,
-        "total_tests": 1
+        "total_tests": 3
     },
     {
         "domain": "",
@@ -251,17 +251,17 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "Compress",
-        "passed_tests": 4,
+        "passed_tests": 5,
         "skipped_tests": 0,
-        "total_tests": 4
+        "total_tests": 5
     },
     {
         "domain": "",
         "failed_tests": 3,
         "op_type": "Concat",
-        "passed_tests": 175,
+        "passed_tests": 210,
         "skipped_tests": 0,
-        "total_tests": 178
+        "total_tests": 213
     },
     {
         "domain": "",
@@ -275,17 +275,17 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "Constant",
-        "passed_tests": 314,
+        "passed_tests": 351,
         "skipped_tests": 0,
-        "total_tests": 314
+        "total_tests": 351
     },
     {
         "domain": "",
         "failed_tests": 6,
         "op_type": "ConstantOfShape",
-        "passed_tests": 95,
+        "passed_tests": 109,
         "skipped_tests": 0,
-        "total_tests": 101
+        "total_tests": 115
     },
     {
         "domain": "",
@@ -387,9 +387,9 @@
         "domain": "",
         "failed_tests": 4,
         "op_type": "Div",
-        "passed_tests": 210,
+        "passed_tests": 247,
         "skipped_tests": 0,
-        "total_tests": 214
+        "total_tests": 251
     },
     {
         "domain": "",
@@ -411,25 +411,25 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "Einsum",
-        "passed_tests": 6,
+        "passed_tests": 9,
         "skipped_tests": 0,
-        "total_tests": 6
+        "total_tests": 9
     },
     {
         "domain": "",
         "failed_tests": 0,
         "op_type": "Elu",
-        "passed_tests": 5,
+        "passed_tests": 7,
         "skipped_tests": 0,
-        "total_tests": 5
+        "total_tests": 7
     },
     {
         "domain": "",
         "failed_tests": 0,
         "op_type": "Equal",
-        "passed_tests": 101,
+        "passed_tests": 130,
         "skipped_tests": 0,
-        "total_tests": 101
+        "total_tests": 130
     },
     {
         "domain": "",
@@ -451,9 +451,9 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "Expand",
-        "passed_tests": 81,
+        "passed_tests": 110,
         "skipped_tests": 0,
-        "total_tests": 81
+        "total_tests": 110
     },
     {
         "domain": "",
@@ -483,17 +483,17 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "GRU",
-        "passed_tests": 4,
+        "passed_tests": 6,
         "skipped_tests": 0,
-        "total_tests": 4
+        "total_tests": 6
     },
     {
         "domain": "",
         "failed_tests": 0,
         "op_type": "Gather",
-        "passed_tests": 43,
+        "passed_tests": 65,
         "skipped_tests": 0,
-        "total_tests": 43
+        "total_tests": 65
     },
     {
         "domain": "",
@@ -619,9 +619,9 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "Identity",
-        "passed_tests": 124,
+        "passed_tests": 153,
         "skipped_tests": 0,
-        "total_tests": 124
+        "total_tests": 153
     },
     {
         "domain": "",
@@ -675,9 +675,9 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "LSTM",
-        "passed_tests": 4,
+        "passed_tests": 6,
         "skipped_tests": 0,
-        "total_tests": 4
+        "total_tests": 6
     },
     {
         "domain": "",
@@ -699,17 +699,17 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "Less",
-        "passed_tests": 53,
+        "passed_tests": 76,
         "skipped_tests": 0,
-        "total_tests": 53
+        "total_tests": 76
     },
     {
         "domain": "",
         "failed_tests": 0,
         "op_type": "LessOrEqual",
-        "passed_tests": 8,
+        "passed_tests": 18,
         "skipped_tests": 0,
-        "total_tests": 8
+        "total_tests": 18
     },
     {
         "domain": "",
@@ -763,9 +763,9 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "MatMul",
-        "passed_tests": 87,
+        "passed_tests": 116,
         "skipped_tests": 0,
-        "total_tests": 87
+        "total_tests": 116
     },
     {
         "domain": "",
@@ -843,25 +843,25 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "Mod",
-        "passed_tests": 77,
+        "passed_tests": 112,
         "skipped_tests": 0,
-        "total_tests": 77
+        "total_tests": 112
     },
     {
         "domain": "",
         "failed_tests": 2,
         "op_type": "Mul",
-        "passed_tests": 224,
+        "passed_tests": 264,
         "skipped_tests": 0,
-        "total_tests": 226
+        "total_tests": 266
     },
     {
         "domain": "",
         "failed_tests": 0,
         "op_type": "Neg",
-        "passed_tests": 46,
+        "passed_tests": 47,
         "skipped_tests": 0,
-        "total_tests": 46
+        "total_tests": 47
     },
     {
         "domain": "",
@@ -891,17 +891,17 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "Not",
-        "passed_tests": 67,
+        "passed_tests": 96,
         "skipped_tests": 0,
-        "total_tests": 67
+        "total_tests": 96
     },
     {
         "domain": "",
         "failed_tests": 0,
         "op_type": "OneHot",
-        "passed_tests": 4,
+        "passed_tests": 6,
         "skipped_tests": 0,
-        "total_tests": 4
+        "total_tests": 6
     },
     {
         "domain": "",
@@ -939,9 +939,9 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "Pad",
-        "passed_tests": 18,
+        "passed_tests": 30,
         "skipped_tests": 0,
-        "total_tests": 18
+        "total_tests": 30
     },
     {
         "domain": "",
@@ -987,9 +987,9 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "RNN",
-        "passed_tests": 4,
+        "passed_tests": 6,
         "skipped_tests": 0,
-        "total_tests": 4
+        "total_tests": 6
     },
     {
         "domain": "",
@@ -1003,9 +1003,9 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "Range",
-        "passed_tests": 46,
+        "passed_tests": 70,
         "skipped_tests": 0,
-        "total_tests": 46
+        "total_tests": 70
     },
     {
         "domain": "",
@@ -1051,9 +1051,9 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "ReduceMax",
-        "passed_tests": 41,
+        "passed_tests": 135,
         "skipped_tests": 0,
-        "total_tests": 41
+        "total_tests": 135
     },
     {
         "domain": "",
@@ -1115,9 +1115,9 @@
         "domain": "",
         "failed_tests": 4,
         "op_type": "Reshape",
-        "passed_tests": 190,
+        "passed_tests": 225,
         "skipped_tests": 0,
-        "total_tests": 194
+        "total_tests": 229
     },
     {
         "domain": "",
@@ -1131,9 +1131,9 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "ReverseSequence",
-        "passed_tests": 2,
+        "passed_tests": 3,
         "skipped_tests": 0,
-        "total_tests": 2
+        "total_tests": 3
     },
     {
         "domain": "",
@@ -1195,9 +1195,9 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "ScatterND",
-        "passed_tests": 5,
+        "passed_tests": 7,
         "skipped_tests": 0,
-        "total_tests": 5
+        "total_tests": 7
     },
     {
         "domain": "",
@@ -1267,9 +1267,9 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "Shape",
-        "passed_tests": 220,
+        "passed_tests": 255,
         "skipped_tests": 0,
-        "total_tests": 220
+        "total_tests": 255
     },
     {
         "domain": "",
@@ -1323,17 +1323,17 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "Slice",
-        "passed_tests": 96,
+        "passed_tests": 102,
         "skipped_tests": 0,
-        "total_tests": 96
+        "total_tests": 102
     },
     {
         "domain": "",
         "failed_tests": 5,
         "op_type": "Softmax",
-        "passed_tests": 89,
+        "passed_tests": 118,
         "skipped_tests": 0,
-        "total_tests": 94
+        "total_tests": 123
     },
     {
         "domain": "",
@@ -1363,9 +1363,9 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "SpaceToDepth",
-        "passed_tests": 2,
+        "passed_tests": 4,
         "skipped_tests": 0,
-        "total_tests": 2
+        "total_tests": 4
     },
     {
         "domain": "",
@@ -1387,17 +1387,17 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "Sqrt",
-        "passed_tests": 165,
+        "passed_tests": 194,
         "skipped_tests": 0,
-        "total_tests": 165
+        "total_tests": 194
     },
     {
         "domain": "",
         "failed_tests": 0,
         "op_type": "Squeeze",
-        "passed_tests": 47,
+        "passed_tests": 71,
         "skipped_tests": 0,
-        "total_tests": 47
+        "total_tests": 71
     },
     {
         "domain": "",
@@ -1427,9 +1427,9 @@
         "domain": "",
         "failed_tests": 4,
         "op_type": "Sub",
-        "passed_tests": 133,
+        "passed_tests": 154,
         "skipped_tests": 0,
-        "total_tests": 137
+        "total_tests": 158
     },
     {
         "domain": "",
@@ -1442,10 +1442,18 @@
     {
         "domain": "",
         "failed_tests": 0,
-        "op_type": "Swish",
-        "passed_tests": 1,
+        "op_type": "SwiGLU",
+        "passed_tests": 3,
         "skipped_tests": 0,
-        "total_tests": 1
+        "total_tests": 3
+    },
+    {
+        "domain": "",
+        "failed_tests": 0,
+        "op_type": "Swish",
+        "passed_tests": 4,
+        "skipped_tests": 0,
+        "total_tests": 4
     },
     {
         "domain": "",
@@ -1459,9 +1467,9 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "Tanh",
-        "passed_tests": 19,
+        "passed_tests": 20,
         "skipped_tests": 0,
-        "total_tests": 19
+        "total_tests": 20
     },
     {
         "domain": "",
@@ -1507,9 +1515,9 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "Transpose",
-        "passed_tests": 145,
+        "passed_tests": 180,
         "skipped_tests": 0,
-        "total_tests": 145
+        "total_tests": 180
     },
     {
         "domain": "",
@@ -1523,17 +1531,17 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "Unique",
-        "passed_tests": 6,
+        "passed_tests": 7,
         "skipped_tests": 0,
-        "total_tests": 6
+        "total_tests": 7
     },
     {
         "domain": "",
         "failed_tests": 1,
         "op_type": "Unsqueeze",
-        "passed_tests": 115,
+        "passed_tests": 144,
         "skipped_tests": 0,
-        "total_tests": 116
+        "total_tests": 145
     },
     {
         "domain": "",
@@ -1547,9 +1555,9 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "Where",
-        "passed_tests": 100,
+        "passed_tests": 129,
         "skipped_tests": 0,
-        "total_tests": 100
+        "total_tests": 129
     },
     {
         "domain": "",

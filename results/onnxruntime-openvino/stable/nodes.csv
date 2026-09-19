@@ -16,7 +16,7 @@ AveragePool,Passed!
 BatchNormalization,Passed!
 Bernoulli,Failed!
 BitCast,Failed!
-BitShift,Passed!
+BitShift,Failed!
 BitwiseAnd,Passed!
 BitwiseNot,Passed!
 BitwiseOr,Passed!
@@ -26,11 +26,11 @@ Cast,Passed!
 CastLike,Passed!
 CausalConvWithState,Failed!
 Ceil,Passed!
-Celu,Passed!
+Celu,Failed!
 CenterCropPad,Passed!
 Clip,Passed!
 Col2Im,Passed!
-Compress,Passed!
+Compress,Failed!
 Concat,Passed!
 ConcatFromSequence,Passed!
 Constant,Passed!
@@ -44,13 +44,13 @@ CumProd,Failed!
 CumSum,Passed!
 DFT,Failed!
 DeformConv,Failed!
-DepthToSpace,Passed!
+DepthToSpace,Failed!
 DequantizeLinear,Failed!
 Det,Passed!
 Div,Passed!
 Dropout,Passed!
 DynamicQuantizeLinear,Passed!
-Einsum,Passed!
+Einsum,Failed!
 Elu,Passed!
 Equal,Passed!
 Erf,Passed!
@@ -114,10 +114,10 @@ NegativeLogLikelihoodLoss,Passed!
 NonMaxSuppression,Passed!
 NonZero,Passed!
 Not,Passed!
-OneHot,Passed!
+OneHot,Failed!
 Optional,Failed!
-OptionalGetElement,Passed!
-OptionalHasElement,Passed!
+OptionalGetElement,Failed!
+OptionalHasElement,Failed!
 Or,Passed!
 PRelu,Passed!
 Pad,Passed!
@@ -135,8 +135,8 @@ Range,Passed!
 Reciprocal,Passed!
 ReduceL1,Passed!
 ReduceL2,Passed!
-ReduceLogSum,Passed!
-ReduceLogSumExp,Passed!
+ReduceLogSum,Failed!
+ReduceLogSumExp,Failed!
 ReduceMax,Passed!
 ReduceMean,Passed!
 ReduceMin,Passed!
@@ -147,7 +147,7 @@ RegexFullMatch,Passed!
 Relu,Passed!
 Reshape,Passed!
 Resize,Passed!
-ReverseSequence,Passed!
+ReverseSequence,Failed!
 RoiAlign,Failed!
 RotaryEmbedding,Passed!
 Round,Passed!
@@ -176,7 +176,7 @@ Softmax,Passed!
 SoftmaxCrossEntropyLoss,Passed!
 Softplus,Passed!
 Softsign,Passed!
-SpaceToDepth,Passed!
+SpaceToDepth,Failed!
 Split,Passed!
 SplitToSequence,Passed!
 Sqrt,Passed!
@@ -186,6 +186,7 @@ StringNormalizer,Passed!
 StringSplit,Passed!
 Sub,Passed!
 Sum,Passed!
+SwiGLU,Failed!
 Swish,Failed!
 Tan,Passed!
 Tanh,Passed!
@@ -196,9 +197,9 @@ Tile,Passed!
 TopK,Failed!
 Transpose,Passed!
 Trilu,Passed!
-Unique,Passed!
+Unique,Failed!
 Unsqueeze,Passed!
 Upsample,Passed!
 Where,Passed!
 Xor,Passed!
-Summary,182/202 node tests passed
+Summary,169/203 node tests passed

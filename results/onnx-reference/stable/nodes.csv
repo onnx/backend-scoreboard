@@ -186,6 +186,7 @@ StringNormalizer,Passed!
 StringSplit,Passed!
 Sub,Passed!
 Sum,Passed!
+SwiGLU,Passed!
 Swish,Passed!
 Tan,Passed!
 Tanh,Passed!
@@ -201,4 +202,4 @@ Unsqueeze,Passed!
 Upsample,Passed!
 Where,Passed!
 Xor,Passed!
-Summary,199/202 node tests passed
+Summary,200/203 node tests passed
