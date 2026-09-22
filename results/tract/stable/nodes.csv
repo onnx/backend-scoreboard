@@ -36,7 +36,7 @@ ConcatFromSequence,Failed!
 Constant,Passed!
 ConstantOfShape,Passed!
 Conv,Passed!
-ConvInteger,Failed!
+ConvInteger,Passed!
 ConvTranspose,Passed!
 Cos,Passed!
 Cosh,Passed!
@@ -78,7 +78,7 @@ HardSigmoid,Passed!
 HardSwish,Passed!
 Hardmax,Passed!
 Identity,Passed!
-If,Failed!
+If,Passed!
 ImageDecoder,Failed!
 InstanceNormalization,Passed!
 IsInf,Passed!
@@ -122,7 +122,7 @@ Or,Passed!
 PRelu,Passed!
 Pad,Passed!
 Pow,Passed!
-QLinearConv,Failed!
+QLinearConv,Passed!
 QLinearMatMul,Passed!
 QuantizeLinear,Failed!
 RMSNormalization,Passed!
@@ -202,4 +202,4 @@ Unsqueeze,Passed!
 Upsample,Failed!
 Where,Passed!
 Xor,Passed!
-Summary,144/203 node tests passed
+Summary,147/203 node tests passed

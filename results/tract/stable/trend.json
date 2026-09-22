@@ -100,5 +100,22 @@
                 "version": "0.23.7"
             }
         ]
+    },
+    {
+        "date": "09/22/2026 01:05:22",
+        "failed": 30,
+        "passed": 1155,
+        "skipped": 848,
+        "total_ops": 205,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.23.0"
+            },
+            {
+                "name": "tract",
+                "version": "0.23.8"
+            }
+        ]
     }
 ]
