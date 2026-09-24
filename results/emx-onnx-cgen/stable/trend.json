@@ -984,5 +984,22 @@
                 "version": "1.23.0"
             }
         ]
+    },
+    {
+        "date": "09/24/2026 01:36:23",
+        "failed": 91,
+        "passed": 1942,
+        "skipped": 0,
+        "total_ops": 205,
+        "versions": [
+            {
+                "name": "emx-onnx-cgen",
+                "version": "1.4.0"
+            },
+            {
+                "name": "onnx",
+                "version": "1.23.0"
+            }
+        ]
     }
 ]
