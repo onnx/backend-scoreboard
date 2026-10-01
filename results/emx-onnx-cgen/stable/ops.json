@@ -849,9 +849,9 @@
     },
     {
         "domain": "",
-        "failed_tests": 25,
+        "failed_tests": 24,
         "op_type": "Mul",
-        "passed_tests": 241,
+        "passed_tests": 242,
         "skipped_tests": 0,
         "total_tests": 266
     },
@@ -1081,9 +1081,9 @@
     },
     {
         "domain": "",
-        "failed_tests": 2,
+        "failed_tests": 1,
         "op_type": "ReduceSum",
-        "passed_tests": 92,
+        "passed_tests": 93,
         "skipped_tests": 0,
         "total_tests": 94
     },
