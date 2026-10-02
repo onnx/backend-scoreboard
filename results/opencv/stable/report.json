@@ -1,5 +1,5 @@
 {
-    "date": "10/01/2026 01:19:40",
+    "date": "10/02/2026 01:12:55",
     "failed": [
         "OnnxBackendNodeModelTest::test_attention_23_boolmask_fullymasked_row_nan_robustness_cpu",
         "OnnxBackendNodeModelTest::test_attention_24_qk_matmul_output_mode3_softmax_precision_expanded_cpu",
