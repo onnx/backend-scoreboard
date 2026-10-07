@@ -4,6 +4,8 @@
 
 import multiprocessing as mp
 import os
+import queue
+import time
 
 import numpy as np
 from onnx.backend.base import Backend, BackendRep
@@ -37,6 +39,22 @@ def _opencv_worker(model_bytes, inputs, input_names, output_names, result_queue)
         os.unlink(path)
 
 
+def _collect_result(process, result_queue, timeout):
+    """Wait for the worker's result, giving up early if it died without one."""
+    deadline = time.monotonic() + timeout
+    while True:
+        try:
+            return result_queue.get(timeout=0.1)
+        except queue.Empty:
+            if not process.is_alive():
+                try:
+                    return result_queue.get(timeout=1)
+                except queue.Empty:
+                    return None
+            if time.monotonic() >= deadline:
+                return None
+
+
 class OpenCVBackendRep(BackendRep):
     """Runtime representation for executing models with OpenCV DNN."""
 
@@ -55,16 +73,20 @@ class OpenCVBackendRep(BackendRep):
             args=(self.model_bytes, inputs, self.input_names, self.output_names, q),
         )
         p.start()
-        p.join(timeout=60)
+        # Read the result before joining: a child whose pickled output exceeds the
+        # pipe buffer blocks until the parent drains it, so join() first deadlocks.
+        outcome = _collect_result(p, q, timeout=60)
+        timed_out = outcome is None and p.is_alive()
         if p.is_alive():
             p.terminate()
-            p.join()
+        p.join(timeout=10)
+        if timed_out:
             raise BackendIsNotSupposedToImplementIt("opencv process timed out")
-        if p.exitcode != 0:
+        if outcome is None:
             raise BackendIsNotSupposedToImplementIt(
                 f"opencv process crashed (exit code {p.exitcode})"
             )
-        status, result = q.get_nowait()
+        status, result = outcome
         if status == "error":
             raise BackendIsNotSupposedToImplementIt(result)
         return result
@@ -82,7 +104,12 @@ class OpenCVBackend(Backend):
     def prepare(cls, model, device="CPU", **kwargs):
         """Serialize the model and return a runnable backend representation."""
         model_bytes = model.SerializeToString()
-        input_names = [inp.name for inp in model.graph.input]
+        # IR < 4 exports list initializers in graph.input too; only the rest are
+        # fed at runtime.
+        initializers = {init.name for init in model.graph.initializer}
+        input_names = [
+            inp.name for inp in model.graph.input if inp.name not in initializers
+        ]
         output_names = [out.name for out in model.graph.output]
         return OpenCVBackendRep(model_bytes, input_names, output_names)
 
