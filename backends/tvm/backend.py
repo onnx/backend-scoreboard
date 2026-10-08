@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: Apache-2.0
 
-"""ONNX backend wrapper for Apache TVM (Relay frontend, native ops only)."""
+"""ONNX backend wrapper for Apache TVM (Relax frontend, native ops only)."""
 
 import logging
 import sys
@@ -14,71 +14,66 @@ logging.basicConfig(level=logging.WARNING)
 logger = logging.getLogger(__name__)
 
 
-def _native_ops_only(model):
-    """Return ops in the model that have no native TVM Relay converter.
-
-    Uses TVM's internal converter map to detect ops that would silently fall
-    back to the ONNX reference runtime instead of being compiled natively.
-    Returns an empty list when the check cannot be performed.
-    """
-    try:
-        from tvm.relay.frontend.onnx import _get_convert_map
-
-        opset = max(
-            (x.version for x in model.opset_import if x.domain == ""),
-            default=1,
-        )
-        convert_map = _get_convert_map(opset)
-        unsupported = {
-            n.op_type for n in model.graph.node if n.op_type not in convert_map
-        }
-        return sorted(unsupported)
-    except (ImportError, AttributeError):
-        return []
-
-
 def _skip(msg):
     """Log a skip reason on the worker's stderr and return it as a WorkerError."""
     print(f"[tvm] SKIP {msg}", file=sys.stderr, flush=True)
     return WorkerError(msg)
 
 
+def _to_onnx_value(value):
+    """Convert a Relax VM value to numpy; tuples (ONNX sequences) become lists."""
+    if hasattr(value, "numpy"):
+        return value.numpy()
+    return [_to_onnx_value(item) for item in value]
+
+
+def _compile_and_run(model, input_names, arrays, output_count):
+    """Import the model via Relax, compile it for the CPU and run it once."""
+    import tvm
+    from tvm import relax
+    from tvm.relax.frontend.onnx import from_onnx
+
+    mod = from_onnx(
+        model,
+        shape_dict={n: a.shape for n, a in zip(input_names, arrays, strict=True)},
+        dtype_dict={n: str(a.dtype) for n, a in zip(input_names, arrays, strict=True)},
+    )
+    mod = relax.transform.DecomposeOpsForInference()(mod)
+    mod = relax.transform.LegalizeOps()(mod)
+    with tvm.transform.PassContext(opt_level=3):
+        executable = tvm.compile(mod, target="llvm")
+    vm = relax.VirtualMachine(executable, tvm.cpu())
+    result = vm["main"](*[tvm.runtime.tensor(a) for a in arrays])
+    # The frontend returns a single graph output as is and several as a tuple.
+    if output_count == 1:
+        return [_to_onnx_value(result)]
+    return [_to_onnx_value(item) for item in result]
+
+
 def _tvm_worker(model_bytes, inputs, input_names, output_count):
-    """Compile and run an ONNX model via TVM Relay in an isolated subprocess."""
+    """Compile and run an ONNX model via TVM Relax in an isolated subprocess."""
     import onnx
 
     try:
-        import tvm
-        from tvm import relay
-        from tvm.contrib import graph_executor
+        import tvm  # noqa: F401
     except (ImportError, AttributeError, OSError, RuntimeError) as e:
         raise _skip(f"tvm import failed: {type(e).__name__}: {e}") from e
 
     model = onnx.ModelProto()
     model.ParseFromString(model_bytes)
 
-    unsupported = _native_ops_only(model)
-    if unsupported:
-        raise _skip(f"no native TVM converter for: {unsupported}")
-
-    shape_dict = {
-        name: np.asarray(inp).shape
-        for name, inp in zip(input_names, inputs, strict=True)
-    }
+    arrays = [np.ascontiguousarray(inp) for inp in inputs]
     try:
-        mod, params = relay.frontend.from_onnx(model, shape=shape_dict)
-        with tvm.transform.PassContext(opt_level=3):
-            lib = relay.build(mod, target="llvm", params=params)
-        module = graph_executor.GraphModule(lib["default"](tvm.cpu(0)))
-        for name, inp in zip(input_names, inputs, strict=True):
-            module.set_input(name, np.asarray(inp))
-        module.run()
-        return [module.get_output(i).numpy() for i in range(output_count)]
+        return _compile_and_run(model, input_names, arrays, output_count)
+    # TVM >= 0.20 raises its errors as Python builtin exception types; unsupported
+    # ops raise tvm.error.OpNotImplemented, a RuntimeError.
     except (
-        tvm.TVMError,
+        AssertionError,  # the Relax ONNX frontend asserts on unsupported variants
         RuntimeError,
         ValueError,
         TypeError,
+        KeyError,
+        AttributeError,
         OSError,
         ImportError,
     ) as e:
