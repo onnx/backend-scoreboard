@@ -1,0 +1,12 @@
+# Dependencies for test/test_subprocess_runner.py in the smoke workflow.
+# Pinned including transitive dependencies; install with --only-binary :all:.
+iniconfig==2.3.1
+ml_dtypes==0.6.0
+numpy==2.5.3
+onnx==1.23.2
+packaging==26.3
+pluggy==1.6.0
+protobuf==7.36.2
+Pygments==2.21.0
+pytest==9.1.1
+typing_extensions==4.16.0
