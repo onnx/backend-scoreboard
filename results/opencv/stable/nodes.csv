@@ -119,7 +119,7 @@ Optional,Failed!
 OptionalGetElement,Failed!
 OptionalHasElement,Failed!
 Or,Passed!
-PRelu,Failed!
+PRelu,Passed!
 Pad,Passed!
 Pow,Passed!
 QLinearConv,Passed!
@@ -202,4 +202,4 @@ Unsqueeze,Passed!
 Upsample,Passed!
 Where,Passed!
 Xor,Passed!
-Summary,157/203 node tests passed
+Summary,158/203 node tests passed

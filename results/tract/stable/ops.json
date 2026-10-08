@@ -107,8 +107,8 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "AveragePool",
-        "passed_tests": 31,
-        "skipped_tests": 1,
+        "passed_tests": 32,
+        "skipped_tests": 0,
         "total_tests": 32
     },
     {
@@ -291,8 +291,8 @@
         "domain": "",
         "failed_tests": 1,
         "op_type": "Conv",
-        "passed_tests": 53,
-        "skipped_tests": 1,
+        "passed_tests": 54,
+        "skipped_tests": 0,
         "total_tests": 55
     },
     {
@@ -643,8 +643,8 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "InstanceNormalization",
-        "passed_tests": 2,
-        "skipped_tests": 1,
+        "passed_tests": 3,
+        "skipped_tests": 0,
         "total_tests": 3
     },
     {
@@ -787,8 +787,8 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "MaxPool",
-        "passed_tests": 35,
-        "skipped_tests": 2,
+        "passed_tests": 37,
+        "skipped_tests": 0,
         "total_tests": 37
     },
     {
