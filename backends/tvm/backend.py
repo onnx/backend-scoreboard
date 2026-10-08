@@ -89,7 +89,6 @@ def _tvm_worker(model_bytes, inputs, input_names):
         TypeError,
         KeyError,
         AttributeError,
-        NotImplementedError,
         OSError,
         ImportError,
     ) as e:
