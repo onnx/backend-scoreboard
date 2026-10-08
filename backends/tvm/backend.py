@@ -3,12 +3,12 @@
 """ONNX backend wrapper for Apache TVM (Relay frontend, native ops only)."""
 
 import logging
-import multiprocessing as mp
 import sys
 
 import numpy as np
 from onnx.backend.base import Backend, BackendRep
 from onnx.backend.test.runner import BackendIsNotSupposedToImplementIt
+from subprocess_runner import WorkerError, run_in_subprocess
 
 logging.basicConfig(level=logging.WARNING)
 logger = logging.getLogger(__name__)
@@ -37,7 +37,13 @@ def _native_ops_only(model):
         return []
 
 
-def _tvm_worker(model_bytes, inputs, input_names, output_count, result_queue):
+def _skip(msg):
+    """Log a skip reason on the worker's stderr and return it as a WorkerError."""
+    print(f"[tvm] SKIP {msg}", file=sys.stderr, flush=True)
+    return WorkerError(msg)
+
+
+def _tvm_worker(model_bytes, inputs, input_names, output_count):
     """Compile and run an ONNX model via TVM Relay in an isolated subprocess."""
     import onnx
 
@@ -46,20 +52,14 @@ def _tvm_worker(model_bytes, inputs, input_names, output_count, result_queue):
         from tvm import relay
         from tvm.contrib import graph_executor
     except (ImportError, AttributeError, OSError, RuntimeError) as e:
-        msg = f"tvm import failed: {type(e).__name__}: {e}"
-        print(f"[tvm] SKIP {msg}", file=sys.stderr, flush=True)
-        result_queue.put(("error", msg))
-        return
+        raise _skip(f"tvm import failed: {type(e).__name__}: {e}") from e
 
     model = onnx.ModelProto()
     model.ParseFromString(model_bytes)
 
     unsupported = _native_ops_only(model)
     if unsupported:
-        msg = f"no native TVM converter for: {unsupported}"
-        print(f"[tvm] SKIP {msg}", file=sys.stderr, flush=True)
-        result_queue.put(("error", msg))
-        return
+        raise _skip(f"no native TVM converter for: {unsupported}")
 
     shape_dict = {
         name: np.asarray(inp).shape
@@ -73,8 +73,7 @@ def _tvm_worker(model_bytes, inputs, input_names, output_count, result_queue):
         for name, inp in zip(input_names, inputs, strict=True):
             module.set_input(name, np.asarray(inp))
         module.run()
-        outputs = [module.get_output(i).numpy() for i in range(output_count)]
-        result_queue.put(("ok", outputs))
+        return [module.get_output(i).numpy() for i in range(output_count)]
     except (
         tvm.TVMError,
         RuntimeError,
@@ -84,9 +83,7 @@ def _tvm_worker(model_bytes, inputs, input_names, output_count, result_queue):
         ImportError,
     ) as e:
         ops = sorted({n.op_type for n in model.graph.node})
-        msg = f"ops={ops} error={type(e).__name__}: {e}"
-        print(f"[tvm] SKIP {msg}", file=sys.stderr, flush=True)
-        result_queue.put(("error", msg))
+        raise _skip(f"ops={ops} error={type(e).__name__}: {e}") from e
 
 
 class TVMBackendRep(BackendRep):
@@ -100,29 +97,16 @@ class TVMBackendRep(BackendRep):
 
     def run(self, inputs, **kwargs):
         """Compile and execute inference in a spawned worker process."""
-        ctx = mp.get_context("spawn")
-        q = ctx.Queue()
-        p = ctx.Process(
-            target=_tvm_worker,
-            args=(self.model_bytes, inputs, self.input_names, self.output_count, q),
-        )
-        p.start()
-        p.join(timeout=120)
-        if p.is_alive():
-            p.terminate()
-            p.join()
-            msg = "tvm process timed out"
-            logger.warning(msg)
-            raise BackendIsNotSupposedToImplementIt(msg)
-        if p.exitcode != 0:
-            msg = f"tvm process crashed (exit code {p.exitcode})"
-            logger.warning(msg)
-            raise BackendIsNotSupposedToImplementIt(msg)
-        status, result = q.get_nowait()
-        if status == "error":
-            logger.warning("tvm skip: %s", result)
-            raise BackendIsNotSupposedToImplementIt(result)
-        return result
+        try:
+            return run_in_subprocess(
+                _tvm_worker,
+                (self.model_bytes, inputs, self.input_names, self.output_count),
+                timeout=120,
+                name="tvm",
+            )
+        except BackendIsNotSupposedToImplementIt as e:
+            logger.warning("tvm skip: %s", e)
+            raise
 
 
 class TVMBackend(Backend):
@@ -137,7 +121,12 @@ class TVMBackend(Backend):
     def prepare(cls, model, device="CPU", **kwargs):
         """Serialize the model and return a runnable backend representation."""
         model_bytes = model.SerializeToString()
-        input_names = [inp.name for inp in model.graph.input]
+        # IR < 4 exports list initializers in graph.input too; only the rest are
+        # fed at runtime.
+        initializers = {init.name for init in model.graph.initializer}
+        input_names = [
+            inp.name for inp in model.graph.input if inp.name not in initializers
+        ]
         output_count = len(model.graph.output)
         return TVMBackendRep(model_bytes, input_names, output_count)
 

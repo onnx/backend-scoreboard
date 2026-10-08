@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y \
 COPY ./test /root/test
 COPY ./setup /root/setup
 COPY ./backends/opencv/backend.py /root/opencv_backend.py
+COPY ./backends/subprocess_runner.py /root/subprocess_runner.py
 
 # Install test report dependencies
 RUN pip3 install --no-cache-dir -r /root/setup/requirements_report.txt

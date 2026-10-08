@@ -21,10 +21,11 @@ WORKDIR /home/onnx
 COPY ./test /home/onnx/test
 COPY ./setup /home/onnx/setup
 COPY ./backends/onnxruntime_openvino/backend.py /home/onnx/onnxruntime_openvino_backend.py
+COPY ./backends/subprocess_runner.py /home/onnx/subprocess_runner.py
 
 # Fix Windows line endings
 RUN find /home/onnx/setup /home/onnx/test -type f \( -name "*.sh" -o -name "*.py" -o -name "*.txt" -o -name "*.json" \) -exec dos2unix {} + && \
-    dos2unix /home/onnx/onnxruntime_openvino_backend.py
+    dos2unix /home/onnx/onnxruntime_openvino_backend.py /home/onnx/subprocess_runner.py
 
 # Install test report dependencies
 RUN pip3 install --no-cache-dir -r /home/onnx/setup/requirements_report.txt && \

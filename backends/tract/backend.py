@@ -2,15 +2,14 @@
 
 """ONNX backend wrapper for tract (Rust inference engine by Sonos)."""
 
-import multiprocessing as mp
 import os
 
 import numpy as np
 from onnx.backend.base import Backend, BackendRep
-from onnx.backend.test.runner import BackendIsNotSupposedToImplementIt
+from subprocess_runner import WorkerError, run_in_subprocess
 
 
-def _tract_worker(model_bytes, inputs, output_count, result_queue):
+def _tract_worker(model_bytes, inputs, output_count):
     """Load and run a tract model in an isolated subprocess."""
     import tempfile
 
@@ -23,10 +22,9 @@ def _tract_worker(model_bytes, inputs, output_count, result_queue):
         runnable = _tract.onnx().load(path).into_model().into_runnable()
         tract_inputs = [np.asarray(inp) for inp in inputs]
         results = runnable.run(tract_inputs)
-        output = [results[i].to_numpy() for i in range(output_count)]
-        result_queue.put(("ok", output))
+        return [results[i].to_numpy() for i in range(output_count)]
     except (RuntimeError, ValueError, TypeError, OSError) as e:
-        result_queue.put(("error", str(e)))
+        raise WorkerError(str(e)) from e
     finally:
         os.unlink(path)
 
@@ -41,26 +39,12 @@ class TractBackendRep(BackendRep):
 
     def run(self, inputs, **kwargs):
         """Execute inference in a spawned worker process."""
-        ctx = mp.get_context("spawn")
-        q = ctx.Queue()
-        p = ctx.Process(
-            target=_tract_worker,
-            args=(self.model_bytes, inputs, self.output_count, q),
+        return run_in_subprocess(
+            _tract_worker,
+            (self.model_bytes, inputs, self.output_count),
+            timeout=60,
+            name="tract",
         )
-        p.start()
-        p.join(timeout=60)
-        if p.is_alive():
-            p.terminate()
-            p.join()
-            raise BackendIsNotSupposedToImplementIt("tract process timed out")
-        if p.exitcode != 0:
-            raise BackendIsNotSupposedToImplementIt(
-                f"tract process crashed (exit code {p.exitcode})"
-            )
-        status, result = q.get_nowait()
-        if status == "error":
-            raise BackendIsNotSupposedToImplementIt(result)
-        return result
 
 
 class TractBackend(Backend):
