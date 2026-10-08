@@ -4,15 +4,14 @@
 
 import multiprocessing as mp
 import os
-import queue
-import time
+from multiprocessing.connection import wait
 
 import numpy as np
 from onnx.backend.base import Backend, BackendRep
 from onnx.backend.test.runner import BackendIsNotSupposedToImplementIt
 
 
-def _opencv_worker(model_bytes, inputs, input_names, output_names, result_queue):
+def _opencv_worker(model_bytes, inputs, input_names, output_names, conn):
     """Load and run an ONNX model via OpenCV DNN in an isolated subprocess."""
     import tempfile
 
@@ -32,27 +31,32 @@ def _opencv_worker(model_bytes, inputs, input_names, output_names, result_queue)
         # forward() returns ndarray for single output, list for multiple
         if isinstance(raw, np.ndarray):
             raw = [raw]
-        result_queue.put(("ok", [np.array(o) for o in raw]))
+        conn.send(("ok", [np.array(o) for o in raw]))
     except (cv2.error, RuntimeError, ValueError, TypeError, OSError) as e:
-        result_queue.put(("error", str(e)))
+        conn.send(("error", str(e)))
     finally:
+        conn.close()
         os.unlink(path)
 
 
-def _collect_result(process, result_queue, timeout):
-    """Wait for the worker's result, giving up early if it died without one."""
-    deadline = time.monotonic() + timeout
-    while True:
-        try:
-            return result_queue.get(timeout=0.1)
-        except queue.Empty:
-            if not process.is_alive():
-                try:
-                    return result_queue.get(timeout=1)
-                except queue.Empty:
-                    return None
-            if time.monotonic() >= deadline:
-                return None
+def _read_result(reader):
+    """Receive the worker's result, or None if it exited without sending all of it."""
+    try:
+        return reader.recv()
+    except (EOFError, OSError):
+        return None
+
+
+def _stop_worker(process, finished):
+    """Reap the worker, escalating to SIGTERM and then SIGKILL if it does not exit."""
+    if finished:
+        process.join(timeout=5)  # let the worker clean up and exit on its own
+    if process.is_alive():
+        process.terminate()
+        process.join(timeout=5)
+        if process.is_alive():
+            process.kill()
+            process.join()
 
 
 class OpenCVBackendRep(BackendRep):
@@ -67,20 +71,26 @@ class OpenCVBackendRep(BackendRep):
     def run(self, inputs, **kwargs):
         """Execute inference in a spawned worker process."""
         ctx = mp.get_context("spawn")
-        q = ctx.Queue()
+        reader, writer = ctx.Pipe(duplex=False)
         p = ctx.Process(
             target=_opencv_worker,
-            args=(self.model_bytes, inputs, self.input_names, self.output_names, q),
+            args=(
+                self.model_bytes,
+                inputs,
+                self.input_names,
+                self.output_names,
+                writer,
+            ),
         )
         p.start()
-        # Read the result before joining: a child whose pickled output exceeds the
-        # pipe buffer blocks until the parent drains it, so join() first deadlocks.
-        outcome = _collect_result(p, q, timeout=60)
-        timed_out = outcome is None and p.is_alive()
-        if p.is_alive():
-            p.terminate()
-        p.join(timeout=10)
-        if timed_out:
+        # With the parent's write end closed, a dead worker shows up as EOF on the
+        # reader, and reading before joining keeps a large result from deadlocking.
+        writer.close()
+        ready = wait([reader, p.sentinel], timeout=60)
+        outcome = _read_result(reader) if ready else None
+        reader.close()
+        _stop_worker(p, finished=bool(ready))
+        if not ready:
             raise BackendIsNotSupposedToImplementIt("opencv process timed out")
         if outcome is None:
             raise BackendIsNotSupposedToImplementIt(
