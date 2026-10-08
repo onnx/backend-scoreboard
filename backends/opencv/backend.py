@@ -4,13 +4,14 @@
 
 import multiprocessing as mp
 import os
+from multiprocessing.connection import wait
 
 import numpy as np
 from onnx.backend.base import Backend, BackendRep
 from onnx.backend.test.runner import BackendIsNotSupposedToImplementIt
 
 
-def _opencv_worker(model_bytes, inputs, input_names, output_names, result_queue):
+def _opencv_worker(model_bytes, inputs, input_names, output_names, conn):
     """Load and run an ONNX model via OpenCV DNN in an isolated subprocess."""
     import tempfile
 
@@ -30,11 +31,32 @@ def _opencv_worker(model_bytes, inputs, input_names, output_names, result_queue)
         # forward() returns ndarray for single output, list for multiple
         if isinstance(raw, np.ndarray):
             raw = [raw]
-        result_queue.put(("ok", [np.array(o) for o in raw]))
+        conn.send(("ok", [np.array(o) for o in raw]))
     except (cv2.error, RuntimeError, ValueError, TypeError, OSError) as e:
-        result_queue.put(("error", str(e)))
+        conn.send(("error", str(e)))
     finally:
+        conn.close()
         os.unlink(path)
+
+
+def _read_result(reader):
+    """Receive the worker's result, or None if it exited without sending all of it."""
+    try:
+        return reader.recv()
+    except (EOFError, OSError):
+        return None
+
+
+def _stop_worker(process, finished):
+    """Reap the worker, escalating to SIGTERM and then SIGKILL if it does not exit."""
+    if finished:
+        process.join(timeout=5)  # let the worker clean up and exit on its own
+    if process.is_alive():
+        process.terminate()
+        process.join(timeout=5)
+        if process.is_alive():
+            process.kill()
+            process.join()
 
 
 class OpenCVBackendRep(BackendRep):
@@ -49,22 +71,32 @@ class OpenCVBackendRep(BackendRep):
     def run(self, inputs, **kwargs):
         """Execute inference in a spawned worker process."""
         ctx = mp.get_context("spawn")
-        q = ctx.Queue()
+        reader, writer = ctx.Pipe(duplex=False)
         p = ctx.Process(
             target=_opencv_worker,
-            args=(self.model_bytes, inputs, self.input_names, self.output_names, q),
+            args=(
+                self.model_bytes,
+                inputs,
+                self.input_names,
+                self.output_names,
+                writer,
+            ),
         )
         p.start()
-        p.join(timeout=60)
-        if p.is_alive():
-            p.terminate()
-            p.join()
+        # With the parent's write end closed, a dead worker shows up as EOF on the
+        # reader, and reading before joining keeps a large result from deadlocking.
+        writer.close()
+        ready = wait([reader, p.sentinel], timeout=60)
+        outcome = _read_result(reader) if ready else None
+        reader.close()
+        _stop_worker(p, finished=bool(ready))
+        if not ready:
             raise BackendIsNotSupposedToImplementIt("opencv process timed out")
-        if p.exitcode != 0:
+        if outcome is None:
             raise BackendIsNotSupposedToImplementIt(
                 f"opencv process crashed (exit code {p.exitcode})"
             )
-        status, result = q.get_nowait()
+        status, result = outcome
         if status == "error":
             raise BackendIsNotSupposedToImplementIt(result)
         return result
@@ -82,7 +114,12 @@ class OpenCVBackend(Backend):
     def prepare(cls, model, device="CPU", **kwargs):
         """Serialize the model and return a runnable backend representation."""
         model_bytes = model.SerializeToString()
-        input_names = [inp.name for inp in model.graph.input]
+        # IR < 4 exports list initializers in graph.input too; only the rest are
+        # fed at runtime.
+        initializers = {init.name for init in model.graph.initializer}
+        input_names = [
+            inp.name for inp in model.graph.input if inp.name not in initializers
+        ]
         output_names = [out.name for out in model.graph.output]
         return OpenCVBackendRep(model_bytes, input_names, output_names)
 
