@@ -2,18 +2,17 @@
 
 """ONNX backend wrapper for ONNX Runtime with the OpenVINO Execution Provider.
 
-This wrapper uses subprocess isolation (same pattern as tract, opencv, and tvm
-backends): each inference call runs inside a short-lived
-``multiprocessing.Process`` so that a crash only affects a single test.
+Like the tract, opencv and tvm backends, each inference call runs in a
+short-lived worker process via ``subprocess_runner`` so that a crash only
+affects a single test.
 """
 
-import multiprocessing as mp
 import os
 import unittest
 
 import numpy as np
 from onnx.backend.base import Backend, BackendRep
-from onnx.backend.test.runner import BackendIsNotSupposedToImplementIt
+from subprocess_runner import WorkerError, run_in_subprocess
 
 
 _TIMEOUT = int(os.getenv("OVEP_TEST_TIMEOUT", "120"))
@@ -34,7 +33,7 @@ def _check_released_opsets(model):
                 )
 
 
-def _ort_openvino_worker(model_bytes, inputs, result_queue):
+def _ort_openvino_worker(model_bytes, inputs):
     """Run ORT + OpenVINO EP inference in an isolated subprocess."""
     try:
         import onnxruntime as ort
@@ -50,14 +49,12 @@ def _ort_openvino_worker(model_bytes, inputs, result_queue):
                 feed[name] = np.asarray(data)
         else:
             if len(input_names) != 1:
-                result_queue.put(("error", f"Model expects {len(input_names)} inputs"))
-                return
+                raise WorkerError(f"Model expects {len(input_names)} inputs")
             feed[input_names[0]] = np.asarray(inputs)
 
-        outputs = sess.run(None, feed)
-        result_queue.put(("ok", outputs))
+        return sess.run(None, feed)
     except (RuntimeError, ValueError, OSError) as e:
-        result_queue.put(("error", f"{type(e).__name__}: {e}"))
+        raise WorkerError(f"{type(e).__name__}: {e}") from e
 
 
 class OrtOpenVinoBackendRep(BackendRep):
@@ -69,32 +66,12 @@ class OrtOpenVinoBackendRep(BackendRep):
 
     def run(self, inputs, **kwargs):
         """Execute inference in a spawned worker process."""
-        ctx = mp.get_context("spawn")
-        q = ctx.Queue()
-        p = ctx.Process(
-            target=_ort_openvino_worker,
-            args=(self.model_bytes, inputs, q),
+        return run_in_subprocess(
+            _ort_openvino_worker,
+            (self.model_bytes, inputs),
+            timeout=_TIMEOUT,
+            name="onnxruntime-openvino",
         )
-        p.start()
-        p.join(timeout=_TIMEOUT)
-        if p.is_alive():
-            p.terminate()
-            p.join()
-            raise BackendIsNotSupposedToImplementIt(
-                "onnxruntime-openvino process timed out"
-            )
-        if p.exitcode != 0:
-            raise BackendIsNotSupposedToImplementIt(
-                f"onnxruntime-openvino process crashed (exit code {p.exitcode})"
-            )
-        if q.empty():
-            raise BackendIsNotSupposedToImplementIt(
-                "onnxruntime-openvino worker produced no output"
-            )
-        status, result = q.get_nowait()
-        if status == "error":
-            raise BackendIsNotSupposedToImplementIt(result)
-        return result
 
 
 class OrtOpenVinoBackend(Backend):

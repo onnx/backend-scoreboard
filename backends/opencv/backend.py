@@ -2,16 +2,14 @@
 
 """ONNX backend wrapper for OpenCV DNN module."""
 
-import multiprocessing as mp
 import os
-from multiprocessing.connection import wait
 
 import numpy as np
 from onnx.backend.base import Backend, BackendRep
-from onnx.backend.test.runner import BackendIsNotSupposedToImplementIt
+from subprocess_runner import WorkerError, run_in_subprocess
 
 
-def _opencv_worker(model_bytes, inputs, input_names, output_names, conn):
+def _opencv_worker(model_bytes, inputs, input_names, output_names):
     """Load and run an ONNX model via OpenCV DNN in an isolated subprocess."""
     import tempfile
 
@@ -31,32 +29,11 @@ def _opencv_worker(model_bytes, inputs, input_names, output_names, conn):
         # forward() returns ndarray for single output, list for multiple
         if isinstance(raw, np.ndarray):
             raw = [raw]
-        conn.send(("ok", [np.array(o) for o in raw]))
+        return [np.array(o) for o in raw]
     except (cv2.error, RuntimeError, ValueError, TypeError, OSError) as e:
-        conn.send(("error", str(e)))
+        raise WorkerError(str(e)) from e
     finally:
-        conn.close()
         os.unlink(path)
-
-
-def _read_result(reader):
-    """Receive the worker's result, or None if it exited without sending all of it."""
-    try:
-        return reader.recv()
-    except (EOFError, OSError):
-        return None
-
-
-def _stop_worker(process, finished):
-    """Reap the worker, escalating to SIGTERM and then SIGKILL if it does not exit."""
-    if finished:
-        process.join(timeout=5)  # let the worker clean up and exit on its own
-    if process.is_alive():
-        process.terminate()
-        process.join(timeout=5)
-        if process.is_alive():
-            process.kill()
-            process.join()
 
 
 class OpenCVBackendRep(BackendRep):
@@ -70,36 +47,12 @@ class OpenCVBackendRep(BackendRep):
 
     def run(self, inputs, **kwargs):
         """Execute inference in a spawned worker process."""
-        ctx = mp.get_context("spawn")
-        reader, writer = ctx.Pipe(duplex=False)
-        p = ctx.Process(
-            target=_opencv_worker,
-            args=(
-                self.model_bytes,
-                inputs,
-                self.input_names,
-                self.output_names,
-                writer,
-            ),
+        return run_in_subprocess(
+            _opencv_worker,
+            (self.model_bytes, inputs, self.input_names, self.output_names),
+            timeout=60,
+            name="opencv",
         )
-        p.start()
-        # With the parent's write end closed, a dead worker shows up as EOF on the
-        # reader, and reading before joining keeps a large result from deadlocking.
-        writer.close()
-        ready = wait([reader, p.sentinel], timeout=60)
-        outcome = _read_result(reader) if ready else None
-        reader.close()
-        _stop_worker(p, finished=bool(ready))
-        if not ready:
-            raise BackendIsNotSupposedToImplementIt("opencv process timed out")
-        if outcome is None:
-            raise BackendIsNotSupposedToImplementIt(
-                f"opencv process crashed (exit code {p.exitcode})"
-            )
-        status, result = outcome
-        if status == "error":
-            raise BackendIsNotSupposedToImplementIt(result)
-        return result
 
 
 class OpenCVBackend(Backend):

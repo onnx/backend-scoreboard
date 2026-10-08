@@ -21,4 +21,7 @@ jobs:
           python-version: "3.12"
       - run: pip install --upgrade -r requirements_web.txt
       - run: python -m compileall backends test website-generator
+      - run: pip install --only-binary :all: -r requirements_test.txt
+      # --noconftest: test/conftest.py is the reporting plugin for backend runs.
+      - run: python -m pytest --noconftest -o pythonpath=backends test/test_subprocess_runner.py -v
       - run: python -c "import json; from pathlib import Path; config = json.loads(Path('setup/config.json').read_text()); assert 'stable' in config and 'development' in config and 'deploy_paths' in config"
