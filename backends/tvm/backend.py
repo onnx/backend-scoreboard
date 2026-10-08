@@ -14,36 +14,20 @@ logging.basicConfig(level=logging.WARNING)
 logger = logging.getLogger(__name__)
 
 
-def _unsupported_ops(model):
-    """Return ops in the model that have no TVM Relax ONNX converter.
-
-    Lets models with unsupported ops skip before compilation, with a message
-    naming the missing ops. Returns an empty list when the check cannot be
-    performed.
-    """
-    try:
-        from tvm.relax.frontend.onnx.onnx_frontend import _get_convert_map
-
-        convert_map = _get_convert_map()
-    except (ImportError, AttributeError, TypeError):
-        return []
-    return sorted({n.op_type for n in model.graph.node if n.op_type not in convert_map})
-
-
 def _skip(msg):
     """Log a skip reason on the worker's stderr and return it as a WorkerError."""
     print(f"[tvm] SKIP {msg}", file=sys.stderr, flush=True)
     return WorkerError(msg)
 
 
-def _to_numpy(value):
-    """Flatten a Relax VM result (tensor or nested tuple) into numpy arrays."""
+def _to_onnx_value(value):
+    """Convert a Relax VM value to numpy; tuples (ONNX sequences) become lists."""
     if hasattr(value, "numpy"):
-        return [value.numpy()]
-    return [array for item in value for array in _to_numpy(item)]
+        return value.numpy()
+    return [_to_onnx_value(item) for item in value]
 
 
-def _compile_and_run(model, input_names, arrays):
+def _compile_and_run(model, input_names, arrays, output_count):
     """Import the model via Relax, compile it for the CPU and run it once."""
     import tvm
     from tvm import relax
@@ -59,10 +43,14 @@ def _compile_and_run(model, input_names, arrays):
     with tvm.transform.PassContext(opt_level=3):
         executable = tvm.compile(mod, target="llvm")
     vm = relax.VirtualMachine(executable, tvm.cpu())
-    return _to_numpy(vm["main"](*[tvm.runtime.tensor(a) for a in arrays]))
+    result = vm["main"](*[tvm.runtime.tensor(a) for a in arrays])
+    # The frontend returns a single graph output as is and several as a tuple.
+    if output_count == 1:
+        return [_to_onnx_value(result)]
+    return [_to_onnx_value(item) for item in result]
 
 
-def _tvm_worker(model_bytes, inputs, input_names):
+def _tvm_worker(model_bytes, inputs, input_names, output_count):
     """Compile and run an ONNX model via TVM Relax in an isolated subprocess."""
     import onnx
 
@@ -74,14 +62,11 @@ def _tvm_worker(model_bytes, inputs, input_names):
     model = onnx.ModelProto()
     model.ParseFromString(model_bytes)
 
-    unsupported = _unsupported_ops(model)
-    if unsupported:
-        raise _skip(f"no TVM Relax converter for: {unsupported}")
-
     arrays = [np.ascontiguousarray(inp) for inp in inputs]
     try:
-        return _compile_and_run(model, input_names, arrays)
-    # TVM >= 0.20 raises its errors as Python builtin exception types.
+        return _compile_and_run(model, input_names, arrays, output_count)
+    # TVM >= 0.20 raises its errors as Python builtin exception types; unsupported
+    # ops raise tvm.error.OpNotImplemented, a RuntimeError.
     except (
         AssertionError,  # the Relax ONNX frontend asserts on unsupported variants
         RuntimeError,
@@ -99,17 +84,18 @@ def _tvm_worker(model_bytes, inputs, input_names):
 class TVMBackendRep(BackendRep):
     """Runtime representation for executing models with Apache TVM."""
 
-    def __init__(self, model_bytes, input_names):
-        """Store serialized model bytes and graph input names."""
+    def __init__(self, model_bytes, input_names, output_count):
+        """Store serialized model bytes and graph I/O metadata."""
         self.model_bytes = model_bytes
         self.input_names = input_names
+        self.output_count = output_count
 
     def run(self, inputs, **kwargs):
         """Compile and execute inference in a spawned worker process."""
         try:
             return run_in_subprocess(
                 _tvm_worker,
-                (self.model_bytes, inputs, self.input_names),
+                (self.model_bytes, inputs, self.input_names, self.output_count),
                 timeout=120,
                 name="tvm",
             )
@@ -136,7 +122,8 @@ class TVMBackend(Backend):
         input_names = [
             inp.name for inp in model.graph.input if inp.name not in initializers
         ]
-        return TVMBackendRep(model_bytes, input_names)
+        output_count = len(model.graph.output)
+        return TVMBackendRep(model_bytes, input_names, output_count)
 
     @classmethod
     def run_model(cls, model, inputs, device="CPU", **kwargs):
