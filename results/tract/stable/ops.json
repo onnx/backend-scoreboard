@@ -299,8 +299,8 @@
         "domain": "",
         "failed_tests": 0,
         "op_type": "ConvInteger",
-        "passed_tests": 1,
-        "skipped_tests": 1,
+        "passed_tests": 2,
+        "skipped_tests": 0,
         "total_tests": 2
     },
     {
