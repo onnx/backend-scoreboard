@@ -242,5 +242,26 @@
                 "version": "1.8.0"
             }
         ]
+    },
+    {
+        "date": "10/27/2026 00:59:07",
+        "failed": 26,
+        "passed": 1326,
+        "skipped": 681,
+        "total_ops": 205,
+        "versions": [
+            {
+                "name": "onnx",
+                "version": "1.23.2"
+            },
+            {
+                "name": "onnxruntime",
+                "version": "1.23.2"
+            },
+            {
+                "name": "onnxruntime-ep-openvino",
+                "version": "1.8.1"
+            }
+        ]
     }
 ]
