@@ -15,7 +15,7 @@ Attention,Passed!
 AveragePool,Passed!
 BatchNormalization,Passed!
 Bernoulli,Failed!
-BitCast,Failed!
+BitCast,Passed!
 BitShift,Passed!
 BitwiseAnd,Passed!
 BitwiseNot,Passed!
@@ -24,23 +24,23 @@ BitwiseXor,Passed!
 BlackmanWindow,Passed!
 Cast,Passed!
 CastLike,Passed!
-CausalConvWithState,Failed!
+CausalConvWithState,Passed!
 Ceil,Passed!
 Celu,Passed!
 CenterCropPad,Passed!
 Clip,Passed!
 Col2Im,Failed!
-Compress,Failed!
+Compress,Passed!
 Concat,Passed!
 ConcatFromSequence,Failed!
 Constant,Passed!
 ConstantOfShape,Passed!
 Conv,Passed!
-ConvInteger,Failed!
+ConvInteger,Passed!
 ConvTranspose,Passed!
 Cos,Passed!
 Cosh,Passed!
-CumProd,Failed!
+CumProd,Passed!
 CumSum,Passed!
 DFT,Passed!
 DeformConv,Failed!
@@ -49,7 +49,7 @@ DequantizeLinear,Passed!
 Det,Passed!
 Div,Passed!
 Dropout,Passed!
-DynamicQuantizeLinear,Failed!
+DynamicQuantizeLinear,Passed!
 Einsum,Passed!
 Elu,Passed!
 Equal,Passed!
@@ -79,7 +79,7 @@ HardSwish,Passed!
 Hardmax,Passed!
 Identity,Passed!
 If,Passed!
-ImageDecoder,Failed!
+ImageDecoder,Passed!
 InstanceNormalization,Passed!
 IsInf,Passed!
 IsNaN,Passed!
@@ -89,14 +89,14 @@ LayerNormalization,Passed!
 LeakyRelu,Passed!
 Less,Passed!
 LessOrEqual,Passed!
-LinearAttention,Failed!
+LinearAttention,Passed!
 Log,Passed!
 LogSoftmax,Passed!
 Loop,Passed!
 LpNormalization,Passed!
-LpPool,Failed!
+LpPool,Passed!
 MatMul,Passed!
-MatMulInteger,Failed!
+MatMulInteger,Passed!
 Max,Passed!
 MaxPool,Passed!
 MaxRoiPool,Failed!
@@ -126,7 +126,7 @@ QLinearConv,Passed!
 QLinearMatMul,Passed!
 QuantizeLinear,Passed!
 RMSNormalization,Passed!
-RNN,Failed!
+RNN,Passed!
 RandomNormal,Failed!
 RandomNormalLike,Failed!
 RandomUniform,Failed!
@@ -152,7 +152,7 @@ RoiAlign,Passed!
 RotaryEmbedding,Passed!
 Round,Passed!
 STFT,Failed!
-Scan,Failed!
+Scan,Passed!
 Scatter,Passed!
 ScatterElements,Passed!
 ScatterND,Passed!
@@ -202,4 +202,4 @@ Unsqueeze,Passed!
 Upsample,Passed!
 Where,Passed!
 Xor,Passed!
-Summary,158/203 node tests passed
+Summary,171/203 node tests passed
