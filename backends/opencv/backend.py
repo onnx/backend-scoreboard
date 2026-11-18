@@ -15,6 +15,13 @@ def _opencv_worker(model_bytes, inputs, input_names, output_names):
 
     import cv2
 
+    try:
+        import ml_dtypes
+        cv2.setUseExactNumpyDtypes(True)
+    except (cv2.error, RuntimeError, ValueError, TypeError, OSError) as e:
+        print("Warning: ml_dtypes is not available or not supported by OpenCV!")
+        print("Exception details:\n", str(e))
+
     with tempfile.NamedTemporaryFile(suffix=".onnx", delete=False) as f:
         f.write(model_bytes)
         path = f.name
