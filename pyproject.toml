@@ -24,9 +24,5 @@ ignore = [
 [tool.ruff.lint.mccabe]
 max-complexity = 6
 
-[tool.ruff.lint.per-file-ignores]
-# OpenCV needs the ml_dtypes import for its dtype registration side effects.
-"backends/opencv/backend.py" = ["F401"]
-
 [tool.ruff.lint.flake8-quotes]
 inline-quotes = "double"

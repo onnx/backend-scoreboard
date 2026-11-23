@@ -14,14 +14,11 @@ def _opencv_worker(model_bytes, inputs, input_names, output_names):
     import tempfile
 
     import cv2
+    import ml_dtypes  # noqa: F401  (registers bfloat16/float8 etc. with NumPy)
 
-    try:
-        import ml_dtypes
-
-        cv2.setUseExactNumpyDtypes(True)
-    except (cv2.error, RuntimeError, ValueError, TypeError, OSError) as e:
-        print("Warning: ml_dtypes is not available or not supported by OpenCV!")
-        print("Exception details:\n", str(e))
+    # Keep FP16, FP8 and other non-float32 outputs in their exact dtype
+    # instead of converting them to float32 (OpenCV >= 5.1).
+    cv2.setUseExactNumpyDtypes(True)
 
     with tempfile.NamedTemporaryFile(suffix=".onnx", delete=False) as f:
         f.write(model_bytes)
