@@ -17,6 +17,7 @@ def _opencv_worker(model_bytes, inputs, input_names, output_names):
 
     try:
         import ml_dtypes
+
         cv2.setUseExactNumpyDtypes(True)
     except (cv2.error, RuntimeError, ValueError, TypeError, OSError) as e:
         print("Warning: ml_dtypes is not available or not supported by OpenCV!")
