@@ -28,8 +28,9 @@ ENV PYTHONPATH="/root"
 # Set locale and install OpenCV and onnx
 RUN locale-gen en_US.UTF-8 && update-locale LANG=en_US.UTF-8 && \
     pip3 install \
+    ml_dtypes \
     onnx \
-    opencv-python-headless
+    "opencv-python-headless>=5.1"
 ####################################################
 
 RUN useradd -m -u 1000 runner && chown -R runner:runner /root
