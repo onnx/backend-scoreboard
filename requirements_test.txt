@@ -8,5 +8,5 @@ packaging==26.3
 pluggy==1.6.0
 protobuf==7.36.2
 Pygments==2.21.0
-pytest==9.1.1
+pytest==9.2.0
 typing_extensions==4.16.0
